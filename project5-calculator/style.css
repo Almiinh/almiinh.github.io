@@ -1,0 +1,104 @@
+* {
+    font-family: 'Roboto Mono', Consolas, 'Courier New', Courier, monospace;
+}
+
+header {
+    margin: 1vh 15vw;
+}
+
+body {
+    /* Ensures the body takes at least the full viewport height */
+    min-height: 80vh;
+    margin: 0;
+    /* Light gray background for the entire body */
+    background-color: #f4f4f4;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    /* Fixed height as specified */
+    height: 500px;
+    /* Fixed width as specified */
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    /* Adds rounded corners */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centers children vertically within the calculator */
+    align-items: center;
+    /* Centers children horizontally within the calculator */
+}
+
+#minidisplay {
+    min-height: 1.5em;
+    align-self: flex-end;
+    color: grey;
+    text-align: right;
+}
+
+#display {
+    /* Full width of the calculator */
+    width: 100%;
+    /* Increased height for better visibility */
+    height: 60px;
+    /* Margin: Top Right Bot Left */
+    margin: 0 0 20px 0;
+    /* Text aligned to the right */
+    text-align: right;
+    /* Larger font for easy reading */
+    border: 2px solid #ccc;
+    /* Defined border for clarity */
+    font-size: 24px;
+    /* Rounded corners for aesthetics */
+    border-radius: 5px;
+    /* Light grey background for the display area */
+    background-color: #f8f8f8;
+}
+
+.buttons {
+    /* Full width of the calculator */
+    width: 100%;
+    display: grid;
+    /* Four columns for buttons */
+    grid-template-columns: repeat(4, 1fr);
+    /* Four rows for buttons */
+    grid-template-rows: repeat(4, 1fr);
+    /* Space between buttons */
+    gap: 10px;
+}
+
+.buttons button {
+    padding: 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.1s;
+    border-radius: 4px;
+    /* Rounded corners for buttons */
+}
+
+.buttons button:hover, button.hover {
+    background-color: #ccc;
+    /* Color change on hover */
+}
+
+.buttons .operator {
+    background-color: rgba(206, 151, 62, 0.5);
+}
+.buttons .operator:hover, .operator.hover {
+    background-color: rgba(206, 151, 62, 0.8);
+}
+
+.span {
+    grid-column: span 2;
+}
