@@ -1,0 +1,132 @@
+@font-face {
+    font-family: Norse-Bold;
+    src: url("Norse-Bold.otf");
+}
+
+* {
+    /*CSS reset*/
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    margin: 1vh 15vw;
+    font-family: 'Roboto Mono', Consolas, 'Courier New', Courier, monospace;
+}
+
+body {
+    display: flex;
+    flex-flow: row wrap;
+    font-family: Inter, sans-serif;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 0 100%;
+    height: 100vh;
+    min-width: 40vw;
+
+    background-image: url('fuji.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    opacity: 0.8;
+}
+
+aside .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20vh;
+    padding: 1vh 0;
+    background-color: rgba(0, 0, 0, 0.300);
+}
+
+aside .title img {
+    height: 15vh;
+}
+
+aside .title h1 {
+    font-family: Norse-Bold, Verdana, sans-serif;
+    font-size: 72px;
+}
+
+aside .credit-text {
+    margin: 10px;
+    width: 100%;
+    font-size: 12px;
+}
+
+main {
+    background-color: rgba(240, 240, 240, 0.500);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 0 100%;
+}
+
+main .form-pretext {
+    margin: 3vh 5vw 7vh;
+}
+
+main .form-container {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 5px 5px 4px rgba(0, 0, 0, 0.1);
+    padding: 3vh 5vw;
+}
+
+main form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2vh 3vw;
+    justify-content: left;
+}
+
+main form label {
+    font-size: small;
+    font-weight: 6v00;
+}
+
+main form input {
+    padding: 3px 0;
+    text-decoration: none;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+main form div {
+    display: flex;
+    flex-direction: column;
+}
+
+main .form-options {
+    padding: 2vh 5vw 10vh;
+}
+
+main .form-options button {
+    color: white;
+    background-color: rgb(103, 154, 182);
+    padding: 10px;
+    margin: 3vh 0 2vh;
+    border: none;
+    border-radius: 5px;
+    font-family: Inter;
+}
+
+
+@media (min-width: 600px) {
+    main {
+        flex: 1 0 1vh;
+    }
+
+    aside {
+        flex: 0 0 4vw;
+    }
+}
