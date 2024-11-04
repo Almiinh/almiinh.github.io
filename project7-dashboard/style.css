@@ -1,16 +1,23 @@
 * {
-    margin: 0;
     text-decoration: none;
+    margin: 0;
 }
 
 body {
     display: grid;
     grid-template-areas:
+    'banner banner'
     'nav header'
     'nav section';
     grid-template-rows: 1fr auto;
     grid-template-columns: 1fr 8fr;
     font-family: Inter, Arial, sans-serif;
+}
+
+banner {
+    grid-area: banner;
+    font-family: 'Roboto Mono', Consolas, monospace;
+    margin-left: 15vw;
 }
 
 /* # SIDEBAR */
@@ -64,53 +71,24 @@ nav a:active, nav h1:active {
     color: white;
 }
 
-.photo:hover {
-    background-image: linear-gradient(rgba(31, 177, 172, 0.5), rgba(0, 0, 255, 0.5));
-}
-
-.photo {
-    --size: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(31, 177, 172, 0.5));
-    height: var(--size);
-    min-width: var(--size);
-    border-radius: 100%;
-    margin: 0.5rem;
-    font-size: small;
-    color: white;
-    text-decoration: none;
-}
-
-
-.big {
-    --size: 5rem;
-}
-
-.smaller {
-    font-size: smaller;
-}
-
 /* # HEADER */
-
-header {
+.header {
     grid-area: header;
     padding: 2vh 2vw;
 }
 
-header * {
+.header * {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2vw;
 }
 
-header .search:hover {
+.header .search:hover {
     background-color: #cccccc;
 }
 
-header input {
+.header input {
     background-color: #eeeeee;
     border-width: 0;
     border-radius: 1rem;
@@ -119,8 +97,7 @@ header input {
     margin: 0 2vw;
 }
 
-
-header button {
+.header button {
     background-color: rgb(100, 154, 182);
     border: 0;
     border-radius: 1000px;
@@ -130,17 +107,17 @@ header button {
     /* box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.6); */
 }
 
-header button:hover {
+.header button:hover {
     background-color: rgb(60, 155, 182);
 }
   
-header button:active {
+.header button:active {
     background-color: rgb(100, 154, 182);
     /* box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.6); */
   }
   
 
-header .profile {
+.header .profile {
     display: inline;
     color: black;
 }
@@ -282,4 +259,34 @@ section.trending {
 
 .gray {
     color: gray;
+}
+
+
+/* PHOTO */
+.photo:hover {
+    background-image: linear-gradient(rgba(31, 177, 172, 0.5), rgba(0, 0, 255, 0.5));
+}
+
+.photo {
+    --size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(31, 177, 172, 0.5));
+    height: var(--size);
+    min-width: var(--size);
+    border-radius: 100%;
+    margin: 0.5rem;
+    font-size: small;
+    color: white;
+    text-decoration: none;
+}
+
+
+.big {
+    --size: 5rem;
+}
+
+.smaller {
+    font-size: smaller;
 }
