@@ -8,27 +8,124 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            font-family: 'Roboto Mono', Consolas, 'Courier New', Courier, monospace;
-            margin-left: 5vw;
-            margin-right: 5vw;
-        }
-    </style>
 </head>
 
 <body>
     <h1>Web Projects</h1>
-    <a href="./project1-odin-recipes/index.html">Project 1: Odin Recipes</a><br />
-    <a href="./project2-landing-page/index.html">Project 2: Landing Page</a><br />
-    <a href="./project3-rock-paper-scissors/index.html">Project 3: Rock Paper Scissors</a><br />
-    <a href="./project4-etch-a-sketch/index.html">Project 4: Etch-a-Sketch</a><br />
-    <a href="./project5-calculator/index.html">Project 5: Calculator</a><br />
-    <a href="./project6-validation-form/index.html">Project 6: Validation Form</a><br />
-    <a href="./project7-dashboard/index.html">Project 7: Dashboard</a><br />
-    <a href="./project8-library/">Project 8: Library</a><br />
-    <a href="./project9-tic-tac-toe/index.html">Project 9: Tic Tac Toe</a><br />
+    <a class="tooltip" href="./project1-odin-recipes/index.html">
+        Project 1: Odin Recipes
+        <span class="tooltiptext">HTML Basics: Boilerplate, Text Format, Link, Image, Lists</span>
+    </a><br />
+    <a class="tooltip" href="./project2-landing-page/index.html">
+        Project 2: Landing Page
+        <span class="tooltiptext">CSS Basics, Box Model, Flexbox</span>
+    </a><br />
+    <a class="tooltip" href="./project3-rock-paper-scissors/index.html">
+        Project 3: Rock Paper Scissors
+        <span class="tooltiptext">JS Basics</span>
+    </a><br />
+    <a class="tooltip" href="./project4-etch-a-sketch/index.html">
+        Project 4: Etch-a-Sketch
+        <span class="tooltiptext">JS DOM Manipulation: Mouseover, CSS Calc</span>
+    </a><br />
+    <a class="tooltip" href="./project5-calculator/index.html">
+        Project 5: Calculator
+        <span class="tooltiptext">JS DOM Manipulation: Text Display, Key Bindings</span>
+    </a><br />
+    <a class="tooltip" href="./project6-validation-form/index.html">
+        Project 6: Validation Form
+        <span class="tooltiptext">Forms</span>
+    </a><br />
+    <a class="tooltip" href="./project7-dashboard/index.html">
+        Project 7: Dashboard
+        <span class="tooltiptext">CSS Grids and Flexbox</span>
+    </a><br />
+    <a class="tooltip" href="./project8-library/">
+        Project 8: Library
+        <span class="tooltiptext">JS Objects</span>
+    </a><br />
+    <a class="tooltip" href="./project9-tic-tac-toe/index.html">
+        Project 9: Tic Tac Toe
+        <span class="tooltiptext">JS Modules</span>
+    </a><br />
     <br />
 </body>
+<style>
+    body {
+        margin-left: 15vw;
+        font-family: 'Roboto Mono', Consolas, 'Courier New', Courier, monospace;
+    }
+    .tooltiptext {
+        transition: opacity 0s;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 1;
+        margin: 1em 0.2em;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+        background-color: #f2f4f5;
+        padding: 1em 1em;
+        width: auto;
+        font-size: x-small;
+        position: absolute;
+    }
+    .tooltip:hover .tooltiptext {
+        transition: opacity 0.3s;
+        visibility: visible;
+        opacity: 1;
+        text-align: left;
+    }
+    .tooltiptext * {
+        margin: 0;
+        padding-left: 0.7em;
+        list-style-type: none;
+    }
+    .tooltiptext::before,
+        .tooltiptext::after {
+        position: absolute;
+        bottom: 100%;
+        left: 1em;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        content: "";
+    }
+    .tooltiptext::before {
+        margin-bottom: 1px;
+        border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+    }
+    .tooltiptext::after {
+        border-bottom: 5px solid #f2f4f5;
+    }
+    @media (prefers-color-scheme: dark) {
+        * {
+            background-color: #282c34;
+            color: #f2f4f5;
+        }
+        .tooltiptext {
+            border-color: #f2f4f5;
+            background-color: #282c34;
+        }
+        .tooltiptext::before {
+            border-bottom: 5px solid #f2f4f5;
+        }
+        .tooltiptext::after {
+            border-bottom: 5px solid #282c34;
+        }
+    }
+</style>
+<script>
+    let tooltip = document.querySelectorAll('.tooltiptext');
 
+    document.addEventListener('mousemove', showTooltip, false);
+
+    function showTooltip(e) {
+        console.log(e)
+        for (let i = tooltip.length; i--;) {
+            tooltip[i].style.left = e.clientX + 'px';
+            tooltip[i].style.top = e.clientY + 'px';
+        }
+    }
+</script>
 </html>
