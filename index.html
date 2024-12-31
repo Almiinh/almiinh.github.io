@@ -93,7 +93,7 @@
                 <h2>Machine Learning</h2>
                 <div class="link">
                     <a href="https://github.com/Almiinh/ml-exercises/blob/main/ex2_imageclassification.ipynb">
-                        Cat or Dog Picture Classifier
+                        Image Classifier of cats and dogs
                     </a>
                     <span class="tooltip">Vanilla CNN Model training to classify cat and dog images</span>
                     <br />
@@ -109,13 +109,15 @@
             <section>
                 <h2>Other</h2>
                 <div class="link">
-                    <a href="https://github.com/Almiinh/red-object-detector"> Detection of Red Objects </a>
+                    <a href="https://github.com/Almiinh/red-object-detector"
+                        >Computer Vision: Detection of Red Objects
+                    </a>
                     <span class="tooltip">Using Image Processing techniques, detect red objects on webcam</span>
                     <br />
                 </div>
                 <div class="link">
                     <a href="https://gitlab.emse.fr/julien.seailles/cloud-computing">
-                        File Processing through AWS S3 & SQS
+                        Cloud Computing: File Processing through AWS S3 & SQS
                     </a>
                     <span class="tooltip"
                         >An AWS-based solution to consolidate daily sales data from globally distributed stores of a
@@ -124,7 +126,7 @@
                     <br />
                 </div>
                 <div class="link">
-                    <span> A Web Semantics-based Search Engine </span>
+                    <span> Semantic Web: A SW-based Search Engine </span>
                     <span class="tooltip"
                         >Using JSON-LD data stored in a Apache Jena Fuseki local server to browse through food offers in
                         coopcycles.com websites</span
@@ -162,8 +164,12 @@
 
         body {
             font-family: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
-            font-size: 0.9rem;
             margin-bottom: 15vh;
+
+            a,
+            span {
+                font-size: 0.9rem;
+            }
         }
 
         a {
@@ -192,52 +198,51 @@
             margin-left: 15vw;
         }
 
-        @media (pointer: fine) {
-            .tooltip {
-                transition: opacity 0s;
-                opacity: 0;
-                z-index: 1;
-                margin: 1rem 0.2rem;
-                border-width: 1px;
-                border-style: solid;
-                border-color: var(--color-border);
-                box-shadow: 4px 4px 0 var(--color-shadow);
-                background-color: var(--color-background);
-                padding: 0.5rem 1rem;
-                width: auto;
-                font-size: x-small;
+        .tooltip {
+            transition: opacity 0.3s;
+            opacity: 0;
+            z-index: -1;
+            margin: 1rem 0.2rem;
+            border-width: 1px;
+            border-style: solid;
+            border-color: var(--color-border);
+            box-shadow: 4px 4px 0 var(--color-shadow);
+            background-color: var(--color-background);
+            padding: 0.5rem 1rem;
+            width: auto;
+            font-size: x-small;
+            position: absolute;
+
+            &::before,
+            &::after {
                 position: absolute;
-
-                &::before,
-                &::after {
-                    position: absolute;
-                    bottom: 100%;
-                    left: 1rem;
-                    border-right: 5px solid transparent;
-                    border-left: 5px solid transparent;
-                    content: "";
-                }
-
-                &::before {
-                    margin-bottom: 1px;
-                    border-bottom: 5px solid var(--color-border);
-                }
-
-                &::after {
-                    border-bottom: 5px solid var(--color-background);
-                }
+                bottom: 100%;
+                left: 1rem;
+                border-right: 5px solid transparent;
+                border-left: 5px solid transparent;
+                content: "";
             }
 
-            .link a:hover + .tooltip,
-            .link span:hover + .tooltip {
-                transition: opacity 0.3s;
-                opacity: 1;
-                text-align: left;
+            &::before {
+                margin-bottom: 1px;
+                border-bottom: 5px solid var(--color-border);
+            }
+
+            &::after {
+                border-bottom: 5px solid var(--color-background);
             }
         }
 
+        .link *:hover + .tooltip,
+        .link *:active + .tooltip,
+        .tooltip.visible {
+            transition: opacity 150ms ease-in-out;
+            opacity: 1;
+            z-index: 1;
+        }
+
         @media (prefers-color-scheme: dark) {
-            *,
+            html,
             a {
                 background-color: var(--color-dark-background);
                 color: var(--color-dark-text);
@@ -255,56 +260,43 @@
                     border-bottom: 5px solid var(--color-dark-background);
                 }
             }
-
-            @media (pointer: coarse), (hover: none) {
-                .tooltip {
-                    color: var(--color-dark-secondary-text);
-                }
-            }
-        }
-
-        @media (pointer: coarse), (hover: none) {
-            .link {
-                text-wrap: nowrap;
-            }
-
-            .tooltip {
-                margin: 0 5rem;
-                color: var(--color-secondary-text);
-                font-size: small;
-                text-wrap: nowrap;
-            }
         }
     </style>
     <script>
-        const tooltips = document.querySelectorAll(".tooltip");
-        if (window.matchMedia("(pointer: coarse)").matches) {
-            const links = document.querySelectorAll(".link a");
-            let maxWidth = 0;
+        function moveTooltipAtPointer(event) {
+            const tooltip = event.target.nextElementSibling;
+            if (tooltip.matches(".tooltip")) {
+                tooltip.style.left = event.pageX + "px";
+                tooltip.style.top = event.pageY + "px";
+            }
+        }
 
-            links.forEach((link) => {
-                const linkWidth = link.offsetWidth;
-                if (linkWidth > maxWidth) {
-                    maxWidth = linkWidth;
+        function showTooltip(event) {
+            document.querySelectorAll(".tooltip").forEach(
+                (t) => t.classList.remove("visible")
+            );
+            const tooltip = event.target.nextElementSibling;
+            tooltip.classList.add("visible");
+            setTimeout(() => {
+                tooltip.classList.remove("visible");
+            }, 5000);
+        }
+
+        if (window.matchMedia("(hover: none)").matches) {
+            document.addEventListener("click", (event) => {
+                if (event.target.parentElement.matches(".link")) {
+                    event.preventDefault();
+                    showTooltip(event)
                 }
             });
 
-            tooltips.forEach((tooltip) => {
-                tooltip.style.position = "absolute";
-                tooltip.style.left = maxWidth + 80 + "px";
+            document.addEventListener("dblclick", (event) => {
+                if (event.target.tagName === "A") {
+                    window.location.href = event.target.href;
+                }
             });
         } else {
-            document.addEventListener(
-                "mousemove",
-                (event) => {
-                    tooltips.forEach((tooltip) => {
-                        tooltip.style.left = event.pageX + "px";
-                        tooltip.style.top = event.pageY + "px";
-                    });
-                },
-                false
-            );
+            document.addEventListener("mousemove", moveTooltipAtPointer);
         }
-
     </script>
 </html>
