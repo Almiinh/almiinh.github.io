@@ -2,10 +2,6 @@
     font-family: 'Roboto Mono', Consolas, monospace;
 }
 
-header {
-    margin-left: 15vw;
-}
-
 .container {
     max-width: 600px; 
     margin: 0 auto;

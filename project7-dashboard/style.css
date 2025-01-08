@@ -16,8 +16,6 @@ body {
 
 banner {
     grid-area: banner;
-    font-family: 'Roboto Mono', Consolas, monospace;
-    margin-left: 15vw;
 }
 
 /* # SIDEBAR */

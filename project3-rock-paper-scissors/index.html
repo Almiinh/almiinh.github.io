@@ -4,16 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>Rock Paper Scissors Game</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../fonts.css">
     <style>
-        * {
+        banner ~ *, button {
             font-family: 'Roboto Mono', Consolas, 'Courier New', Courier, monospace;
-        }
-        
-        header {
-            margin-left: 15vw;
         }
 
         .game {
@@ -47,12 +41,11 @@
     <script src="game.js" defer></script>
 </head>
 
-<header>
-    <a href="../index.html">Back</a>
-    <h1>Project 3 : Rock Paper Scissors</h1>
-</header>
-
 <body>
+    <banner>
+        <a href="../index.html">Back</a>
+        <h1>Project 3 : Rock Paper Scissors</h1>
+    </banner>
     <div class="game">
         <div class="container">
             <button onclick="playRound('paper', getComputerChoice())">Paper</button>

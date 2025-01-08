@@ -1,3 +1,4 @@
+import "../../fonts.css"
 import "./style.css"
 import imgKayleigHarrington from "./images/kayleigh-harrington-yhn4okt6ci0-unsplash.jpg"
 import imgNusaUrbancek from "./images/nusa-urbancek-pD6YZkTXPpo-unsplash.jpg"
@@ -13,6 +14,7 @@ function handleHome() {
 
 function handleMenu() {
     image.src = imgNusaUrbancek
+    window.location.hostname = window.location.hostname + 'menu/'
     content.replaceChildren(image)
 }
 

@@ -12,12 +12,8 @@ body {
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-banner, header h1 {
-    font-family: 'Roboto Mono', monospace;
+    margin: 0 15vw;
+    padding: 20px 0;
 }
 
 header {

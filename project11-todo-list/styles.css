@@ -22,12 +22,6 @@
     box-sizing: border-box;
 }
 
-header {
-    padding-left: 15vw;
-    font-family: "Roboto Mono";
-    color: black;
-}
-
 body {
     font-family: "Playfair Display";
     line-height: 1.6;
@@ -364,9 +358,13 @@ button {
 
 
 @media (prefers-color-scheme: dark) {
-    header, body, input, textarea, select {
+    banner, body, input, textarea, select {
         background-color: #282c34;
         color: #f2f4f5;
+    }
+
+    a {
+        color:cyan;
     }
 
     :root {

@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project 4: Etch-a-Sketch</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../fonts.css">
     <script>
         window.onload = generateGrid
 
@@ -60,12 +58,8 @@
         }
     </script>
     <style>
-        * {
+        banner ~ * {
             font-family: 'Roboto Mono', Consolas, 'Courier New', Courier, monospace;
-        }
-
-        header {
-            margin-left: 15vw;
         }
 
         .main {
@@ -126,12 +120,11 @@
     </style>
 </head>
 
-<header>
-    <a href="../index.html">Back</a>
-    <h1>Project 4 : Etech a Sketch</h1>
-</header>
-
 <body>
+    <banner>
+        <a href="../index.html">Back</a>
+        <h1>Project 4 : Etech a Sketch</h1>
+    </banner>
     <div class="main">
         <h3>Enter grid size first:</h3>
         <div class="grid-input">

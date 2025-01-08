@@ -25,10 +25,6 @@ main {
     align-items: center;
 }
 
-header {
-    padding-left: 15vw;
-}
-
 main {
     display: flex;
     justify-content: center;
