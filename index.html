@@ -4,16 +4,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Minh-Hoang's Portfolio</title>
+        <link rel="stylesheet" href="fonts.css" />
     </head>
 
     <body>
         <header>
             <h1>Minh-Hoang's Portfolio</h1>
             <a href="https://github.com/Almiinh">
-                <img
-                    src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github"
-                    alt="GitHub"
-                />
+                <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github" alt="GitHub" />
             </a>
             <a href="https://www.linkedin.com/in/minh-hoang-alexis-huynh-621b52222/">
                 <img
@@ -22,10 +20,94 @@
                 />
             </a>
             <a href="CV FR Minh-Hoang HUYNH.pdf">
-                <img src="https://img.shields.io/badge/CV-PDF-FF0000?style=for-the-badge&logo=read.cv" alt="PDF" />
+                <img src="https://img.shields.io/badge/French&nbsp;CV-PDF-FF0000?style=for-the-badge&logo=read.cv" alt="PDF" />
             </a>
+            <p>
+                CS Major @ Mines Saint-Étienne, FR<br/>
+                Intern @ Thales Research & Technologies, Palaiseau, Paris-Saclay, FR<br/>
+            </p>
         </header>
         <main>
+            <section>
+                <h2>CS Projects</h2>
+                <div class="link">
+                    <a href="https://gitlab.emse.fr/julien.seailles/cloud-computing">
+                        <em><strong>Cloud Computing:</strong></em> File Processing through AWS S3 & SQS
+                    </a>
+                    <span class="tooltip">
+                        An AWS-based solution to consolidate daily sales data from globally distributed stores of a
+                        large retailer w/ Client-Worker-Consolidator architecture.
+                    </span>
+                </div>
+                <div class="link">
+                    <a href="https://gitlab.emse.fr/julien.seailles/cloud-computing">
+                        <em><strong>Semantic Web:</strong></em> A SW-based Search Engine
+                    </a>
+                    <span class="tooltip">
+                        Using JSON-LD data stored in a Apache Jena Fuseki local server to browse through food offers in
+                        coopcycles.com websites
+                    </span>
+                </div>
+                <div class="link">
+                    <a href="https://github.com/Almiinh/red-object-detector">
+                        <em><strong>Computer Vision:</strong></em> Detection of Red Objects
+                    </a>
+                    <span class="tooltip">Using Image Processing techniques, detect red objects on webcam.</span>
+                </div>
+                <div class="link">
+                    <a href="https://github.com/Almiinh/imageprocessing">
+                        <em><strong>Image Processing:</strong></em> Compilation of notebook presenting processing techniques.
+                    </a>
+                    <span class="tooltip">
+                        Image Segmentation, Enhancement, Histogram Equalization, Fourier Transform, Restoration, Morpho Maths, ML ...
+                    </span>
+                </div>
+                <div class="link">
+                    <a href="https://github.com/Almiinh/calculator"> A Calculator in Java </a>
+                    <span class="tooltip">
+                        A Calculator in Java w/ basic operations, inspired by the Windows Calculator
+                    </span>
+                </div>
+                <div class="link">
+                    <a href="https://github.com/Almiinh/game-of-life"> The Conway's Game of Life </a>
+                    <span class="tooltip">The well known game of life written in C in the terminal</span>
+                </div>
+                <div class="link">
+                    <a href="https://addons.mozilla.org/fr/firefox/addon/wordreference-peek/">
+                        A WordReference Peek Firefox Addon
+                    </a>
+                    <span class="tooltip">
+                        An addon to peek at a word on wordreference without opening WordReference.com
+                    </span>
+                </div>
+            </section>
+            <section>
+                <h2>CS Experiences</h2>
+                <div class="link">
+                    <span>A fusion of datatsets with the Hungarian Algorithm (Kuhn-Munkres)</span>
+                </div>
+                <div class="link">
+                    <span>A RAG Pipeline to summary scientific articles with LLM</span>
+                </div>
+                <div class="link">
+                    <span>Implementation of Mixed-Integer Linear Programming Algorithms</span>
+                </div>
+            </section>
+            <section>
+                <h2>Machine Learning</h2>
+                <div class="link">
+                    <a href="https://github.com/Almiinh/ml-exercises/blob/main/ex2_imageclassification.ipynb">
+                        Image Classifier of cats and dogs w/ Tensorflow Keras
+                    </a>
+                    <span class="tooltip">Vanilla CNN Model training to classify cat and dog images w/ Tensorflow Keras</span>
+                </div>
+                <div class="link">
+                    <a href="https://github.com/Almiinh/ml-exercises/blob/main/ex3_timeseries.ipynb">
+                        Time Series Prediction w/ Tensorflow Keras
+                    </a>
+                    <span class="tooltip">LSTM model training, predicting a time series of office occupancy w/ Tensorflow Keras</span>
+                </div>
+            </section>
             <section>
                 <h2>Web Projects</h2>
                 <div class="link">
@@ -77,62 +159,6 @@
                     <span class="tooltip">Handling API: Fetch, Async and Display</span>
                 </div>
             </section>
-            <section>
-                <h2>Machine Learning</h2>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/ml-exercises/blob/main/ex2_imageclassification.ipynb">
-                        Image Classifier of cats and dogs
-                    </a>
-                    <span class="tooltip">Vanilla CNN Model training to classify cat and dog images</span>
-                </div>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/ml-exercises/blob/main/ex3_timeseries.ipynb">
-                        Time Series Prediction
-                    </a>
-                    <span class="tooltip">LSTM model training, predicting a time series of office occupancy</span>
-                </div>
-            </section>
-            <section>
-                <h2>Other</h2>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/red-object-detector"
-                        >Computer Vision: Detection of Red Objects
-                    </a>
-                    <span class="tooltip">Using Image Processing techniques, detect red objects on webcam</span>
-                </div>
-                <div class="link">
-                    <a href="https://gitlab.emse.fr/julien.seailles/cloud-computing">
-                        Cloud Computing: File Processing through AWS S3 & SQS
-                    </a>
-                    <span class="tooltip"
-                        >An AWS-based solution to consolidate daily sales data from globally distributed stores of a
-                        large retailer w/ Client-Worker-Consolidator architecture.</span
-                    >
-                </div>
-                <div class="link">
-                    <span> Semantic Web: A SW-based Search Engine </span>
-                    <span class="tooltip"
-                        >Using JSON-LD data stored in a Apache Jena Fuseki local server to browse through food offers in
-                        coopcycles.com websites</span
-                    >
-                </div>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/calculator"> A Calculator in Java </a>
-                    <span class="tooltip"
-                        >A Calculator in Java w/ basic operations, inspired by the Windows Calculator</span
-                    >
-                </div>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/game-of-life"> The Conway's Game of Life </a>
-                    <span class="tooltip">The well known game of life written in C in the terminal</span>
-                </div>
-                <div class="link">
-                    <a href="https://addons.mozilla.org/fr/firefox/addon/wordreference-peek/">
-                    WordReference Peek Firefox Addon
-                    </a>
-                    <span class="tooltip">An addon to peek at a word on wordreference without opening WordReference.com</span><br />
-                </div>
-            </section>
         </main>
     </body>
     <style>
@@ -149,19 +175,21 @@
             --color-dark-secondary-text: #999;
         }
 
+        * {
+            color: var(--color-text);
+            text-wrap-mode: nowrap;
+        }
+
         body {
             font-family: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
             margin-bottom: 5vh;
             margin-left: 15vw;
+            margin-right: 15vw;
 
             a,
             span {
                 font-size: 0.9rem;
             }
-        }
-
-        a {
-            color: var(--color-text);
         }
 
         header {
@@ -177,14 +205,18 @@
         }
 
         h1,
-        h2 {
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: "Playfair Display";
             margin-bottom: 0.25rem;
         }
 
         main {
             display: flex;
-            gap: 5vw;
+            gap: 5%;
             flex-wrap: wrap;
         }
 
