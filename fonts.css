@@ -12,3 +12,24 @@ banner {
     }
 }
 
+:root {
+    --color-dark-background: #282c34;
+    --color-dark-text: #f2f4f5;
+    --color-text-link: #8cb4ff;
+    --color-text-visited: #ffadff;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: var(--color-dark-background);
+        color: var(--color-dark-text);
+    }
+
+    a {
+        color: var(--color-text-link) ;
+    }
+
+    a:visited{
+        color: var(--color-text-visited);
+    }
+}
