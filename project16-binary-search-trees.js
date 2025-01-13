@@ -231,12 +231,12 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     }
 };
 
-// Driver script
+// Main
 function generateRandomArray(count, max) {
     return Array.from({ length: count }, () => Math.floor(Math.random() * max));
 }
 
-function driverScript() {
+function main() {
     // Create BST with random numbers
     const randomArray = generateRandomArray(15, 100);
     const tree = new Tree(randomArray);
@@ -284,4 +284,4 @@ function driverScript() {
     tree.inOrder(node => process.stdout.write(`${node.data} `));
 }
 
-driverScript();
+main();
