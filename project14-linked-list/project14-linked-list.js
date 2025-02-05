@@ -5,7 +5,7 @@ class Node {
     }
 }
 
-class LinkedList {
+export default class LinkedList {
     constructor() {
         this.head = new Node(null);
         this.tail = this.head;
@@ -117,15 +117,3 @@ class LinkedList {
         }
     }
 }
-
-// example uses class syntax - adjust as necessary
-const list = new LinkedList();
-
-list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
-
-console.log(list.toString())
