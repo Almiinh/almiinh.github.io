@@ -1,16 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap");
 
 :root {
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
     --text-color: #333;
     --bg-color: #f4f4f4;
-    --font: 'Roboto Mono', monospace;
+    --font: "Roboto Mono", monospace;
 }
 
 body {
-    font-family: 'Roboto Mono';
+    font-family: "Roboto Mono";
     background-color: var(--bg-color);
     margin: 0;
     display: flex;
@@ -136,7 +135,7 @@ button:hover {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    transition: .4s;
+    transition: 0.4s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,15 +149,15 @@ button:hover {
 }
 
 .slider::before {
-    content: '°F';
+    content: "°F";
     position: absolute;
     left: 5px;
-    transition: .4s;
+    transition: 0.4s;
     color: black;
 }
 
 .toggle input:checked + .slider::before {
-    content: '°C';
+    content: "°C";
     right: 5px;
     left: auto;
     color: white;
@@ -176,8 +175,12 @@ button:hover {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .fetch-time {

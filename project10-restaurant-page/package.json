@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "normalize.css": "^8.0.1",
     "webpack": "^5.96.1"
   },
   "devDependencies": {

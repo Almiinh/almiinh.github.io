@@ -12,7 +12,7 @@
 
 header {
     margin: 1vh 15vw;
-    font-family: 'Roboto Mono', Consolas, 'Courier New', Courier, monospace;
+    font-family: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
 }
 
 body {
@@ -29,7 +29,7 @@ aside {
     height: 100vh;
     min-width: 40vw;
 
-    background-image: url('fuji.jpg');
+    background-image: url("fuji.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -44,7 +44,7 @@ aside .title {
     justify-content: center;
     margin-top: 20vh;
     padding: 1vh 0;
-    background-color: rgba(0, 0, 0, 0.300);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 aside .title img {
@@ -63,7 +63,7 @@ aside .credit-text {
 }
 
 main {
-    background-color: rgba(240, 240, 240, 0.500);
+    background-color: rgba(240, 240, 240, 0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -119,7 +119,6 @@ main .form-options button {
     border-radius: 5px;
     font-family: Inter;
 }
-
 
 @media (min-width: 600px) {
     main {

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A Simple Calculator</title>
-    <link rel="stylesheet" href="../fonts.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
 </head>
 <body>
-    <banner>
+    <header class="banner">
         <a href="../index.html">Back</a>
         <h1>Project 5 : Calculator</h1>
-    </banner>
+    </header>
     <main>
         <div class="calculator">
             <span id="minidisplay"></span>
-            <input type="text" id="display" disabled>
+            <input type="text" id="display" disabled />
             <div class="buttons">
                 <button class="operator span" onclick="handleClearDisplay()">C</button>
                 <button class="operator" onclick="handleDelete()">DEL</button>
@@ -41,5 +41,4 @@
         </div>
     </main>
 </body>
-
 </html>

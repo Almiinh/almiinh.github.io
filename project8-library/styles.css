@@ -30,7 +30,7 @@ header {
 
 .add-book-btn {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     border: none;
     border-radius: 5px;
@@ -41,7 +41,6 @@ header {
 .add-book-btn:hover {
     background-color: #45a049;
 }
-
 
 .library-container {
     display: grid;
@@ -133,7 +132,7 @@ header {
 }
 
 .form-buttons button[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
 }
 

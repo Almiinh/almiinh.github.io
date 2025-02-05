@@ -1,5 +1,5 @@
 * {
-    font-family: 'Roboto Mono', Consolas, 'Courier New', Courier, monospace;
+    font-family: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
 }
 
 header {
@@ -87,7 +87,8 @@ main {
     /* Rounded corners for buttons */
 }
 
-.buttons button:hover, button.hover {
+.buttons button:hover,
+button.hover {
     background-color: #ccc;
     /* Color change on hover */
 }
@@ -95,7 +96,8 @@ main {
 .buttons .operator {
     background-color: rgba(206, 151, 62, 0.5);
 }
-.buttons .operator:hover, .operator.hover {
+.buttons .operator:hover,
+.operator.hover {
     background-color: rgba(206, 151, 62, 0.8);
 }
 

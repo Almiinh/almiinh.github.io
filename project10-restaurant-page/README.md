@@ -56,5 +56,8 @@ module.exports = {
 ## Add Webpack Dev Server
 npm install --save-dev webpack-dev-server
 
-## Run Webpack
+## Build Webpack
 npx webpack
+
+## Serve Webpack
+npx webpack serve

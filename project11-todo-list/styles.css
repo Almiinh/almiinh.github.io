@@ -358,7 +358,7 @@ button {
 
 
 @media (prefers-color-scheme: dark) {
-    banner, body, input, textarea, select {
+    .banner, body, input, textarea, select {
         background-color: #282c34;
         color: #f2f4f5;
     }

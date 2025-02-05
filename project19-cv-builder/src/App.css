@@ -1,0 +1,22 @@
+#root {
+}
+
+form {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  background-color:linen;
+  border-color: aliceblue;
+  border-radius: 5px;
+  padding: 2rem;
+  width: 40%;
+
+}
+
+form input {
+  border-radius: 5px;
+  border-width: 0;
+  line-height: 1.1;
+}
+form label {
+  margin-top: 1vh;
+}

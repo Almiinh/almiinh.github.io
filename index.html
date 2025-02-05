@@ -1,342 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Minh-Hoang's Portfolio</title>
-        <link rel="stylesheet" href="fonts.css" />
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Mono:wght@400;500;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-    
-            :root {
-                --color-text: #333;
-                --color-background: #f2f4f5;
-                --color-bg-secondary:lightgray;
-                --color-border: rgba(0, 0, 0, 0.5);
-                --color-shadow: rgba(0, 0, 0, 0.2);
-                --color-dark-background: #282c34;
-                --color-dark-text: #f2f4f5;
-                --color-dark-bg-secondary: #333943;
-                --color-text-secondary: #666;
-                --color-dark-secondary-text: #999;
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minh-Hoang's Portfolio</title>
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+        function moveTooltipAtPointer(event) {
+            const link = event.target.closest(".link");
+            const tooltip = link.querySelector(".tooltip");
+            if (tooltip.matches(".tooltip")) {
+                tooltip.style.left = event.pageX + "px";
+                tooltip.style.top = event.pageY + "px";
             }
-    
-            body {
-                font-family: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
-                margin-bottom: 5vh;
-                margin-left: 15vw;
-                margin-right: 15vw;
-    
-                a,
-                span {
-                    font-size: 0.9rem;
-                }
-            }
-    
-            header {
-                margin-bottom: 2rem;
-    
-                h1 {
-                    margin-bottom: 0.5rem;
-                }
-    
-                a {
-                    text-decoration: none;
-                }
-            }
-    
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                font-family: "Playfair Display";
-                margin-bottom: 0.25rem;
-            }
-    
-            main {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-                grid-auto-flow: row dense;
-                gap: 5vh;
-            }
-    
-            .tooltip {
-                transition: opacity 0.3s;
-                opacity: 0;
-                z-index: -1;
-                margin: 1rem 0.2rem;
-                border-width: 1px;
-                border-style: solid;
-                border-color: var(--color-border);
-                box-shadow: 4px 4px 0 var(--color-shadow);
-                background-color: var(--color-background);
-                padding: 0.5rem 1rem;
-                width: auto;
-                font-size: x-small;
-                position: absolute;
-    
-                &::before,
-                &::after {
-                    position: absolute;
-                    bottom: 100%;
-                    left: 1rem;
-                    border-right: 5px solid transparent;
-                    border-left: 5px solid transparent;
-                    content: "";
-                }
-    
-                &::before {
-                    margin-bottom: 1px;
-                    border-bottom: 5px solid var(--color-border);
-                }
-    
-                &::after {
-                    border-bottom: 5px solid var(--color-background);
-                }
-            }
-    
-            .link:hover {
-                background-color: var(--color-dark-bg-secondary);
-            }
-    
-            .link:hover > .tooltip,
-            .link *:active + .tooltip,
-            .tooltip.visible {
-                transition: opacity 150ms ease-in-out;
-                opacity: 1;
-                z-index: 1;
-            }
-    
-            @media (prefers-color-scheme: light) {
-                .link:hover {
-                    background-color: var(--color-bg-secondary);
-                }
-            }
-    
-            @media (prefers-color-scheme: dark) {
-                .link:hover {
-                    background-color: var(--color-dark-bg-secondary);
-                }
-    
-                .tooltip {
-                    border-color: var(--color-dark-text);
-                    background-color: var(--color-dark-background);
-    
-                    &::before {
-                        border-bottom: 5px solid var(--color-dark-text);
-                    }
-    
-                    &::after {
-                        border-bottom: 5px solid var(--color-dark-background);
-                    }
-                }
-            }
-        </style>
-        <script>
-            function moveTooltipAtPointer(event) {
-                const link = event.target.closest(".link");
-                const tooltip = link.querySelector(".tooltip");
-                if (tooltip.matches(".tooltip")) {
-                    tooltip.style.left = event.pageX + "px";
-                    tooltip.style.top = event.pageY + "px";
-                }
-            }
-    
-            function showTooltip(event) {
-                document.querySelectorAll(".tooltip").forEach((t) => t.classList.remove("visible"));
-                const tooltip = event.target.nextElementSibling;
-                tooltip.classList.add("visible");
-                setTimeout(() => {
-                    tooltip.classList.remove("visible");
-                }, 5000);
-            }
-    
-            if (window.matchMedia("(hover: none)").matches) {
-                document.addEventListener("click", (event) => {
-                    if (event.target.parentElement.matches(".link")) {
-                        event.preventDefault();
-                        showTooltip(event);
-                    }
-                });
-    
-                document.addEventListener("dblclick", (event) => {
-                    if (event.target.tagName === "A") {
-                        window.location.href = event.target.href;
-                    }
-                });
-            } else {
-                document.addEventListener("mousemove", moveTooltipAtPointer);
-            }
-        </script>
-    </head>
+        }
 
-    <body>
-        <header>
-            <h1>Minh-Hoang's Portfolio</h1>
+        function showTooltip(event) {
+            document.querySelectorAll(".link .tooltip").forEach((t) => t.classList.remove("visible"));
+            const link = event.target.closest(".link");
+            const tooltip = link.querySelector(".tooltip");
+            tooltip.classList.add("visible");
+            setTimeout(() => {
+                tooltip.classList.remove("visible");
+            }, 5000);
+        }
+
+        if (!window.matchMedia("(hover: none), (pointer: coarse)").matches) {
+            document.addEventListener("mousemove", moveTooltipAtPointer);
+        } else {
+            document.addEventListener("click", (event) => {
+                if (event.target.matches(".link, .link a, .link a *")) {
+                    if (event.target.matches(".link a, .link a *")) {
+                        event.preventDefault();
+                    }
+                    showTooltip(event);
+                }
+            });
+            document.addEventListener("dblclick", (event) => {
+                if (event.target.matches(".link a, .link a *")) {
+                    const a = event.target.closest("a");
+                    window.location.href = a.href;
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Minh-Hoang's Portfolio</h1>
+        <div>
             <a href="https://github.com/Almiinh">
-                <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github" alt="GitHub" />
+                <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github"
+                    alt="GitHub" />
             </a>
             <a href="https://www.linkedin.com/in/minh-hoang-alexis-huynh-621b52222/">
-                <img
-                    src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin"
-                    alt="LinkedIn"
-                />
+                <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin"
+                    alt="LinkedIn" />
             </a>
             <a href="CV FR Minh-Hoang HUYNH.pdf">
-                <img src="https://img.shields.io/badge/French&nbsp;CV-PDF-FF0000?style=for-the-badge&logo=read.cv" alt="PDF" />
+                <img src="https://img.shields.io/badge/French&nbsp;CV-PDF-FF0000?style=for-the-badge&logo=read.cv"
+                    alt="PDF" />
             </a>
-            <p>
-                CS Major @ Mines Saint-Étienne, FR<br/>
-                Intern @ Thales Research & Technologies, Palaiseau, Paris-Saclay, FR<br/>
-            </p>
-        </header>
-        <main>
-            <section>
-                <h2>CS Projects</h2>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/cloud-computing/">
-                        <em><strong>Cloud Computing:</strong></em> File Processing through AWS S3 & SQS
-                    </a>
-                    <span class="tooltip">
-                        An AWS-based solution to consolidate daily sales data from globally distributed stores of a
-                        large retailer w/ Client-Worker-Consolidator architecture.
-                    </span>
-                </div>
-                <div class="link">
-                    <a href="https://gitlab.emse.fr/minh-hoang.huynh/semantic-web-project">
-                        <em><strong>Semantic Web:</strong></em> A SW-based Search Engine
-                    </a>
-                    <span class="tooltip">
-                        Using JSON-LD data stored in a Apache Jena Fuseki local server to browse through food offers in
-                        coopcycles.com websites
-                    </span>
-                </div>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/red-object-detector">
-                        <em><strong>Computer Vision:</strong></em> Detection of Red Objects
-                    </a>
-                    <span class="tooltip">Using HSV colour space to detect red ranges on webcam.</span>
-                </div>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/red-object-detector">
-                        <em><strong>Computer Vision:</strong></em> Detection of Motion
-                    </a>
-                    <span class="tooltip">Using position difference across frames to detect motion on webcam.</span>
-                </div>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/imageprocessing">
-                        <em><strong>Image Processing:</strong></em> Compilation of notebook presenting processing techniques.
-                    </a>
-                    <span class="tooltip">
-                        Image Segmentation, Enhancement, Histogram Equalization, Fourier Transform, Restoration, Morpho Maths, ML ...
-                    </span>
-                </div>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/calculator">
-                        <em><strong>Programming:</strong></em> A Calculator in Java
-                    </a>
-                    <span class="tooltip">
-                        A Calculator in Java w/ basic operations, inspired by the Windows Calculator
-                    </span>
-                </div>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/game-of-life">
-                        <em><strong>Programming:</strong></em> The Conway's Game of Life in C</a>
-                    <span class="tooltip">The well known game of life written in C in the terminal</span>
-                </div>
-                <div class="link">
-                    <a href="https://addons.mozilla.org/fr/firefox/addon/wordreference-peek/">
-                        <em><strong>Web:</strong></em> A WordReference Peek Firefox Addon
-                    </a>
-                    <span class="tooltip">
-                        An addon to peek at a word on wordreference without opening WordReference.com w/ JS
-                    </span>
-                </div>
-            </section>
-            <section>
-                <h2>CS Experiences</h2>
-                <div class="link">
-                    <span>A fusion of datatsets with the Hungarian Algorithm (Kuhn-Munkres)</span>
-                </div>
-                <div class="link">
-                    <span>Implementation of Mixed-Integer Linear Programming Algorithms</span>
-                </div>
-            </section>
-            <section>
-                <h2>Machine Learning</h2>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/ml-exercises/blob/main/ex2_imageclassification.ipynb">
-                        Image Classifier of cats and dogs w/ Tensorflow Keras
-                    </a>
-                    <span class="tooltip">Vanilla CNN Model training to classify cat and dog images w/ Tensorflow Keras</span>
-                </div>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/ml-exercises/blob/main/ex3_timeseries.ipynb">
-                        Time Series Prediction w/ Tensorflow Keras
-                    </a>
-                    <span class="tooltip">LSTM model training, predicting a time series of office occupancy w/ Tensorflow Keras</span>
-                </div>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/ml-exercises/blob/main/test-langchain-rag.ipynb">A RAG Pipeline to summary scientific articles with LLM</a>
-                    <span class="tooltip">A mere comparison of Vector RAG and Graph RAG.</span>
-                </div>
-                <div class="link">
-                    <a href="https://github.com/Almiinh/ml-exercises/">Other stuff</a>
-                </div>
-            </section>
-            <section>
-                <h2>Web Projects</h2>
-                <div class="link">
-                    <a href="./project1-odin-recipes/index.html">Project 1: Odin Recipes</a>
-                    <span class="tooltip">HTML Basics: Boilerplate, Text Format, Link, Image, Lists</span>
-                </div>
-                <div class="link">
-                    <a href="./project2-landing-page/index.html">Project 2: Landing Page</a>
-                    <span class="tooltip">CSS Basics, Box Model, Flexbox</span>
-                </div>
-                <div class="link">
-                    <a href="./project3-rock-paper-scissors/index.html"> Project 3: Rock Paper Scissors </a>
-                    <span class="tooltip">JS Basics</span>
-                </div>
-                <div class="link">
-                    <a href="./project4-etch-a-sketch/index.html"> Project 4: Etch-a-Sketch </a>
-                    <span class="tooltip">JS DOM Manipulation: Input, Click and Mouseover Events, CSS Calc</span>
-                </div>
-                <div class="link">
-                    <a href="./project5-calculator/index.html"> Project 5: Calculator </a>
-                    <span class="tooltip">JS DOM Manipulation: Frontend, Key Bindings Event</span>
-                </div>
-                <div class="link">
-                    <a href="./project6-validation-form/index.html"> Project 6: Validation Form </a>
-                    <span class="tooltip">Forms</span>
-                </div>
-                <div class="link">
-                    <a href="./project7-dashboard/index.html"> Project 7: Dashboard </a>
-                    <span class="tooltip">CSS Grids and Flexbox</span>
-                </div>
-                <div class="link">
-                    <a href="./project8-library/"> Project 8: Library </a>
-                    <span class="tooltip">JS Objects</span>
-                </div>
-                <div class="link">
-                    <a href="./project9-tic-tac-toe/index.html"> Project 9: Tic Tac Toe </a>
-                    <span class="tooltip">JS Modules</span>
-                </div>
-                <div class="link">
-                    <a href="./project10-restaurant-page/dist/index.html"> Project 10: Restaurant Page </a>
-                    <span class="tooltip">JS: npm Webpack Bundler</span>
-                </div>
-                <div class="link">
-                    <a href="./project11-todo-list/index.html"> Project 11: Todo List </a>
-                    <span class="tooltip">CSS Vars, JS: UI Component, Classes</span>
-                </div>
-                <div class="link">
-                    <a href="./project12-weather-app/index.html"> Project 12: Weather App </a>
-                    <span class="tooltip">Handling API: Fetch, Async and Display</span>
-                </div>
-            </section>
-        </main>
-    </body>
+        </div>
+        <p>
+            CS Major @ Mines Saint-Étienne, FR<br />
+            Intern @ Thales Research & Technologies, Palaiseau, Paris-Saclay, FR<br />
+        </p>
+    </header>
+    <main>
+        <section>
+            <h2>CS Projects</h2>
+            <div class="link">
+                <a href="https://github.com/Almiinh/cloud-computing/">
+                    <em><strong>Cloud Computing:</strong></em> File Processing through AWS S3 & SQS
+                </a>
+                <span class="tooltip">
+                    An AWS-based solution to consolidate daily sales data from globally distributed stores
+                    of a large retailer w/ Client-Worker-Consolidator architecture.
+                </span>
+            </div>
+            <div class="link">
+                <a href="https://gitlab.emse.fr/minh-hoang.huynh/semantic-web-project">
+                    <em><strong>Semantic Web:</strong></em> A SW-based Search Engine
+                </a>
+                <span class="tooltip">
+                    Using JSON-LD data stored in a Apache Jena Fuseki local server to browse through food
+                    offers in coopcycles.com websites
+                </span>
+            </div>
+            <div class="link">
+                <a href="https://github.com/Almiinh/red-object-detector">
+                    <em><strong>Computer Vision:</strong></em> Detection of Red Objects
+                </a>
+                <span class="tooltip">Using HSV colour space to detect red ranges on webcam.</span>
+            </div>
+            <div class="link">
+                <a href="https://github.com/Almiinh/red-object-detector">
+                    <em><strong>Computer Vision:</strong></em> Detection of Motion
+                </a>
+                <span class="tooltip">Using position difference across frames to detect motion on
+                    webcam.</span>
+            </div>
+            <div class="link">
+                <a href="https://github.com/Almiinh/imageprocessing">
+                    <em><strong>Image Processing:</strong></em> Compilation of notebook presenting
+                    processing techniques.
+                </a>
+                <span class="tooltip">
+                    Image Segmentation, Enhancement, Histogram Equalization, Fourier Transform,
+                    Restoration, Morpho Maths, ML ...
+                </span>
+            </div>
+            <div class="link">
+                <a href="https://github.com/Almiinh/calculator">
+                    <em><strong>Programming:</strong></em> A Calculator in Java
+                </a>
+                <span class="tooltip">
+                    A Calculator in Java w/ basic operations, inspired by the Windows Calculator
+                </span>
+            </div>
+            <div class="link">
+                <a href="https://github.com/Almiinh/game-of-life">
+                    <em><strong>Programming:</strong></em> The Conway's Game of Life in C</a>
+                <span class="tooltip">The well known game of life written in C in the terminal</span>
+            </div>
+            <div class="link">
+                <a href="https://addons.mozilla.org/fr/firefox/addon/wordreference-peek/">
+                    <em><strong>Web:</strong></em> A WordReference Peek Firefox Addon
+                </a>
+                <span class="tooltip">
+                    An addon to peek at a word on wordreference without opening WordReference.com w/ JS
+                </span>
+            </div>
+        </section>
+        <section>
+            <h2>CS Experiences</h2>
+            <div class="link">
+                <span>A fusion of datatsets with the Hungarian Algorithm (Kuhn-Munkres)</span>
+            </div>
+            <div class="link">
+                <span>Implementation of Mixed-Integer Linear Programming Algorithms</span>
+            </div>
+        </section>
+        <section>
+            <h2>Machine Learning</h2>
+            <div class="link">
+                <a href="https://github.com/Almiinh/ml-exercises/blob/main/ex2_imageclassification.ipynb">
+                    Image Classifier of cats and dogs w/ Tensorflow Keras
+                </a>
+                <span class="tooltip">Vanilla CNN Model training to classify cat and dog images w/ Tensorflow
+                    Keras</span>
+            </div>
+            <div class="link">
+                <a href="https://github.com/Almiinh/ml-exercises/blob/main/ex3_timeseries.ipynb">
+                    Time Series Prediction w/ Tensorflow Keras
+                </a>
+                <span class="tooltip">LSTM model training, predicting a time series of office occupancy w/
+                    Tensorflow
+                    Keras</span>
+            </div>
+            <div class="link">
+                <a href="https://github.com/Almiinh/ml-exercises/blob/main/test-langchain-rag.ipynb">A RAG
+                    Pipeline to summary scientific articles with LLM</a>
+                <span class="tooltip">A mere comparison of Vector RAG and Graph RAG.</span>
+            </div>
+            <div class="link"><a href="https://github.com/Almiinh/ml-exercises/">Other stuff</a></div>
+        </section>
+        <section>
+            <h2>Web Projects</h2>
+            <div class="link">
+                <a href="./project1-odin-recipes/index.html">Project 1: Recipe Website</a>
+                <span class="tooltip">HTML Basics: Boilerplate, Text Format, Link, Image, Lists</span>
+            </div>
+            <div class="link">
+                <a href="./project2-landing-page/index.html">Project 2: Landing Page</a>
+                <span class="tooltip">CSS Basics, Box Model, Flexbox</span>
+            </div>
+            <div class="link">
+                <a href="./project3-rock-paper-scissors/index.html"> Project 3: Rock Paper Scissors </a>
+                <span class="tooltip">JS Basics</span>
+            </div>
+            <div class="link">
+                <a href="./project4-etch-a-sketch/index.html"> Project 4: Etch-a-Sketch </a>
+                <span class="tooltip">JS DOM Manipulation: Input, Click and Mouseover Events, CSS Calc</span>
+            </div>
+            <div class="link">
+                <a href="./project5-calculator/index.html"> Project 5: Calculator </a>
+                <span class="tooltip">JS DOM Manipulation: Frontend, Key Bindings Event</span>
+            </div>
+            <div class="link">
+                <a href="./project6-validation-form/index.html"> Project 6: Validation Form </a>
+                <span class="tooltip">Forms</span>
+            </div>
+            <div class="link">
+                <a href="./project7-dashboard/index.html"> Project 7: Dashboard </a>
+                <span class="tooltip">CSS Grids and Flexbox</span>
+            </div>
+            <div class="link">
+                <a href="./project8-library/"> Project 8: Library </a>
+                <span class="tooltip">JS Objects</span>
+            </div>
+            <div class="link">
+                <a href="./project9-tic-tac-toe/index.html"> Project 9: Tic Tac Toe </a>
+                <span class="tooltip">JS Modules</span>
+            </div>
+            <div class="link">
+                <a href="./project10-restaurant-page/dist/index.html"> Project 10: Restaurant Page </a>
+                <span class="tooltip">JS: npm Webpack Bundler</span>
+            </div>
+            <div class="link">
+                <a href="./project11-todo-list/index.html"> Project 11: Todo List </a>
+                <span class="tooltip">CSS Vars, JS: UI Component, Classes</span>
+            </div>
+            <div class="link">
+                <a href="./project12-weather-app/index.html"> Project 12: Weather App </a>
+                <span class="tooltip">Handling API: Fetch, Async and Display</span>
+            </div>
+        </section>
+    </main>
+</body>
 </html>

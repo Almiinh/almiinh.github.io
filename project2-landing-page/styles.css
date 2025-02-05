@@ -1,5 +1,8 @@
-body {
-    font-family: roboto, sans-serif;
+main * {
+    font-family: Roboto;
+}
+
+main {
     margin: 0;
     display: flex;
     flex: 1;
@@ -7,14 +10,14 @@ body {
     justify-content: space-between;
 }
 
-.header, .hero {
+.header,
+.hero {
     font-weight: 300;
     color: #f9faf8;
     background-color: #1f2937;
     margin: 0;
     border: 0;
 }
-
 
 .header {
     background-color: #1f2937;
@@ -40,14 +43,15 @@ body {
     display: inline;
     cursor: pointer;
 }
-.hero { 
+
+.hero {
     padding: 10vh 15vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
 }
 
-.hero h1 {
+main h1 {
     font-size: 46px;
 }
 
@@ -56,12 +60,11 @@ body {
     margin: 4px;
     display: flex;
     flex-direction: column;
-
 }
 
 .hero button {
     font-weight: bold;
-    font-family: 'Roboto';
+    font-family: "Roboto";
     color: white;
     background-color: #3882f6;
     padding: 8px 16px;
@@ -78,7 +81,7 @@ body {
 }
 
 .hero .placeholder {
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     height: 100%;
     margin: 4px;
     text-align: center;
@@ -182,7 +185,6 @@ body {
 .action button:hover {
     color: #3882f6;
     background-color: #f9faf8;
-    
 }
 
 footer {

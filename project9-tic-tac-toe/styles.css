@@ -1,9 +1,9 @@
 * {
-    font-family: 'Roboto Mono', Consolas, monospace;
+    font-family: "Roboto Mono", Consolas, monospace;
 }
 
 .container {
-    max-width: 600px; 
+    max-width: 600px;
     margin: 0 auto;
     text-align: center;
     padding: 20px;
@@ -53,7 +53,7 @@ input {
 button {
     margin: 10px;
     padding: 8px 16px;
-    background: #4CAF50;
+    background: #4caf50;
     color: white;
     border: none;
     border-radius: 5px;

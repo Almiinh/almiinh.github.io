@@ -118,8 +118,6 @@ class LinkedList {
     }
 }
 
-export default LinkedList;
-
 // example uses class syntax - adjust as necessary
 const list = new LinkedList();
 
