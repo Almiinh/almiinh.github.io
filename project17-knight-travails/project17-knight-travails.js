@@ -29,7 +29,9 @@ function knightMoves(start, end) {
     }
 }
 
-solution = knightMoves([3,3],[4,3])
+export { knightMoves };
+
+const solution = knightMoves([3,3],[4,3])
 console.log(`=> You made it in ${solution.length - 1} moves! Here is your path:`)
 for (let cell of solution)
     console.log("  "+JSON.stringify(cell))
