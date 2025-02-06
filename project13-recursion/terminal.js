@@ -9,9 +9,9 @@ const __commands = {
     },
     help() {
         this.echo(
-            `Available commands: ${__formatted_list}\n` +
+            `Available commands: ${__help_cmd_list}\n` +
                 `<white>SHIFT+ENTER</white> to break lines.\n\n` +
-                `Available JS functions: ${__formatter.format(__function_list)}\n` +
+                `JS functions: \n${__help_fn_list}\n` +
                 "<gray>Example: test, fibsRec(10), fibs(4)</gray>\n"
         );
     },
@@ -30,9 +30,15 @@ const __commands = {
 };
 
 const __formatter = new Intl.ListFormat("en", { style: "long", type: "conjunction" });
-const __function_list = ["fibs()", "fibsRec()"].map((cmd) => `<cyan class="command">${cmd}</cyan>`);
+const __function_list = [
+    ["fibs(n)", "returns Fibonnaci's sequence at step n (imperative version)"],
+    ["fibsRec(n)", "returns Fibonnaci's sequence at step n (recursive version)"],
+];
 const __command_list = ["clear"].concat(Object.keys(__commands));
-const __formatted_list = __formatter.format(
+const __help_fn_list = __function_list
+    .map(([cmd, desc]) => `* <cyan class="command">${cmd}</cyan>: ${desc}`)
+    .join("\n");
+const __help_cmd_list = __formatter.format(
     __command_list.map((cmd) => `<white class="command">${cmd}</white>`)
 );
 
@@ -57,12 +63,12 @@ const __term = $("#cli").terminal(
         }
     },
     {
-        completion: __command_list,
+        completion: __command_list.concat(__function_list.map((row) => row[0].slice(0, -3))),
         checkArity: false,
         greetings:
             `<white>Welcome to this limited Javascript interpreter!</white>\n` +
-            `Run the test with: <cyan>test</cyan>, or try to call ${__formatter.format(__function_list)} ` +
-            `functions. Type <white>help</white> for more information.\n\n` +
+            `Run the test with: <cyan>test</cyan>, or try to call <cyan>fibs</cyan> and <cyan>fibsRec</cyan>` +
+            ` functions. Type <white>help</white> for more information.\n\n` +
             `<gray>Example: test, fibsRec(10), fibs(4)</gray>\n`,
         prompt: "> ",
     }

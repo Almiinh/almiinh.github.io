@@ -1,4 +1,4 @@
-import createHashMap from "./project15-hashmap.js";
+import { Tree, generateRandomArray, prettyPrint } from "./project16-binary-search-trees.js";
 
 var __EVAL = (s) => eval(`void (__EVAL = ${__EVAL}); ${s}`);
 
@@ -11,52 +11,33 @@ const __commands = {
         this.echo(
             `Available commands: ${__formatted_list}.\n` +
                 `<white>SHIFT+ENTER</white> to break lines.\n\n` +
-                `JS <white>HashMap</white> class method: \n` +
-                `* <cyan class="command">createHashMap()</cyan>\n` +
+                `JS <white>Tree</white> class method: \n` +
+                `* <cyan class="command">Tree()</cyan>\n` +
                 __function_list +
                 "\n"
         );
     },
     test() {
         const commands = [
-            "// Create a new HashMap instance",
-            "const map = createHashMap();",
-            `// Populate the hash map`,
-            `const items = [
-    ['apple', 'red'],
-    ['banana', 'yellow'],
-    ['carrot', 'orange'],
-    ['dog', 'brown'],
-    ['elephant', 'gray'],
-    ['frog', 'green'],
-    ['grape', 'purple'],
-    ['hat', 'black'],
-    ['ice cream', 'white'],
-    ['jacket', 'blue'],
-    ['kite', 'pink'],
-    ['lion', 'golden']
-];`,
-            "// Set initial items",
-            "items.forEach(([key, value]) => map.set(key, value))",
-            "map.length() // Initial length should be 12",
-            "// Overwrite some existing keys",
-            "map.set('apple', 'green')",
-            "map.set('banana', 'brown')",
-            "map.length() // Length after overwriting, still should be 12",
-            "// Add one more item to trigger resize",
-            "map.set('moon', 'silver')",
-            "map.length() // Length after adding moon, should be 13",
-            "// Test other methods",
-            `map.has('moon')`,
-            `map.get('moon')`,
-            `map.get('sun') // Get non-existent key:`,
-            `// Remove a key`,
-            `map.remove('dog')`,
-            `map.length() // Length after removal, should be 12`,
-            `// Get all keys, values and entries`,
-            `map.keys()`,
-            `map.values()`,
-            `map.entries()`,
+            "// Create BST with random numbers",
+            "const randomArray = generateRandomArray(15, 100)",
+            "const tree = new Tree(randomArray)",
+            "prettyPrint(tree.root) // Initial Tree",
+            'tree.isBalanced()',
+            "tree.levelOrder((node) => console.log(node.data)) // Level Order",
+            "tree.preOrder((node) => console.log(node.data)) // Pre Order",
+            "tree.postOrder((node) => console.log(node.data)) // Post Order",
+            "tree.inOrder((node) => console.log(node.data)) // In Order",
+            "[101, 102, 103, 104, 105].forEach((num) => tree.insert(num)) // Adding numbers > 100 to unbalance tree",
+            'tree.isBalanced() // Is Balanced',
+            "tree.rebalance() // Rebalance",
+            '// After Rebalancing',
+            "prettyPrint(tree.root)",
+            'tree.isBalanced() // Is Balanced',
+            "tree.levelOrder((node) => console.log(node.data)) // Level Order",
+            "tree.preOrder((node) => console.log(node.data)) // Pre Order",
+            "tree.postOrder((node) => console.log(node.data)) // Post Order",
+            "tree.inOrder((node) => console.log(node.data)) // In Order",
         ];
 
         const executeCommand = (index) => {
@@ -72,17 +53,21 @@ const __commands = {
 
 const __formatter = new Intl.ListFormat("en", { style: "long", type: "conjunction" });
 const __function_list = [
-    ["set(key, value)", "assigns the value with the key in this map"],
-    ["get(key)", "returns the value that is assigned to this key. If a key is not found, return null"],
-    ["has(key)", "returns true or false whether or not the key is in the hash map"],
-    ["remove(key)", "removes the entry with `key` and returns true, returns false if `key` isn't in the map"],
-    ["length()", "returns the number of stored keys"],
-    ["clear()", "removes all entries"],
-    ["keys()", "returns an array containing all the keys"],
-    ["values()", "returns an array containing all the values"],
-    ["entries()", "returns an array that contains each key, value pair"],
+    ["buildTree(array)", "Build a balanced binary search tree"],
+    ["insert(value)", "Insert a new value into the tree"],
+    ["findMinNode(node)", "Find minimum value node in a subtree"],
+    ["deleteItem(value)", "Delete a value from the tree"],
+    ["find(value)", "Find a node with a specific value"],
+    ["levelOrder(callback)", "Level-order traversal (breadth-first)"],
+    ["inOrder(callback)", "In-order traversal (left-root-right)"],
+    ["preOrder(callback)", "Pre-order traversal (root-left-right)"],
+    ["postOrder(callback)", "Post-order traversal (left-right-root)"],
+    ["height(node)", "Calculate height of a node"],
+    ["depth(node)", "Calculate depth of a node"],
+    ["isBalanced()", "Check if tree is balanced"],
+    ["rebalance()", "Rebalance the tree"],
 ]
-    .map(([cmd, desc]) => `* map.<cyan class="command">${cmd}</cyan>: ${desc}.`)
+    .map(([cmd, desc]) => `* tree.<cyan class="command">${cmd}</cyan>: ${desc}.`)
     .join("\n");
 const __command_list = ["clear"].concat(Object.keys(__commands));
 const __formatted_list = __formatter.format(
@@ -119,13 +104,13 @@ const __term = $("#cli").terminal(
         checkArity: false,
         greetings:
             "<white>Welcome to this limited Javascript interpreter!</white>\n" +
-            "Run the test with: <cyan>test</cyan>, or try to call <gold>HashMap</gold> methods. " +
+            "Run the test with: <cyan>test</cyan>, or try to call <gold>Tree</gold> methods. " +
             "Type <white>help</white> to list methods.\n\n" +
             "<gray>Example:\n" +
-            "const map = createHashMap(); \n" +
-            "map.set('apple', 'green');\n" +
-            "map.get('moon');\n" +
-            "map.values();</gray>\n",
+            $.terminal.escape_formatting("const tree = new Tree([1, 2, 3, 4, 5])\n") +
+            "tree.insert(6)\n" +
+            "tree.find(6);\n" +
+            "tree.isBalanced()</gray>\n",
         prompt: "> ",
     }
 );

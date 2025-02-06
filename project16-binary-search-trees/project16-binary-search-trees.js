@@ -6,7 +6,7 @@ class Node {
     }
 }
 
-class Tree {
+export class Tree {
     constructor(array) {
         // Remove duplicates, sort the array
         const uniqueSortedArray = [...new Set(array)].sort((a, b) => a - b);
@@ -109,7 +109,7 @@ class Tree {
 
     // Level-order traversal (breadth-first)
     levelOrder(callback) {
-        if (!callback) throw new Error('Callback is required');
+        if (!callback) throw new Error("Callback is required");
 
         if (!this.root) return;
 
@@ -125,7 +125,7 @@ class Tree {
 
     // In-order traversal (left-root-right)
     inOrder(callback) {
-        if (!callback) throw new Error('Callback is required');
+        if (!callback) throw new Error("Callback is required");
 
         const traverse = (node) => {
             if (!node) return;
@@ -139,7 +139,7 @@ class Tree {
 
     // Pre-order traversal (root-left-right)
     preOrder(callback) {
-        if (!callback) throw new Error('Callback is required');
+        if (!callback) throw new Error("Callback is required");
 
         const traverse = (node) => {
             if (!node) return;
@@ -153,7 +153,7 @@ class Tree {
 
     // Post-order traversal (left-right-root)
     postOrder(callback) {
-        if (!callback) throw new Error('Callback is required');
+        if (!callback) throw new Error("Callback is required");
 
         const traverse = (node) => {
             if (!node) return;
@@ -212,13 +212,13 @@ class Tree {
     // Rebalance the tree
     rebalance() {
         const values = [];
-        this.inOrder(node => values.push(node.data));
+        this.inOrder((node) => values.push(node.data));
         this.root = this.buildTree(values);
     }
 }
 
 // Pretty print function for tree visualization
-const prettyPrint = (node, prefix = "", isLeft = true) => {
+export const prettyPrint = (node, prefix = "", isLeft = true) => {
     if (node === null) {
         return;
     }
@@ -232,11 +232,11 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 // Main
-function generateRandomArray(count, max) {
+export function generateRandomArray(count, max) {
     return Array.from({ length: count }, () => Math.floor(Math.random() * max));
 }
 
-function main() {
+function test() {
     // Create BST with random numbers
     const randomArray = generateRandomArray(15, 100);
     const tree = new Tree(randomArray);
@@ -247,20 +247,20 @@ function main() {
     console.log("\nIs Balanced:", tree.isBalanced());
 
     console.log("\nLevel Order:");
-    tree.levelOrder(node => process.stdout.write(`${node.data} `));
+    tree.levelOrder((node) => console.log(node.data));
 
     console.log("\n\nPre Order:");
-    tree.preOrder(node => process.stdout.write(`${node.data} `));
+    tree.preOrder((node) => console.log(node.data));
 
     console.log("\n\nPost Order:");
-    tree.postOrder(node => process.stdout.write(`${node.data} `));
+    tree.postOrder((node) => console.log(node.data));
 
     console.log("\n\nIn Order:");
-    tree.inOrder(node => process.stdout.write(`${node.data} `));
+    tree.inOrder((node) => console.log(node.data));
 
     // Unbalance the tree
     console.log("\n\nAdding numbers > 100 to unbalance tree");
-    [101, 102, 103, 104, 105].forEach(num => tree.insert(num));
+    [101, 102, 103, 104, 105].forEach((num) => tree.insert(num));
 
     console.log("\nIs Balanced:", tree.isBalanced());
 
@@ -272,16 +272,18 @@ function main() {
     console.log("\nIs Balanced:", tree.isBalanced());
 
     console.log("\nLevel Order:");
-    tree.levelOrder(node => process.stdout.write(`${node.data} `));
+    tree.levelOrder((node) => console.log(node.data));
 
     console.log("\n\nPre Order:");
-    tree.preOrder(node => process.stdout.write(`${node.data} `));
+    tree.preOrder((node) => console.log(node.data));
 
     console.log("\n\nPost Order:");
-    tree.postOrder(node => process.stdout.write(`${node.data} `));
+    tree.postOrder((node) => console.log(node.data));
 
     console.log("\n\nIn Order:");
-    tree.inOrder(node => process.stdout.write(`${node.data} `));
+    tree.inOrder((node) => console.log(node.data));
 }
 
-main();
+export default { Tree, generateRandomArray, prettyPrint };
+
+test();
