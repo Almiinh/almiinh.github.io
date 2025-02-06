@@ -152,7 +152,7 @@ export default createHashMap;
 // import createHashMap from './HashMapFactory.js';
 
 // Create a new HashMap instance
-const test = createHashMap();
+const myMap = createHashMap();
 
 // Populate the hash map
 const items = [
@@ -171,35 +171,35 @@ const items = [
 ];
 
 // Set initial items
-items.forEach(([key, value]) => test.set(key, value));
+items.forEach(([key, value]) => myMap.set(key, value));
 
-console.log('Initial length:', test.length()); // Should be 12
+console.log('Initial length:', myMap.length()); // Should be 12
 
 // Overwrite some existing keys
-test.set('apple', 'green');
-test.set('banana', 'brown');
+myMap.set('apple', 'green');
+myMap.set('banana', 'brown');
 
-console.log('Length after overwriting:', test.length()); // Still should be 12
+console.log('Length after overwriting:', myMap.length()); // Still should be 12
 
 // Add one more item to trigger resize
-test.set('moon', 'silver');
+myMap.set('moon', 'silver');
 
-console.log('Length after adding moon:', test.length()); // Should be 13
+console.log('Length after adding moon:', myMap.length()); // Should be 13
 
 // Test other methods
-console.log('Has "moon":', test.has('moon')); // true
-console.log('Get "moon":', test.get('moon')); // 'silver'
-console.log('Get non-existent key:', test.get('sun')); // null
+console.log('Has "moon":', myMap.has('moon')); // true
+console.log('Get "moon":', myMap.get('moon')); // 'silver'
+console.log('Get non-existent key:', myMap.get('sun')); // null
 
 // Remove a key
-console.log('Remove "dog":', test.remove('dog')); // true
-console.log('Length after removal:', test.length()); // Should be 12
+console.log('Remove "dog":', myMap.remove('dog')); // true
+console.log('Length after removal:', myMap.length()); // Should be 12
 
 // Get all keys, values, and entries
-console.log('Keys:', test.keys());
-console.log('Values:', test.values());
-console.log('Entries:', test.entries());
+console.log('Keys:', myMap.keys());
+console.log('Values:', myMap.values());
+console.log('Entries:', myMap.entries());
 
 // Clear the hash map
-test.clear();
-console.log('Length after clear:', test.length()); // Should be 0
+myMap.clear();
+console.log('Length after clear:', myMap.length()); // Should be 0

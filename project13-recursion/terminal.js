@@ -7,21 +7,34 @@ const __commands = {
     echo(...args) {
         this.echo(args.join(" "));
     },
+    help() {
+        this.echo(
+            `Available commands: ${__formatted_list}\n` +
+                `<white>SHIFT+ENTER</white> to break lines.\n\n` +
+                `Available JS functions: ${__formatter.format(__function_list)}\n` +
+                "<gray>Example: test, fibsRec(10), fibs(4)</gray>\n"
+        );
+    },
     test() {
-        new Promise((resolve) => {
-            resolve(__term.exec("fibsRec(8)", {typing:true, delay: 0.01}));
-        }).then(() => __term.exec("fibs(8)",  {typing:true, delay: 0.01}) )
+        const commands = ["fibs(8)", "fibsRec(8)"];
+
+        const executeCommand = (index) => {
+            if (index < commands.length) {
+                __term.exec(commands[index], { typing: true, delay: 1 });
+                setTimeout(() => executeCommand(index + 1), 200);
+            }
+        };
+
+        executeCommand(0);
     },
 };
 
 const __formatter = new Intl.ListFormat("en", { style: "long", type: "conjunction" });
 const __function_list = ["fibs()", "fibsRec()"].map((cmd) => `<cyan class="command">${cmd}</cyan>`);
-const __command_list = ["clear", "help"].concat(Object.keys(__commands))
-const __formatted_list = __command_list.map((cmd) => `<white class="command">${cmd}</white>`);
-const help =
-    `Available commands: ${__formatted_list}\n` +
-    `Available JS functions: ${__formatter.format(__function_list)}\n` +
-    "Example: test, fibsRec(10), fibs(4)\n";
+const __command_list = ["clear"].concat(Object.keys(__commands));
+const __formatted_list = __formatter.format(
+    __command_list.map((cmd) => `<white class="command">${cmd}</white>`)
+);
 
 const __term = $("#cli").terminal(
     function (command) {
@@ -36,11 +49,7 @@ const __term = $("#cli").terminal(
             try {
                 var result = __EVAL(command);
                 if (result !== undefined) {
-                    if (typeof result === "object") {
-                        this.echo(JSON.stringify(result));
-                    } else {
-                        this.echo(new String(result));
-                    }
+                    this.echo(typeof result === "object" ? JSON.stringify(result) : new String(result));
                 }
             } catch (e) {
                 this.error(new String(e));
@@ -51,12 +60,23 @@ const __term = $("#cli").terminal(
         completion: __command_list,
         checkArity: false,
         greetings:
-            "<white>Welcome to this limited Javascript interpreter! Run the test with: <cyan>test</cyan>, \nor try to call " +
-            __formatter.format(__function_list) +
-            " functions.</white>\nExample: test, fibsRec(10), fibs(4)\n",
+            `<white>Welcome to this limited Javascript interpreter!</white>\n` +
+            `Run the test with: <cyan>test</cyan>, or try to call ${__formatter.format(__function_list)} ` +
+            `functions. Type <white>help</white> for more information.\n\n` +
+            `<gray>Example: test, fibsRec(10), fibs(4)</gray>\n`,
         prompt: "> ",
     }
 );
+
+// Enable syntax highlighting for JavaScript
+$.terminal.syntax("js");
+
+$.terminal.prism_formatters = {
+    prompt: true,
+    echo: false,
+    animation: true, // will be supported in version >= 2.32.0
+    command: true,
+};
 
 // Override console.log to redirect output to the terminal
 console.log = function (...args) {
