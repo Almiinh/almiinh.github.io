@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
     <link rel="stylesheet" href="../reset.css" />
-    <link rel="stylesheet" href="../global.css" />
+    <script src="../global.js"></script>
+    <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js"></script>
 </head>
@@ -14,47 +15,49 @@
         <a href="../index.html">Back</a>
         <h1>Project 8 : My Library</h1>
     </header>
-    <div class="container">
-        <header>
-            <div class="header-controls">
-                <button onclick="showNewBookDialog()" class="add-book-btn">+ Add New Book</button>
-                <dialog id="new-book-dialog">
-                    <form id="new-book-form" onsubmit="handleNewBookSubmit(event)">
-                        <h2>Add New Book</h2>
-
-                        <div class="form-group">
-                            <label for="title">Title:</label>
-                            <input type="text" id="title" required />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="author">Author:</label>
-                            <input type="text" id="author" required />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="pages">Pages:</label>
-                            <input type="number" id="pages" required min="1" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="isRead">Have you read it?</label>
-                            <input type="checkbox" id="isRead" />
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="submit">Add Book</button>
-                            <button type="button" onclick="this.closest('dialog').close()">Cancel</button>
-                        </div>
-                    </form>
-                </dialog>
-            </div>
-        </header>
-
-        <main id="library-container" class="library-container">
-            <!-- Books will be displayed here -->
-        </main>
-    </div>
+    <main>
+        <div class="container">
+            <header>
+                <div class="header-controls">
+                    <button onclick="showNewBookDialog()" class="add-book-btn">+ Add New Book</button>
+                    <dialog id="new-book-dialog">
+                        <form id="new-book-form" onsubmit="handleNewBookSubmit(event)">
+                            <h2>Add New Book</h2>
+    
+                            <div class="form-group">
+                                <label for="title">Title:</label>
+                                <input type="text" id="title" required />
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="author">Author:</label>
+                                <input type="text" id="author" required />
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="pages">Pages:</label>
+                                <input type="number" id="pages" required min="1" />
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="isRead">Have you read it?</label>
+                                <input type="checkbox" id="isRead" />
+                            </div>
+    
+                            <div class="form-buttons">
+                                <button type="submit">Add Book</button>
+                                <button type="button" onclick="this.closest('dialog').close()">Cancel</button>
+                            </div>
+                        </form>
+                    </dialog>
+                </div>
+            </header>
+    
+            <section id="library-container" class="library-container">
+                <!-- Books will be displayed here -->
+            </section>
+        </div>
+    </main>
     <script src="index.js"></script>
 </body>
 </html>

@@ -3,35 +3,156 @@
 :root {
     --font-monospace: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
     --font-headings: "Playfair Display", "Times New Roman", Times, serif;
+    --font-serif: "EB Garamond", Inter, Times, -apple-system, serif;
 }
 
-:is(h1, h2, h3, h4, h5, h6) {
-    font-family: var(--font-headings);
-}
-
-.banner {
-    margin: 1vh 15vw 3vh 15vw;
-}
-
-.banner a {
+/* Global Font */
+body {
     font-family: var(--font-monospace);
 }
 
-.banner ~ * {
-    font-family: var(--font-monospace);
+/* Banner */
+header.banner {
+    display: grid;
+    grid-template-columns: max(15vw, 36px) auto 15vw;
+    margin: 2vh 0;
+
+    :is(h1, h2, h3, h4, h5, h6) {
+        font-family: var(--font-headings);
+    }
+
+    .dark-mode-btn-container {
+        grid-column: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    *:not(.dark-mode-btn-container) {
+        grid-column: 2;
+    }
+
+    .dark-mode-btn-container button {
+        border: 0;
+        padding: 6px;
+        margin: 0 1vw;
+        border-radius: calc(infinity * 1px);
+        background-color: var(--color-bg);
+
+        svg {
+            border-radius: calc(infinity * 1px);
+        }
+
+        &:hover {
+            background-color: var(--color-bg-secondary);
+        }
+    }
 }
 
-:root {
-    --color-dark-background: #282c34;
-    --color-dark-text: #f2f4f5;
-    --color-text-link: #8cb4ff;
-    --color-text-visited: #ffadff;
+/* System Mode */
+.auto-mode-icon {
+    font-size: xx-small;
+    display: none;
+    color: var(--color-text);
+    width: fit-content;
+
+    &.visible {
+        display: block;
+    }
 }
 
+/* System Light Mode */
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-text: #333;
+        --color-text-secondary: #666;
+        --color-bg: white;
+        --color-bg-secondary: lightgray;
+        --color-border: rgba(0, 0, 0, 0.5);
+        --color-shadow: rgba(0, 0, 0, 0.2);
+    }
+
+    .light-mode-icon {
+        display: block;
+    }
+
+    .dark-mode-icon {
+        display: none;
+    }
+
+    /* prefers-color-scheme: light, theme: dark*/
+    html.dark {
+        --color-text: #f2f4f5;
+        --color-text-secondary: #999;
+        --color-text-visited: #ffadff;
+        --color-text-link: #8cb4ff;
+        --color-bg: #282c34;
+        --color-bg-secondary: #333943;
+        --color-border: #f2f4f5;
+        --color-shadow: rgba(255, 255, 255, 0.3);
+
+        background-color: var(--color-bg);
+        color: var(--color-text);
+
+        a {
+            color: var(--color-text-link);
+        }
+        a:visited {
+            color: var(--color-text-visited);
+        }
+
+        .light-mode-icon {
+            display: none;
+        }
+
+        .dark-mode-icon {
+            color: var(--color-text);
+            display: block;
+        }
+    }
+}
+
+/*  System Dark Mode */
 @media (prefers-color-scheme: dark) {
+    :root {
+        --color-text: #f2f4f5;
+        --color-text-secondary: #999;
+        --color-text-visited: #ffadff;
+        --color-text-link: #8cb4ff;
+        --color-bg: #282c34;
+        --color-bg-secondary: #333943;
+        --color-border: #f2f4f5;
+        --color-shadow: rgba(255, 255, 255, 0.3);
+    }
+
     html {
-        background-color: var(--color-dark-background);
-        color: var(--color-dark-text);
+        background-color: var(--color-bg);
+        color: var(--color-text);
+    }
+
+    /* prefers-color-scheme: dark, theme: light*/
+    html.light {
+        --color-text: #333;
+        --color-text-secondary: #666;
+        --color-bg: white;
+        --color-bg-secondary: lightgray;
+        --color-border: rgba(0, 0, 0, 0.5);
+        --color-shadow: rgba(0, 0, 0, 0.2);
+
+        a {
+            color: initial;
+        }
+        a:visited {
+            color: initial;
+        }
+
+        .light-mode-icon {
+            display: block;
+        }
+
+        .dark-mode-icon {
+            display: none;
+        }
     }
 
     a {
@@ -40,5 +161,14 @@
 
     a:visited {
         color: var(--color-text-visited);
+    }
+
+    .light-mode-icon {
+        display: none;
+    }
+
+    .dark-mode-icon {
+        color: var(--color-text);
+        display: block;
     }
 }

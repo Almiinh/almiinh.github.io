@@ -3,19 +3,12 @@
     src: url("Norse-Bold.otf");
 }
 
-* {
-    /*CSS reset*/
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 header {
     margin: 1vh 15vw;
     font-family: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
 }
 
-body {
+main {
     display: flex;
     flex-flow: row wrap;
     font-family: Inter, sans-serif;
@@ -62,7 +55,7 @@ aside .credit-text {
     font-size: 12px;
 }
 
-main {
+section {
     background-color: rgba(240, 240, 240, 0.5);
     display: flex;
     flex-direction: column;
@@ -70,18 +63,18 @@ main {
     flex: 0 100%;
 }
 
-main .form-pretext {
+section .form-pretext {
     margin: 3vh 5vw 7vh;
 }
 
-main .form-container {
-    background-color: white;
+section .form-container {
+    background-color: var(--color-bg);
     border-radius: 5px;
     box-shadow: 1px 5px 5px 4px rgba(0, 0, 0, 0.1);
     padding: 3vh 5vw;
 }
 
-main form {
+section form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -89,28 +82,28 @@ main form {
     justify-content: left;
 }
 
-main form label {
+section form label {
     font-size: small;
     font-weight: 6v00;
 }
 
-main form input {
+section form input {
     padding: 3px 0;
     text-decoration: none;
     border-color: rgba(0, 0, 0, 0.2);
     border-radius: 5px;
 }
 
-main form div {
+section form div {
     display: flex;
     flex-direction: column;
 }
 
-main .form-options {
+section .form-options {
     padding: 2vh 5vw 10vh;
 }
 
-main .form-options button {
+section .form-options button {
     color: white;
     background-color: rgb(103, 154, 182);
     padding: 10px;
@@ -121,7 +114,7 @@ main .form-options button {
 }
 
 @media (min-width: 600px) {
-    main {
+    section {
         flex: 1 0 1vh;
     }
 

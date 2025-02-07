@@ -4,15 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minh-Hoang's Portfolio</title>
-    <link rel="stylesheet" href="global.css" />
+    <script src="global.js"></script>
+    <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="style.css" />
     <script>
         function moveTooltipAtPointer(event) {
             const link = event.target.closest(".link");
-            const tooltip = link.querySelector(".tooltip");
-            if (tooltip.matches(".tooltip")) {
-                tooltip.style.left = event.pageX + "px";
-                tooltip.style.top = event.pageY + "px";
+            if (link !== null) {
+                const tooltip = link.querySelector(".tooltip");
+                if (tooltip !== null && tooltip.matches(".tooltip")) {
+                    tooltip.style.left = event.pageX + "px";
+                    tooltip.style.top = event.pageY + "px";
+                }
             }
         }
 
@@ -47,9 +50,9 @@
     </script>
 </head>
 <body>
-    <header>
+    <header class="banner">
         <h1>Minh-Hoang's Portfolio</h1>
-        <div>
+        <nav>
             <a href="https://github.com/Almiinh">
                 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github"
                     alt="GitHub" />
@@ -62,7 +65,7 @@
                 <img src="https://img.shields.io/badge/French&nbsp;CV-PDF-FF0000?style=for-the-badge&logo=read.cv"
                     alt="PDF" />
             </a>
-        </div>
+        </nav>
         <p>
             CS Major @ Mines Saint-Étienne, FR<br />
             Intern @ Thales Research & Technologies, Palaiseau, Paris-Saclay, FR<br />

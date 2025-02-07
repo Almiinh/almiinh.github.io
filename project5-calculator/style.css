@@ -10,8 +10,7 @@ body {
     /* Ensures the body takes at least the full viewport height */
     min-height: 80vh;
     margin: 0;
-    /* Light gray background for the entire body */
-    background-color: #f4f4f4;
+    background-color: var(--color-bg);
 }
 
 main {
@@ -26,8 +25,8 @@ main {
     /* Fixed width as specified */
     width: 300px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
+    box-shadow: 0 4px 8px var(--color-shadow);
+    background-color: #f4f4f4;
     /* Adds rounded corners */
     border-radius: 10px;
     display: flex;
@@ -80,7 +79,7 @@ main {
     padding: 20px;
     font-size: 16px;
     border: none;
-    background-color: #f0f0f0;
+    background-color: #e0e0e0;
     cursor: pointer;
     transition: background-color 0.1s;
     border-radius: 4px;
