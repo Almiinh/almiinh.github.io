@@ -60,7 +60,7 @@ button:not(.dark-mode-btn) {
     cursor: pointer;
 }
 
-button:hover {
+button:not(.dark-mode-btn):hover {
     background: #45a049;
 }
 
