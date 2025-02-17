@@ -1,6 +1,5 @@
 window.onload = () => {
     const banner = document.querySelector("header.banner");
-    console.log(banner)
     const darkModeBtn = document.createElement("div");
     darkModeBtn.classList.add("dark-mode-btn-container");
     darkModeBtn.innerHTML = `
@@ -19,7 +18,6 @@ window.onload = () => {
     <span class="auto-mode-icon">AUTO</span>
 </button>`;
     const h1 = document.querySelector(".banner h1");
-    console.log(h1)
     banner.insertBefore(darkModeBtn, h1);
     document.documentElement.classList.toggle(
         "dark",

@@ -1,3 +1,6 @@
 node_modules
 venv
 .vite/
+package.json
+package-lock.json
+test*
