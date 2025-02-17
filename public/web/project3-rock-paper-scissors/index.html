@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rock Paper Scissors Game</title>
+    <script src="/index/global.js"></script>
+    <link rel="stylesheet" href="/index/global.css">
+    <style>
+        main.game {
+            font-family: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 80vh;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 3vh;
+            border: none;
+            margin: 32px 6px;
+            font-size: 16px;
+            border-radius: 15px;
+            box-shadow: 1px 5px #999;
+        }
+
+        button:hover {
+            background-color: lightgrey;
+        }
+
+        button:active:not(.dark-mode-btn) {
+            background-color: #3e8e41;
+            box-shadow: 1px 5px #666;
+            transform: translateY(2px);
+        }
+    </style>
+    <script src="game.js" defer></script>
+</head>
+
+<body>
+    <header class="banner">
+        <a href="/index.html">Back</a>
+        <h1>Project 3 : Rock Paper Scissors</h1>
+    </header>
+    <main class="game">
+        <div class="container">
+            <button onclick="playRound('paper', getComputerChoice())">Paper</button>
+            <button onclick="playRound('rock', getComputerChoice())">Rock</button>
+            <button onclick="playRound('scissors', getComputerChoice())">Scissors</button>
+        </div>
+        <div class="computerSelection"></div>
+        <br />
+        <div class="score"></div>
+        <div class="result"></div>
+    </main>
+</body>
+</html>
