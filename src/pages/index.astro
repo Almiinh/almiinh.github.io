@@ -2,21 +2,22 @@
 import Banner from "../components/Banner.svelte";
 import Layout from "../layouts/Layout.astro";
 import background from "../assets/background.svg";
+import "../styles/global.css";
 
 const navItems = [
     {
         href: "https://github.com/Almiinh",
-        src: "https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github",
+        src: "index/GITHUB.svg",
         alt: "GitHub",
     },
     {
         href: "https://www.linkedin.com/in/minh-hoang-alexis-huynh-621b52222/",
-        src: "https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin",
+        src: "index/LINKEDIN.svg",
         alt: "LinkedIn",
     },
     {
         href: "index/CV FR Minh-Hoang HUYNH.pdf",
-        src: "https://img.shields.io/badge/French%C2%A0CV-PDF-FF0000?style=for-the-badge&logo=read.cv",
+        src: "index/FRENCH_CV_PDF.svg",
         alt: "PDF",
     },
 ];
@@ -24,8 +25,8 @@ const navItems = [
 const csProjects = [
     {
         href: "https://github.com/Almiinh/cloud-computing/",
-        color: "#B0E0E6", // Pastel Light Blue
-        fontColor: "black",
+        backgroundColor: "#0041c3;", // Pastel Light Blue
+        fontColor: "white",
         tag: "Cloud Computing",
         title: "File Processing through AWS S3 & SQS",
         tooltip:
@@ -34,8 +35,8 @@ const csProjects = [
     },
     {
         href: "https://gitlab.emse.fr/minh-hoang.huynh/semantic-web-project",
-        color: "#98FB98", // Pastel Light Green
-        fontColor: "black",
+        backgroundColor: "blueviolet",
+        fontColor: "white",
         tag: "Semantic Web",
         title: "A SW-based Search Engine",
         tooltip:
@@ -44,7 +45,7 @@ const csProjects = [
     },
     {
         href: "https://github.com/Almiinh/red-object-detector",
-        color: "#E6E6FA", // Pastel Light Purple
+        backgroundColor: "#E6E6FA", // Pastel Light Purple
         fontColor: "black",
         tag: "Computer Vision",
         title: "Detection of Red Object Motion",
@@ -53,66 +54,66 @@ const csProjects = [
     },
     {
         href: "https://github.com/Almiinh/imageprocessing",
-        color: "#FFFACD", // Pastel Light Yellow
-        fontColor: "black",
+        backgroundColor: "navjowhite",
+        fontColor: "var(--color-text)",
         tag: "Image Processing",
-        title: "Compilation of notebook presenting processing techniques.",
+        title: "Compilation of notebooks presenting processing techniques.",
         tooltip:
             "Image Segmentation, Enhancement, Histogram Equalization, Fourier Transform, Restoration, \
             Morpho Maths, ML ...",
     },
     {
         href: "https://github.com/Almiinh/calculator",
-        color: "#FFB6C1", // Pastel Light Pink
-        fontColor: "black",
+        backgroundColor: "lightslategray",
+        fontColor: "white",
         tag: "Programming",
         title: "A Calculator in Java",
         tooltip: "A Calculator in Java w/ basic operations, inspired by the Windows Calculator",
     },
     {
         href: "https://github.com/Almiinh/game-of-life",
-        color: "#FFB6C1", // Pastel Light Pink
-        fontColor: "black",
+        backgroundColor: "lightslategray",
+        fontColor: "white",
         tag: "Programming",
         title: "The Conway's Game of Life in C",
         tooltip: "The well known game of life written in C in the terminal",
     },
     {
         href: "https://github.com/Almiinh/flashcard-webapp/",
-        color: "#F5F5DC", // Pastel Beige
-        fontColor: "black",
+        backgroundColor: "#705C53",
+        fontColor: "white",
         tag: "Web",
         title: "A Car Rental Web App in PHP/Symfony",
         tooltip: "A Web App as if you were to rent a car.",
     },
     {
         href: "https://github.com/Almiinh/flashcard-webapp/",
-        color: "#F5F5DC", // Pastel Beige
-        fontColor: "black",
+        backgroundColor: "#705C53",
+        fontColor: "white",
         tag: "Web",
         title: "A Flashcard Web App in Java/Spring Boot & Vue.js",
         tooltip: "(Need repair) A Web App Mockup to store flashcards",
     },
     {
         href: "https://addons.mozilla.org/fr/firefox/addon/wordreference-peek/",
-        color: "#F5F5DC", // Pastel Beige
-        fontColor: "black",
+        backgroundColor: "#705C53",
+        fontColor: "white",
         tag: "Web",
         title: "A WordReference Peek Firefox Addon",
         tooltip: "An addon to peek at a word on wordreference without opening WordReference.com w/ JS",
     },
     {
         href: "",
-        color: "#77DD77", // Pastel Green
-        fontColor: "black",
+        backgroundColor: "maroon", // Pastel Green
+        fontColor: "white",
         tag: "Data Science",
         title: "A fusion of datatsets with the Hungarian Algorithm (Kuhn-Munkres)",
         tooltip: "",
     },
     {
         href: "",
-        color: "#FFB347", // Pastel Orange
-        fontColor: "black",
+        backgroundColor: "indianred",
+        fontColor: "white",
         tag: "Operational Research",
         title: "Implementation of Mixed-Integer Linear Programming Algorithms",
         tooltip: "",
@@ -122,7 +123,7 @@ const csProjects = [
 const mlProjects = [
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/nlp_VectorRAG_vs_GraphRAG.ipynb",
-        color: "#DEA1A9", // Pastel Rose
+        backgroundColor: "mediumseagreen",
         fontColor: "black",
         tag: "NLP, LLM",
         title: "Summary of Scientific Articles: Comparison of Vector RAG vs Graph Pipelines with LLMs",
@@ -131,8 +132,8 @@ const mlProjects = [
     },
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/dl_ImageClassification.ipynb",
-        color: "#AFEEEE", // Pastel Cyan
-        fontColor: "black",
+        backgroundColor: "mediumslateblue",
+        fontColor: "white",
         tag: "Deep Learning",
         title: "Image classifier w/ CNN: Cat and dogs",
         tooltip:
@@ -140,15 +141,15 @@ const mlProjects = [
     },
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/dl_TimeSeries.ipynb",
-        color: "#AFEEEE", // Pastel Cyan
-        fontColor: "black",
+        backgroundColor: "mediumslateblue",
+        fontColor: "white",
         tag: "Deep Learning",
         title: "Time Series Prediction w/ LSTM",
         tooltip: "LSTM model training, predicting a time series of office occupancy w/ Tensorflow Keras",
     },
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/ml/2-decision-tree/DecisionTree.ipynb",
-        color: "#D8BFD8", // Pastel Purple
+        backgroundColor: "peru",
         fontColor: "black",
         tag: "Machine Learning",
         title: "Decision Trees: ID3 vs CART",
@@ -157,7 +158,7 @@ const mlProjects = [
     },
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/nlp_TokenClassification.ipynb",
-        color: "#DEA1A9", // Pastel Rose
+        backgroundColor: "mediumseagreen",
         fontColor: "black",
         tag: "NLP, LLM",
         title: "Part-of-Speech Tagging by finetuning BERT (PyTorch)",
@@ -168,57 +169,57 @@ const mlProjects = [
 const webProjects = [
     {
         href: "/web/project3-rock-paper-scissors/index.html",
-        color: "#F5F5DC", // Pastel Beige
-        fontColor: "black",
+        backgroundColor: "#705C53", // Pastel Brown
+        fontColor: "white",
         tag: "JS Basics",
         title: "Rock Paper Scissors",
     },
     {
         href: "/web/project4-etch-a-sketch/index.html",
-        color: "#F5F5DC", // Pastel Beige
-        fontColor: "black",
+        backgroundColor: "#705C53", // Pastel Brown
+        fontColor: "white",
         tag: "DOM Input, Click and Mouseover Events",
         title: "Etch-a-Sketch",
     },
     {
         href: "/web/project5-calculator/index.html",
-        color: "#F5F5DC", // Pastel Beige
-        fontColor: "black",
+        backgroundColor: "#705C53", // Pastel Brown
+        fontColor: "white",
         tag: "DOM Key Bindings Event",
         title: "Calculator",
     },
     {
         href: "/web/project8-library/",
-        color: "#F5F5DC", // Pastel Beige
-        fontColor: "black",
+        backgroundColor: "#705C53", // Pastel Brown
+        fontColor: "white",
         tag: "JS Objects",
         title: "Library",
     },
     {
         href: "/web/project9-tic-tac-toe/index.html",
-        color: "#F5F5DC", // Pastel Beige
-        fontColor: "black",
+        backgroundColor: "#705C53", // Pastel Brown
+        fontColor: "white",
         tag: "JS Modules",
         title: "Tic Tac Toe",
     },
     {
         href: "/web/project11-todo-list/index.html",
-        color: "#F5F5DC", // Pastel Beige
-        fontColor: "black",
+        backgroundColor: "#705C53", // Pastel Brown
+        fontColor: "white",
         tag: "JS Component, Classes",
         title: "Todo List",
     },
     {
         href: "/web/project12-weather-app/index.html",
-        color: "#F5F5DC", // Pastel Beige
-        fontColor: "black",
+        backgroundColor: "#705C53", // Pastel Brown
+        fontColor: "white",
         tag: "JS Fetch, Async",
         title: "Weather App",
     },
     {
         href: "/web/project18-battleship/",
-        color: "#F5F5DC", // Pastel Beige
-        fontColor: "black",
+        backgroundColor: "#705C53", // Pastel Brown
+        fontColor: "white",
         tag: "TS, Game Logic, DOM Manipulation",
         title: "Battleship Game",
     },
@@ -265,15 +266,37 @@ const projects = [
                     <div class="links">
                         {projects.map((project) => (
                             <a href={project.href} class="link card">
-                                {project.tag && (
-                                    <span class="tag" style={{ backgroundColor: project.color, color: project.fontColor }}>
-                                        {project.tag}
-                                    </span>
-                                )}
-                                <br />
-                                {project.title && <span class="title">{project.title}</span>}
-                                <br />
-                                {project.tooltip && <span class="tooltip">{project.tooltip}</span>}
+                                <div>
+                                    {project.title && <div class="title">{project.title}</div>}
+                                    {project.tooltip && <div class="tooltip">{project.tooltip}</div>}
+                                </div>
+                                <div class="tags">
+                                    {project.tag && (
+                                        <span
+                                            class="tag"
+                                            style={{
+                                                backgroundColor: project.backgroundColor,
+                                                color: project.fontColor,
+                                            }}
+                                        >
+                                            {project.tag}
+                                        </span>
+                                    )}
+                                    <svg
+                                        class="___1okpztj f1w7gpdv fez10in fg4l7m0 f16hsg94 fwpfdsa f88nxoq f1e2fz10"
+                                        fill="currentColor"
+                                        aria-hidden="true"
+                                        width="1.5em"
+                                        height="1.5em"
+                                        viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M6 4a2 2 0 0 0-2 2v8c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-2.5a.5.5 0 0 1 1 0V14a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h2.5a.5.5 0 0 1 0 1H6Zm5-.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v5a.5.5 0 0 1-1 0V4.7l-4.15 4.15a.5.5 0 0 1-.7-.7L15.29 4H11.5a.5.5 0 0 1-.5-.5Z"
+                                            fill="currentColor"
+                                        />
+                                    </svg>
+                                </div>
                             </a>
                         ))}
                     </div>
@@ -289,100 +312,86 @@ const projects = [
         position: fixed;
         top: 0;
         left: 0;
+        z-index: -1;
         width: 100%;
         height: 100%;
-        z-index: -1;
-        filter: blur(100px) contrast(25%);
+        filter: blur(1000px) contrast(55%);
     }
-
     :is(h1, h2, h3, h4, h5, h6) {
         font-family: var(--font-headings);
     }
-
     body *:not(h1, h2, h3, h4, h5, h6) {
         font-family: var(--font-sans-serif);
     }
-
     nav a {
         display: inline-block;
-        line-height: 0;
         margin-right: 0.6rem;
     }
-
     main {
-        margin: 5vh 15vw;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
         grid-auto-flow: row dense;
+        margin: 5vh 15vw;
         gap: 5vh;
     }
-
     .links {
+        margin: 1rem 0;
         display: grid;
-        gap: 1rem;
         grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
         grid-auto-flow: row dense;
+        gap: 1rem;
     }
-
     @media (width < 600px) {
         .links {
             grid-template-columns: repeat(1, 1fr);
         }
     }
-
     @media (600px < width < 1000px) {
         .links {
             grid-template-columns: repeat(2, 1fr);
         }
     }
-
-    /* .link {
-        &:hover > .tooltip,
-        *:active + .tooltip,
-        .tooltip.visible {
-            transition: opacity 150ms ease-in-out;
-            opacity: 0.9;
-            display: block;
-            z-index: 1;
-        }
-
-        &:hover {
-            background-color: var(--color-bg-secondary);
-        }
-    } */
-
     .card {
-        max-width: 20rem;
-        background-color: var(--color-bg);
         margin: 0;
         box-shadow: 0 0 10px var(--color-shadow);
-        min-height: 3rem;
+        background-color: var(--color-bg);
         padding: 1rem;
+        max-width: 20rem;
+        min-height: 3rem;
         text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
 
+        .tags {
+            margin: 1rem 0 0 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--color-text)
+        }
         .tag {
-            color: var(--color-text);
-            font-size: x-small;
-            margin: 0;
+            height: fit-content;
+            border-radius: 10px;
             background-color: rgba(255, 127, 80, 0.479);
             padding: 0.1rem 0.3rem;
-            border-radius: 10px;
+            backgroundcolor: var(--color-text);
+            font-size: x-small;
         }
-
         .title {
             color: var(--color-text);
             font-size: large;
             font-weight: bolder;
         }
-
         .tooltip {
             color: var(--color-text-secondary);
             font-size: small;
         }
-
         &:hover {
-            background-color:;
             transform: translateY(2px);
+            background-color:;
         }
     }
 </style>

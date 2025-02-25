@@ -9,6 +9,7 @@
 /* Global Font */
 body {
     font-family: var(--font-monospace);
+    line-height: 0;
 }
 
 /* Banner */
