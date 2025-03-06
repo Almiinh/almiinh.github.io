@@ -25,9 +25,10 @@ const navItems = [
 const csProjects = [
     {
         href: "https://github.com/Almiinh/cloud-computing/",
-        backgroundColor: "#0041c3;", // Pastel Light Blue
-        fontColor: "white",
-        tag: "Cloud Computing",
+        tags: [
+            { name: "Cloud Computing", color: "white", backgroundColor: "#0041c3;" },
+            { name: "Java", color: "white", backgroundColor: "#423485" },
+        ],
         title: "File Processing through AWS S3 & SQS",
         tooltip:
             "An AWS-based solution to consolidate daily sales data from globally distributed stores of a \
@@ -35,9 +36,7 @@ const csProjects = [
     },
     {
         href: "https://gitlab.emse.fr/minh-hoang.huynh/semantic-web-project",
-        backgroundColor: "blueviolet",
-        fontColor: "white",
-        tag: "Semantic Web",
+        tags: [{ name: "Semantic Web", color: "white", backgroundColor: "blueviolet" }],
         title: "A SW-based Search Engine",
         tooltip:
             "Using JSON-LD data stored in a Apache Jena Fuseki local server to browse through food offers in \
@@ -45,76 +44,52 @@ const csProjects = [
     },
     {
         href: "https://github.com/Almiinh/red-object-detector",
-        backgroundColor: "#E6E6FA", // Pastel Light Purple
-        fontColor: "black",
-        tag: "Computer Vision",
+        tags: [{ name: "Computer Vision", color: "black", backgroundColor: "#E6E6FA" }],
         title: "Detection of Red Object Motion",
         tooltip:
             "Using HSV colour space to detect red ranges on webcam and position difference across frames to detect motion on webcam.",
     },
     {
         href: "https://github.com/Almiinh/imageprocessing",
-        backgroundColor: "navjowhite",
-        fontColor: "var(--color-text)",
-        tag: "Image Processing",
+        tags: [{ name: "Image Processing", color: "var(--color-text)", backgroundColor: "navjowhite" }],
         title: "Compilation of notebooks presenting processing techniques.",
         tooltip:
             "Image Segmentation, Enhancement, Histogram Equalization, Fourier Transform, Restoration, \
             Morpho Maths, ML ...",
     },
     {
-        href: "https://github.com/Almiinh/calculator",
-        backgroundColor: "lightslategray",
-        fontColor: "white",
-        tag: "Programming",
-        title: "A Calculator in Java",
-        tooltip: "A Calculator in Java w/ basic operations, inspired by the Windows Calculator",
-    },
-    {
         href: "https://github.com/Almiinh/game-of-life",
-        backgroundColor: "lightslategray",
-        fontColor: "white",
-        tag: "Programming",
+        tags: [{ name: "C", color: "white", backgroundColor: "lightslategray" }],
         title: "The Conway's Game of Life in C",
         tooltip: "The well known game of life written in C in the terminal",
     },
     {
         href: "https://github.com/Almiinh/flashcard-webapp/",
-        backgroundColor: "#705C53",
-        fontColor: "white",
-        tag: "Web",
+        tags: [{ name: "Web", color: "white", backgroundColor: "#705C53" }],
         title: "A Car Rental Web App in PHP/Symfony",
         tooltip: "A Web App as if you were to rent a car.",
     },
     {
         href: "https://github.com/Almiinh/flashcard-webapp/",
-        backgroundColor: "#705C53",
-        fontColor: "white",
-        tag: "Web",
+        tags: [{ name: "Web", color: "white", backgroundColor: "#705C53" }],
         title: "A Flashcard Web App in Java/Spring Boot & Vue.js",
         tooltip: "(Need repair) A Web App Mockup to store flashcards",
     },
     {
         href: "https://addons.mozilla.org/fr/firefox/addon/wordreference-peek/",
-        backgroundColor: "#705C53",
-        fontColor: "white",
-        tag: "Web",
+        tags: [{ name: "Web", color: "white", backgroundColor: "#705C53" }],
         title: "A WordReference Peek Firefox Addon",
         tooltip: "An addon to peek at a word on wordreference without opening WordReference.com w/ JS",
     },
     {
         href: "",
-        backgroundColor: "maroon", // Pastel Green
-        fontColor: "white",
-        tag: "Data Science",
+        tags: [{ name: "Data Science", color: "white", backgroundColor: "maroon" }],
         title: "A fusion of datatsets with the Hungarian Algorithm (Kuhn-Munkres)",
         tooltip: "",
     },
     {
         href: "",
-        backgroundColor: "indianred",
-        fontColor: "white",
-        tag: "Operational Research",
+        tags: [{ name: "Operational Research", color: "white", backgroundColor: "indianred" }],
         title: "Implementation of Mixed-Integer Linear Programming Algorithms",
         tooltip: "",
     },
@@ -123,44 +98,40 @@ const csProjects = [
 const mlProjects = [
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/nlp_VectorRAG_vs_GraphRAG.ipynb",
-        backgroundColor: "mediumseagreen",
-        fontColor: "black",
-        tag: "NLP, LLM",
+        tags: [
+            { name: "NLP", color: "black", backgroundColor: "mediumseagreen" },
+            { name: "LLM", color: "black", backgroundColor: "#6ca496" },
+        ],
         title: "Summary of Scientific Articles: Comparison of Vector RAG vs Graph Pipelines with LLMs",
         tooltip:
             "A comparison of Vector RAG and Graph RAG pipeline to summary scientific article w/ Langchain",
     },
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/dl_ImageClassification.ipynb",
-        backgroundColor: "mediumslateblue",
-        fontColor: "white",
-        tag: "Deep Learning",
+        tags: [{ name: "Deep Learning", color: "white", backgroundColor: "mediumslateblue" }],
         title: "Image classifier w/ CNN: Cat and dogs",
         tooltip:
             "A CNN model training to classify cat and dog images. Classification of their breeds w/ Tensorflow Keras",
     },
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/dl_TimeSeries.ipynb",
-        backgroundColor: "mediumslateblue",
-        fontColor: "white",
-        tag: "Deep Learning",
+        tags: [{ name: "Deep Learning", color: "white", backgroundColor: "mediumslateblue" }],
         title: "Time Series Prediction w/ LSTM",
         tooltip: "LSTM model training, predicting a time series of office occupancy w/ Tensorflow Keras",
     },
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/ml/2-decision-tree/DecisionTree.ipynb",
-        backgroundColor: "peru",
-        fontColor: "black",
-        tag: "Machine Learning",
+        tags: [{ name: "Machine Learning", color: "black", backgroundColor: "peru" }],
         title: "Decision Trees: ID3 vs CART",
         tooltip:
             "An plain implementation of ID3 and CART in Python w/ Numpy to understand the algorithm of Decision Trees. Comparison with the sklearn implementation",
     },
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/nlp_TokenClassification.ipynb",
-        backgroundColor: "mediumseagreen",
-        fontColor: "black",
-        tag: "NLP, LLM",
+        tags: [
+            { name: "NLP", color: "black", backgroundColor: "mediumseagreen" },
+            { name: "LLM", color: "black", backgroundColor: "#6ca496" },
+        ],
         title: "Part-of-Speech Tagging by finetuning BERT (PyTorch)",
         tooltip: "Finetuning of BERT on Part-of-Speech Tagging",
     },
@@ -169,58 +140,42 @@ const mlProjects = [
 const webProjects = [
     {
         href: "/web/project3-rock-paper-scissors/index.html",
-        backgroundColor: "#705C53", // Pastel Brown
-        fontColor: "white",
-        tag: "JS Basics",
+        tags: [{ name: "JS Basics", color: "white", backgroundColor: "#705C53" }],
         title: "Rock Paper Scissors",
     },
     {
         href: "/web/project4-etch-a-sketch/index.html",
-        backgroundColor: "#705C53", // Pastel Brown
-        fontColor: "white",
-        tag: "DOM Input, Click and Mouseover Events",
+        tags: [{ name: "DOM Input, Click and Mouseover Events", color: "white", backgroundColor: "#705C53" }],
         title: "Etch-a-Sketch",
     },
     {
         href: "/web/project5-calculator/index.html",
-        backgroundColor: "#705C53", // Pastel Brown
-        fontColor: "white",
-        tag: "DOM Key Bindings Event",
+        tags: [{ name: "DOM Key Bindings Event", color: "white", backgroundColor: "#705C53" }],
         title: "Calculator",
     },
     {
         href: "/web/project8-library/",
-        backgroundColor: "#705C53", // Pastel Brown
-        fontColor: "white",
-        tag: "JS Objects",
+        tags: [{ name: "JS Objects", color: "white", backgroundColor: "#705C53" }],
         title: "Library",
     },
     {
         href: "/web/project9-tic-tac-toe/index.html",
-        backgroundColor: "#705C53", // Pastel Brown
-        fontColor: "white",
-        tag: "JS Modules",
+        tags: [{ name: "JS Modules", color: "white", backgroundColor: "#705C53" }],
         title: "Tic Tac Toe",
     },
     {
         href: "/web/project11-todo-list/index.html",
-        backgroundColor: "#705C53", // Pastel Brown
-        fontColor: "white",
-        tag: "JS Component, Classes",
+        tags: [{ name: "JS Component, Classes", color: "white", backgroundColor: "#705C53" }],
         title: "Todo List",
     },
     {
         href: "/web/project12-weather-app/index.html",
-        backgroundColor: "#705C53", // Pastel Brown
-        fontColor: "white",
-        tag: "JS Fetch, Async",
+        tags: [{ name: "JS Fetch, Async", color: "white", backgroundColor: "#705C53" }],
         title: "Weather App",
     },
     {
         href: "/web/project18-battleship/",
-        backgroundColor: "#705C53", // Pastel Brown
-        fontColor: "white",
-        tag: "TS, Game Logic, DOM Manipulation",
+        tags: [{ name: "TS, Game Logic, DOM Manipulation", color: "white", backgroundColor: "#705C53" }],
         title: "Battleship Game",
     },
 ];
@@ -270,32 +225,38 @@ const projects = [
                                     {project.title && <div class="title">{project.title}</div>}
                                     {project.tooltip && <div class="tooltip">{project.tooltip}</div>}
                                 </div>
-                                <div class="tags">
-                                    {project.tag && (
-                                        <span
-                                            class="tag"
-                                            style={{
-                                                backgroundColor: project.backgroundColor,
-                                                color: project.fontColor,
-                                            }}
-                                        >
-                                            {project.tag}
-                                        </span>
-                                    )}
-                                    <svg
-                                        class="___1okpztj f1w7gpdv fez10in fg4l7m0 f16hsg94 fwpfdsa f88nxoq f1e2fz10"
-                                        fill="currentColor"
-                                        aria-hidden="true"
-                                        width="1.5em"
-                                        height="1.5em"
-                                        viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M6 4a2 2 0 0 0-2 2v8c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-2.5a.5.5 0 0 1 1 0V14a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h2.5a.5.5 0 0 1 0 1H6Zm5-.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v5a.5.5 0 0 1-1 0V4.7l-4.15 4.15a.5.5 0 0 1-.7-.7L15.29 4H11.5a.5.5 0 0 1-.5-.5Z"
+                                <div class="bar">
+                                    <div class="tags">
+                                        {project.tags &&
+                                            project.tags.map((tag) => (
+                                                <span
+                                                    class="tag"
+                                                    style={{
+                                                        backgroundColor: tag.backgroundColor,
+                                                        color: tag.color,
+                                                    }}
+                                                >
+                                                    {tag.name}
+                                                </span>
+                                            ))}
+                                    </div>
+                                    {project.href &&
+                                    (
+                                        <svg
+                                            class="___1okpztj f1w7gpdv fez10in fg4l7m0 f16hsg94 fwpfdsa f88nxoq f1e2fz10"
                                             fill="currentColor"
-                                        />
-                                    </svg>
+                                            aria-hidden="true"
+                                            width="1.5em"
+                                            height="1.5em"
+                                            viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M6 4a2 2 0 0 0-2 2v8c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-2.5a.5.5 0 0 1 1 0V14a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h2.5a.5.5 0 0 1 0 1H6Zm5-.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v5a.5.5 0 0 1-1 0V4.7l-4.15 4.15a.5.5 0 0 1-.7-.7L15.29 4H11.5a.5.5 0 0 1-.5-.5Z"
+                                                fill="currentColor"
+                                            />
+                                        </svg>
+                                    )}
                                 </div>
                             </a>
                         ))}
@@ -364,16 +325,22 @@ const projects = [
         justify-content: space-between;
         align-items: flex-start;
 
-        .tags {
+        .bar {
             margin: 1rem 0 0 0;
             width: 100%;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            color: var(--color-text)
+            align-items: start;
+            color: var(--color-text);
+        }
+        .tags {
+            display: flex;
+            gap: 0.2rem;
         }
         .tag {
+            text-align: center;
             height: fit-content;
+            min-width: 2rem;
             border-radius: 10px;
             background-color: rgba(255, 127, 80, 0.479);
             padding: 0.1rem 0.3rem;
@@ -391,7 +358,6 @@ const projects = [
         }
         &:hover {
             transform: translateY(2px);
-            background-color:;
         }
     }
 </style>
