@@ -76,12 +76,6 @@ const csProjects = [
         tooltip: "(Need repair) A Web App Mockup to store flashcards",
     },
     {
-        href: "https://addons.mozilla.org/fr/firefox/addon/wordreference-peek/",
-        tags: [{ name: "Web", color: "white", backgroundColor: "#705C53" }],
-        title: "A WordReference Peek Firefox Addon",
-        tooltip: "An addon to peek at a word on wordreference without opening WordReference.com w/ JS",
-    },
-    {
         href: "",
         tags: [{ name: "Data Science", color: "white", backgroundColor: "maroon" }],
         title: "A fusion of datatsets with the Hungarian Algorithm (Kuhn-Munkres)",
@@ -220,7 +214,7 @@ const projects = [
                     <h2>{heading}</h2>
                     <div class="links">
                         {projects.map((project) => (
-                            <a href={project.href} class="link card">
+                            <a href={project.href} class="card">
                                 <div>
                                     {project.title && <div class="title">{project.title}</div>}
                                     {project.tooltip && <div class="tooltip">{project.tooltip}</div>}
