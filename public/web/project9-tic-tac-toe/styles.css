@@ -18,8 +18,9 @@
 }
 
 .cell {
+
     aspect-ratio: 1;
-    background: #eee;
+    background: var(--color-bg-secondary);
     border: none;
     font-size: 2em;
     display: flex;

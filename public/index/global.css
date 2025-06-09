@@ -9,13 +9,12 @@
 /* Global Font */
 body {
     font-family: var(--font-monospace);
-    line-height: 0;
 }
 
 /* Banner */
 header.banner {
     display: grid;
-    grid-template-columns: max(15vw, 36px) auto 15vw;
+    grid-template-columns: max(15vw, 36px) auto max(15vw, 36px);
     margin: 2vh 0;
 
     :is(h1, h2, h3, h4, h5, h6) {
@@ -50,6 +49,12 @@ header.banner {
         &:hover {
             background-color: var(--color-bg-secondary);
         }
+    }
+}
+
+@media (width < 600px) {
+    header.banner {
+        font-size: smaller;
     }
 }
 

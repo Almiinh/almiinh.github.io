@@ -1,9 +1,11 @@
 :root {
-    --cell-size: 5vh;
+    --grid-size: min(50vh, 75vw);
+    --cell-size: calc(var(--grid-size) / 10);
 }
 
+
 body {
-    height: 100vh;
+    height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,10 +21,19 @@ main {
     justify-content: center;
 }
 
+
 .gameboards {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+}
+@media (width < 600px) {
+    .gameboards {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
 }
 
 .gameboard {

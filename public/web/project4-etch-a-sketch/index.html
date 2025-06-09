@@ -40,6 +40,9 @@
             div.addEventListener("mouseover", function () {
                 this.style.backgroundColor = cellColor;
             });
+            div.addEventListener("pointerdown", function () {
+                this.style.backgroundColor = cellColor;
+            });
             grid.appendChild(div);
         }
         function clearGrid() {

@@ -121,8 +121,8 @@ const DisplayController = (() => {
     };
 
     const startGame = () => {
-        const player1Name = document.getElementById("player1").value || "Player 1";
-        const player2Name = document.getElementById("player2").value || "Player 2";
+        const player1Name = "Player 1";
+        const player2Name = "Player 2";
 
         GameController.initialize(player1Name, player2Name);
 
@@ -145,7 +145,7 @@ const DisplayController = (() => {
 
             if (result === "win") {
                 updateBoard();
-                showMessage(`${GameController.getCurrentPlayer().name} wins!`);
+                showMessage(`${GameController.getCurrentPlayer().name} wins! (${GameController.getCurrentPlayer().marker})`);
             } else if (result === "tie") {
                 updateBoard();
                 showMessage("It's a tie!");

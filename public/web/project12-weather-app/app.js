@@ -72,8 +72,8 @@ class WeatherApp {
             },
             conditions: currentConditions.conditions.toLowerCase(),
             humidity: `${currentConditions.humidity}%`,
-            windSpeed: `${Math.round(currentConditions.windspeed)} km/h`,
-            precipitation: `${currentConditions.precip} mm`,
+            windSpeed: `${Math.round(currentConditions.windspeed)}km/h`,
+            precipitation: `${currentConditions.precip}mm`,
         };
     }
 

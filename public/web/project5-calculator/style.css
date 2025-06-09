@@ -20,58 +20,41 @@ main {
 }
 
 .calculator {
-    /* Fixed height as specified */
     height: 500px;
-    /* Fixed width as specified */
     width: 300px;
     padding: 20px;
     box-shadow: 0 4px 8px var(--color-shadow);
-    background-color: #f4f4f4;
-    /* Adds rounded corners */
+    background-color: var(--color-bg-secondary);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Centers children vertically within the calculator */
     align-items: center;
-    /* Centers children horizontally within the calculator */
 }
 
 #minidisplay {
     min-height: 1.5em;
     align-self: flex-end;
-    color: grey;
+    color: vaxr(--color-text-secondary);
     text-align: right;
 }
 
 #display {
-    /* Full width of the calculator */
     width: 100%;
-    /* Increased height for better visibility */
     height: 60px;
-    /* Margin: Top Right Bot Left */
     margin: 0 0 20px 0;
-    /* Text aligned to the right */
     text-align: right;
-    /* Larger font for easy reading */
     border: 2px solid #ccc;
-    /* Defined border for clarity */
     font-size: 24px;
-    /* Rounded corners for aesthetics */
     border-radius: 5px;
-    /* Light grey background for the display area */
-    background-color: #f8f8f8;
+    background-color: var(--color-bg);
 }
 
 .buttons {
-    /* Full width of the calculator */
     width: 100%;
     display: grid;
-    /* Four columns for buttons */
     grid-template-columns: repeat(4, 1fr);
-    /* Four rows for buttons */
     grid-template-rows: repeat(4, 1fr);
-    /* Space between buttons */
     gap: 10px;
 }
 
@@ -79,17 +62,22 @@ main {
     padding: 20px;
     font-size: 16px;
     border: none;
-    background-color: #e0e0e0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     cursor: pointer;
     transition: background-color 0.1s;
     border-radius: 4px;
-    /* Rounded corners for buttons */
+    box-shadow: 2px 5px #999;
 }
 
 .buttons button:hover,
 button.hover {
     background-color: #ccc;
-    /* Color change on hover */
+}
+
+button:active:not(.dark-mode-btn) {
+    box-shadow: 2px 5px #666;
+    transform: translateY(2px);
 }
 
 .buttons .operator {
