@@ -10,20 +10,19 @@
 
 /* Global Font */
 code .line * {
-    font-family: var(--font-monospace);
     font-size: small;
+    font-family: var(--font-monospace);
 }
 pre {
     padding: 0.5vh 1vw;
 }
 blockquote {
+    margin-left: 0;
     border-left: 2px solid var(--color-text);
     padding: 0.5em 1em;
-    margin-left: 0;
 }
 body *:is(h1, h2, h3, h4, h5, h6) {
     font-family: var(--font-headings);
-    margin-top: 1em;
 }
 body *:not(h1, h2, h3, h4, h5, h6) {
     font-family: var(--font-sans-serif);
@@ -39,9 +38,19 @@ header.global-banner {
         font-family: var(--font-headings);
     }
 
+    a {
+        color: var(--color-text-link);
+        text-decoration: underline;
+        margin-bottom: 1rem;
+    }
+
+    a:visited {
+        color: var(--color-text-visited);
+    }
+
     .dark-mode-btn-container {
-        grid-column: 1;
         display: flex;
+        grid-column: 1;
         justify-content: center;
         align-items: center;
     }
@@ -54,11 +63,11 @@ header.global-banner {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        border: 0;
         margin: 0 1vw;
-        padding: 5px;
+        border: 0;
         border-radius: calc(infinity * 1px);
         background-color: var(--color-bg);
+        padding: 5px;
 
         svg {
             border-radius: calc(infinity * 1px);
@@ -78,21 +87,22 @@ header.global-banner {
 
 /* System Mode */
 .auto-mode-icon {
-    font-size: xx-small;
-    color: var(--color-text);
     width: fit-content;
+    color: var(--color-text);
+    font-size: xx-small;
 }
 
 /* System Light Mode */
 @media (prefers-color-scheme: light) {
-    html {
+    :root {
         --color-text: #333;
         --color-text-secondary: #666;
         --color-bg: white;
         --color-bg-secondary: #eee;
+        --color-bg-ternary: #ddd;
         --color-border: rgba(0, 0, 0, 0.5);
         --color-shadow: rgba(0, 0, 0, 0.2);
-
+        
         .light-mode-icon {
             display: block;
         }
@@ -103,13 +113,14 @@ header.global-banner {
 
 
     /* prefers-color-scheme: light, theme: dark*/
-    html.dark {
+    .dark {
         --color-text: #f2f4f5;
         --color-text-secondary: #999;
         --color-text-visited: #ffadff;
         --color-text-link: #8cb4ff;
         --color-bg: #282c34;
         --color-bg-secondary: #333943;
+        --color-bg-ternary: #3c4048;
         --color-border: #f2f4f5;
         --color-shadow: rgba(255, 255, 255, 0.3);
 
@@ -126,47 +137,50 @@ header.global-banner {
             display: none;
         }
         .dark-mode-icon {
-            color: var(--color-text);
             display: block;
+            color: var(--color-text);
         }
     }
 }
 
 /*  System Dark Mode */
 @media (prefers-color-scheme: dark) {
-    html {
+    :root {
         --color-text: #f2f4f5;
         --color-text-secondary: #999;
         --color-text-visited: #ffadff;
         --color-text-link: #8cb4ff;
         --color-bg: #282c34;
         --color-bg-secondary: #333943;
+        --color-bg-ternary: #3c4048;
         --color-border: #f2f4f5;
         --color-shadow: rgba(255, 255, 255, 0.1);
         background-color: var(--color-bg);
         color: var(--color-text);
+    }
+    
 
-        a {
-            color: var(--color-text-link);
-        }
-        a:visited {
-            color: var(--color-text-visited);
-        }
-        .light-mode-icon {
-            display: none;
-        }
-        .dark-mode-icon {
-            color: var(--color-text);
-            display: block;
-        }
+    a {
+        color: var(--color-text-link);
+    }
+    a:visited {
+        color: var(--color-text-visited);
+    }
+    .light-mode-icon {
+        display: none;
+    }
+    .dark-mode-icon {
+        display: block;
+        color: var(--color-text);
     }
 
     /* prefers-color-scheme: dark, theme: light*/
-    html.light {
+    .light {
         --color-text: #333;
         --color-text-secondary: #666;
         --color-bg: white;
-        --color-bg-secondary: lightgray;
+        --color-bg-secondary: #eee;
+        --color-bg-ternary: #ddd;
         --color-border: rgba(0, 0, 0, 0.5);
         --color-shadow: rgba(0, 0, 0, 0.2);
 

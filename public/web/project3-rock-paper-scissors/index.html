@@ -8,19 +8,19 @@
     <link rel="stylesheet" href="../../index/global.css">
     <style>
         body {
-            height: 95vh;
             display: flex;
             flex-direction: column;
+            height: 95vh;
         }
 
         main.game {
-            font-family: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            font-size: 16px;
             margin: auto 0;
+            font-size: 16px;
+            font-family: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
         }
 
         .container {
@@ -28,15 +28,15 @@
         }
 
         button {
-            padding: 3vh;
-            border: none;
-            margin: 32px 6px;
-            font-size: 16px;
-            border-radius: 15px;
-            box-shadow: 1px 5px #999;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin: 32px 6px;
+            box-shadow: 1px 5px #999;
+            border: none;
+            border-radius: 15px;
+            padding: 3vh;
+            font-size: 16px;
         }
 
         button:hover {
@@ -44,14 +44,14 @@
         }
 
         button:active:not(.dark-mode-btn) {
-            background-color: green;
-            box-shadow: 1px 5px darkgreen;
             transform: translateY(2px);
+            box-shadow: 1px 5px darkgreen;
+            background-color: green;
         }
 
         img {
-            height: 3em;
             width: 3em;
+            height: 3em;
         }
     </style>
     <script src="game.js"></script>

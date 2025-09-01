@@ -6,31 +6,31 @@
 }
 
 body {
-    font-family: var(--font);
-    background-color: var(--color-bg);
-    margin: 0;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    background-color: var(--color-bg);
     height: 100vh;
+    font-family: var(--font);
 }
 
 main {
     display: flex;
+    flex-grow: 1;
     justify-content: center;
     align-items: center;
     transition: background-color 0.5s ease;
-    flex-grow: 1;
 }
 
 .container {
     margin: 5vh 1vw;
-    background-color: var(--color-bg-secondary);
-    border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: var(--color-bg-secondary);
     padding: 30px;
-    text-align: center;
-    max-width: 500px;
     width: 100%;
+    max-width: 500px;
+    text-align: center;
 }
 
 #location-form {
@@ -42,23 +42,23 @@ main {
 }
 
 input[type="text"] {
-    font-family: var(--font);
-    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    padding: 10px;
     font-size: 16px;
+    font-family: var(--font);
 }
 
 button {
-    font-family: var(--font);
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s;
+    cursor: pointer;
     box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    padding: 10px 15px;
+    color: white;
+    font-family: var(--font);
 }
 
 button:hover {
@@ -74,20 +74,20 @@ button:hover {
 }
 
 #location-name {
-    font-size: 24px;
-    font-weight: bold;
     color: var(--primary-color);
+    font-weight: bold;
+    font-size: 24px;
 }
 
 #temperature {
-    font-size: 48px;
     font-weight: bold;
+    font-size: 48px;
 }
 
 #conditions {
-    font-size: 18px;
-    color: var(--secondary-color);
     margin: 10px 0;
+    color: var(--secondary-color);
+    font-size: 18px;
 }
 
 #weather-details {
@@ -106,20 +106,20 @@ button:hover {
 }
 
 #weather-gif img {
-    max-width: 200px;
-    border-radius: 10px;
     margin-top: 15px;
+    border-radius: 10px;
+    max-width: 200px;
 }
 
 /* Temperature Toggle */
 .toggle {
-    position: relative;
     display: inline-block;
+    position: relative;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #ddd;
     width: 100px;
     height: 34px;
-    background-color: #ddd;
-    border-radius: 20px;
-    cursor: pointer;
 }
 
 .toggle input {
@@ -129,19 +129,19 @@ button:hover {
 }
 
 .slider {
+    display: flex;
     position: absolute;
-    cursor: pointer;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    display: flex;
-    align-items: center;
+    left: 0;
     justify-content: center;
-    border-radius: 50px;
+    align-items: center;
+    transition: 0.4s;
+    cursor: pointer;
     box-shadow: inset black 0px 0px 10px -5px;
+    border-radius: 50px;
+    background-color: #ccc;
 }
 
 .toggle input:checked + .slider {
@@ -150,29 +150,29 @@ button:hover {
 }
 
 .slider::before {
-    content: "°F";
     position: absolute;
     left: 5px;
     transition: 0.4s;
+    content: "°F";
     color: black;
 }
 
 .toggle input:checked + .slider::before {
-    content: "°C";
     right: 5px;
     left: auto;
+    content: "°C";
     color: white;
 }
 
 /* Loading Spinner */
 .spinner {
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
     border: 4px solid #f3f3f3;
     border-top: 4px solid var(--primary-color);
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 20px auto;
 }
 
 @keyframes spin {
@@ -186,9 +186,9 @@ button:hover {
 
 .fetch-time {
     margin-top: 15px;
-    font-size: 0.8em;
     color: #666;
     font-style: italic;
+    font-size: 0.8em;
 }
 
 .night-mode .fetch-time {

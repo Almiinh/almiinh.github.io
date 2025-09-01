@@ -35,17 +35,15 @@ const { project } = Astro.props;
 
 <style>
     .card {
-        margin: 0;
-        box-shadow: 0 0 10px var(--color-shadow);
-        background-color: var(--color-bg);
-        padding: 1rem;
-        max-width: 20rem;
-        min-height: 3rem;
-        text-decoration: none;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        /* align-items: flex-start; */
+        break-inside: avoid;
+        margin-bottom: 1rem;
+        box-shadow: 0 0 10px var(--color-shadow);
+        background-color: var(--color-bg);
+        padding: 1rem;
+        text-decoration: none;
 
         .content {
             display: flex;
@@ -54,20 +52,19 @@ const { project } = Astro.props;
 
         img {
             object-fit: cover;
-            max-height: 10rem;
         }
         .bar {
-            margin: 1rem 0 0 0;
-            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: start;
+            margin: 1rem 0 0 0;
+            width: 100%;
             color: var(--color-text);
         }
         .title {
             color: var(--color-text);
-            font-size: large;
             font-weight: bolder;
+            font-size: large;
         }
         .tooltip {
             color: var(--color-text-secondary);

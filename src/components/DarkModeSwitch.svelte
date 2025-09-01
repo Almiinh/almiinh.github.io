@@ -40,8 +40,8 @@
 
 <style>
     .dark-mode-btn-container {
-        grid-column: 1;
         display: flex;
+        grid-column: 1;
         justify-content: center;
         align-items: center;
     }
@@ -51,11 +51,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        border: 0;
-        padding: 5px;
         margin: 0 1vw;
+        border: 0;
         border-radius: calc(infinity * 1px);
         background-color: var(--color-bg);
+        padding: 5px;
 
         svg {
             border-radius: calc(infinity * 1px);
@@ -68,9 +68,9 @@
 
     /* System Mode */
     .auto-mode-icon {
-        font-size: xx-small;
-        color: var(--color-text);
         width: fit-content;
+        color: var(--color-text);
+        font-size: xx-small;
     }
 
     /* System Light Mode */
@@ -90,8 +90,8 @@
             }
 
             .dark-mode-icon {
-                color: var(--color-text);
                 display: block;
+                color: var(--color-text);
             }
         }
     }
@@ -119,8 +119,8 @@
         }
 
         .dark-mode-icon {
-            color: var(--color-text);
             display: block;
+            color: var(--color-text);
         }
     }
 </style>

@@ -10,8 +10,8 @@
         background-color: black;
     }
     button:hover {
-        background-color: gray;
         cursor: pointer;
+        background-color: gray;
     }
 }
 
@@ -34,7 +34,7 @@ button {
 }
 
 img {
-    object-fit: cover;
-    height: 75vh;
     width: 99vw;
+    height: 75vh;
+    object-fit: cover;
 }

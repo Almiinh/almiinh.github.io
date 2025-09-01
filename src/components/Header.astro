@@ -15,15 +15,15 @@ let { class: className } = Astro.props;
             <HeaderLink href="/news">News</HeaderLink>
             <HeaderLink href="/about">About</HeaderLink>
         </div>
-        <References client:load />
+        <References client:only="svelte" />
     </nav>
 </header>
 
 <style>
     header {
-        box-shadow: 0 2px 4px var(--color-shadow);
         display: grid;
         grid-template-columns: max(15vw, 36px) auto max(15vw, 36px);
+        box-shadow: 0 2px 4px var(--color-shadow);
     }
     :global(.DarkModeSwitch) {
         grid-row: 1;
@@ -34,19 +34,19 @@ let { class: className } = Astro.props;
     }
     nav {
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
     }
     nav a {
-        text-decoration: none;
         color: var(--color-text);
+        text-decoration: none;
     }
     nav a.active {
-        text-decoration: none;
         border-bottom-color: var(--color-text);
+        text-decoration: none;
     }
     .internal-links a {
-        padding: 1em 0.5em;
         border-bottom: 4px solid transparent;
+        padding: 1em 0.5em;
     }
 </style>

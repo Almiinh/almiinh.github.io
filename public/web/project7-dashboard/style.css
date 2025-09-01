@@ -1,16 +1,16 @@
 * {
-    text-decoration: none;
     margin: 0;
+    text-decoration: none;
 }
 
 body {
     display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr 8fr;
     grid-template-areas:
         "banner banner"
         "nav header"
         "nav section";
-    grid-template-rows: 1fr auto;
-    grid-template-columns: 1fr 8fr;
     font-family: Inter, Arial, sans-serif;
 }
 
@@ -28,20 +28,31 @@ body {
 }
 
 nav {
-    grid-area: nav;
-    background-color: rgb(100, 154, 182);
-    color: white;
-    padding: 2vh 2vw;
     display: flex;
+    grid-area: nav;
     flex-direction: column;
     gap: 3rem;
+    background-color: rgb(100, 154, 182);
+    padding: 2vh 2vw;
+    color: white;
+
+}
+@media (prefers-color-scheme: dark) {
+    nav {
+        background-color: rgba(100, 154, 182, 0.5);
+    }
+    html.light {
+        nav {
+            background-color: rgb(100, 154, 182);
+        }
+    }
 }
 
 nav .group {
     display: flex;
     flex-direction: column;
-    width: fit-content;
     gap: 0.5rem;
+    width: fit-content;
 }
 
 nav a,
@@ -56,12 +67,12 @@ nav h1 {
 
 nav a:hover,
 nav h1:hover {
-    color: #cccccc;
+    color: var(--color-text-secondary);
 }
 
 nav a:active,
 nav h1:active {
-    color: white;
+    color: var(--color-text);
 }
 
 /* # HEADER */
@@ -72,30 +83,30 @@ nav h1:active {
 
 .header * {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 2vw;
 }
 
 .header .search:hover {
-    background-color: #cccccc;
+    background-color: var(--color-bg-ternary);
 }
 
 .header input {
-    background-color: #eeeeee;
+    margin: 0 2vw;
     border-width: 0;
     border-radius: 1rem;
+    background-color: var(--color-bg-secondary);
     width: 80%;
     height: 1.5rem;
-    margin: 0 2vw;
 }
 
 .header button {
-    background-color: rgb(100, 154, 182);
     border: 0;
     border-radius: 1000px;
-    color: white;
+    background-color: rgb(100, 154, 182);
     padding: 1vh 2vw;
+    color: white;
     font-family: Inter;
     /* box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.6); */
 }
@@ -111,33 +122,38 @@ nav h1:active {
 
 .header .profile {
     display: inline;
-    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    nav a:visited, .header a:visited {
+        color: white;
+    }
 }
 
 /* # MAIN SECTION */
 
 main {
-    grid-area: section;
-    background-color: #eeeeee;
-    padding: 1rem 4vw 1rem 2vw;
-    gap: 1rem;
     display: grid;
     grid-template-columns: 1fr;
+    grid-area: section;
+    gap: 1rem;
+    background-color: var(--color-bg-secondary);
+    padding: 1rem 4vw 1rem 2vw;
 }
 
 @media (min-width: 1000px) {
     main {
-        grid-template-columns: 6fr 1fr;
         grid-template-rows: auto 1fr;
+        grid-template-columns: 6fr 1fr;
     }
 }
 
 .card {
-    background-color: #ffffff;
-    width: 20rem;
-    padding: 3vh 1rem;
+    box-shadow: 0.2rem 0.2rem 0.1rem var(--color-shadow);
     border-radius: 0.5rem;
-    box-shadow: 0.2rem 0.2rem 0.1rem lightgray;
+    background-color: var(--color-bg);
+    padding: 3vh 1rem;
+    width: 20rem;
 }
 
 /* ## Projects */
@@ -152,30 +168,30 @@ section.projects {
 .projects > div > div {
     display: flex;
     flex-wrap: wrap;
-    margin: 1rem;
     gap: 0.5rem;
+    margin: 1rem;
 }
 
 .projects .card {
-    border-width: 0 0 0 0.3rem;
-    border-style: solid;
-    border-color: orange;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-width: 0 0 0 0.3rem;
+    border-style: solid;
+    border-color: orange;
 }
 
 .projects .card:hover {
-    background-color: #f9f9f9;
+    background-color: var(--color-bg-secondary);
 }
 
 .projects .card:active {
-    background-color: white;
     box-shadow: 0 0 0;
+    background-color: var(--color-bg-ternary);
 }
 .projects .card p {
-    font-size: 14px;
     color: gray;
+    font-size: 14px;
 }
 
 .projects .blank {
@@ -196,15 +212,15 @@ section.projects {
 /* ## Anouncements */
 
 .announcements > div {
-    margin: 1rem;
     display: flex;
+    margin: 1rem;
 }
 
 .announcements .card {
-    width: 18rem;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
+    width: 18rem;
 }
 
 .announcement {
@@ -212,19 +228,19 @@ section.projects {
 }
 
 .announcement > h4 {
-    font-size: 0.8rem;
     padding-left: 0.4rem;
+    font-size: 0.8rem;
 }
 
 .announcement > p {
-    font-size: 0.8rem;
     padding-left: 0.4rem;
+    font-size: 0.8rem;
 }
 
 .sep {
     border-bottom: solid;
     border-bottom-width: 2px;
-    border-color: #cccccc;
+    border-color: var(--color-bg-ternary);
 }
 
 /* ## Trending */
@@ -256,15 +272,15 @@ section.trending {
 .photo {
     --size: 3rem;
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(31, 177, 172, 0.5));
-    height: var(--size);
-    min-width: var(--size);
-    border-radius: 100%;
+    align-items: center;
     margin: 0.5rem;
-    font-size: small;
+    border-radius: 100%;
+    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(31, 177, 172, 0.5));
+    min-width: var(--size);
+    height: var(--size);
     color: white;
+    font-size: small;
     text-decoration: none;
 }
 

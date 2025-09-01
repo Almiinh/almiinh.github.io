@@ -15,11 +15,17 @@ const template = `
 </button>`;
 const banner = document.querySelector(".global-banner");
 const h1 = document.querySelector(".global-banner h1");
+const darkModeBtn = document.createElement("div");
+
+const previousOnload = window.onload;
+
 window.onload = () => {
+    if (previousOnload) previousOnload();
     // Inserts a div.dark-mode-btn-container between `header.global-banner` and `header.global-banner h1`
-    const darkModeBtn = document.createElement("div");
+    console.log("Script loaded: global.js");
     darkModeBtn.className = "dark-mode-btn-container";
     darkModeBtn.innerHTML = template;
+
     banner.insertBefore(darkModeBtn, h1);
     document.documentElement.classList.toggle(
         "dark",
@@ -28,6 +34,8 @@ window.onload = () => {
     );
     document.querySelector(".auto-mode-icon").classList.toggle("visible", !localStorage.theme);
 };
+
+console.log("Script loaded: ", window.onload);
 
 function switchDarkMode() {
     const autoIcon = document.querySelector(".auto-mode-icon");

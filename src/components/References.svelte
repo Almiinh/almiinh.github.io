@@ -20,12 +20,17 @@
         },
     ];
 
+    function checkDarkMode() {
+        return (
+            localStorage.theme == "dark" ||
+            (!localStorage.theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        );
+    }
+
     let darkMode = $state(false);
     onMount(() => {
-        document.onclick = () => {
-            darkMode =
-                window.matchMedia("(prefers-color-scheme: dark)").matches || localStorage.theme === "dark";
-        };
+        darkMode = checkDarkMode();
+        document.onclick = checkDarkMode;
     });
 </script>
 
@@ -52,8 +57,8 @@
         margin: 0 0.3rem;
     }
     img:hover {
+        translate: 0 -2px;
         filter: none;
         transition: all 0.2s;
-        translate: 0 -2px;
     }
 </style>

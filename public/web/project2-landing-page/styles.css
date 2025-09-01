@@ -3,52 +3,52 @@ main * {
 }
 
 main {
-    margin: 0;
     display: flex;
     flex: 1;
     flex-direction: column;
     justify-content: space-between;
+    margin: 0;
 }
 
 .header,
 .hero {
-    font-weight: 300;
-    color: #f9faf8;
-    background-color: #1f2937;
     margin: 0;
     border: 0;
+    background-color: #1f2937;
+    color: #f9faf8;
+    font-weight: 300;
 }
 
 .header {
-    background-color: #1f2937;
-    padding: 16px 15vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #1f2937;
+    padding: 16px 15vw;
 }
 
 .header .logo {
-    font-size: 24px;
-    font-weight: bold;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 24px;
 }
 
 .header ul {
-    text-align: end;
     list-style-type: none;
+    text-align: end;
 }
 
 .header ul li {
-    padding: 8px;
     display: inline;
     cursor: pointer;
+    padding: 8px;
 }
 
 .hero {
-    padding: 10vh 15vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    padding: 10vh 15vw;
 }
 
 main h1 {
@@ -56,23 +56,23 @@ main h1 {
 }
 
 .hero .text {
-    color: #e5e7eb;
-    margin: 4px;
     display: flex;
     flex-direction: column;
+    margin: 4px;
+    color: #e5e7eb;
 }
 
 .hero button {
-    font-weight: bold;
-    font-family: "Roboto";
-    color: white;
-    background-color: #3882f6;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    margin: 8px 0;
     transition-duration: 0.15s;
     cursor: pointer;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #3882f6;
+    padding: 8px 16px;
+    color: white;
+    font-weight: bold;
+    font-family: "Roboto";
 }
 
 .hero button:hover {
@@ -81,20 +81,20 @@ main h1 {
 }
 
 .hero .placeholder {
-    background-color: rgba(255, 255, 255, 0.3);
-    height: 100%;
-    margin: 4px;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 100%;
+    text-align: center;
 }
 
 .info {
-    margin: 5vh 20vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 5vh 20vw;
 }
 
 .info h2 {
@@ -103,27 +103,27 @@ main h1 {
 
 .info .container {
     display: flex;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
     gap: 2lh;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .info .illustration {
-    width: 18vw;
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 18vw;
+    text-align: center;
 }
 
 .info .box {
+    margin: 2em 0 1em 0;
+    border: 0.5vh solid #3882f6;
+    border-radius: 1vw;
     background-color: white;
     width: 12vw;
     height: 12vw;
-    border: 0.5vh solid #3882f6;
-    border-radius: 1vw;
-    margin: 2em 0 1em 0;
 }
 
 .info .subtext {
@@ -131,34 +131,34 @@ main h1 {
 }
 
 .quote {
-    color: #1f2937;
     background-color: #e5e7eb;
     padding: 32px 10vw;
+    color: #1f2937;
 }
 
 .quote .text {
-    font-size: 36px;
+    margin: 2em 0 0 0;
     font-style: italic;
     font-weight: 100;
-    margin: 2em 0 0 0;
+    font-size: 36px;
 }
 
 .quote .author {
+    margin: 0 0 3em 0;
     font-weight: bold;
     font-size: 18px;
-    margin: 0 0 3em 0;
 }
 
 .action {
-    width: 60%;
-    color: #f9faf8;
-    background-color: #3882f6;
-    padding: 8vh 4vw;
-    border-radius: 10px;
-    margin: 2em auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 2em auto;
+    border-radius: 10px;
+    background-color: #3882f6;
+    padding: 8vh 4vw;
+    width: 60%;
+    color: #f9faf8;
 }
 
 .action * {
@@ -166,34 +166,34 @@ main h1 {
 }
 
 .action button {
-    font-family: roboto;
-    font-size: 18px;
-    font-weight: bold;
-    color: #f9faf8;
-    background-color: #3882f6;
-    padding: 0.2em 8%;
-    border-width: 2px;
-    border-radius: 10px;
-    border-color: #f9faf8;
-    border-style: solid;
     align-self: center;
     justify-self: end;
     transition-duration: 0.15s;
     cursor: pointer;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #f9faf8;
+    border-radius: 10px;
+    background-color: #3882f6;
+    padding: 0.2em 8%;
+    color: #f9faf8;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: roboto;
 }
 
 .action button:hover {
-    color: #3882f6;
     background-color: #f9faf8;
+    color: #3882f6;
 }
 
 footer {
-    font-size: small;
-    font-weight: 300;
-    color: white;
-    background-color: #1f2937;
-    padding: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #1f2937;
+    padding: 16px;
+    color: white;
+    font-weight: 300;
+    font-size: small;
 }
