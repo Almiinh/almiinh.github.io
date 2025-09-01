@@ -16,7 +16,7 @@ main {
     padding: 20px 0;
 }
 
-header:not(.banner) {
+header:not(.global-banner) {
     display: flex;
     justify-content: space-between;
     align-items: center;

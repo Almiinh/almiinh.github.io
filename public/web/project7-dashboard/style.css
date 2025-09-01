@@ -14,7 +14,7 @@ body {
     font-family: Inter, Arial, sans-serif;
 }
 
-.banner {
+.global-banner {
     grid-area: banner;
 }
 

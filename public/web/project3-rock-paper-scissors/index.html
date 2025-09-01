@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors Game</title>
-    <script src="/index/global.js"></script>
-    <link rel="stylesheet" href="/index/global.css">
+    <script src="../../index/global.js"></script>
+    <link rel="stylesheet" href="../../index/global.css">
     <style>
         body {
             height: 95vh;
@@ -23,6 +23,10 @@
             margin: auto 0;
         }
 
+        .container {
+            display: inline-flex;
+        }
+
         button {
             padding: 3vh;
             border: none;
@@ -30,6 +34,9 @@
             font-size: 16px;
             border-radius: 15px;
             box-shadow: 1px 5px #999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         button:hover {
@@ -37,24 +44,38 @@
         }
 
         button:active:not(.dark-mode-btn) {
-            background-color: #3e8e41;
-            box-shadow: 1px 5px #666;
+            background-color: green;
+            box-shadow: 1px 5px darkgreen;
             transform: translateY(2px);
+        }
+
+        img {
+            height: 3em;
+            width: 3em;
         }
     </style>
     <script src="game.js"></script>
 </head>
 
 <body>
-    <header class="banner">
-        <a href="/index.html">Back</a>
+    <header class="global-banner">
+        <a href="../../index.html">Back</a>
         <h1>Project 3 : Rock Paper Scissors</h1>
     </header>
     <main class="game">
         <div class="container">
-            <button onclick="playRound('paper', getComputerChoice())">Paper</button>
-            <button onclick="playRound('rock', getComputerChoice())">Rock</button>
-            <button onclick="playRound('scissors', getComputerChoice())">Scissors</button>
+            <button onclick="playRound('paper', getComputerChoice())">
+                <img src="paper.png">
+                <span>Paper</span>
+            </button>
+            <button onclick="playRound('rock', getComputerChoice())">
+                <img src="rock.png">
+                <span>Rock</span>
+            </button>
+            <button onclick="playRound('scissors', getComputerChoice())">
+                <img src="scissors.png">
+                <span>Scissors</span>
+            </button>
         </div>
         <div class="computerSelection"></div>
         <br />

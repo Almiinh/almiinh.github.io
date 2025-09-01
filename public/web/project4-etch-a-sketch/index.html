@@ -37,12 +37,8 @@
         function addCell(grid, cellColor) {
             const div = document.createElement("div");
             div.className = "cell";
-            div.addEventListener("mouseover", function () {
-                this.style.backgroundColor = cellColor;
-            });
-            div.addEventListener("pointerdown", function () {
-                this.style.backgroundColor = cellColor;
-            });
+            div.onmouseover = function() { this.style.backgroundColor = cellColor };
+            div.onpointerdown = function() { this.style.backgroundColor = cellColor };
             grid.appendChild(div);
         }
         function clearGrid() {
@@ -61,7 +57,7 @@
         }
     </script>
     <style>
-        .banner~* {
+        .global-banner~* {
             font-family: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
         }
 
@@ -123,7 +119,7 @@
     </style>
 </head>
 <body>
-    <header class="banner">
+    <header class="global-banner">
         <a href="/index.html">Back</a>
         <h1>Project 4 : Etech a Sketch</h1>
     </header>

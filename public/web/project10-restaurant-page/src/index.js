@@ -23,6 +23,6 @@ function handleAbout() {
 }
 
 window.onload = handleHome();
-document.querySelector(".home").addEventListener("click", handleHome);
-document.querySelector(".about").addEventListener("click", handleAbout);
-document.querySelector(".menu").addEventListener("click", handleMenu);
+document.querySelector(".home").onclick = handleHome;
+document.querySelector(".about").onclick = handleAbout;
+document.querySelector(".menu").onclick = handleMenu;

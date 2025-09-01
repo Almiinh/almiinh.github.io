@@ -1,0 +1,30 @@
+---
+const { tags } = Astro.props;
+---
+
+<div class="tags">
+    {
+        tags.map((tag: { backgroundColor: any; color: any; name: unknown }) => (
+            <span class="tag" style={{ backgroundColor: tag.backgroundColor, color: tag.color }}>
+                {tag.name}
+            </span>
+        ))
+    }
+</div>
+
+<style>
+    .tags {
+        display: flex;
+        gap: 0.2rem;
+    }
+    .tag {
+        text-align: center;
+        height: fit-content;
+        min-width: 2rem;
+        border-radius: 10px;
+        background-color: rgba(255, 127, 80, 0.479);
+        padding: 0.1rem 0.3rem;
+        backgroundcolor: var(--color-text);
+        font-size: x-small;
+    }
+</style>

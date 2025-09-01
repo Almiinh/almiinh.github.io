@@ -2,11 +2,11 @@
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
     --text-color: #333;
-    --font: "Roboto Mono", monospace;
+    --font: "Rubik", sans-serif;
 }
 
 body {
-    font-family: "Roboto Mono";
+    font-family: var(--font);
     background-color: var(--color-bg);
     margin: 0;
     display: flex;
@@ -23,7 +23,7 @@ main {
 }
 
 .container {
-    margin: 0 1vw;
+    margin: 5vh 1vw;
     background-color: var(--color-bg-secondary);
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -70,7 +70,7 @@ button:hover {
 }
 
 #weather-container {
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
 #location-name {

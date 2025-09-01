@@ -1,22 +1,51 @@
+---
+import background from "../assets/background.svg";
+import Header from "../components/Header.astro";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Minh-Hoang's Portfolio</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Minh-Hoang HUYNH</title>
+        <link rel="stylesheet" href="/index/global.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+            integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <img id="background" src={background.src} alt="" fetchpriority="high" />
+        <!-- <DarkModeSwitch class="DarkModeSwitch" client:load /> -->
+        <Header />
+        <main>
+            <slot />
+        </main>
+    </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+    main {
+        margin: 5vh max(15vw, 36px);
+        text-wrap: pretty;
+    }
+    #background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        filter: blur(10000px) contrast(55%);
+    }
 </style>

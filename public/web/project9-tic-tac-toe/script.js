@@ -139,13 +139,17 @@ const DisplayController = (() => {
 
     // Event Listeners
     cells.forEach((cell) => {
-        cell.addEventListener("click", () => {
+        cell.onclick = () => {
             const index = cell.getAttribute("data-index");
             const result = GameController.playTurn(index);
 
             if (result === "win") {
                 updateBoard();
-                showMessage(`${GameController.getCurrentPlayer().name} wins! (${GameController.getCurrentPlayer().marker})`);
+                showMessage(
+                    `${GameController.getCurrentPlayer().name} wins! (${
+                        GameController.getCurrentPlayer().marker
+                    })`
+                );
             } else if (result === "tie") {
                 updateBoard();
                 showMessage("It's a tie!");
@@ -157,11 +161,11 @@ const DisplayController = (() => {
                     })`
                 );
             }
-        });
+        };
     });
 
-    startGameBtn.addEventListener("click", startGame);
-    restartBtn.addEventListener("click", startGame);
+    startGameBtn.onclick = startGame;
+    restartBtn.onclick = startGame;
 
     return { initializeDisplay };
 })();

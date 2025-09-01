@@ -143,9 +143,7 @@ function placeShipPhase() {
     let color = getRandomColor();
 
     // Rotate ships button toggles the state isVertical
-    rotateShipsButton.addEventListener("click", () => {
-        isVertical = !isVertical;
-    });
+    rotateShipsButton.onclick = () => (isVertical = !isVertical);
 
     // Display Player board
     document.getElementById("player-gameboard")!.hidden = false;
@@ -171,7 +169,7 @@ function placeShipPhase() {
                 cell.style.backgroundColor = cell.dataset.color!;
             });
         });
-        cursorCell.addEventListener("click", () => {
+        cursorCell.onclick = () => {
             if (ship === null) return;
 
             handlePlaceShip(cursorCell, ship!, isVertical);
@@ -192,7 +190,7 @@ function placeShipPhase() {
                 ship = newShip!;
                 color = getRandomColor();
             }
-        });
+        };
     }
 }
 function playerTurn(cell: HTMLElement, x, y) {
@@ -244,7 +242,7 @@ function gameStartPhase() {
     // Click Event
     for (let c of computerGrid.childNodes) {
         const cell = c as HTMLElement;
-        cell.addEventListener("click", () => {
+        cell.onclick = () => {
             const x = parseInt(cell.dataset.x!);
             const y = parseInt(cell.dataset.y!);
             playerTurn(cell, x, y);
@@ -266,7 +264,7 @@ function gameStartPhase() {
                 revealShipPosition(x, y, cell);
                 setTimeout(() => alert("You lose!"), 500);
             }
-        });
+        };
     }
 }
 
@@ -275,7 +273,7 @@ createGrid(playerGrid);
 createGrid(computerGrid);
 
 // Start game button displays player ship board and ship placement
-startGameButton.addEventListener("click", placeShipPhase);
+startGameButton.onclick = placeShipPhase;
 function revealShipPosition(x: number, y: number, cell: HTMLElement) {
     const isHit = computer.gameboard.ships.some((ship) =>
         ship.positions.some((pos) => pos[0] === x && pos[1] === y)

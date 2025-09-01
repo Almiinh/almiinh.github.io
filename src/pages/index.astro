@@ -1,294 +1,45 @@
 ---
-import Banner from "../components/Banner.svelte";
 import Layout from "../layouts/Layout.astro";
-import background from "../assets/background.svg";
-import "../styles/global.css";
-
-const navItems = [
-    {
-        href: "https://github.com/Almiinh",
-        src: "index/GITHUB.svg",
-        alt: "GitHub",
-    },
-    {
-        href: "https://www.linkedin.com/in/minh-hoang-alexis-huynh-621b52222/",
-        src: "index/LINKEDIN.svg",
-        alt: "LinkedIn",
-    },
-    {
-        href: "index/CV FR Minh-Hoang HUYNH.pdf",
-        src: "index/FRENCH_CV_PDF.svg",
-        alt: "PDF",
-    },
-];
-
-const csProjects = [
-    {
-        href: "https://github.com/Almiinh/cloud-computing/",
-        tags: [
-            { name: "Cloud Computing", color: "white", backgroundColor: "#0041c3;" },
-            { name: "Java", color: "white", backgroundColor: "#423485" },
-        ],
-        title: "File Processing through AWS S3 & SQS",
-        tooltip:
-            "An AWS-based solution to consolidate daily sales data from globally distributed stores of a \
-            large retailer w/ Client-Worker-Consolidator architecture.",
-    },
-    {
-        href: "https://gitlab.emse.fr/minh-hoang.huynh/semantic-web-project",
-        tags: [{ name: "Semantic Web", color: "white", backgroundColor: "blueviolet" }],
-        title: "A SW-based Search Engine",
-        tooltip:
-            "Using JSON-LD data stored in a Apache Jena Fuseki local server to browse through food offers in \
-            coopcycles.com websites",
-    },
-    {
-        href: "https://github.com/Almiinh/red-object-detector",
-        tags: [{ name: "Computer Vision", color: "black", backgroundColor: "#E6E6FA" }],
-        title: "Detection of Red Object Motion",
-        tooltip:
-            "Using HSV colour space to detect red ranges on webcam and position difference across frames to detect motion on webcam.",
-    },
-    {
-        href: "https://github.com/Almiinh/imageprocessing",
-        tags: [{ name: "Image Processing", color: "var(--color-text)", backgroundColor: "navjowhite" }],
-        title: "Compilation of notebooks presenting processing techniques.",
-        tooltip:
-            "Image Segmentation, Enhancement, Histogram Equalization, Fourier Transform, Restoration, \
-            Morpho Maths, ML ...",
-    },
-    {
-        href: "https://github.com/Almiinh/game-of-life",
-        tags: [{ name: "C", color: "white", backgroundColor: "lightslategray" }],
-        title: "The Conway's Game of Life in C",
-        tooltip: "The well known game of life written in C in the terminal",
-    },
-    {
-        href: "https://github.com/Almiinh/flashcard-webapp/",
-        tags: [{ name: "Web", color: "white", backgroundColor: "#705C53" }],
-        title: "A Car Rental Web App in PHP/Symfony",
-        tooltip: "A Web App as if you were to rent a car.",
-    },
-    {
-        href: "https://github.com/Almiinh/flashcard-webapp/",
-        tags: [{ name: "Web", color: "white", backgroundColor: "#705C53" }],
-        title: "A Flashcard Web App in Java/Spring Boot & Vue.js",
-        tooltip: "(Need repair) A Web App Mockup to store flashcards",
-    },
-    {
-        href: "",
-        tags: [{ name: "Data Science", color: "white", backgroundColor: "maroon" }],
-        title: "A fusion of datatsets with the Hungarian Algorithm (Kuhn-Munkres)",
-        tooltip: "",
-    },
-    {
-        href: "",
-        tags: [{ name: "Operational Research", color: "white", backgroundColor: "indianred" }],
-        title: "Implementation of Mixed-Integer Linear Programming Algorithms",
-        tooltip: "",
-    },
-];
-
-const mlProjects = [
-    {
-        href: "https://github.com/Almiinh/ml-exercises/blob/main/nlp_VectorRAG_vs_GraphRAG.ipynb",
-        tags: [
-            { name: "NLP", color: "black", backgroundColor: "mediumseagreen" },
-            { name: "LLM", color: "black", backgroundColor: "#6ca496" },
-        ],
-        title: "Summary of Scientific Articles: Comparison of Vector RAG vs Graph Pipelines with LLMs",
-        tooltip:
-            "A comparison of Vector RAG and Graph RAG pipeline to summary scientific article w/ Langchain",
-    },
-    {
-        href: "https://github.com/Almiinh/ml-exercises/blob/main/dl_ImageClassification.ipynb",
-        tags: [{ name: "Deep Learning", color: "white", backgroundColor: "mediumslateblue" }],
-        title: "Image classifier w/ CNN: Cat and dogs",
-        tooltip:
-            "A CNN model training to classify cat and dog images. Classification of their breeds w/ Tensorflow Keras",
-    },
-    {
-        href: "https://github.com/Almiinh/ml-exercises/blob/main/dl_TimeSeries.ipynb",
-        tags: [{ name: "Deep Learning", color: "white", backgroundColor: "mediumslateblue" }],
-        title: "Time Series Prediction w/ LSTM",
-        tooltip: "LSTM model training, predicting a time series of office occupancy w/ Tensorflow Keras",
-    },
-    {
-        href: "https://github.com/Almiinh/ml-exercises/blob/main/ml/2-decision-tree/DecisionTree.ipynb",
-        tags: [{ name: "Machine Learning", color: "black", backgroundColor: "peru" }],
-        title: "Decision Trees: ID3 vs CART",
-        tooltip:
-            "An plain implementation of ID3 and CART in Python w/ Numpy to understand the algorithm of Decision Trees. Comparison with the sklearn implementation",
-    },
-    {
-        href: "https://github.com/Almiinh/ml-exercises/blob/main/nlp_TokenClassification.ipynb",
-        tags: [
-            { name: "NLP", color: "black", backgroundColor: "mediumseagreen" },
-            { name: "LLM", color: "black", backgroundColor: "#6ca496" },
-        ],
-        title: "Part-of-Speech Tagging by finetuning BERT (PyTorch)",
-        tooltip: "Finetuning of BERT on Part-of-Speech Tagging",
-    },
-];
-
-const webProjects = [
-    {
-        href: "/web/project3-rock-paper-scissors/index.html",
-        tags: [{ name: "JS Basics", color: "white", backgroundColor: "#705C53" }],
-        title: "Rock Paper Scissors",
-    },
-    {
-        href: "/web/project4-etch-a-sketch/index.html",
-        tags: [{ name: "DOM Input, Click and Mouseover Events", color: "white", backgroundColor: "#705C53" }],
-        title: "Etch-a-Sketch",
-    },
-    {
-        href: "/web/project5-calculator/index.html",
-        tags: [{ name: "DOM Key Bindings Event", color: "white", backgroundColor: "#705C53" }],
-        title: "Calculator",
-    },
-    {
-        href: "/web/project8-library/",
-        tags: [{ name: "JS Objects", color: "white", backgroundColor: "#705C53" }],
-        title: "Library",
-    },
-    {
-        href: "/web/project9-tic-tac-toe/index.html",
-        tags: [{ name: "JS Modules", color: "white", backgroundColor: "#705C53" }],
-        title: "Tic Tac Toe",
-    },
-    {
-        href: "/web/project11-todo-list/index.html",
-        tags: [{ name: "JS Component, Classes", color: "white", backgroundColor: "#705C53" }],
-        title: "Todo List",
-    },
-    {
-        href: "/web/project12-weather-app/index.html",
-        tags: [{ name: "JS Fetch, Async", color: "white", backgroundColor: "#705C53" }],
-        title: "Weather App",
-    },
-    {
-        href: "/web/project18-battleship/index.html",
-        tags: [{ name: "TS, Game Logic, DOM Manipulation", color: "white", backgroundColor: "#705C53" }],
-        title: "Battleship Game",
-    },
-];
-
-const projects = [
-    {
-        heading: "CS Projects",
-        projects: csProjects,
-    },
-    {
-        heading: "AI / ML Projects",
-        projects: mlProjects,
-    },
-    {
-        heading: "Web Projects",
-        projects: webProjects,
-    },
-];
+import { projects } from "./projectsData";
+import ProjectCard from "../components/ProjectCard.astro";
+import Tags from "../components/Tags.astro";
 ---
 
 <Layout>
-    <img id="background" src={background.src} alt="" fetchpriority="high" />
-    <Banner backlink="" title="Minh-Hoang's Portfolio" client:load>
-        <nav>
-            {
-                navItems.map((item) => (
-                    <a href={item.href}>
-                        <img src={item.src} alt={item.alt} />
-                    </a>
-                ))
-            }
-        </nav>
-        <p>
-            CS Major @ Mines Saint-Étienne, FR<br />
-            Intern @ Thales Research & Technologies, Palaiseau, Paris-Saclay, FR<br />
-        </p>
-    </Banner>
-    <main>
-        {
-            projects.map(({ heading, projects }) => (
-                <section>
-                    <h2>{heading}</h2>
-                    <div class="links">
-                        {projects.map((project) => (
-                            <a href={project.href} class="card">
-                                <div>
-                                    {project.title && <div class="title">{project.title}</div>}
-                                    {project.tooltip && <div class="tooltip">{project.tooltip}</div>}
-                                </div>
-                                <div class="bar">
-                                    <div class="tags">
-                                        {project.tags &&
-                                            project.tags.map((tag) => (
-                                                <span
-                                                    class="tag"
-                                                    style={{
-                                                        backgroundColor: tag.backgroundColor,
-                                                        color: tag.color,
-                                                    }}
-                                                >
-                                                    {tag.name}
-                                                </span>
-                                            ))}
-                                    </div>
-                                    {project.href &&
-                                    (
-                                        <svg
-                                            class="___1okpztj f1w7gpdv fez10in fg4l7m0 f16hsg94 fwpfdsa f88nxoq f1e2fz10"
-                                            fill="currentColor"
-                                            aria-hidden="true"
-                                            width="1.5em"
-                                            height="1.5em"
-                                            viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                d="M6 4a2 2 0 0 0-2 2v8c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-2.5a.5.5 0 0 1 1 0V14a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h2.5a.5.5 0 0 1 0 1H6Zm5-.5c0-.28.22-.5.5-.5h5c.28 0 .5.22.5.5v5a.5.5 0 0 1-1 0V4.7l-4.15 4.15a.5.5 0 0 1-.7-.7L15.29 4H11.5a.5.5 0 0 1-.5-.5Z"
-                                                fill="currentColor"
-                                            />
-                                        </svg>
-                                    )}
-                                </div>
-                            </a>
-                        ))}
-                    </div>
-                </section>
-            ))
-        }
-        <br />
-    </main>
+    <h2>Minh-Hoang Alexis HUYNH</h2>
+    
+    <em>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <Tags tags={[{ name: "Currently" }]} />
+            <span><em>System V&V Engineer @ Alstom, Saint-Ouen, FR</em></span>
+        </div>
+        LLM Agent Developer Intern @ Thales Research & Technologies, Palaiseau, FR<br />
+        CS Major @ Mines Saint-Étienne, FR<br />
+    </em>
+    
+    <br />
+    <p>
+        Welcome to my personal portfolio website! Here, I showcase a selection of my projects, mostly from
+        school, ranging from web applications to machine learning and computer vision.
+    </p>
+    <br />
+    <p>Feel free to explore!</p>
+    {
+        projects.map(({ heading, projects }) => (
+            <section>
+                <h2>{heading}</h2>
+                <div class="links">
+                    {projects.map((project) => (
+                        <ProjectCard {project} />
+                    ))}
+                </div>
+            </section>
+        ))
+    }
+    <br />
 </Layout>
 
 <style>
-    #background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        width: 100%;
-        height: 100%;
-        filter: blur(1000px) contrast(55%);
-    }
-    :is(h1, h2, h3, h4, h5, h6) {
-        font-family: var(--font-headings);
-    }
-    body *:not(h1, h2, h3, h4, h5, h6) {
-        font-family: var(--font-sans-serif);
-    }
-    nav a {
-        display: inline-block;
-        margin-right: 0.6rem;
-    }
-    main {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-        grid-auto-flow: row dense;
-        margin: 5vh 15vw;
-        gap: 5vh;
-    }
     .links {
         margin: 1rem 0;
         display: grid;
@@ -304,54 +55,6 @@ const projects = [
     @media (600px < width < 1000px) {
         .links {
             grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    .card {
-        margin: 0;
-        box-shadow: 0 0 10px var(--color-shadow);
-        background-color: var(--color-bg);
-        padding: 1rem;
-        max-width: 20rem;
-        min-height: 3rem;
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-
-        .bar {
-            margin: 1rem 0 0 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            color: var(--color-text);
-        }
-        .tags {
-            display: flex;
-            gap: 0.2rem;
-        }
-        .tag {
-            text-align: center;
-            height: fit-content;
-            min-width: 2rem;
-            border-radius: 10px;
-            background-color: rgba(255, 127, 80, 0.479);
-            padding: 0.1rem 0.3rem;
-            backgroundcolor: var(--color-text);
-            font-size: x-small;
-        }
-        .title {
-            color: var(--color-text);
-            font-size: large;
-            font-weight: bolder;
-        }
-        .tooltip {
-            color: var(--color-text-secondary);
-            font-size: small;
-        }
-        &:hover {
-            transform: translateY(2px);
         }
     }
 </style>

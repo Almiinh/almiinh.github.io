@@ -1,8 +1,4 @@
-window.onload = () => {
-    const banner = document.querySelector("header.banner");
-    const darkModeBtn = document.createElement("div");
-    darkModeBtn.classList.add("dark-mode-btn-container");
-    darkModeBtn.innerHTML = `
+const template = `
 <button class="dark-mode-btn" title="Switch between dark and light mode"
     onclick="switchDarkMode()">
     <svg viewBox="0 0 24 24" width="24" height="24" class="light-mode-icon">
@@ -17,28 +13,32 @@ window.onload = () => {
     </svg>
     <span class="auto-mode-icon" hidden>AUTO</span>
 </button>`;
-    const h1 = document.querySelector(".banner h1");
+const banner = document.querySelector(".global-banner");
+const h1 = document.querySelector(".global-banner h1");
+window.onload = () => {
+    // Inserts a div.dark-mode-btn-container between `header.global-banner` and `header.global-banner h1`
+    const darkModeBtn = document.createElement("div");
+    darkModeBtn.className = "dark-mode-btn-container";
+    darkModeBtn.innerHTML = template;
     banner.insertBefore(darkModeBtn, h1);
     document.documentElement.classList.toggle(
         "dark",
         localStorage.theme === "dark" ||
-            (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+            (!localStorage.theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
     );
-    document.querySelector(".auto-mode-icon").classList.toggle("visible", !("theme" in localStorage));
+    document.querySelector(".auto-mode-icon").classList.toggle("visible", !localStorage.theme);
 };
 
 function switchDarkMode() {
     const autoIcon = document.querySelector(".auto-mode-icon");
-    if (!("theme" in localStorage)) {
+    if (!localStorage.theme) {
         localStorage.theme = "light";
         autoIcon.hidden = true;
-        document.documentElement.className = localStorage.theme;
-    } else if (localStorage.theme !== "dark") {
+    } else if (localStorage.theme === "light") {
         localStorage.theme = "dark";
-        document.documentElement.className = localStorage.theme;
-    } else if (localStorage.theme == "dark") {
+    } else {
         localStorage.removeItem("theme");
-        document.documentElement.className = "";
         autoIcon.hidden = false;
     }
+    document.documentElement.className = localStorage.theme ?? "";
 }
