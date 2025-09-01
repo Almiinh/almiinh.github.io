@@ -4,7 +4,7 @@ const tags = {
     web: { name: "Web", color: "white", backgroundColor: "#705C53" },
     nlp: { name: "NLP", color: "white", backgroundColor: "mediumseagreen" },
     llm: { name: "LLM", color: "white", backgroundColor: "#6ca496" },
-    ml: { name: "Machine Learning", color: "var(--color-text", backgroundColor: "peru" },
+    ml: { name: "Machine Learning", color: "var(--color-text)", backgroundColor: "peru" },
     js: { name: "JavaScript", color: "black", backgroundColor: "#f0db4f" },
     css: { name: "CSS", color: "white", backgroundColor: "#29a9df" },
     c: { name: "C", color: "white", backgroundColor: "#A8B9CC" },

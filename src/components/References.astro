@@ -1,0 +1,55 @@
+---
+const references = [
+    {
+        href: "index/CV FR Minh-Hoang HUYNH.pdf",
+        src: "index/CV128.red.png",
+        alt: "PDF",
+    },
+    {
+        href: "https://www.linkedin.com/in/minh-hoang-alexis-huynh-621b52222/",
+        src: "index/LINKEDIN.svg",
+        alt: "LinkedIn",
+    },
+    {
+        href: "https://github.com/Almiinh",
+        src: "index/GITHUB.svg",
+        srcdark: "index/GITHUB.white.svg",
+        alt: "GitHub",
+    },
+];
+---
+<script is:inline>
+    let darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches || localStorage.theme === "dark";
+    window.onload = () => {
+        document.querySelectorAll("img").forEach((img) => {
+            if (img.dataset.srcdark) {
+                img.src = darkMode ? img.dataset.srcdark : img.src;
+            }
+        });
+    };
+</script>
+
+<section class="references">
+    {references.map((item) => (
+        <a href={item.href}>
+            <img src={item.src} alt={item.alt} style="height: 32px; width: 32px" data-srcdark={item.srcdark}>
+        </a>
+    ))}
+</section>
+
+<style>
+    @media (max-width: 720px) {
+        .references {
+            display: none;
+        }
+    }
+    .references a {
+        display: inline-block;
+        margin: 0 0.3rem;
+    }
+    img:hover {
+        filter: none;
+        transition: all 0.2s;
+        translate: 0 -2px;
+    }
+</style>
