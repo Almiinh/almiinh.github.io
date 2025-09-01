@@ -1,6 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import References from "./References.astro";
+import References from "./References.svelte";
 import DarkModeSwitch from "./DarkModeSwitch.svelte";
 
 let { class: className } = Astro.props;
@@ -15,7 +15,7 @@ let { class: className } = Astro.props;
             <HeaderLink href="/news">News</HeaderLink>
             <HeaderLink href="/about">About</HeaderLink>
         </div>
-        <References />
+        <References client:load />
     </nav>
 </header>
 

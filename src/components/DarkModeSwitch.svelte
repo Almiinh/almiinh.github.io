@@ -10,7 +10,6 @@
         } else if (localStorage.theme === "dark") {
             theme = "";
         }
-        console.log(localStorage.theme);
     }
 
     $effect(() => {
