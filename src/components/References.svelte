@@ -47,11 +47,6 @@
 </section>
 
 <style>
-    @media (max-width: 720px) {
-        .references {
-            display: none;
-        }
-    }
     .references a {
         display: inline-block;
         margin: 0 0.3rem;

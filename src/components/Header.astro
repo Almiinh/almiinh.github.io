@@ -37,7 +37,7 @@ let { class: className } = Astro.props;
         justify-content: space-between;
         align-items: center;
     }
-    nav a {
+    nav a, h1 {
         color: var(--color-text);
         text-decoration: none;
     }
@@ -48,5 +48,36 @@ let { class: className } = Astro.props;
     .internal-links a {
         border-bottom: 4px solid transparent;
         padding: 1em 0.5em;
+    }
+    @media (max-width: 600px) {
+        header {
+            grid-template-columns: max(15vw, 36px) auto;
+            grid-template-rows: auto auto;
+        }
+        :global(.DarkModeSwitch) {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        nav {
+            grid-column: 2;
+            grid-row: 1;
+            display: grid;*
+            grid-template-columns: auto auto;
+        }
+        .internal-links {
+            grid-column: 1 ;
+            grid-row: 1;
+        }
+        :global(.references) {
+            grid-row: 1;
+            grid-column: 2;
+        }
+        nav a {
+            grid-column: 1 / span 2;
+            grid-row: 2;
+            justify-self: center;
+            margin: 0.2em 0;
+            font-size: 0.9rem;
+        }
     }
 </style>
