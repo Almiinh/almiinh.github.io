@@ -1,13 +1,16 @@
+import ts from "typescript";
+
 const tags = {
     dl: { name: "Deep Learning", color: "white", backgroundColor: "mediumslateblue" },
     java: { name: "Java", color: "white", backgroundColor: "#3c2c79" },
+    html: { name: "HTML", color: "white", backgroundColor: "#ff4e1d" },
     web: { name: "Web", color: "white", backgroundColor: "#705C53" },
     nlp: { name: "NLP", color: "white", backgroundColor: "mediumseagreen" },
     llm: { name: "LLM", color: "white", backgroundColor: "#6ca496" },
-    ml: { name: "Machine Learning", color: "var(--color-text)", backgroundColor: "peru" },
+    ml: { name: "Machine Learning", color: "white", backgroundColor: "peru" },
     js: { name: "JavaScript", color: "black", backgroundColor: "#f0db4f" },
     css: { name: "CSS", color: "white", backgroundColor: "#29a9df" },
-    c: { name: "C", color: "white", backgroundColor: "#A8B9CC" },
+    c: { name: "C", color: "black", backgroundColor: "#A8B9CC" },
     cv: { name: "Computer Vision", color: "black", backgroundColor: "#E6E6FA" },
     ip: { name: "Image Processing", color: "black", backgroundColor: "navajowhite" },
     cloud: { name: "Cloud Computing", color: "white", backgroundColor: "#0041c3;" },
@@ -15,6 +18,8 @@ const tags = {
     python: { name: "Python", color: "black", backgroundColor: "#ffc42d" },
     php: { name: "PHP", color: "white", backgroundColor: "#787CB5" },
     svelte: { name: "Svelte", color: "white", backgroundColor: "#ff3e00" },
+    ts: { name: "TypeScript", color: "white", backgroundColor: "#3178c6" },
+    dsa: { name: "DSA", color: "black", backgroundColor: "#ffd983" },
 };
 
 const csProjects = [
@@ -23,15 +28,14 @@ const csProjects = [
         tags: [tags.cloud, tags.java],
         image: "/index/preview-cloud-computing.png",
         title: "File Processing through AWS S3 & SQS",
-        tooltip:
-            "An AWS-based solution to consolidate daily sales data from globally distributed stores of a \
+        desc: "An AWS-based solution to consolidate daily sales data from globally distributed stores of a \
             large retailer w/ Client-Worker-Consolidator architecture.",
     },
     // {
     //     href: "",
     //     tags: [tags.sw, tags.python],
     //     title: "A SW-based Search Engine",
-    //     tooltip:
+    //     desc:
     //         "Using JSON-LD data stored in a Apache Jena Fuseki local server to browse through food offers in \
     //         coopcycles.com websites",
     // },
@@ -40,16 +44,14 @@ const csProjects = [
         tags: [tags.cv, tags.python],
         image: "/index/preview-red-detection.png",
         title: "Detection of Red Object Motion",
-        tooltip:
-            "Using HSV colour space to detect red ranges on webcam and position difference across frames to detect motion on webcam.",
+        desc: "Using HSV colour space to detect red ranges on webcam and position difference across frames to detect motion on webcam.",
     },
     {
         href: "https://github.com/Almiinh/imageprocessing",
         image: "/index/preview-morphomath.png",
         tags: [tags.ip, tags.python],
-        title: "Compilation of notebooks presenting image processing techniques.",
-        tooltip:
-            "Image Segmentation, Enhancement, Histogram Equalization, Fourier Transform, Restoration, \
+        title: "Compilation of notebooks presenting image processing techniques",
+        desc: "Image Segmentation, Enhancement, Histogram Equalization, Fourier Transform, Restoration, \
             Morpho Maths, ML ...",
     },
     {
@@ -57,122 +59,181 @@ const csProjects = [
         image: "/index/preview-conway.webp",
         tags: [tags.c],
         title: "The Conway's Game of Life in C",
-        tooltip: "The well known game of life written in C in the terminal",
+        desc: "The well known game of life written in C in the terminal",
     },
     {
         href: "https://github.com/Almiinh/car-rental-webapp",
         image: "/index/preview-car-rental.png",
         tags: [tags.web, tags.php],
         title: "A Car Rental Web App in PHP/Symfony",
-        tooltip: "A Web App as if you were to rent a car.",
+        desc: "A Web App as if you were to rent a car.",
     },
     // {
     //     href: "https://github.com/Almiinh/flashcard-webapp/",
     //     tags: [tags.web, tags.java],
     //     title: "A Flashcard Web App in Java/Spring Boot & Vue.js",
-    //     tooltip: "(Need repair) A Web App Mockup to store flashcards",
+    //     desc: "(Need repair) A Web App Mockup to store flashcards",
     // },
     {
         href: "https://mylaur5.github.io/theater-tracker",
         image: "/index/preview-theater-tracker.png",
         tags: [tags.web, tags.js, tags.svelte],
         title: "Imaginarium Theater Tracker",
-        tooltip: "A Web App to check Genshin Impact Imaginarium Theater game season and compare your characters data",
+        desc: "A Web App to check Genshin Impact Imaginarium Theater game season and compare your characters data",
     },
 ];
 
 const mlProjects = [
     {
-        href: "https://github.com/Almiinh/ml-exercises/blob/main/nlp_VectorRAG_vs_GraphRAG.ipynb",
-        tags: [tags.nlp, tags.llm],
-        title: "Summary of Scientific Articles: Comparison of Vector RAG vs Graph Pipelines with LLMs",
-        tooltip:
-            "A comparison of Vector RAG and Graph RAG pipeline to summary scientific article w/ Langchain",
-    },
-    {
-        href: "https://github.com/Almiinh/ml-exercises/blob/main/dl_ImageClassification.ipynb",
+        href: "https://github.com/Almiinh/ml-exercises/blob/main/dl/dl_ImageClassification.ipynb",
         tags: [tags.dl],
         title: "Image classifier w/ CNN: Cat and dogs",
-        tooltip:
-            "A CNN model training to classify cat and dog images. Classification of their breeds w/ Tensorflow Keras",
+        image: "/index/preview-image-classifier.png",
+        desc: "A CNN model training to classify cat and dog images. Classification of their breeds w/ Tensorflow Keras",
     },
     {
-        href: "https://github.com/Almiinh/ml-exercises/blob/main/dl_TimeSeries.ipynb",
+        href: "https://github.com/Almiinh/ml-exercises/blob/main/nlp/nlp_VectorRAG_vs_GraphRAG.ipynb",
+        tags: [tags.nlp, tags.llm],
+        title: "Summary of Scientific Articles: Comparison of Vector RAG vs Graph Pipelines with LLMs",
+        image: "/index/preview-rag.png",
+        desc: "A comparison of Vector RAG and Graph RAG pipeline to summary scientific article w/ Langchain",
+    },
+    {
+        href: "https://github.com/Almiinh/ml-exercises/blob/main/dl/dl_TimeSeries.ipynb",
         tags: [tags.dl],
         title: "Time Series Prediction w/ LSTM",
-        tooltip: "LSTM model training, predicting a time series of office occupancy w/ Tensorflow Keras",
+        desc: "LSTM model training, predicting a time series of office occupancy w/ Tensorflow Keras",
     },
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/ml/2-decision-tree/DecisionTree.ipynb",
         tags: [tags.ml],
         title: "Decision Trees: ID3 vs CART",
-        tooltip:
-            "An plain implementation of ID3 and CART in Python w/ Numpy to understand the algorithm of Decision Trees. Comparison with the sklearn implementation",
+        desc: "An plain implementation of ID3 and CART in Python w/ Numpy to understand the algorithm of Decision Trees. Comparison with the sklearn implementation",
     },
     {
-        href: "https://github.com/Almiinh/ml-exercises/blob/main/nlp_TokenClassification.ipynb",
+        href: "https://github.com/Almiinh/ml-exercises/blob/main/nlp/nlp_TokenClassification.ipynb",
         tags: [tags.nlp, tags.llm],
         title: "Part-of-Speech Tagging by finetuning BERT (PyTorch)",
-        tooltip: "Finetuning of BERT on Part-of-Speech Tagging",
+        desc: "Finetuning of BERT on Part-of-Speech Tagging",
     },
 ];
 
 const webProjects = [
     {
+        href: "/web/project1-odin-recipes/index.html",
+        tags: [{ ...tags.html, name: "HTML Basics" }],
+        title: "A Recipe page",
+    },
+    {
+        href: "/web/project2-landing-page/index.html",
+        tags: [{ ...tags.css, name: "CSS Basics" }],
+        title: "A Landing page",
+    },
+    {
         href: "/web/project3-rock-paper-scissors/index.html",
         tags: [{ ...tags.js, name: "JS Basics" }],
+        image: "/web/project3-rock-paper-scissors/preview.png",
         title: "Rock Paper Scissors",
+        desc: "Play Rock Paper Scissors game against the computer",
     },
     {
         href: "/web/project4-etch-a-sketch/index.html",
+        image: "/web/project4-etch-a-sketch/preview.png",
         tags: [{ ...tags.js, name: "DOM Input, Click and Mouseover Events" }],
         title: "Etch-a-Sketch",
+        desc: "Draw on a grid of squares by hovering the mouse",
     },
     {
         href: "/web/project5-calculator/index.html",
+        image: "/web/project5-calculator/preview.png",
         tags: [{ ...tags.js, name: "DOM Key Bindings Event" }],
         title: "Calculator",
+        desc: "Use a functional calculator with keyboard support",
+    },
+    {
+        href: "/web/project6-validation-form/index.html",
+        tags: [{ ...tags.js, name: "HTML Forms" }],
+        title: "A Fake Validation Form",
     },
     {
         href: "/web/project7-dashboard/index.html",
+        image: "/web/project7-dashboard/preview.png",
         tags: [{ ...tags.css, name: "CSS Grids and Flexbox" }],
         title: "Dashboard",
     },
     {
+        href: "/web/project8-library/index.html",
+        tags: [{ ...tags.js, name: "JS OOP" }],
+        title: "Library",
+        desc: "A book library to add, remove and change read status of books",
+    },
+    {
         href: "/web/project9-tic-tac-toe/index.html",
+        image: "/web/project9-tic-tac-toe/preview.png",
         tags: [{ ...tags.js, name: "JS Modules" }],
         title: "Tic Tac Toe",
+        desc: "Play Tic Tac Toe game against another player",
     },
     {
         href: "/web/project11-todo-list/index.html",
+        image: "/web/project11-todo-list/preview.png",
         tags: [{ ...tags.js, name: "JS Component, Classes" }],
         title: "Todo List",
+        desc: "A Todo List to add, remove, edit and mark tasks as complete",
     },
     {
         href: "/web/project12-weather-app/index.html",
+        image: "/web/project12-weather-app/preview.png",
         tags: [{ ...tags.js, name: "JS Fetch, Async" }],
         title: "Weather App",
+        desc: "Get the current weather of a city using OpenWeather API",
+    },
+    {
+        href: "/web/project13-recursion/index.html",
+        tags: [tags.dsa, { ...tags.js, name: "Recursion" }],
+        title: "Recursion Console",
+        desc: "Ttest the Fibonacci sequence in recursion and iteration",
+    },
+    {
+        href: "/web/project14-linked-list/index.html",
+        tags: [tags.dsa, { ...tags.js, name: "Linked List" }],
+        title: "Linked List Console",
+    },
+    {
+        href: "/web/project15-hashmap/index.html",
+        tags: [tags.dsa, { ...tags.js, name: "Hashmap" }],
+        title: "Hashmap Console",
+    },
+    {
+        href: "/web/project16-binary-search-trees/index.html",
+        tags: [tags.dsa, { ...tags.js, name: "Binary Search Tree" }],
+        title: "Binary Search Tree Console",
     },
     {
         href: "/web/project18-battleship/index.html",
+        image: "/web/project18-battleship/preview.png",
         tags: [{ name: "TS, Game Logic, DOM Manipulation", color: "white", backgroundColor: "#3178c6" }],
         title: "Battleship Game",
+        desc: "Play Battleship game against the computer",
     },
-].map((p) => ({ ...p, image: p.href.replace("/index.html", "/preview.png") }));
+];
 
 const projects = [
     {
         heading: "CS Projects",
+        id: "csProjects",
         projects: csProjects,
     },
     {
         heading: "AI / ML Projects",
+        id: "mlProjects",
         projects: mlProjects,
     },
     {
         heading: "Web Projects",
+        id: "webProjects",
         projects: webProjects,
     },
 ];
 
-export { projects };
+export { projects, tags };

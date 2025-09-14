@@ -9,10 +9,11 @@ const __commands = {
     },
     help() {
         this.echo(
-            `Available commands: ${__help_cmd_list}\n` +
+            `This is a limited Javascript interpreter. \n` +
+                `Available commands: ${__help_cmd_list}\n` +
                 `<white>SHIFT+ENTER</white> to break lines.\n\n` +
                 `JS functions: \n${__help_fn_list}\n` +
-                "<gray>Example: test, fibsRec(10), fibs(4)</gray>\n"
+                "<gray>Examples: test, fibsRec(10), fibs(4)</gray>\n"
         );
     },
     test() {
@@ -66,11 +67,19 @@ const __term = $("#cli").terminal(
         completion: __command_list.concat(__function_list.map((row) => row[0].slice(0, -3))),
         checkArity: false,
         greetings:
-            `<white>Welcome to this limited Javascript interpreter!</white>\n` +
-            `Run the test with: <cyan>test</cyan>, or try to call <cyan>fibs</cyan> and <cyan>fibsRec</cyan>` +
-            ` functions. Type <white>help</white> for more information.\n\n` +
-            `<gray>Example: test, fibsRec(10), fibs(4)</gray>\n`,
-        prompt: "> ",
+            `<white>Welcome to this limited Javascript interpreter! Please enter commands and run the test with: <cyan>test</cyan></white>, ` +
+            `or try to call <cyan>fibs</cyan> and <cyan>fibsRec</cyan> functions. \n` +
+            `Type <white>help</white> for more information.\n\n` +
+            `<gray>Example: test, fibsRec(10), fibs(4)</gray>`,
+        keymap: {
+            ENTER: function (e, original) {
+                if (e.shiftKey) {
+                    this.insert("\n");
+                } else {
+                    original.call(this, e);
+                }
+            },
+        },
     }
 );
 
@@ -88,4 +97,15 @@ $.terminal.prism_formatters = {
 console.log = function (...args) {
     const message = args.map((arg) => (typeof arg === "object" ? JSON.stringify(arg) : arg)).join(" ");
     __term.echo(message);
+};
+
+// On page load, focus on the terminal input and on pressing enter key, run the test command
+window.onload = function () {
+    __term.focus();
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" && document.activeElement === document.body) {
+            __term.exec("test", { typing: true, delay: 1 });
+            event.preventDefault();
+        }
+    });
 };

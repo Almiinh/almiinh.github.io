@@ -1,45 +1,33 @@
 @import "reset.css";
 @font-face {
-    font-family: "Roboto";
     src: url("/fonts/Roboto/Roboto-VariableFont_wght.ttf") format("truetype"),
         url("/fonts/Roboto/Roboto-Italic-VariableFont_wght.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
+    font-family: "Roboto";
 }
 @font-face {
-    font-family: "Roboto Mono";
     src: url("/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf") format("truetype"),
         url("/fonts/Roboto_Mono/RobotoMono-Italic-VariableFont_wght.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
+    font-family: "Roboto Mono";
 }
 @font-face {
-    font-family: "Playfair Display";
     src: url("/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf") format("truetype"),
         url("/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
+    font-family: "Playfair Display";
 }
 @font-face {
-    font-family: "Lora";
     src: url("/fonts/Lora/Lora-VariableFont_wght.ttf") format("truetype"),
         url("/fonts/Lora/Lora-Italic-VariableFont_wght.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
+    font-family: "Lora";
 }
 @font-face {
+    src: url("/fonts/Rubik/Rubik-VariableFont_wght.ttf") format("truetype"),
+        url("/fonts/Rubik/Rubik-Italic-VariableFont_wght.ttf") format("truetype");
     font-family: "Rubik";
-    src: url("/fonts/rubik-v23-latin-regular.woff2") format("woff2"),
-        url("/fonts/rubik-v23-latin-regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
 }
 @font-face {
+    src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format("woff"),
+        url("/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf") format("woff2");
     font-family: "Inter";
-    src: url("/fonts/inter-v12-latin-regular.woff2") format("woff2"),
-        url("/fonts/inter-v12-latin-regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
 }
 
 :root {
@@ -63,8 +51,8 @@ blockquote {
     padding: 0.5em 1em;
 }
 body *:is(h1, h2, h3, h4, h5, h6) {
-    font-family: var(--font-headings);
     margin: 1rem 0;
+    font-family: var(--font-headings);
 }
 body *:not(h1, h2, h3, h4, h5, h6) {
     font-family: var(--font-sans-serif);
@@ -74,7 +62,9 @@ body *:not(h1, h2, h3, h4, h5, h6) {
 header.global-banner {
     display: grid;
     grid-template-columns: max(15vw, 36px) auto max(15vw, 36px);
-    margin: 2vh 0;
+    margin: 0;
+    box-shadow: 0 2px 8px var(--color-shadow);
+    padding: 2vh 0 0 0;
 
     :is(h1, h2, h3, h4, h5, h6) {
         font-family: var(--font-headings);
@@ -107,7 +97,7 @@ header.global-banner {
         margin: 0 1vw;
         border: 0;
         border-radius: calc(infinity * 1px);
-        background-color: var(--color-bg);
+        background-color: var(--color-bg);;
         padding: 5px;
 
         svg {
@@ -194,7 +184,7 @@ header.global-banner {
         --color-bg-secondary: #333943;
         --color-bg-ternary: #3c4048;
         --color-border: #f2f4f5;
-        --color-shadow: rgba(255, 255, 255, 0.1);
+        --color-shadow: rgba(255, 255, 255, 0.5);
         background-color: var(--color-bg);
         color: var(--color-text);
     }

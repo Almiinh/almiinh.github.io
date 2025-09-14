@@ -18,10 +18,13 @@ import Header from "../components/Header.astro";
             integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
             crossorigin="anonymous"
         />
+        <link rel="preload" href="/index/CV128.red.png" as="image" />
+        <link rel="preload" href="/index/LINKEDIN.svg" as="image" />
+        <link rel="preload" href="/index/GITHUB.svg" as="image" />
+        <link rel="preload" href="/index/GITHUB.white.svg" as="image" />
     </head>
     <body>
         <img id="background" src={background.src} alt="" fetchpriority="high" />
-        <!-- <DarkModeSwitch class="DarkModeSwitch" client:load /> -->
         <Header />
         <main>
             <slot />
@@ -44,8 +47,8 @@ import Header from "../components/Header.astro";
         top: 0;
         left: 0;
         z-index: -1;
+        filter: blur(10000px) contrast(55%);
         width: 100%;
         height: 100%;
-        filter: blur(10000px) contrast(55%);
     }
 </style>

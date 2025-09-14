@@ -1,21 +1,21 @@
 <script>
-    import { onMount } from "svelte";
+    import { onMount } from "svelte"; 
 
     const references = [
         {
-            href: "index/CV FR Minh-Hoang HUYNH.pdf",
-            src: "index/CV128.red.png",
+            href: "/index/CV FR Minh-Hoang HUYNH.pdf",
+            src: "/index/CV128.red.png",
             alt: "PDF",
         },
         {
             href: "https://www.linkedin.com/in/minh-hoang-alexis-huynh-621b52222/",
-            src: "index/LINKEDIN.svg",
+            src: "/index/LINKEDIN.svg",
             alt: "LinkedIn",
         },
         {
             href: "https://github.com/Almiinh",
-            src: "index/GITHUB.svg",
-            srcdark: "index/GITHUB.white.svg",
+            src: "/index/GITHUB.svg",
+            srcdark: "/index/GITHUB.white.svg",
             alt: "GitHub",
         },
     ];
@@ -30,7 +30,7 @@
     let darkMode = $state(false);
     onMount(() => {
         darkMode = checkDarkMode();
-        document.onclick = checkDarkMode;
+        document.addEventListener("click", checkDarkMode);
     });
 </script>
 
@@ -53,7 +53,7 @@
     }
     img:hover {
         translate: 0 -2px;
-        filter: none;
+        filter: contrast(50%) invert(20%);
         transition: all 0.2s;
     }
 </style>

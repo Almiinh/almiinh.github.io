@@ -9,7 +9,8 @@ const __commands = {
     },
     help() {
         this.echo(
-            `Available commands: ${__formatted_list}\n` +
+            `This is a limited Javascript interpreter.\n` +
+                `Available commands: ${__formatted_list}\n` +
                 `<white>SHIFT+ENTER</white> to break lines.\n\n` +
                 `JS <white>LinkedList</white> class method: \n` +
                 `* <gold class=command>LinkedList()</gold>: class representing the full list\n` +
@@ -86,9 +87,9 @@ const __term = $("#cli").terminal(
         completion: __command_list,
         checkArity: false,
         greetings:
-            "<white>Welcome to this limited Javascript interpreter!</white>\n" +
-            "Run the test with: <cyan>test</cyan>, or try to call <gold>LinkedList</gold> methods. Type <white>help</white> to list methods.\n\n" +
-            "Example:\n" +
+            "<white>Welcome to this limited Javascript interpreter!\n Please enter commands to run the test with: <cyan>test</cyan>,</white>" +
+            "or try to call <gold>LinkedList</gold> methods. Type <white>help</white> to list methods.\n\n" +
+            "Examples:\n" +
             "const list = new LinkedList(); \n" +
             "list.append('dog');\n" +
             "list.append('cat');\n" +

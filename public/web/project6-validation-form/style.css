@@ -26,7 +26,7 @@ aside {
     background-size: cover;
     background-repeat: no-repeat;
     min-width: 40vw;
-    height: 100vh;
+    height: auto;
     color: white;
     text-align: center;
 }

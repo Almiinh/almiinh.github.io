@@ -44,25 +44,24 @@
         grid-column: 1;
         justify-content: center;
         align-items: center;
-    }
-
-    .dark-mode-btn-container button {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 0 1vw;
-        border: 0;
-        border-radius: calc(infinity * 1px);
-        background-color: var(--color-bg);
-        padding: 5px;
-
-        svg {
+        
+        button {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 1vw;
+            border: 0;
             border-radius: calc(infinity * 1px);
-        }
-
-        &:hover {
-            background-color: var(--color-bg-secondary);
+            background-color: transparent;
+            padding: 5px;
+            
+            svg {
+                border-radius: calc(infinity * 1px);
+            }
+            &:hover {
+                filter: invert(25%);
+            }
         }
     }
 
