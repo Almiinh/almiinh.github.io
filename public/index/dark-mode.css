@@ -1,0 +1,111 @@
+/* System Mode */
+.auto-mode-icon {
+    width: fit-content;
+    color: var(--color-text);
+    font-size: xx-small;
+}
+
+/* System Light Mode */
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-text: #333;
+        --color-text-secondary: #666;
+        --color-bg: white;
+        --color-bg-secondary: #eee;
+        --color-bg-ternary: #ddd;
+        --color-border: rgba(0, 0, 0, 0.5);
+        --color-shadow: rgba(0, 0, 0, 0.2);
+
+        .light-mode-icon {
+            display: block;
+        }
+        .dark-mode-icon {
+            display: none;
+        }
+    }
+
+    /* prefers-color-scheme: light, theme: dark*/
+    .dark {
+        --color-text: #f2f4f5;
+        --color-text-secondary: #999;
+        --color-text-visited: #ffadff;
+        --color-text-link: #8cb4ff;
+        --color-bg: #282c34;
+        --color-bg-secondary: #333943;
+        --color-bg-ternary: #3c4048;
+        --color-border: #f2f4f5;
+        --color-shadow: rgba(255, 255, 255, 0.3);
+
+        background-color: var(--color-bg);
+        color: var(--color-text);
+
+        a {
+            color: var(--color-text-link);
+        }
+        a:visited {
+            color: var(--color-text-visited);
+        }
+        .light-mode-icon {
+            display: none;
+        }
+        .dark-mode-icon {
+            display: block;
+            color: var(--color-text);
+        }
+    }
+}
+
+/*  System Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-text: #f2f4f5;
+        --color-text-secondary: #999;
+        --color-text-visited: #ffadff;
+        --color-text-link: #8cb4ff;
+        --color-bg: #282c34;
+        --color-bg-secondary: #333943;
+        --color-bg-ternary: #3c4048;
+        --color-border: #f2f4f5;
+        --color-shadow: rgba(255, 255, 255, 0.5);
+        background-color: var(--color-bg);
+        color: var(--color-text);
+    }
+
+    a {
+        color: var(--color-text-link);
+    }
+    a:visited {
+        color: var(--color-text-visited);
+    }
+    .light-mode-icon {
+        display: none;
+    }
+    .dark-mode-icon {
+        display: block;
+        color: var(--color-text);
+    }
+
+    /* prefers-color-scheme: dark, theme: light*/
+    .light {
+        --color-text: #333;
+        --color-text-secondary: #666;
+        --color-bg: white;
+        --color-bg-secondary: #eee;
+        --color-bg-ternary: #ddd;
+        --color-border: rgba(0, 0, 0, 0.5);
+        --color-shadow: rgba(0, 0, 0, 0.2);
+
+        a {
+            color: revert;
+        }
+        a:visited {
+            color: revert;
+        }
+        .light-mode-icon {
+            display: block;
+        }
+        .dark-mode-icon {
+            display: none;
+        }
+    }
+}

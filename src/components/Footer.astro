@@ -1,0 +1,18 @@
+---
+const today = new Date();
+import References from "./References.svelte";
+---
+
+<footer>
+    &copy; {today.getFullYear()} Minh-Hoang HUYNH. All rights reserved.
+	<References client:visible/>
+    <div class="social-links">
+    </div>
+</footer>
+<style>
+    footer {
+        padding: 2em 1em 6em 1em;
+        color: rgb(var(--gray));
+        text-align: center;
+    }
+</style>

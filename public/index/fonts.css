@@ -1,0 +1,30 @@
+@font-face {
+    src: url("/fonts/Roboto/Roboto-VariableFont_wght.ttf") format("truetype"),
+        url("/fonts/Roboto/Roboto-Italic-VariableFont_wght.ttf") format("truetype");
+    font-family: "Roboto";
+}
+@font-face {
+    src: url("/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf") format("truetype"),
+        url("/fonts/Roboto_Mono/RobotoMono-Italic-VariableFont_wght.ttf") format("truetype");
+    font-family: "Roboto Mono";
+}
+@font-face {
+    src: url("/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf") format("truetype"),
+        url("/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype");
+    font-family: "Playfair Display";
+}
+@font-face {
+    src: url("/fonts/Lora/Lora-VariableFont_wght.ttf") format("truetype"),
+        url("/fonts/Lora/Lora-Italic-VariableFont_wght.ttf") format("truetype");
+    font-family: "Lora";
+}
+@font-face {
+    src: url("/fonts/Rubik/Rubik-VariableFont_wght.ttf") format("truetype"),
+        url("/fonts/Rubik/Rubik-Italic-VariableFont_wght.ttf") format("truetype");
+    font-family: "Rubik";
+}
+@font-face {
+    src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format("woff"),
+        url("/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf") format("woff2");
+    font-family: "Inter";
+}

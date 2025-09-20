@@ -1,4 +1,13 @@
-import ts from "typescript";
+import previewRedDetection from "../assets/index/preview-red-detection.png";
+import previewImageClassifier from "../assets/index/preview-image-classifier.png";
+import previewRag from "../assets/index/preview-rag.png";
+import previewMorphomath from "../assets/index/preview-morphomath.png";
+import previewConway from "../assets/index/preview-conway.webp";
+import previewCarRental from "../assets/index/preview-car-rental.png";
+import previewTheaterTracker from "../assets/index/preview-theater-tracker.png";
+import previewCloudComputing from "../assets/index/preview-cloud-computing.png";
+
+
 
 const tags = {
     dl: { name: "Deep Learning", color: "white", backgroundColor: "mediumslateblue" },
@@ -26,7 +35,7 @@ const csProjects = [
     {
         href: "https://github.com/Almiinh/cloud-computing/",
         tags: [tags.cloud, tags.java],
-        image: "/index/preview-cloud-computing.png",
+        image: previewCloudComputing.src,
         title: "File Processing through AWS S3 & SQS",
         desc: "An AWS-based solution to consolidate daily sales data from globally distributed stores of a \
             large retailer w/ Client-Worker-Consolidator architecture.",
@@ -42,13 +51,13 @@ const csProjects = [
     {
         href: "https://github.com/Almiinh/red-object-detector",
         tags: [tags.cv, tags.python],
-        image: "/index/preview-red-detection.png",
+        image: previewRedDetection.src,
         title: "Detection of Red Object Motion",
         desc: "Using HSV colour space to detect red ranges on webcam and position difference across frames to detect motion on webcam.",
     },
     {
         href: "https://github.com/Almiinh/imageprocessing",
-        image: "/index/preview-morphomath.png",
+        image: previewMorphomath.src,
         tags: [tags.ip, tags.python],
         title: "Compilation of notebooks presenting image processing techniques",
         desc: "Image Segmentation, Enhancement, Histogram Equalization, Fourier Transform, Restoration, \
@@ -56,14 +65,14 @@ const csProjects = [
     },
     {
         href: "https://github.com/Almiinh/game-of-life",
-        image: "/index/preview-conway.webp",
+        image: previewConway.src,
         tags: [tags.c],
         title: "The Conway's Game of Life in C",
         desc: "The well known game of life written in C in the terminal",
     },
     {
         href: "https://github.com/Almiinh/car-rental-webapp",
-        image: "/index/preview-car-rental.png",
+        image: previewCarRental.src,
         tags: [tags.web, tags.php],
         title: "A Car Rental Web App in PHP/Symfony",
         desc: "A Web App as if you were to rent a car.",
@@ -76,7 +85,7 @@ const csProjects = [
     // },
     {
         href: "https://mylaur5.github.io/theater-tracker",
-        image: "/index/preview-theater-tracker.png",
+        image: previewTheaterTracker.src,
         tags: [tags.web, tags.js, tags.svelte],
         title: "Imaginarium Theater Tracker",
         desc: "A Web App to check Genshin Impact Imaginarium Theater game season and compare your characters data",
@@ -88,14 +97,14 @@ const mlProjects = [
         href: "https://github.com/Almiinh/ml-exercises/blob/main/dl/dl_ImageClassification.ipynb",
         tags: [tags.dl],
         title: "Image classifier w/ CNN: Cat and dogs",
-        image: "/index/preview-image-classifier.png",
+        image:  previewImageClassifier.src,
         desc: "A CNN model training to classify cat and dog images. Classification of their breeds w/ Tensorflow Keras",
     },
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/nlp/nlp_VectorRAG_vs_GraphRAG.ipynb",
         tags: [tags.nlp, tags.llm],
         title: "Summary of Scientific Articles: Comparison of Vector RAG vs Graph Pipelines with LLMs",
-        image: "/index/preview-rag.png",
+        image: previewRag.src,
         desc: "A comparison of Vector RAG and Graph RAG pipeline to summary scientific article w/ Langchain",
     },
     {
@@ -188,27 +197,27 @@ const webProjects = [
         title: "Weather App",
         desc: "Get the current weather of a city using OpenWeather API",
     },
-    {
-        href: "/web/project13-recursion/index.html",
-        tags: [tags.dsa, { ...tags.js, name: "Recursion" }],
-        title: "Recursion Console",
-        desc: "Ttest the Fibonacci sequence in recursion and iteration",
-    },
-    {
-        href: "/web/project14-linked-list/index.html",
-        tags: [tags.dsa, { ...tags.js, name: "Linked List" }],
-        title: "Linked List Console",
-    },
-    {
-        href: "/web/project15-hashmap/index.html",
-        tags: [tags.dsa, { ...tags.js, name: "Hashmap" }],
-        title: "Hashmap Console",
-    },
-    {
-        href: "/web/project16-binary-search-trees/index.html",
-        tags: [tags.dsa, { ...tags.js, name: "Binary Search Tree" }],
-        title: "Binary Search Tree Console",
-    },
+    // {
+    //     href: "/web/project13-recursion/index.html",
+    //     tags: [tags.dsa, { ...tags.js, name: "Recursion" }],
+    //     title: "Recursion Console",
+    //     desc: "Test the Fibonacci sequence in recursion and iteration",
+    // },
+    // {
+    //     href: "/web/project14-linked-list/index.html",
+    //     tags: [tags.dsa, { ...tags.js, name: "Linked List" }],
+    //     title: "Linked List Console",
+    // },
+    // {
+    //     href: "/web/project15-hashmap/index.html",
+    //     tags: [tags.dsa, { ...tags.js, name: "Hashmap" }],
+    //     title: "Hashmap Console",
+    // },
+    // {
+    //     href: "/web/project16-binary-search-trees/index.html",
+    //     tags: [tags.dsa, { ...tags.js, name: "Binary Search Tree" }],
+    //     title: "Binary Search Tree Console",
+    // },
     {
         href: "/web/project18-battleship/index.html",
         image: "/web/project18-battleship/preview.png",

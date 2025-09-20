@@ -1,21 +1,25 @@
 <script>
     import { onMount } from "svelte"; 
+    import cvIcon from "../assets/index/CV128.red.png";
+    import iconLinkedIn from "../assets/index/LINKEDIN.svg";
+    import iconGithub from "../assets/index/GITHUB.svg";
+    import iconGithubWhite from "../assets/index/GITHUB.white.svg";
 
     const references = [
         {
             href: "/index/CV FR Minh-Hoang HUYNH.pdf",
-            src: "/index/CV128.red.png",
+            src: cvIcon.src,
             alt: "PDF",
         },
         {
             href: "https://www.linkedin.com/in/minh-hoang-alexis-huynh-621b52222/",
-            src: "/index/LINKEDIN.svg",
+            src: iconLinkedIn.src,
             alt: "LinkedIn",
         },
         {
             href: "https://github.com/Almiinh",
-            src: "/index/GITHUB.svg",
-            srcdark: "/index/GITHUB.white.svg",
+            src: iconGithub.src,
+            srcdark: iconGithubWhite.src,
             alt: "GitHub",
         },
     ];
