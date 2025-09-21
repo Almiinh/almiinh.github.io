@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte"; 
-    import cvIcon from "../assets/index/CV128.red.png";
+    import iconCV from "../assets/index/CV128.red.png";
     import iconLinkedIn from "../assets/index/LINKEDIN.svg";
     import iconGithub from "../assets/index/GITHUB.svg";
     import iconGithubWhite from "../assets/index/GITHUB.white.svg";
@@ -8,7 +8,7 @@
     const references = [
         {
             href: "/index/CV FR Minh-Hoang HUYNH.pdf",
-            src: cvIcon.src,
+            src: iconCV.src,
             alt: "PDF",
         },
         {
@@ -42,15 +42,20 @@
     {#each references as item}
         <a href={item.href}>
             {#if darkMode && item.srcdark}
-                <img src={item.srcdark} alt={item.alt} style="height: 32px; width: 32px" />
+                <img src={item.srcdark} alt={item.alt} style="height: 28px; width: 28px" />
             {:else}
-                <img src={item.src} alt={item.alt} style="height: 32px; width: 32px" />
+                <img src={item.src} alt={item.alt} style="height: 28px; width: 28px" />
             {/if}
         </a>
     {/each}
 </section>
 
 <style>
+    .references {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .references a {
         display: inline-block;
         margin: 0 0.3rem;

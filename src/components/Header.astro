@@ -14,8 +14,8 @@ let { class: className } = Astro.props;
             <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/news">News</HeaderLink>
             <HeaderLink href="/blog">Blog</HeaderLink>
+            <References client:load />
         </div>
-        <References client:load />
     </nav>
 </header>
 
@@ -50,6 +50,12 @@ let { class: className } = Astro.props;
     nav a.active {
         border-bottom-color: var(--color-text);
         text-decoration: none;
+    }
+    .internal-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
     }
     .internal-links a {
         border-bottom: 5px solid transparent;

@@ -10,37 +10,12 @@
 }
 
 /* Global Font */
-/* code .line * {
-    font-size: smaller;
-    font-family: var(--font-monospace);
-} */
-code {
-    border-radius: 4px;
-    background-color: var(--color-bg-secondary);
-    padding: 0.2em 0.4em;
-    color: var(--color-text);
-    font-size: smaller;
-    font-family: var(--font-monospace);
+body {
+    font-family: var(--font-sans-serif);
 }
-/* pre {
-    padding: 0.5vh 1vw;
-}
-pre code {
-    background-color: inherit;
-    overflow-x: auto;
-    
-} */
-blockquote {
-    margin-left: 0;
-    border-left: 2px solid var(--color-text);
-    padding: 0.5em 1em;
-}
-*:is(h1, h2, h3, h4, h5, h6) {
+body *:is(h1, h2, h3, h4, h5, h6) {
     margin: 1rem 0;
     font-family: var(--font-headings);
-}
-*:not(h1, h2, h3, h4, h5, h6, code) {
-    font-family: var(--font-sans-serif);
 }
 
 

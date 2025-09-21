@@ -2,6 +2,11 @@
 import background from "../assets/background.svg";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+
+import iconCV from "../assets/index/CV128.red.png";
+import iconLinkedIn from "../assets/index/LINKEDIN.svg";
+import iconGithub from "../assets/index/GITHUB.svg";
+import iconGithubWhite from "../assets/index/GITHUB.white.svg";
 ---
 
 <!doctype html>
@@ -19,10 +24,10 @@ import Footer from "../components/Footer.astro";
             integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
             crossorigin="anonymous"
         />
-        <link rel="preload" href="/index/CV128.red.png" as="image" />
-        <link rel="preload" href="/index/LINKEDIN.svg" as="image" />
-        <link rel="preload" href="/index/GITHUB.svg" as="image" />
-        <link rel="preload" href="/index/GITHUB.white.svg" as="image" />
+        <link rel="preload" href={iconCV.src} as="image" />
+        <link rel="preload" href={iconGithub.src} as="image" />
+        <link rel="preload" href={iconGithubWhite.src} as="image" />
+        <link rel="preload" href={iconLinkedIn.src} as="image" />
     </head>
     <body>
         <img id="background" src={background.src} alt="" fetchpriority="high" />
