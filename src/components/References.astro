@@ -1,0 +1,71 @@
+---
+import iconCV from "../assets/index/CV128.red.png";
+import iconLinkedIn from '../assets/index/LINKEDIN.svg';
+import iconGithub from '../assets/index/GITHUB.svg';
+import iconGithubWhite from '../assets/index/GITHUB.white.svg';
+
+const references = [
+    {
+        href: "/index/CV FR Minh-Hoang HUYNH.pdf",
+        img: iconCV.src,
+        alt: "PDF",
+    },
+    {
+        href: "https://www.linkedin.com/in/minh-hoang-alexis-huynh-621b52222/",
+        img: iconLinkedIn.src,
+        alt: "LinkedIn",
+    },
+    {
+        href: "https://github.com/Almiinh",
+        img: iconGithub.src,
+        alt: "GitHub",
+    },
+];
+---
+
+<section class="references">
+    {
+        references.map((item) => (
+            <a href={item.href}>
+                {item.img && <img src={item.img} alt={item.alt} height="28" width="28" decoding="async" loading="lazy" />}
+            </a>
+        ))
+    }
+</section>
+
+<style
+    define:vars={{ iconGithub: `url("${iconGithub.src}")`, iconGithubWhite: `url("${iconGithubWhite.src}")` }}
+>
+    .references {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .references a {
+        display: inline-block;
+        margin: 0 0.3rem;
+    }
+    img:hover {
+        translate: 0 -2px;
+        filter: contrast(50%) invert(20%);
+        transition: all 0.2s;
+    }
+    @media (prefers-color-scheme: light) {
+        :global(html.dark) img[alt="GitHub" i] {
+            content: var(--iconGithubWhite);
+        }
+
+        img[alt="GitHub" i] {
+            content: var(--iconGithub);
+        }
+    }
+    @media (prefers-color-scheme: dark) {
+        img[alt="GitHub" i] {
+            content: var(--iconGithubWhite);
+        }
+
+        :global(html.light) img[alt="GitHub" i] {
+            content: var(--iconGithub);
+        }
+    }
+</style>

@@ -1,6 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import References from "./References.svelte";
+import References from "./References.astro";
 import DarkModeSwitch from "./DarkModeSwitch.svelte";
 
 let { class: className } = Astro.props;
@@ -14,7 +14,7 @@ let { class: className } = Astro.props;
             <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/news">News</HeaderLink>
             <HeaderLink href="/blog">Blog</HeaderLink>
-            <References client:load />
+            <References />
         </div>
     </nav>
 </header>
@@ -38,13 +38,14 @@ let { class: className } = Astro.props;
         justify-content: space-between;
         align-items: center;
     }
-    nav a, h1 {
+    nav a,
+    h1 {
         margin: 0;
         color: var(--color-text);
         text-decoration: none;
-        
+
         &:hover {
-            filter: invert(25%); 
+            filter: invert(25%);
         }
     }
     nav a.active {
@@ -78,7 +79,7 @@ let { class: className } = Astro.props;
         }
         .internal-links {
             grid-row: 1;
-            grid-column: 1 ;
+            grid-column: 1;
         }
         :global(.references) {
             grid-row: 1;
