@@ -1,6 +1,7 @@
 @import "reset.css";
-@import "dark-mode.css";
+@import "colors.css";
 @import "fonts.css";
+@import "banner.css";
 
 :root {
     --font-monospace: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
@@ -16,63 +17,4 @@ body {
 body *:is(h1, h2, h3, h4, h5, h6) {
     margin: 1rem 0;
     font-family: var(--font-headings);
-}
-
-
-/* Banner */
-header.global-banner {
-    display: grid;
-    grid-template-columns: max(15vw, 36px) auto max(15vw, 36px);
-    margin: 0;
-    box-shadow: 0 2px 8px var(--color-shadow);
-    padding: 2vh 0 0 0;
-
-    :is(h1, h2, h3, h4, h5, h6) {
-        font-family: var(--font-headings);
-    }
-
-    a {
-        color: var(--color-text-link);
-        text-decoration: underline;
-    }
-
-    a:visited {
-        color: var(--color-text-visited);
-    }
-
-    .dark-mode-btn-container {
-        display: flex;
-        grid-column: 1;
-        justify-content: center;
-        align-items: center;
-    }
-
-    *:not(.dark-mode-btn-container) {
-        grid-column: 2;
-    }
-
-    .dark-mode-btn-container button {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0 1vw;
-        border: 0;
-        border-radius: calc(infinity * 1px);
-        background-color: var(--color-bg);;
-        padding: 5px;
-
-        svg {
-            border-radius: calc(infinity * 1px);
-        }
-
-        &:hover {
-            background-color: var(--color-bg-secondary);
-        }
-    }
-}
-
-@media (width < 600px) {
-    header.global-banner {
-        font-size: smaller;
-    }
 }
