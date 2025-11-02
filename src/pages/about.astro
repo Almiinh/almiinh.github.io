@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <h1>About Me</h1>
+    <p>Hello! I'm Minh-Hoang HUYNH</p>
+    <object
+        class="pdf"
+        data="/index/CV FR.pdf"
+
+    >
+    </object>
+</Layout>
+
+<style>
+    .pdf {
+        border: 1px solid var(--color-border);
+        box-shadow: 0 0 10px var(--color-shadow);
+        margin: 2rem 0;
+        width: 100%;
+        min-height: 70vh;
+        height: 100%;
+    }
