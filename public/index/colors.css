@@ -5,7 +5,6 @@
     font-size: xx-small;
 }
 
-/* System Light Mode */
 @media (prefers-color-scheme: light) {
     :root {
         --color-text: #333;
@@ -55,7 +54,6 @@
     }
 }
 
-/*  System Dark Mode */
 @media (prefers-color-scheme: dark) {
     :root {
         --color-text: #f2f4f5;

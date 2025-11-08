@@ -2,47 +2,41 @@
 import HeaderLink from "./HeaderLink.astro";
 import References from "./References.astro";
 import DarkModeSwitch from "./DarkModeSwitch.svelte";
-
-let { class: className } = Astro.props;
+import background from "../assets/background.svg";
 ---
 
-<header class={className}>
+<nav>
+    <a href="/"><h1>Minh-Hoang's portfolio</h1></a>
+    <div class="links">
+        <HeaderLink href="/">Home</HeaderLink>
+        <HeaderLink href="/about">About</HeaderLink>
+        <HeaderLink href="/blog">Blog</HeaderLink>
+        <References />
+    </div>
     <DarkModeSwitch class="DarkModeSwitch" client:load />
-    <nav>
-        <a href="/"><h1>Minh-Hoang's portfolio</h1></a>
-        <div class="internal-links">
-            <HeaderLink href="/">Home</HeaderLink>
-            <HeaderLink href="/about">About</HeaderLink>
-            <HeaderLink href="/blog">Blog</HeaderLink>
-            <References />
-        </div>
-    </nav>
-</header>
+</nav>
 
-<style>
-    header {
+<style define:vars={{ backgroundImg: `url(${background.src})` }}>
+    nav {
         display: grid;
-        grid-template-columns: max(15vw, 36px) auto max(15vw, 36px);
+        position: sticky;
+        top: 0;
+        grid-template-columns: max(15vw, 36px) 1fr 1fr max(15vw, 36px);
+        z-index: 999;
         box-shadow: 0 2px 4px var(--color-shadow);
+        background: var(--color-bg) linear-gradient(90deg, rgba(131, 58, 180, 0.05) 0%, rgba(253, 29, 29, 0.05) 50%, rgba(252, 176, 69, 0.05) 100%);
         padding: 0;
     }
-    :global(.DarkModeSwitch) {
-        grid-row: 1;
-        grid-column: 1;
-    }
-    h1 {
-        margin-top: 0;
-    }
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    nav a,
-    h1 {
+    nav a {
+        grid-column: 2;
         margin: 0;
         color: var(--color-text);
         text-decoration: none;
+
+        h1 {
+            margin: 0.5rem 0;
+            font-family: var(--font-title);
+        }
 
         &:hover {
             filter: invert(25%);
@@ -52,44 +46,41 @@ let { class: className } = Astro.props;
         border-bottom-color: var(--color-text);
         text-decoration: none;
     }
-    .internal-links {
+    .links {
         display: flex;
-        justify-content: center;
+        justify-content: end;
         align-items: center;
         gap: 1em;
     }
-    .internal-links a {
+    .links a {
         border-bottom: 5px solid transparent;
         padding: 1.1em 0.5em;
     }
     @media (max-width: 600px) {
-        header {
-            grid-template-rows: auto auto;
-            grid-template-columns: max(15vw, 36px) auto;
-        }
         :global(.DarkModeSwitch) {
-            grid-row: 1;
-            grid-column: 1;
+            grid-row: 2;
+            grid-column: 2;
         }
         nav {
             display: grid;
+            grid-template-rows: auto auto;
             grid-template-columns: auto auto;
-            grid-row: 1;
-            grid-column: 2;
+            grid-row: 2;
+            grid-column: 1;
         }
-        .internal-links {
-            grid-row: 1;
+        .links {
+            grid-row: 2;
             grid-column: 1;
         }
         :global(.references) {
-            grid-row: 1;
+            grid-row: 2;
             grid-column: 2;
         }
         nav a {
-            grid-row: 2;
+            grid-row: 1;
             grid-column: 1 / span 2;
             justify-self: center;
-            margin: 0.2em 0;
+            margin: 0;
             font-size: 0.9rem;
         }
     }

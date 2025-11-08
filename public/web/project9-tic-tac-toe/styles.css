@@ -30,7 +30,7 @@
 }
 
 .cell:hover {
-    background: #ddd;
+    background: var(--color-bg-ternary);
 }
 
 .hidden {

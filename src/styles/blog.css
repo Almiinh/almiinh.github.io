@@ -1,0 +1,10 @@
+.blog {
+    margin: auto;
+    padding-top: 5vh;
+}
+
+@media (min-width: 600px) {
+    .blog {
+        max-width: calc(100% - 2rem, 760px);
+    }
+}

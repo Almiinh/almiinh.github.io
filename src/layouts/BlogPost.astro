@@ -3,18 +3,22 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import Layout from "./Layout.astro";
+import "../styles/markdown.css";
+import "../styles/blog.css";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, heroSize } = Astro.props;
 ---
 
-<Layout>
-    <div class="hero-image">
-        {heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-    </div>
-    <div class="prose">
+<Layout sideMargin="25vw">
+    <article class="blog">
         <div class="title">
+            <div class="hero-image small">
+                {heroImage && heroSize === "small" && <Image src={heroImage} alt="" />}
+            </div>
+            <h1>{title}</h1>
+            <p>{description}</p>
             <div class="date">
                 <FormattedDate date={pubDate} />
                 {
@@ -25,11 +29,13 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
                     )
                 }
             </div>
-            <h1>{title}</h1>
             <hr />
         </div>
+        <div class="hero-image">
+            {heroImage && heroSize === "large" && <Image src={heroImage} alt="" />}
+        </div>
         <slot />
-    </div>
+    </article>
 </Layout>
 
 <style>
@@ -38,30 +44,31 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         width: calc(100% - 2em);
         max-width: 100%;
     }
-    .hero-image {
-        width: 100%;
-    }
     .hero-image img {
         display: block;
         margin: 0 auto;
         box-shadow: var(--box-shadow);
         border-radius: 12px;
+        height: auto;
     }
-    .prose {
-        margin: auto;
-        padding: 1em;
-        width: 720px;
-        max-width: calc(100% - 2em);
-        color: rgb(var(--gray-dark));
+    .hero-image.small img {
+        margin: 0.5rem 1rem 0.5rem 0;
+        border-radius: 12px;
+        border-radius: 8px;
+        width: auto;
+        max-width: 10rem;
+        height: auto;
+        max-height: 6rem;
+        object-fit: cover;
     }
     .title {
         margin-bottom: 1em;
-        padding: 1em 0;
-        line-height: 1;
-        text-align: center;
     }
     .title h1 {
-        margin: 0 0 0.5em 0;
+        font: bold var(--size-title) var(--font-title);
+    }
+    .title p {
+        color: var(--color-text-secondary);
     }
     .date {
         margin-bottom: 0.5em;

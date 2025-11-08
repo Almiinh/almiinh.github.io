@@ -7,6 +7,9 @@ import iconCV from "../assets/index/CV128.red.png";
 import iconLinkedIn from "../assets/index/LINKEDIN.svg";
 import iconGithub from "../assets/index/GITHUB.svg";
 import iconGithubWhite from "../assets/index/GITHUB.white.svg";
+
+const {sideMargin = "15vw"} = Astro.props;
+
 ---
 
 <!doctype html>
@@ -39,14 +42,14 @@ import iconGithubWhite from "../assets/index/GITHUB.white.svg";
     </body>
 </html>
 
-<style>
+<style define:vars={{sideMargin}}>
     body {
         margin: 0;
         width: 100%;
         height: 100%;
     }
     main {
-        margin: 5vh max(15vw, 36px);
+        margin: 5vh max(var(--sideMargin), 36px);
         text-wrap: pretty;
     }
     #background {

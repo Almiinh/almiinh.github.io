@@ -1,3 +1,4 @@
+const $ = document.querySelector.bind(document);
 const template = `
 <button class="dark-mode-btn" title="Switch between dark and light mode"
     onclick="switchDarkMode()">
@@ -13,32 +14,28 @@ const template = `
     </svg>
     <span class="auto-mode-icon" hidden>AUTO</span>
 </button>`;
-const banner = document.querySelector(".global-banner");
-const h1 = document.querySelector(".global-banner h1");
 const darkModeBtn = document.createElement("div");
 
 const previousOnload = window.onload;
 
-window.onload = () => {
+function setupDarkModeButton() {
     if (previousOnload) previousOnload();
     // Inserts a div.dark-mode-btn-container between `header.global-banner` and `header.global-banner h1`
     console.log("Script loaded: global.js");
     darkModeBtn.className = "dark-mode-btn-container";
     darkModeBtn.innerHTML = template;
 
-    banner.insertBefore(darkModeBtn, h1);
+    $(".global-banner").insertBefore(darkModeBtn, $(".global-banner h1"));
     document.documentElement.classList.toggle(
         "dark",
         localStorage.theme === "dark" ||
             (!localStorage.theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
     );
-    document.querySelector(".auto-mode-icon").classList.toggle("visible", !localStorage.theme);
-};
-
-console.log("Script loaded: ", window.onload);
+    $(".auto-mode-icon").classList.toggle("visible", !localStorage.theme);
+}
 
 function switchDarkMode() {
-    const autoIcon = document.querySelector(".auto-mode-icon");
+    const autoIcon = $(".auto-mode-icon");
     if (!localStorage.theme) {
         localStorage.theme = "light";
         autoIcon.hidden = true;
@@ -50,3 +47,6 @@ function switchDarkMode() {
     }
     document.documentElement.className = localStorage.theme ?? "";
 }
+
+
+window.addEventListener("DOMContentLoaded", setupDarkModeButton);

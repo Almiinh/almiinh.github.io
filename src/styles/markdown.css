@@ -1,0 +1,14 @@
+aside {
+    display: flex;
+    margin: 24px 0;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: var(--color-bg-ternary);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-inline-start: 12px;
+    padding-inline-end: 0.1rem;
+}
+aside p {
+    margin: 0 1rem;
+}
