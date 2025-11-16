@@ -2,29 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import { projects } from "./projectsData.js";
 import ProjectCard from "../components/ProjectCard.astro";
-import Tags from "../components/Tags.astro";
 ---
 
 <Layout>
-    <h1>Welcome!</h1>
-    <p>
-        Welcome to my personal portfolio website! Here is a showcase selection of my projects, mostly from
-        school, ranging from web applications to machine learning.
-    </p>
-    <br />
-    <p>Feel free to explore!</p>
-    <h2>About Me</h2>
-    <ul class="about-me">
-        <li>
-            <Tags tags={[{ name: "Jul 2025 — Currently" }]} />
-            System V&V Engineer @ Alstom, Saint-Ouen, FR
-        </li>
-        <li>
-            <Tags tags={[{ name: "Aug 2024 — Jan 2025" }]} />LLM Agent Developer Intern @ Thales Research &
-            Technologies, Palaiseau, FR
-        </li>
-        <li><Tags tags={[{ name: "Sept 2021 — Jan 2025" }]} />CS Major @ Mines Saint-Étienne, FR</li>
-    </ul>
+    <header>
+        <h1>Minh-Hoang HUYNH</h1>
+    </header>
     {
         projects.map(({ heading, id, projects }) => (
             <section id={id}>
@@ -41,6 +24,17 @@ import Tags from "../components/Tags.astro";
 </Layout>
 
 <style>
+    h1 {
+        margin: 20rem 0 5rem 0;
+        font-size: 3rem;
+        font-family: var(--font-title);
+
+        @media screen and (min-width: 700px) {
+            margin: 25rem 0 5rem 0;
+            font-size: 4rem;
+        }
+    }
+
     .links {
         column-gap: 1rem;
         column-count: 1;
@@ -48,6 +42,10 @@ import Tags from "../components/Tags.astro";
 
         @media screen and (min-width: 700px) {
             column-count: 2;
+            h1 {
+                margin: 30rem 0 5rem 0;
+                font-size: 4rem;
+            }
         }
         @media screen and (min-width: 1100px) {
             column-count: 3;
@@ -60,18 +58,6 @@ import Tags from "../components/Tags.astro";
         }
         @media screen and (min-width: 2300px) {
             column-count: 6;
-        }
-    }
-    ul.about-me {
-        margin-left: 0;
-        padding-left: 0;
-
-        li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-style: italic;
-            text-indent: 0;
         }
     }
 </style>

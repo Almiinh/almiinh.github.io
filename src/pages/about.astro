@@ -1,24 +1,50 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Tags from "../components/Tags.astro";
 ---
 
 <Layout>
-    <h1>About Me</h1>
-    <p>Hello! I'm Minh-Hoang HUYNH</p>
-    <object
-        class="pdf"
-        data="/index/CV FR.pdf"
-
-    >
-    </object>
+    <h1>Welcome!</h1>
+    <p>
+        Welcome to my personal portfolio website! Here is a showcase selection of my projects, mostly from
+        school, ranging from web applications to machine learning.
+    </p>
+    <br />
+    <p>Feel free to explore!</p>
+    <h2>About Me</h2>
+    <ul class="about-me">
+        <li>
+            <Tags tags={[{ name: "Jul 2025 — Currently" }]} />
+            System V&V Engineer @ Alstom, Saint-Ouen, FR
+        </li>
+        <li>
+            <Tags tags={[{ name: "Aug 2024 — Jan 2025" }]} />LLM Agent Developer Intern @ Thales Research &
+            Technologies, Palaiseau, FR
+        </li>
+        <li><Tags tags={[{ name: "Sept 2021 — Jan 2025" }]} />CS Major @ Mines Saint-Étienne, FR</li>
+    </ul>
+    <object class="pdf" data="/index/CV FR.pdf"> </object>
 </Layout>
 
 <style>
-    .pdf {
-        border: 1px solid var(--color-border);
-        box-shadow: 0 0 10px var(--color-shadow);
-        margin: 2rem 0;
-        width: 100%;
-        min-height: 70vh;
-        height: 100%;
+    ul.about-me {
+        margin-left: 0;
+        padding-left: 0;
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-style: italic;
+            text-indent: 0;
+        }
     }
+    .pdf {
+        margin: 2rem 0;
+        box-shadow: 0 0 10px var(--color-shadow);
+        border: 1px solid var(--color-border);
+        width: 100%;
+        height: 100%;
+        min-height: 70vh;
+    }
+</style>

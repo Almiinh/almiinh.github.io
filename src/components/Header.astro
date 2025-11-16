@@ -1,8 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import References from "./References.astro";
 import DarkModeSwitch from "./DarkModeSwitch.svelte";
-import background from "../assets/background.svg";
 ---
 
 <nav>
@@ -11,12 +9,11 @@ import background from "../assets/background.svg";
         <HeaderLink href="/">Home</HeaderLink>
         <HeaderLink href="/about">About</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
-        <References />
     </div>
     <DarkModeSwitch class="DarkModeSwitch" client:load />
 </nav>
 
-<style define:vars={{ backgroundImg: `url(${background.src})` }}>
+<style>
     nav {
         display: grid;
         position: sticky;
@@ -24,7 +21,7 @@ import background from "../assets/background.svg";
         grid-template-columns: max(15vw, 36px) 1fr 1fr max(15vw, 36px);
         z-index: 999;
         box-shadow: 0 2px 4px var(--color-shadow);
-        background: var(--color-bg) linear-gradient(90deg, rgba(131, 58, 180, 0.05) 0%, rgba(253, 29, 29, 0.05) 50%, rgba(252, 176, 69, 0.05) 100%);
+        background: var(--background-gradient);
         padding: 0;
     }
     nav a {

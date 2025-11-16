@@ -1,8 +1,8 @@
 ---
 import iconCV from "../assets/index/CV128.red.png";
-import iconLinkedIn from '../assets/index/LINKEDIN.svg';
-import iconGithub from '../assets/index/GITHUB.svg';
-import iconGithubWhite from '../assets/index/GITHUB.white.svg';
+import iconLinkedIn from "../assets/index/LINKEDIN.svg";
+import iconGithub from "../assets/index/GITHUB.svg";
+import iconGithubWhite from "../assets/index/GITHUB.white.svg";
 
 const references = [
     {
@@ -27,7 +27,16 @@ const references = [
     {
         references.map((item) => (
             <a href={item.href}>
-                {item.img && <img src={item.img} alt={item.alt} height="28" width="28" decoding="async" loading="lazy" />}
+                {item.img && (
+                    <img
+                        src={item.img}
+                        alt={item.alt}
+                        height="28"
+                        width="28"
+                        decoding="async"
+                        loading="lazy"
+                    />
+                )}
             </a>
         ))
     }
@@ -45,9 +54,12 @@ const references = [
         display: inline-block;
         margin: 0 0.3rem;
     }
+    img {
+        filter: grayscale(1) contrast(50%);
+    }
     img:hover {
         translate: 0 -2px;
-        filter: contrast(50%) invert(20%);
+        filter: contrast(100%);
         transition: all 0.2s;
     }
     @media (prefers-color-scheme: light) {
