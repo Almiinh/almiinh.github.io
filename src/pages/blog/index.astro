@@ -7,9 +7,12 @@ import Layout from "../../layouts/Layout.astro";
 const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+const narrowMargin = "5vw";
+const wideMargin = "25vw";
 ---
 
-<Layout sideMargin="25vw">
+<Layout sideMargin="">
     <ul>
         {
             posts.map((post) => (
@@ -92,13 +95,24 @@ const posts = (await getCollection("blog")).sort(
         }
         ul li {
             width: 100%;
-            text-align: center;
+            /* text-align: center; */
         }
         ul li:first-child {
             margin-bottom: 0;
         }
         ul li:first-child .title {
             font-size: 1.563em;
+        }
+
+        ul li a {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        ul li img {
+            margin: 0 0 1rem 0;
+            max-width: 90%;
+            max-height: 9rem;
+            object-fit: contain;
         }
     }
 </style>

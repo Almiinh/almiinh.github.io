@@ -1,5 +1,11 @@
 :root {
-    --background-gradient: var(--color-bg) linear-gradient(90deg, rgba(131, 58, 180, 0.15) 0%, rgba(253, 29, 29, 0.15) 50%, rgba(252, 176, 69, 0.15) 100%);
+    --background-gradient: var(--color-bg)
+        linear-gradient(
+            90deg,
+            rgba(131, 58, 180, 0.15) 0%,
+            rgba(253, 29, 29, 0.15) 50%,
+            rgba(252, 176, 69, 0.15) 100%
+        );
     background: var(--background-gradient);
 }
 
@@ -40,8 +46,13 @@
         --color-border: #f2f4f5;
         --color-shadow: rgba(255, 255, 255, 0.3);
 
-        background-color: var(--color-bg);
-        color: var(--color-text);
+        .light-mode-icon {
+            display: none;
+        }
+        .dark-mode-icon {
+            display: block;
+            color: var(--color-text);
+        }
 
         a {
             color: var(--color-text-link);
@@ -49,12 +60,8 @@
         a:visited {
             color: var(--color-text-visited);
         }
-        .light-mode-icon {
-            display: none;
-        }
-        .dark-mode-icon {
-            display: block;
-            color: var(--color-text);
+        img {
+            filter: brightness(80%);
         }
     }
 }
@@ -69,7 +76,7 @@
         --color-bg-secondary: #333943;
         --color-bg-ternary: #3c4048;
         --color-border: #f2f4f5;
-        --color-shadow:  #222;
+        --color-shadow: #222;
         background-color: var(--color-bg);
         color: var(--color-text);
     }
@@ -113,6 +120,9 @@
         }
         .dark-mode-icon {
             display: none;
+        }
+        img {
+            filter: inherit;
         }
     }
 }

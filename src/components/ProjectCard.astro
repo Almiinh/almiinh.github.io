@@ -39,6 +39,7 @@ const { project } = Astro.props;
         flex-direction: column;
         justify-content: space-between;
         break-inside: avoid;
+        transition: all 0.2s ease-in-out;
         margin-bottom: 1rem;
         box-shadow: 0 0 10px var(--color-shadow);
         background-color: var(--color-bg);
@@ -49,6 +50,7 @@ const { project } = Astro.props;
             transform: translateY(2px);
             filter: invert(5%)
         }
+
         .content {
             display: flex;
             flex-direction: column;

@@ -1,10 +1,20 @@
 ---
 const { tags = [{}] } = Astro.props;
+
+interface Props {
+    tags: Tag[];
+}
+
+interface Tag {
+    name: string;
+    backgroundColor?: string;
+    color?: string;
+}
 ---
 
 <div class="tags">
     {
-        tags.map((tag: { backgroundColor: any; color: any; name: unknown }) => (
+        tags.map((tag: Tag) => (
             <span class="tag" style={{ backgroundColor: tag.backgroundColor, color: tag.color }}>
                 {tag.name}
             </span>
@@ -18,10 +28,11 @@ const { tags = [{}] } = Astro.props;
         flex-wrap: wrap;
         align-items: center;
         gap: 0.2rem;
+        width: fit-content;
     }
     .tag {
         border-radius: 10px;
-        background-color: rgba(255, 127, 80, 0.479);
+        background-color: rgba(255, 127, 80, 0.5);
         padding: 0 0.4rem;
         min-width: 2rem;
         height: fit-content;

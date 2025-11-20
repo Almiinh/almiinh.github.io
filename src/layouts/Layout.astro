@@ -50,5 +50,9 @@ const {sideMargin = "15vw"} = Astro.props;
     main {
         margin: 5vh max(var(--sideMargin), 36px);
         text-wrap: pretty;
+
+        @media (max-width: 800px) {
+            margin: 5vh max(5vw, 36px);
+        }
     }
 </style>

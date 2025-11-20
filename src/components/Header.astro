@@ -1,14 +1,15 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import DarkModeSwitch from "./DarkModeSwitch.svelte";
+import References from "./References.astro";
 ---
 
 <nav>
     <a href="/"><h1>Minh-Hoang's portfolio</h1></a>
     <div class="links">
         <HeaderLink href="/">Home</HeaderLink>
-        <HeaderLink href="/about">About</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
+        <References class="references" />
     </div>
     <DarkModeSwitch class="DarkModeSwitch" client:load />
 </nav>
@@ -26,6 +27,7 @@ import DarkModeSwitch from "./DarkModeSwitch.svelte";
     }
     nav a {
         grid-column: 2;
+        transition: all 0.2s ease-in-out;
         margin: 0;
         color: var(--color-text);
         text-decoration: none;
