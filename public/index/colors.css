@@ -1,128 +1,130 @@
 :root {
-    --background-gradient: var(--color-bg)
-        linear-gradient(
-            90deg,
-            rgba(131, 58, 180, 0.15) 0%,
-            rgba(253, 29, 29, 0.15) 50%,
-            rgba(252, 176, 69, 0.15) 100%
-        );
-    background: var(--background-gradient);
+  --color-bg-gradient: var(--color-bg)
+      linear-gradient(
+          90deg,
+          rgba(131, 58, 180, 0.15) 0%,
+          rgba(253, 29, 29, 0.15) 50%,
+          rgba(252, 176, 69, 0.15) 100%
+      );
+  --filter-hover: brightness(90%);
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 /* System Mode */
 .auto-mode-icon {
-    width: fit-content;
-    color: var(--color-text);
-    font-size: xx-small;
+  width: fit-content;
+  color: var(--color-text);
+  font-size: xx-small;
+}
+
+.dark-mode-icon {
+  color: var(--color-text);
 }
 
 @media (prefers-color-scheme: light) {
-    :root {
-        --color-text: #333;
-        --color-text-secondary: #666;
-        --color-bg: white;
-        --color-bg-secondary: #eee;
-        --color-bg-ternary: #ddd;
-        --color-border: rgba(0, 0, 0, 0.5);
-        --color-shadow: rgba(0, 0, 0, 0.2);
-
-        .light-mode-icon {
-            display: block;
-        }
-        .dark-mode-icon {
-            display: none;
-        }
-    }
-
-    /* prefers-color-scheme: light, theme: dark*/
-    .dark {
-        --color-text: #f2f4f5;
-        --color-text-secondary: #999;
-        --color-text-visited: #ffadff;
-        --color-text-link: #8cb4ff;
-        --color-bg: #282c34;
-        --color-bg-secondary: #333943;
-        --color-bg-ternary: #3c4048;
-        --color-border: #f2f4f5;
-        --color-shadow: rgba(255, 255, 255, 0.3);
-
-        .light-mode-icon {
-            display: none;
-        }
-        .dark-mode-icon {
-            display: block;
-            color: var(--color-text);
-        }
-
-        a {
-            color: var(--color-text-link);
-        }
-        a:visited {
-            color: var(--color-text-visited);
-        }
-        img {
-            filter: brightness(80%);
-        }
-    }
+  :root {
+    --color-text: #333;
+    --color-text-secondary: #666;
+    --color-bg: white;
+    --color-bg-secondary: #eee;
+    --color-bg-ternary: #ddd;
+    --color-border: rgba(0, 0, 0, 0.5);
+    --color-shadow: rgba(0, 0, 0, 0.2);
+  }
+  :root .light-mode-icon {
+    display: block;
+  }
+  :root .dark-mode-icon {
+    display: none;
+  }
+  :root img {
+    filter: inherit;
+  }
+  :root a {
+    color: revert;
+  }
+  :root a:visited {
+    color: revert;
+  }
+  /* prefers-color-scheme: light, theme: dark*/
+  .dark {
+    --color-text: #f2f4f5;
+    --color-text-secondary: #999;
+    --color-text-visited: #ffadff;
+    --color-text-link: #8cb4ff;
+    --color-bg: #282c34;
+    --color-bg-secondary: #333943;
+    --color-bg-ternary: #3c4048;
+    --color-border: #f2f4f5;
+    --color-shadow: rgba(0, 0, 0, 0.2);
+  }
+  .dark .light-mode-icon {
+    display: none;
+  }
+  .dark .dark-mode-icon {
+    display: block;
+  }
+  .dark img {
+    filter: brightness(80%);
+  }
+  .dark a {
+    color: var(--color-text-link);
+  }
+  .dark a:visited {
+    color: var(--color-text-visited);
+  }
 }
-
 @media (prefers-color-scheme: dark) {
-    :root {
-        --color-text: #f2f4f5;
-        --color-text-secondary: #999;
-        --color-text-visited: #ffadff;
-        --color-text-link: #8cb4ff;
-        --color-bg: #282c34;
-        --color-bg-secondary: #333943;
-        --color-bg-ternary: #3c4048;
-        --color-border: #f2f4f5;
-        --color-shadow: #222;
-        background-color: var(--color-bg);
-        color: var(--color-text);
-    }
-
-    .light-mode-icon {
-        display: none;
-    }
-    .dark-mode-icon {
-        display: block;
-        color: var(--color-text);
-    }
-
-    a {
-        color: var(--color-text-link);
-    }
-    a:visited {
-        color: var(--color-text-visited);
-    }
-    img {
-        filter: brightness(80%);
-    }
-
-    /* prefers-color-scheme: dark, theme: light*/
-    .light {
-        --color-text: #333;
-        --color-text-secondary: #666;
-        --color-bg: white;
-        --color-bg-secondary: #eee;
-        --color-bg-ternary: #ddd;
-        --color-border: rgba(0, 0, 0, 0.5);
-        --color-shadow: rgba(0, 0, 0, 0.2);
-
-        a {
-            color: revert;
-        }
-        a:visited {
-            color: revert;
-        }
-        .light-mode-icon {
-            display: block;
-        }
-        .dark-mode-icon {
-            display: none;
-        }
-        img {
-            filter: inherit;
-        }
-    }
+  :root {
+    --color-text: #f2f4f5;
+    --color-text-secondary: #999;
+    --color-text-visited: #ffadff;
+    --color-text-link: #8cb4ff;
+    --color-bg: #282c34;
+    --color-bg-secondary: #333943;
+    --color-bg-ternary: #3c4048;
+    --color-border: #f2f4f5;
+    --color-shadow: rgba(0, 0, 0, 0.2);
+  }
+  :root .light-mode-icon {
+    display: none;
+  }
+  :root .dark-mode-icon {
+    display: block;
+  }
+  :root img {
+    filter: brightness(80%);
+  }
+  :root a {
+    color: var(--color-text-link);
+  }
+  :root a:visited {
+    color: var(--color-text-visited);
+  }
+  /* prefers-color-scheme: dark, theme: light*/
+  .light {
+    --color-text: #333;
+    --color-text-secondary: #666;
+    --color-bg: white;
+    --color-bg-secondary: #eee;
+    --color-bg-ternary: #ddd;
+    --color-border: rgba(0, 0, 0, 0.5);
+    --color-shadow: rgba(0, 0, 0, 0.2);
+  }
+  .light .light-mode-icon {
+    display: block;
+  }
+  .light .dark-mode-icon {
+    display: none;
+  }
+  .light img {
+    filter: inherit;
+  }
+  .light a {
+    color: revert;
+  }
+  .light a:visited {
+    color: revert;
+  }
 }

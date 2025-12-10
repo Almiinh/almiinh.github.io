@@ -16,10 +16,8 @@ const template = `
 </button>`;
 const darkModeBtn = document.createElement("div");
 
-const previousOnload = window.onload;
-
 function setupDarkModeButton() {
-    if (previousOnload) previousOnload();
+    if (window.onload) window.onload();
     // Inserts a div.dark-mode-btn-container between `header.global-banner` and `header.global-banner h1`
     console.log("Script loaded: global.js");
     darkModeBtn.className = "dark-mode-btn-container";
@@ -47,6 +45,5 @@ function switchDarkMode() {
     }
     document.documentElement.className = localStorage.theme ?? "";
 }
-
 
 window.addEventListener("DOMContentLoaded", setupDarkModeButton);

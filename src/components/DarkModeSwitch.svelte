@@ -59,9 +59,7 @@
         svg {
             border-radius: calc(infinity * 1px);
         }
-        &:hover {
-            filter: invert(25%);
-        }
+
     }
 
     /* System Mode */

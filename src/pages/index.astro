@@ -55,6 +55,9 @@ import Tags from "../components/Tags.astro";
 </Layout>
 
 <style>
+    :root {
+        background: var(--color-bg-gradient);
+    }
     section {
         margin-top: 5rem;
     }
@@ -63,13 +66,14 @@ import Tags from "../components/Tags.astro";
         grid-template-rows: auto auto;
     }
     h1 {
-        margin: 15rem 0 5rem 0;
-        font-size: 2.75rem;
         font-family: var(--font-title);
-
         @media screen and (min-width: 700px) {
-            margin: 25rem 0 5rem 0;
+            margin: 22rem 0 4% 0;
             font-size: 4rem;
+        }
+        @media screen and (max-width: 700px) {
+            margin: 15rem 0 5rem 0;
+            font-size: 2.75rem;
         }
     }
     .arrow-container {

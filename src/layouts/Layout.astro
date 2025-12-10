@@ -7,7 +7,7 @@ import iconLinkedIn from "../assets/index/LINKEDIN.svg";
 import iconGithub from "../assets/index/GITHUB.svg";
 import iconGithubWhite from "../assets/index/GITHUB.white.svg";
 
-const {sideMargin = "15vw"} = Astro.props;
+const {largeScreenMargin = "15vw", smallScreenMargin = "5vw"} = Astro.props;
 
 ---
 
@@ -40,19 +40,21 @@ const {sideMargin = "15vw"} = Astro.props;
     </body>
 </html>
 
-<style define:vars={{sideMargin}}>
+<style define:vars={{largeScreenMargin, smallScreenMargin}} >
     body {
         margin: 0;
-        background: var(--background-gradient);
         width: 100%;
         height: 100%;
     }
     main {
-        margin: 5vh max(var(--sideMargin), 36px);
+        margin: 5vh max(var(--largeScreenMargin), 36px);
+        overflow: scroll;
         text-wrap: pretty;
 
-        @media (max-width: 800px) {
-            margin: 5vh max(5vw, 36px);
+    }
+    @media screen and (max-width: 800px) {
+        main {
+            margin: 5vh max(var(--smallScreenMargin), 36px);
         }
     }
 </style>

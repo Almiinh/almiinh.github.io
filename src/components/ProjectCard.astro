@@ -1,16 +1,16 @@
 ---
 import Tags from "./Tags.astro";
-import "fs";
+import Card from "./Card.astro";
 const { project } = Astro.props;
 ---
 
-<a href={project.href} class="card" target="_blank">
+<Card href={project.href} target="_blank">
     <div class="content">
         {project.title && <div class="title">{project.title}</div>}
         {project.image && <img src={project.image} alt={project.title}/>}
         {project.desc && <div class="desc">{project.desc}</div>}
     </div>
-    <div class="bar">
+    <div class="bar">   
         <Tags tags={project.tags} />
         {
             project.href && (
@@ -34,50 +34,32 @@ const { project } = Astro.props;
 </a>
 
 <style>
-    .card {
+    .content {
         display: flex;
         flex-direction: column;
+    }
+    img {
+        margin: 1em 0;
+        object-fit: cover;
+    }
+    .title {
+        color: var(--color-text);
+        font-weight: bolder;
+        font-size: large;
+    }
+    .desc {
+        color: var(--color-text-secondary);
+        font-size: small;
+    }
+    .bar {
+        display: flex;
         justify-content: space-between;
-        break-inside: avoid;
-        transition: all 0.2s ease-in-out;
-        margin-bottom: 1rem;
-        box-shadow: 0 0 10px var(--color-shadow);
-        background-color: var(--color-bg);
-        padding: 1rem;
-        text-decoration: none;
-
-        &:hover {
-            transform: translateY(2px);
-            filter: invert(5%)
-        }
-
-        .content {
-            display: flex;
-            flex-direction: column;
-        }
-        img {
-            margin: 1em 0;
-            object-fit: cover;
-        }
-        .title {
-            color: var(--color-text);
-            font-weight: bolder;
-            font-size: large;
-        }
-        .desc {
-            color: var(--color-text-secondary);
-            font-size: small;
-        }
-        .bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 1rem 0 0 0;
-            width: 100%;
-            color: var(--color-text)    
-        }
-        .bar svg {
-            flex-shrink: 0;
-        }
+        align-items: center;
+        margin: 1rem 0 0 0;
+        width: 100%;
+        color: var(--color-text)    
+    }
+    .bar svg {
+        flex-shrink: 0;
     }
 </style>

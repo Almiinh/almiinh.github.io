@@ -1,0 +1,27 @@
+---
+const { href, target, class } = Astro.props;
+---
+
+<a href={href} target={target} class="card">
+    <slot />
+</a>
+
+<style>
+    .card {
+        display: block;
+        break-inside: avoid;
+        transition: all 0.2s ease-in-out;
+        margin-bottom: 1rem;
+        box-shadow: 5px 5px 1px var(--color-shadow);
+        border: 1px solid var(--color-shadow);
+        background-color: var(--color-bg);
+        padding: 1rem;
+        text-decoration: none   ;
+    }
+
+    .card:hover {
+        transform: translateY(2px);
+        filter: var(--filter-hover);
+        box-shadow: 2px 2px 1px var(--color-shadow);
+    }
+</style>

@@ -16,8 +16,10 @@
     "rehype-katex": "^7.0.1",
     "remark-collapse": "^0.1.2",
     "remark-extended-table": "^2.0.3",
+    "remark-gfm": "^4.0.1",
+    "remark-lint": "^10.0.1",
     "remark-math": "^6.0.0",
-    "sass": "^1.94.1",
+    "sass": "^1.94.2",
     "svelte": "^5.20.1",
     "typescript": "^5.7.3"
   }

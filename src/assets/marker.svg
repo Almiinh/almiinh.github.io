@@ -1,0 +1,6 @@
+<svg aria-hidden="true" role="graphics-symbol" viewBox="0 0 16 16"
+    style="width: 0.8em; height: 0.8em; display: block; fill: inherit; flex-shrink: 0; transition: transform 200ms ease-out; transform: rotateZ(-90deg); opacity: 1;"
+    class="arrowCaretDownFillSmall">
+    <path
+        d="M2.835 3.25a.8.8 0 0 0-.69 1.203l5.164 8.854a.8.8 0 0 0 1.382 0l5.165-8.854a.8.8 0 0 0-.691-1.203z"></path>
+</svg>

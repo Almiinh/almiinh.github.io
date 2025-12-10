@@ -4,6 +4,7 @@ import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 import remarkExtendedTable from "remark-extended-table";
 import remarkMath from "remark-math";
+import remarkGfm from "remark-gfm";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +15,6 @@ export default defineConfig({
         "/web": "/#webProjects",
     },
     markdown: {
-        remarkPlugins: [remarkExtendedTable, remarkMath],
+        remarkPlugins: [remarkExtendedTable, remarkMath, remarkGfm],
     },
 });

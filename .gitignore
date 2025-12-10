@@ -27,3 +27,5 @@ pnpm-debug.log*
 # jetbrains & vscode setting folder
 .idea/
 .vscode/
+
+*.scss

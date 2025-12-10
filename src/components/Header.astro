@@ -21,8 +21,8 @@ import References from "./References.astro";
         top: 0;
         grid-template-columns: max(15vw, 36px) 1fr 1fr max(15vw, 36px);
         z-index: 999;
-        box-shadow: 0 2px 4px var(--color-shadow);
-        background: var(--background-gradient);
+        box-shadow: 0px 1px var(--color-shadow);
+        background: var(--color-bg-gradient);
         padding: 0;
     }
     nav a {
@@ -38,7 +38,7 @@ import References from "./References.astro";
         }
 
         &:hover {
-            filter: invert(25%);
+            filter: var(--filter-hover)
         }
     }
     nav a.active {
