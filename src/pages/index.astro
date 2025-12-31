@@ -27,16 +27,21 @@ import Tags from "../components/Tags.astro";
             <Tags tags={[{ name: "Jul 2025 — Currently" }]} />
             <li>
                 <br />
-                System V&V Engineer @ Alstom, Saint-Ouen, FR<br /><br />
+                System V&V Engineer<br />
+                @ Alstom, Saint-Ouen, FR<br /><br />
             </li>
             <Tags tags={[{ name: "Aug 2024 — Jan 2025" }]} />
             <li>
                 <br />
-                LLM Agent Developer Intern @ Thales Research & Technologies, Palaiseau, FR
+                LLM Agent Developer Intern <br />
+                @ Thales Research & Technologies, Palaiseau, FR
                 <br /><br />
             </li>
             <Tags tags={[{ name: "Sept 2021 — Jan 2025" }]} />
-            <li><br />CS Student @ Mines Saint-Étienne, FR<br /><br /></li>
+            <li>
+                <br />CS Student <br />
+                @ Mines Saint-Étienne, FR<br /><br />
+            </li>
         </ul>
     </section>
     {
@@ -63,15 +68,20 @@ import Tags from "../components/Tags.astro";
         margin-bottom: 5rem;
     }
     summary {
-        margin-left: 2rem;
-        list-style-position: outside;
+        transition: all 0.1s ease-in-out;
+        margin-bottom: 1rem;
+        padding: 0 0.5rem;
+    }
+    summary h2 {
+        display: inline;
     }
     summary::marker {
-        transition: transform 0.3s ease;
+        z-index: 999;
         font-size: 1.8rem;
     }
-    details[open] summary::marker {
-        transform: rotate(90deg);
+    summary:hover {
+        cursor: pointer;
+        background-color: var(--color-bg-secondary);
     }
     h1 {
         font-family: var(--font-title);
