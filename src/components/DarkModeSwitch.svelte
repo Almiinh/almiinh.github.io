@@ -13,7 +13,7 @@
     }
 
     $effect(() => {
-        document.documentElement.className = theme;
+        document.documentElement.style.colorScheme = theme;
         localStorage.theme = theme;
     });
 </script>
@@ -44,7 +44,7 @@
         justify-content: center;
         align-items: center;
     }
-    
+
     button {
         display: flex;
         flex-direction: column;
@@ -56,71 +56,13 @@
         border-radius: calc(infinity * 1px);
         background-color: transparent;
         padding: 5px;
-        
+
         svg {
             border-radius: calc(infinity * 1px);
         }
         &:hover {
             translate: 0 -2px;
             cursor: pointer;
-        }
-    }
-
-    /* System Mode */
-    .auto-mode-icon {
-        width: fit-content;
-        color: var(--color-text);
-        font-size: xx-small;
-    }
-
-    /* System Light Mode */
-    @media (prefers-color-scheme: light) {
-        .light-mode-icon {
-            display: block;
-        }
-
-        .dark-mode-icon {
-            display: none;
-        }
-
-        /* prefers-color-scheme: light, theme: dark*/
-        :global(html.dark) {
-            .light-mode-icon {
-                display: none;
-            }
-
-            .dark-mode-icon {
-                display: block;
-                color: var(--color-text);
-            }
-        }
-    }
-
-    /*  System Dark Mode */
-    @media (prefers-color-scheme: dark) {
-        :global(html) {
-            background-color: var(--color-bg);
-            color: var(--color-text);
-        }
-
-        /* prefers-color-scheme: dark, theme: light*/
-        :global(html.light) {
-            .light-mode-icon {
-                display: block;
-            }
-
-            .dark-mode-icon {
-                display: none;
-            }
-        }
-
-        .light-mode-icon {
-            display: none;
-        }
-
-        .dark-mode-icon {
-            display: block;
-            color: var(--color-text);
         }
     }
 </style>

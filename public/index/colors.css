@@ -1,4 +1,12 @@
 :root {
+    color-scheme: light dark;
+    --color-text: light-dark(#333, #f2f4f5);
+    --color-text-secondary: light-dark(#666, #999);
+    --color-bg: light-dark(white, #282c34);
+    --color-bg-secondary: light-dark(#eee, #333943);
+    --color-bg-ternary: light-dark(#ddd, #3c4048);
+    --color-border: light-dark(rgba(0, 0, 0, 0.5), #f2f4f5);
+    --color-shadow: rgba(0, 0, 0, 0.2);
     --color-bg-gradient: var(--color-bg)
         linear-gradient(
             90deg,
@@ -9,122 +17,76 @@
     --filter-hover: brightness(90%);
     background-color: var(--color-bg);
     color: var(--color-text);
+
+    &:not([style*="color-scheme"]) {
+        .auto-mode-icon {
+            display: block;
+        }
+    }
+
+    &[style*="color-scheme: light"] {
+        .light-mode-icon {
+            display: block;
+        }
+        .dark-mode-icon,
+        .auto-mode-icon {
+            display: none;
+        }
+    }
+
+    &[style*="color-scheme: dark"] {
+        .light-mode-icon,
+        .auto-mode-icon {
+            display: none;
+        }
+        .dark-mode-icon {
+            display: block;
+        }
+        img {
+            filter: brightness(80%);
+        }
+    }
+
+    img {
+        filter: inherit;
+    }
+
+    @media (prefers-color-scheme: light) {
+        &:not([style*="color-scheme: dark"]) {
+            img {
+                filter: inherit;
+            }
+            .light-mode-icon {
+                display: block;
+            }
+            .dark-mode-icon {
+                display: none;
+            }
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        &:not([style*="color-scheme: light"]) {
+            img {
+                filter: brightness(80%);
+            }
+            .light-mode-icon {
+                display: none;
+            }
+            .dark-mode-icon {
+                display: block;
+            }
+        }
+    }
 }
 
-/* System Mode */
 .auto-mode-icon {
     width: fit-content;
     color: var(--color-text);
     font-size: xx-small;
 }
 
-.dark-mode-icon {
+.dark-mode-icon,
+.light-mode-icon {
     color: var(--color-text);
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
-        --color-text: #333;
-        --color-text-secondary: #666;
-        --color-bg: white;
-        --color-bg-secondary: #eee;
-        --color-bg-ternary: #ddd;
-        --color-border: rgba(0, 0, 0, 0.5);
-        --color-shadow: rgba(0, 0, 0, 0.2);
-    }
-    :root .light-mode-icon {
-        display: block;
-    }
-    :root .dark-mode-icon {
-        display: none;
-    }
-    :root img {
-        filter: inherit;
-    }
-    :root a {
-        color: revert;
-    }
-    :root a:visited {
-        color: revert;
-    }
-    /* prefers-color-scheme: light, theme: dark*/
-    .dark {
-        --color-text: #f2f4f5;
-        --color-text-secondary: #999;
-        --color-text-visited: #ffadff;
-        --color-text-link: #8cb4ff;
-        --color-bg: #282c34;
-        --color-bg-secondary: #333943;
-        --color-bg-ternary: #3c4048;
-        --color-border: #f2f4f5;
-        --color-shadow: rgba(0, 0, 0, 0.2);
-    }
-    .dark .light-mode-icon {
-        display: none;
-    }
-    .dark .dark-mode-icon {
-        display: block;
-    }
-    .dark img {
-        filter: brightness(80%);
-    }
-    .dark a {
-        color: var(--color-text-link);
-    }
-    .dark a:visited {
-        color: var(--color-text-visited);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-text: #f2f4f5;
-        --color-text-secondary: #999;
-        --color-text-visited: #ffadff;
-        --color-text-link: #8cb4ff;
-        --color-bg: #282c34;
-        --color-bg-secondary: #333943;
-        --color-bg-ternary: #3c4048;
-        --color-border: #f2f4f5;
-        --color-shadow: rgba(0, 0, 0, 0.2);
-    }
-    :root .light-mode-icon {
-        display: none;
-    }
-    :root .dark-mode-icon {
-        display: block;
-    }
-    :root img {
-        filter: brightness(80%);
-    }
-    :root a {
-        color: var(--color-text-link);
-    }
-    :root a:visited {
-        color: var(--color-text-visited);
-    }
-    /* prefers-color-scheme: dark, theme: light*/
-    .light {
-        --color-text: #333;
-        --color-text-secondary: #666;
-        --color-bg: white;
-        --color-bg-secondary: #eee;
-        --color-bg-ternary: #ddd;
-        --color-border: rgba(0, 0, 0, 0.5);
-        --color-shadow: rgba(0, 0, 0, 0.2);
-    }
-    .light .light-mode-icon {
-        display: block;
-    }
-    .light .dark-mode-icon {
-        display: none;
-    }
-    .light img {
-        filter: inherit;
-    }
-    .light a {
-        color: revert;
-    }
-    .light a:visited {
-        color: revert;
-    }
 }

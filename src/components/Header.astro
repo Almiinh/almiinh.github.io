@@ -16,14 +16,18 @@ import References from "./References.astro";
 </nav>
 
 <style>
+    h1 {
+        text-wrap: nowrap;
+    }
     nav {
         position: sticky;
         top: 0;
-        padding: 0 max(15vw, 36px);
+        padding: 0 max(36px, 15vw);
         z-index: 999;
         box-shadow: 0px 1px var(--color-shadow);
         background: var(--color-bg-gradient);
         display: flex;
+        flex-wrap: wrap-reverse;
         justify-content: space-between;
         align-items: center;
     }

@@ -20,10 +20,13 @@ import Layout from "../layouts/Layout.astro";
         margin-bottom: 1rem;
     }
     datacommons-line::part(header),
-    datacommons-line::part(y-axis-label),
     datacommons-line::part(y-axis-text),
-    datacommons-line::part(x-axis-label),
     datacommons-line::part(x-axis-text) {
         color: var(--color-text);
+    }
+    datacommons-line::part(y-axis-label),
+    datacommons-line::part(y-axis-text),
+    datacommons-line::part(x-axis-label) {
+        fill: var(--color-text);
     }
 </style>
