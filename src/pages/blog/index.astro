@@ -10,7 +10,7 @@ const posts = (await getCollection("blog")).sort(
 );
 ---
 
-<Layout largeScreenMargin={"25vw"}>
+<Layout title="Blog" largeScreenMargin={"25vw"}>
     <ul>
         {
             posts.map((post) => (

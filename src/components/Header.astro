@@ -8,22 +8,24 @@ import References from "./References.astro";
     <a href="/"><h1>Minh-Hoang's portfolio</h1></a>
     <div class="links">
         <HeaderLink href="/">Home</HeaderLink>
+        <HeaderLink href="/dash">Dashboard</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
-        <References class="references" />
     </div>
+    <References class="references" />
     <DarkModeSwitch class="DarkModeSwitch" client:load />
 </nav>
 
 <style>
     nav {
-        display: grid;
         position: sticky;
         top: 0;
-        grid-template-columns: max(15vw, 36px) 1fr 1fr max(15vw, 36px);
+        padding: 0 max(15vw, 36px);
         z-index: 999;
         box-shadow: 0px 1px var(--color-shadow);
         background: var(--color-bg-gradient);
-        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     nav a {
         grid-column: 2;
@@ -38,22 +40,28 @@ import References from "./References.astro";
         }
 
         &:hover {
+            translate: 0 -2px;
             filter: var(--filter-hover)
+            border-bottom-color: var(--color-text-secondary);
         }
-    }
-    nav a.active {
-        border-bottom-color: var(--color-text);
-        text-decoration: none;
     }
     .links {
         display: flex;
         justify-content: end;
         align-items: center;
+        font-family: var(--font-heading);
         gap: 1em;
     }
     .links a {
         border-bottom: 5px solid transparent;
         padding: 1.1em 0.5em;
+    }
+    .links a.active {
+        border-bottom-color: var(--color-text);
+    }
+    .links a:hover {
+        border-bottom-color: var(--color-text-secondary);
+        color: var(--color-text-secondary);
     }
     @media (max-width: 600px) {
         :global(.DarkModeSwitch) {

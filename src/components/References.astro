@@ -8,25 +8,27 @@ const references = [
     {
         href: "/index/CV FR.pdf",
         img: iconCV.src,
-        alt: "PDF",
+        alt: "Click to download my CV",
     },
     {
         href: "https://www.linkedin.com/in/minh-hoang-alexis-huynh-621b52222/",
         img: iconLinkedIn.src,
-        alt: "LinkedIn",
+        alt: "Click to visit my LinkedIn profile",
     },
     {
         href: "https://github.com/Almiinh",
         img: iconGithub.src,
-        alt: "GitHub",
+        alt: "Click to visit my GitHub profile",
     },
 ];
+
+const { className = "" } = Astro.props;
 ---
 
-<section class="references">
+<div class="references" class:list={className}>
     {
         references.map((item) => (
-            <a href={item.href}>
+            <a href={item.href} target="_blank" rel="noopener noreferrer" title={item.alt}>
                 {item.img && (
                     <img
                         src={item.img}
@@ -40,7 +42,7 @@ const references = [
             </a>
         ))
     }
-</section>
+</div>
 
 <style
     define:vars={{ iconGithub: `url("${iconGithub.src}")`, iconGithubWhite: `url("${iconGithubWhite.src}")` }}
@@ -55,7 +57,9 @@ const references = [
         margin: 0 0.3rem;
     }
     img {
-        filter: var(--filter-hover)
+        filter: var(--filter-hover);
+        min-width: 28px;
+        min-height: 28px;
     }
     img:hover {
         translate: 0 -2px;

@@ -50,6 +50,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        transition: all 0.2s ease-in-out;
         margin: 0 1vw;
         border: 0;
         border-radius: calc(infinity * 1px);
@@ -59,7 +60,10 @@
         svg {
             border-radius: calc(infinity * 1px);
         }
-
+        &:hover {
+            translate: 0 -2px;
+            cursor: pointer;
+        }
     }
 
     /* System Mode */

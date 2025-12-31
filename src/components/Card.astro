@@ -1,8 +1,8 @@
 ---
-const { href, target, class } = Astro.props;
+const { href, class: className, ...rest } = Astro.props;
 ---
 
-<a href={href} target={target} class="card">
+<a href={href} class="card" class:list={className} {...rest}>
     <slot />
 </a>
 

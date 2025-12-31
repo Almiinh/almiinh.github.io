@@ -5,9 +5,10 @@
 
 :root {
     --font-monospace: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
-    --font-title: "Playfair Display", "Times New Roman", Times, serif;
+    --font-title: "Space Grotesk", "Times New Roman", Times, serif;
     --font-serif: Lora, Times, -apple-system, serif;
     --font-sans-serif: Rubik, Inter, Arial, -apple-system, sans-serif;
+    --font-heading: "Space Grotesk", Rubik, Inter, Arial, -apple-system, sans-serif;
     --size-title: 3rem;
 }
 
@@ -15,7 +16,6 @@
 body {
     font-family: var(--font-sans-serif);
 }
-body *:is(h1, h2, h3, h4, h5, h6) {
+body *:is(h2, h3, h4, h5, h6) {
     margin: 1rem 0;
-    /* font-family: var(--font-title); */
 }

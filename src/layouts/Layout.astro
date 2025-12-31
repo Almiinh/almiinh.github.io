@@ -7,18 +7,17 @@ import iconLinkedIn from "../assets/index/LINKEDIN.svg";
 import iconGithub from "../assets/index/GITHUB.svg";
 import iconGithubWhite from "../assets/index/GITHUB.white.svg";
 
-const {largeScreenMargin = "15vw", smallScreenMargin = "5vw"} = Astro.props;
-
+const { title, largeScreenMargin = "15vw", smallScreenMargin = "5vw" } = Astro.props;
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <title>Minh-Hoang HUYNH</title>
+        <title>{title}</title>
         <link rel="stylesheet" href="/index/global.css" />
         <link
             rel="stylesheet"
@@ -40,21 +39,27 @@ const {largeScreenMargin = "15vw", smallScreenMargin = "5vw"} = Astro.props;
     </body>
 </html>
 
-<style define:vars={{largeScreenMargin, smallScreenMargin}} >
+<style define:vars={{ largeScreenMargin, smallScreenMargin }}>
     body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         margin: 0;
         width: 100%;
         height: 100%;
+        min-height: 100vh;
     }
     main {
         margin: 5vh max(var(--largeScreenMargin), 36px);
         overflow: scroll;
         text-wrap: pretty;
-
     }
     @media screen and (max-width: 800px) {
         main {
             margin: 5vh max(var(--smallScreenMargin), 36px);
         }
+    }
+    :global(*:is(h1, h2, h3, h4, h5, h6)) {
+        font-family: var(--font-heading);
     }
 </style>

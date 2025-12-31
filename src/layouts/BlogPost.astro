@@ -11,7 +11,7 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, description, pubDate, updatedDate, heroImage, heroSize } = Astro.props;
 ---
 
-<Layout largeScreenMargin="25vw">
+<Layout title={title} largeScreenMargin="25vw">
     <article class="blog">
         <div class="title">
             <div class="hero-image small">

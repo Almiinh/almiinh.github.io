@@ -28,3 +28,19 @@
         url("/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf") format("woff2");
     font-family: "Inter";
 }
+/* Space Grotesk */
+@font-face {
+    font-style: normal;
+    font-weight: 300 700;
+    src: url("/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
+    font-family: "Space Grotesk";
+    font-display: swap;
+}
+/* Space Mono */
+@font-face {
+    font-style: normal;
+    font-weight: 400 700;
+    src: url("/fonts/Space_Mono/SpaceMono-VariableFont_wght.ttf") format("truetype");
+    font-family: "Space Mono";
+    font-display: swap;
+}

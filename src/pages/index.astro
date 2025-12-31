@@ -17,10 +17,10 @@ import Tags from "../components/Tags.astro";
         }
     });
 </script>
-<Layout>
+<Layout title="Minh-Hoang HUYNH">
     <section id="title">
         <h1>Minh-Hoang HUYNH</h1>
-        <div class="arrow-container" onclick="scroll(0, -100)">
+        <div class="arrow-container" onclick="scroll(0, -100)" title="Scroll below">
             <div class="arrow-down"></div>
         </div>
         <ul class="about-me">
@@ -55,15 +55,8 @@ import Tags from "../components/Tags.astro";
 </Layout>
 
 <style>
-    :root {
-        background: var(--color-bg-gradient);
-    }
     section {
         margin-top: 5rem;
-    }
-    #title {
-        display: grid;
-        grid-template-rows: auto auto;
     }
     h1 {
         font-family: var(--font-title);
@@ -75,6 +68,10 @@ import Tags from "../components/Tags.astro";
             margin: 15rem 0 5rem 0;
             font-size: 2.75rem;
         }
+    }
+    #title {
+        display: grid;
+        grid-template-rows: auto auto;
     }
     .arrow-container {
         justify-self: center;

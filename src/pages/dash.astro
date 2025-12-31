@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<script src="https://datacommons.org/datacommons.js"></script>
+<Layout>
+    <h1>Data Dashboard</h1>
+    <datacommons-line
+        header="Annual Inflation, Consumer Prices"
+        place="country/FRA"
+        variables="sdg/FP_CPI_TOTL_ZG"></datacommons-line>
+    <datacommons-line
+        header="Annual Inflation, Consumer Prices"
+        place="country/DEU"
+        variables="sdg/FP_CPI_TOTL_ZG"></datacommons-line>
+</Layout>
+
+<style>
+    datacommons-line {
+        margin-bottom: 1rem;
+    }
+    datacommons-line::part(header),
+    datacommons-line::part(y-axis-label),
+    datacommons-line::part(y-axis-text),
+    datacommons-line::part(x-axis-label),
+    datacommons-line::part(x-axis-text) {
+        color: var(--color-text);
+    }
+</style>

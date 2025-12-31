@@ -1,5 +1,5 @@
 ---
-const { tags = [{}] } = Astro.props;
+const { tags = [{ name: "" }] } = Astro.props;
 
 interface Props {
     tags: Tag[];
@@ -14,7 +14,7 @@ interface Tag {
 
 <div class="tags">
     {
-        tags.map((tag: Tag) => (
+        tags.map((tag) => (
             <span class="tag" style={{ backgroundColor: tag.backgroundColor, color: tag.color }}>
                 {tag.name}
             </span>

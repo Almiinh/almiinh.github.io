@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -9,9 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.5",
-    "@astrojs/svelte": "^7.1.1",
-    "astro": "^5.13.7",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/svelte": "^7.2.4",
+    "astro": "^5.16.6",
+    "lit": "^3.3.2",
     "playwright": "^1.56.1",
     "rehype-katex": "^7.0.1",
     "remark-collapse": "^0.1.2",

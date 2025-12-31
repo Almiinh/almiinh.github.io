@@ -4,9 +4,9 @@ import Card from "./Card.astro";
 const { project } = Astro.props;
 ---
 
-<Card href={project.href} target="_blank">
+<Card href={project.href} target="_blank" title="Click to open the project page.">
     <div class="content">
-        {project.title && <div class="title">{project.title}</div>}
+        {project.title && <h4 class="title">{project.title}</h4>}
         {project.image && <img src={project.image} alt={project.title}/>}
         {project.desc && <div class="desc">{project.desc}</div>}
     </div>
@@ -43,6 +43,7 @@ const { project } = Astro.props;
         object-fit: cover;
     }
     .title {
+        margin: 0;
         color: var(--color-text);
         font-weight: bolder;
         font-size: large;

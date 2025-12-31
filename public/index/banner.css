@@ -4,6 +4,10 @@ header.global-banner {
     margin: 0;
     padding: 2vh 0 0 0;
 
+    a {
+        margin-bottom: 1.5rem;
+    }
+
     :is(h1, h2, h3, h4, h5, h6) {
         font-family: var(--font-title);
     }
@@ -26,7 +30,7 @@ header.global-banner {
         margin: 0 1vw;
         border: 0;
         border-radius: calc(infinity * 1px);
-        background-color: var(--color-bg);;
+        background-color: var(--color-bg);
         padding: 5px;
 
         svg {
@@ -37,6 +41,10 @@ header.global-banner {
             background-color: var(--color-bg-secondary);
         }
     }
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-title);
 }
 
 @media (width < 600px) {

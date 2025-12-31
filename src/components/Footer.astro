@@ -4,13 +4,23 @@ import References from "./References.astro";
 ---
 
 <footer>
-    &copy; {today.getFullYear()} Minh-Hoang HUYNH. All rights reserved.
-    <References />
+    <span>
+        &copy; {today.getFullYear()} Minh-Hoang HUYNH. All rights reserved.
+    </span>
+    <References class:list={"ref"} />
 </footer>
 <style>
     footer {
-        padding: 2em 1em 6em 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: auto;
+        padding: 2em 1em;
         color: rgb(var(--gray));
         text-align: center;
+    }
+
+    .ref {
+        padding: 1em 0;
     }
 </style>
