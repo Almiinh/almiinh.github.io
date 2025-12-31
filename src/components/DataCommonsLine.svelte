@@ -6,15 +6,15 @@
 
 <form>
     <div class="form-group">
-        <label for="dc-header">Header: </label>
+        <label for="dc-header">Header</label>
         <input name="dc-header" bind:value={header} placeholder="Header" />
     </div>
     <div class="form-group">
-        <label for="dc-place">Place: </label>
+        <label for="dc-place">Place</label>
         <input name="dc-place" bind:value={place} placeholder="Place" />
     </div>
     <div class="form-group">
-        <label for="dc-variables">Variables: </label>
+        <label for="dc-variables">Variables (Comma-separated) </label>
         <input name="dc-variables" bind:value={variables} placeholder="Variables" />
     </div>
 </form>
@@ -27,6 +27,10 @@
         flex-wrap: wrap;
         gap: 1rem;
         margin-bottom: 1rem;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
     }
 
     datacommons-line {

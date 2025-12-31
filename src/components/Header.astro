@@ -8,7 +8,7 @@ import References from "./References.astro";
 <nav>
     <a href="/"><h1>Minh-Hoang's portfolio</h1></a>
     <div class="links">
-        <HeaderLink href="/">Home</HeaderLink>
+        <HeaderLink href="/">Projects</HeaderLink>
         <HeaderLink href="/dash">Dashboard</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
     </div>
@@ -31,10 +31,11 @@ import References from "./References.astro";
         flex-wrap: wrap-reverse;
         justify-content: space-between;
         align-items: center;
+        overflow-x: scroll;
+        transition: all 0.3s ease-in-out;
     }
     nav a {
         grid-column: 2;
-        transition: all 0.2s ease-in-out;
         margin: 0;
         color: var(--color-text);
         text-decoration: none;
@@ -69,31 +70,15 @@ import References from "./References.astro";
         color: var(--color-text-secondary);
     }
     @media (max-width: 600px) {
-        :global(.DarkModeSwitch) {
-            grid-row: 2;
-            grid-column: 2;
-        }
         nav {
-            display: grid;
-            grid-template-rows: auto auto;
-            grid-template-columns: auto auto;
-            grid-row: 2;
-            grid-column: 1;
+            flex-wrap: nowrap;
+            padding: 0 1rem;
         }
-        .links {
-            grid-row: 2;
-            grid-column: 1;
+        nav h1 {
+            display: none;
         }
         :global(.references) {
-            grid-row: 2;
-            grid-column: 2;
-        }
-        nav a {
-            grid-row: 1;
-            grid-column: 1 / span 2;
-            justify-self: center;
-            margin: 0;
-            font-size: 0.9rem;
+            display: none !important;
         }
     }
 </style>

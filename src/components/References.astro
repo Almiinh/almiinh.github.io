@@ -22,10 +22,10 @@ const references = [
     },
 ];
 
-const { className = "" } = Astro.props;
+const { class: className = "" } = Astro.props;
 ---
 
-<div class="references" class:list={className}>
+<div class:list={className}>
     {
         references.map((item) => (
             <a href={item.href} target="_blank" rel="noopener noreferrer" title={item.alt}>
@@ -47,12 +47,12 @@ const { className = "" } = Astro.props;
 <style
     define:vars={{ iconGithub: `url("${iconGithub.src}")`, iconGithubWhite: `url("${iconGithubWhite.src}")` }}
 >
-    .references {
+    div {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    .references a {
+    div a {
         display: inline-block;
         margin: 0 0.3rem;
     }
