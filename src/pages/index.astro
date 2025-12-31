@@ -42,12 +42,16 @@ import Tags from "../components/Tags.astro";
     {
         projects.map(({ heading, id, projects }) => (
             <section id={id}>
-                <h2>{heading}</h2>
-                <div class="links">
-                    {projects.map((project) => (
-                        <ProjectCard {project} />
-                    ))}
-                </div>
+                <details open>
+                    <summary>
+                        <h2>{heading}</h2>
+                    </summary>
+                    <div class="links">
+                        {projects.map((project) => (
+                            <ProjectCard {project} />
+                        ))}
+                    </div>
+                </details>
             </section>
         ))
     }
@@ -55,8 +59,19 @@ import Tags from "../components/Tags.astro";
 </Layout>
 
 <style>
-    section {
-        margin-top: 5rem;
+    details[open] {
+        margin-bottom: 5rem;
+    }
+    summary {
+        margin-left: 2rem;
+        list-style-position: outside;
+    }
+    summary::marker {
+        transition: transform 0.3s ease;
+        font-size: 1.8rem;
+    }
+    details[open] summary::marker {
+        transform: rotate(90deg);
     }
     h1 {
         font-family: var(--font-title);

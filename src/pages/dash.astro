@@ -1,18 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import DataCommonsLine from "../components/DataCommonsLine.svelte";
 ---
 
-<script src="https://datacommons.org/datacommons.js"></script>
 <Layout>
-    <h1>Data Dashboard</h1>
-    <datacommons-line
-        header="Annual Inflation, Consumer Prices"
-        place="country/FRA"
-        variables="sdg/FP_CPI_TOTL_ZG"></datacommons-line>
-    <datacommons-line
-        header="Annual Inflation, Consumer Prices"
-        place="country/DEU"
-        variables="sdg/FP_CPI_TOTL_ZG"></datacommons-line>
+    <section>
+        <h2>Data Dashboard</h2>
+        <DataCommonsLine client:load />
+    </section>
 </Layout>
 
 <style>
@@ -21,12 +16,11 @@ import Layout from "../layouts/Layout.astro";
     }
     datacommons-line::part(header),
     datacommons-line::part(y-axis-text),
-    datacommons-line::part(x-axis-text) {
-        color: var(--color-text);
-    }
+    datacommons-line::part(x-axis-text),
     datacommons-line::part(y-axis-label),
     datacommons-line::part(y-axis-text),
     datacommons-line::part(x-axis-label) {
         fill: var(--color-text);
+        color: var(--color-text);
     }
 </style>
