@@ -109,8 +109,10 @@ const DisplayController = (() => {
         });
     };
 
-    const showMessage = (message) => {
+    const showMessage = (message, color = "", backgroundColor = "") => {
         statusDiv.textContent = message;
+        statusDiv.style.backgroundColor = backgroundColor;
+        statusDiv.style.color = color;
     };
 
     const initializeDisplay = () => {
@@ -148,7 +150,9 @@ const DisplayController = (() => {
                 showMessage(
                     `${GameController.getCurrentPlayer().name} wins! (${
                         GameController.getCurrentPlayer().marker
-                    })`
+                    })`,
+                    "white",
+                    "#4caf50"
                 );
             } else if (result === "tie") {
                 updateBoard();

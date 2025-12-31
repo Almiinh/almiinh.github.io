@@ -6,7 +6,7 @@
     --color-bg-secondary: light-dark(#eee, #333943);
     --color-bg-ternary: light-dark(#ddd, #3c4048);
     --color-border: light-dark(rgba(0, 0, 0, 0.5), #f2f4f5);
-    --color-shadow: rgba(0, 0, 0, 0.2);
+    --color-shadow: light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
     --color-bg-gradient: var(--color-bg)
         linear-gradient(
             90deg,
