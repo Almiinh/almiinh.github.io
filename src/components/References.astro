@@ -47,11 +47,6 @@ const { class: className = "" } = Astro.props;
 <style
     define:vars={{ iconGithub: `url("${iconGithub.src}")`, iconGithubWhite: `url("${iconGithubWhite.src}")` }}
 >
-    div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
     div a {
         display: inline-block;
         margin: 0 0.3rem;
@@ -60,14 +55,15 @@ const { class: className = "" } = Astro.props;
         filter: var(--filter-hover);
         min-width: 28px;
         min-height: 28px;
-    }
-    img:hover {
-        translate: 0 -2px;
-        filter: contrast(100%);
-        transition: all 0.2s;
+
+        &:hover {
+            translate: 0 -2px;
+            filter: contrast(100%);
+            transition: all 0.2s;
+        }
     }
     @media (prefers-color-scheme: light) {
-        :global(html.dark) img[alt="GitHub" i] {
+        :root[style*="color-scheme: dark"].dark img[alt="GitHub" i] {
             content: var(--iconGithubWhite);
         }
 
@@ -80,7 +76,7 @@ const { class: className = "" } = Astro.props;
             content: var(--iconGithubWhite);
         }
 
-        :global(html.light) img[alt="GitHub" i] {
+        :root[style*="color-scheme: light"] img[alt="GitHub" i] {
             content: var(--iconGithub);
         }
     }

@@ -1,10 +1,11 @@
 <script>
+    let { class: className = "" } = $props();
     let variables = $state("sdg/FP_CPI_TOTL_ZG");
     let place = $state("country/FRA");
     let header = $state("Annual Inflation, Consumer Prices");
 </script>
 
-<form>
+<form class={className}>
     <div class="form-group">
         <label for="dc-header">Header</label>
         <input name="dc-header" bind:value={header} placeholder="Header" />
@@ -32,12 +33,14 @@
         display: flex;
         flex-direction: column;
     }
+    label, input {
+        font-size: x-small;
+    }
 
     datacommons-line {
         margin-top: 1rem;
         margin-bottom: 1rem;
         width: 100%;
-        height: 400px;
     }
     datacommons-line::part(header),
     datacommons-line::part(y-axis-text),

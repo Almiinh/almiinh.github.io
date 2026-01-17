@@ -1,10 +1,18 @@
 ---
-const { href, class: className, ...rest } = Astro.props;
+const { href = "", class: className, ...rest } = Astro.props;
 ---
 
-<a href={href} class="card" class:list={className} {...rest}>
-    <slot />
-</a>
+{
+    href ? (
+        <a class="card hoverable" class:list={className} href={href} {...rest}>
+            <slot />
+        </a>
+    ) : (
+        <div class="card" class:list={className} {...rest}>
+            <slot />
+        </div>
+    )
+}
 
 <style>
     .card {
@@ -12,14 +20,18 @@ const { href, class: className, ...rest } = Astro.props;
         break-inside: avoid;
         transition: all 0.2s ease-in-out;
         margin-bottom: 1rem;
-        box-shadow: 5px 5px 1px var(--color-shadow);
+        box-shadow: 2px 2px 1px var(--color-shadow);
         border: 1px solid var(--color-shadow);
         background-color: var(--color-bg);
         padding: 1rem;
-        text-decoration: none   ;
+        text-decoration: none;
     }
 
-    .card:hover {
+    .hoverable {
+        box-shadow: 5px 5px 1px var(--color-shadow);
+    }
+
+    .hoverable:hover {
         transform: translateY(2px);
         filter: var(--filter-hover);
         box-shadow: 2px 2px 1px var(--color-shadow);

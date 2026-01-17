@@ -1,10 +1,7 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import DarkModeSwitch from "./DarkModeSwitch.svelte";
-import References from "./References.astro";
 ---
-<script src="https://datacommons.org/datacommons.js"></script>
-
 <nav>
     <a href="/"><h1>Minh-Hoang's portfolio</h1></a>
     <div class="links">
@@ -12,7 +9,6 @@ import References from "./References.astro";
         <HeaderLink href="/dash">Dashboard</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
     </div>
-    <References class="references" />
     <DarkModeSwitch class="DarkModeSwitch" client:load />
 </nav>
 
@@ -76,9 +72,6 @@ import References from "./References.astro";
         }
         nav h1 {
             display: none;
-        }
-        :global(.references) {
-            display: none !important;
         }
     }
 </style>

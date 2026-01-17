@@ -1,26 +1,75 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import DataCommonsLine from "../components/DataCommonsLine.svelte";
+import Card from "../components/Card.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 ---
+
+<script src="https://datacommons.org/datacommons.js"></script>
+<script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+        startOnLoad: true,
+        sankey: {
+            nodeAlignment: "right",
+        },
+    });
+</script>
 
 <Layout>
     <section>
         <h2>Data Dashboard</h2>
-        <DataCommonsLine client:load />
+        <div class="bento-row-grid">
+            <Card class="widget">
+                <h4>Data Commons Widget</h4>
+                <DataCommonsLine client:load class="datacommons" />
+            </Card>
+            <Card class="widget sankey">
+                <h4>Salary Sankey Diagram</h4>
+                <pre
+                    class="mermaid">
+                sankey
+                
+                
+                %% Salaire Brut
+                Salaire Brut,Salaire Net Avant Impot,76.5402
+                Salaire Brut,Cotisations,23.46
+                Cotisations,CSG/CRDS,9.9265
+                Cotisations,Mutuelle,1.992
+                Cotisations,Chomage,0.0239
+                Cotisations,Retraite,11.5176
+                Salaire Employeur,Salaire Brut,100
+                Salaire Employeur,Cotisations Patronales,44.8951
+                Cotisations Patronales,Assurance Maladie,7.0045
+                Cotisations Patronales,Chomage,4.253
+                Cotisations Patronales,Chomage,0.03597
+                Cotisations Patronales,Mutuelle,3.3651
+                Cotisations Patronales,Accident Travail,0.5003
+                Cotisations Patronales,Retraite,17.3912
+                Cotisations Patronales,Allocations Familliales,3.4522
+                Cotisations Patronales,Autres,8.893
+            </pre>
+            </Card>
+        </div>
     </section>
 </Layout>
 
 <style>
-    datacommons-line {
-        margin-bottom: 1rem;
+    .bento-row-grid {
+        display: flex;
+        justify-content: center;
+        /* flex-wrap: wrap; */
+        align-items: baseline;
+        gap: 1rem;
     }
-    datacommons-line::part(header),
-    datacommons-line::part(y-axis-text),
-    datacommons-line::part(x-axis-text),
-    datacommons-line::part(y-axis-label),
-    datacommons-line::part(y-axis-text),
-    datacommons-line::part(x-axis-label) {
-        fill: var(--color-text);
-        color: var(--color-text);
+    .widget h4 {
+        margin: 0;
+    }
+    .sankey {
+        flex-grow: 1;
+
+        text {
+            fill: var(--color-text);
+        }
     }
 </style>
