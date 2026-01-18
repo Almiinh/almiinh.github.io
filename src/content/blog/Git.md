@@ -2,19 +2,22 @@
 title: "Git Cheatsheet"
 description: "A quick overview of Git"
 pubDate: "Nov 08 2025"
-heroImage: '../../assets/logo_git.png'
+heroImage: '../../assets/blog/logo_git.png'
 heroSize: small
 ---
 
 # Introduction
 
-<aside> 📙
+<aside emoji="📙">
 
 **Git** est un **logiciel de gestion de versions** (**VCS** _version control system)_ qui permet de conserver un historique des modifications et des versions de tous leurs fichiers.
 
 </aside>
 
-<aside>📙  
+> [!note] title here  
+> body here
+
+<aside emoji="📙"> 
 
 **Git** est utilisé en **lignes de commande** _(via un terminal de commande ou CLI: Command Line Interface)._ D’autres interfaces sont disponibles comme Git-gui, Visual Studio Code avec l’extension GitLens, GitKraken, intégré dans un IDE…
 
@@ -51,7 +54,7 @@ L’historique est conservé dans le dossier du projet (`.git/`) qui constitue a
 
 ## Gérer un dépôt local `git init / status / log`
 
-<aside data-emoji="📙">
+<aside emoji="📙">
 
 Un **dépôt local** est l’endroit où l’on stocke, sur sa machine, une copie d’un projet, ses différentes versions et l’historique des modifications.
 
@@ -68,13 +71,13 @@ Un **dépôt local** est l’endroit où l’on stocke, sur sa machine, une copi
 
 ## Gérer un dépôt distant `git remote / clone / push / pull`
 
-<aside data-emoji="📙">
+<aside emoji="📙">
 
 Un **dépôt distant** est une version dématérialisée du dépôt local, que ce soit sur Internet ou sur un réseau. Il permet de centraliser le travail des développeurs dans un projet collectif comme un _cloud_ cf. **les plateformes GitHub, GitLab…**
 
 </aside>
 
-<aside data-emoji="💡">
+<aside emoji="💡">
 
 URL autorisés:
 
@@ -92,7 +95,7 @@ URL autorisés:
 -   Mettre à jour un dépôt local `git pull <nomDépôt> [branch]`
 -   Mettre à jour sans changer le dépôt : `git fetch`
 
-<aside data-emoji="📙">
+<aside emoji="📙">
 
 `git pull` équivaut à `git fetch` puis `git merge`
 
@@ -100,7 +103,7 @@ URL autorisés:
 
 ## Gérer une branche `git branch`
 
-<aside data-emoji="📙">  
+<aside emoji="📙">  
 
 La branche par défaut est `main` sur github (anciennement `master`). C’est configurable dans les `config`.
 
@@ -117,7 +120,7 @@ La branche par défaut est `main` sur github (anciennement `master`). C’est co
 
 ## Gérer une version `git commit`
 
-<aside data-emoji="💡">
+<aside emoji="💡">
 La wildcard `*` peut être utilisé. `*.iml` désigne tous les fichiers qui finissent en `.iml`
 </aside>
 
@@ -136,7 +139,7 @@ La wildcard `*` peut être utilisé. `*.iml` désigne tous les fichiers qui fini
 -   Remiser les modifications: `git stash`
 -   Cumuler les modifications
 
-      <aside data-emoji="📙">
+      <aside emoji="📙">
 
     À chaque fois que vous appellez `git stash`, les modifications sont mises de côté dans une pile, au dessus des autres modifications remisées.
     À chaque fois que vous appelez `pop`, on dépile.
@@ -162,13 +165,13 @@ La wildcard `*` peut être utilisé. `*.iml` désigne tous les fichiers qui fini
 
 ## Reset `git reset`
 
-<aside >
+<aside emoji="⚠️">
 
-⚠️ `git revert` annule les changements en créant un nouveau commit.
+`git revert` annule les changements en créant un nouveau commit.
 
 </aside>
 
-<aside>⚠️
+<aside emoji="⚠️">
 
 `git reset`  annule les changements sans créer un nouveau commit. Il existe plusieurs niveaux de reset:
 

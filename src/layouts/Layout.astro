@@ -1,13 +1,14 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Header from "$components/Header.astro";
+import Footer from "$components/Footer.astro";
 
-import iconCV from "../assets/index/CV128.red.png";
-import iconLinkedIn from "../assets/index/LINKEDIN.svg";
-import iconGithub from "../assets/index/GITHUB.svg";
-import iconGithubWhite from "../assets/index/GITHUB.white.svg";
+import iconCV from "$assets/index/CV128.red.png";
+import iconLinkedIn from "$assets/index/LINKEDIN.svg";
+import iconGithub from "$assets/index/GITHUB.svg";
+import iconGithubWhite from "$assets/index/GITHUB.white.svg";
 
 const { title, largeScreenMargin = "15vw", smallScreenMargin = "5vw" } = Astro.props;
+
 ---
 
 <!DOCTYPE html>
