@@ -11,22 +11,18 @@
   "dependencies": {
     "@astrojs/check": "^0.9.6",
     "@astrojs/mdx": "^4.3.13",
-    "@astrojs/svelte": "^7.2.4",
+    "@astrojs/svelte": "^7.2.5",
     "@r4ai/remark-callout": "^0.6.2",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.6",
+    "astro": "^5.16.15",
     "hast-util-select": "^6.0.4",
-    "lit": "^3.3.2",
-    "playwright": "^1.56.1",
+    "playwright": "^1.58.0",
     "rehype-katex": "^7.0.1",
     "remark-collapse": "^0.1.2",
     "remark-extended-table": "^2.0.3",
     "remark-gfm": "^4.0.1",
     "remark-lint": "^10.0.1",
     "remark-math": "^6.0.0",
-    "sass": "^1.94.2",
-    "svelte": "^5.20.1",
-    "tailwindcss": "^4.1.18",
+    "svelte": "^5.48.2",
     "typescript": "^5.9.3"
   }
 }

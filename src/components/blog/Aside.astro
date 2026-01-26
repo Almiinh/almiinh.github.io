@@ -1,0 +1,12 @@
+---
+const {emoji = "💡"} = Astro.props;
+---
+
+<aside>
+    <span class="callout icon">
+        {emoji}
+    </span>
+    <div class="callout content">
+        <slot />
+    </div>
+</aside>
