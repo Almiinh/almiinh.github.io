@@ -1,29 +1,18 @@
 ---
 title: "Git Cheatsheet"
 description: "A quick overview of Git"
-pubDate: "Nov 08 2025"
+pubDate: "08 Nov 2025"
 heroImage: '../../assets/blog/logo_git.png'
 heroSize: small
 ---
 
-import Aside from '../../components/blog/Aside.astro';
-
 # Introduction
 
-<aside emoji="📙">
+> **Git** est un **logiciel de gestion de versions** (**VCS** _version control system)_ qui permet de conserver un historique des modifications et des versions de tous leurs fichiers.
 
-**Git** est un **logiciel de gestion de versions** (**VCS** _version control system)_ qui permet de conserver un historique des modifications et des versions de tous leurs fichiers.
 
-</aside>
-
-> [!note] title here  
-> body here
-
-<aside emoji="📙"> 
-
-**Git** est utilisé en **lignes de commande** _(via un terminal de commande ou CLI: Command Line Interface)._ D’autres interfaces sont disponibles comme Git-gui, Visual Studio Code avec l’extension GitLens, GitKraken, intégré dans un IDE…
-
-</aside>
+> [!📙] This is a callout  
+> **Git** est utilisé en **lignes de commande** _(via un terminal de commande ou CLI: Command Line Interface)._ D’autres interfaces sont disponibles comme Git-gui, Visual Studio Code avec l’extension GitLens, GitKraken, intégré dans un IDE…
 
 L’historique est conservé dans le dossier du projet (`.git/`) qui constitue alors un **dépôt Git.** Il est essentiel pour travailler en équipe ou collaborer à un projet open source. **Git** est décentralisé, chaque **dépôt** contient toutes les modifications depuis le début.
 
@@ -56,11 +45,8 @@ L’historique est conservé dans le dossier du projet (`.git/`) qui constitue a
 
 ## Gérer un dépôt local `git init / status / log`
 
-<aside emoji="📙">
-
-Un **dépôt local** est l’endroit où l’on stocke, sur sa machine, une copie d’un projet, ses différentes versions et l’historique des modifications.
-
-</aside>
+> [!Info]  
+> Un **dépôt local** est l’endroit où l’on stocke, sur sa machine, une copie d’un projet, ses différentes versions et l’historique des modifications.
 
 -   Créer un dépôt Git : `git init`
 -   Voir l’état du dépôt : `git status`
@@ -73,22 +59,15 @@ Un **dépôt local** est l’endroit où l’on stocke, sur sa machine, une copi
 
 ## Gérer un dépôt distant `git remote / clone / push / pull`
 
-<aside emoji="📙">
+> [!📙]  
+> Un **dépôt distant** est une version dématérialisée du dépôt local, que ce soit sur Internet ou sur un réseau. Il permet de centraliser le travail des développeurs dans un projet collectif comme un _cloud_ cf. **les plateformes GitHub, GitLab…**
 
-Un **dépôt distant** est une version dématérialisée du dépôt local, que ce soit sur Internet ou sur un réseau. Il permet de centraliser le travail des développeurs dans un projet collectif comme un _cloud_ cf. **les plateformes GitHub, GitLab…**
+> [!💡] URL autorisés:  
+> - `ssh://[user@]host.xz[:port]/path/to/repo.git/`
+> - `git://host.xz[:port]/path/to/repo.git/`
+> - `http[s]://host.xz[:port]/path/to/repo.git/`
+> - `ftp[s]://host.xz[:port]/path/to/repo.git/`
 
-</aside>
-
-<aside emoji="💡">
-
-URL autorisés:
-
-- `ssh://[user@]host.xz[:port]/path/to/repo.git/`
-- `git://host.xz[:port]/path/to/repo.git/`
-- `http[s]://host.xz[:port]/path/to/repo.git/`
-- `ftp[s]://host.xz[:port]/path/to/repo.git/`
-
-</aside>
 
 -   Relier le dépôt local au dépôt distant : `git remote add <nomDépôt> <urlDépôt>`
 -   Téléverser des commits vers le dépôt distant : `git push <nomDépôt> [branch]`
@@ -97,19 +76,13 @@ URL autorisés:
 -   Mettre à jour un dépôt local `git pull <nomDépôt> [branch]`
 -   Mettre à jour sans changer le dépôt : `git fetch`
 
-<aside emoji="📙">
-
-`git pull` équivaut à `git fetch` puis `git merge`
-
-</aside>
+> [!📙]  
+> `git pull` équivaut à `git fetch` puis `git merge`
 
 ## Gérer une branche `git branch`
 
-<aside emoji="📙">  
-
-La branche par défaut est `main` sur github (anciennement `master`). C’est configurable dans les `config`.
-
-</aside>
+> [!📙]    
+> La branche par défaut est `main` sur github (anciennement `master`). C’est configurable dans les `config`.
 
 -   Lister les branches : `git branch`
 -   Créer une branche : `git branch <branch>`
@@ -122,9 +95,9 @@ La branche par défaut est `main` sur github (anciennement `master`). C’est co
 
 ## Gérer une version `git commit`
 
-<aside emoji="💡">
-La wildcard `*` peut être utilisé. `*.iml` désigne tous les fichiers qui finissent en `.iml`
-</aside>
+> [!💡]  
+> La wildcard `*` peut être utilisé. `*.iml` désigne tous les fichiers qui finissent en `.iml`
+
 
 -   Indexer des fichiers : `git add <fichier1> <fichier2> …`
 -   Sauvegarder une version : `git commit -m "message"`
@@ -141,12 +114,9 @@ La wildcard `*` peut être utilisé. `*.iml` désigne tous les fichiers qui fini
 -   Remiser les modifications: `git stash`
 -   Cumuler les modifications
 
-      <aside emoji="📙">
-
-    À chaque fois que vous appellez `git stash`, les modifications sont mises de côté dans une pile, au dessus des autres modifications remisées.
-    À chaque fois que vous appelez `pop`, on dépile.
-
-      </aside>
+    > [!📙]  
+    > À chaque fois que vous appellez `git stash`, les modifications sont mises de côté dans une pile, au dessus des autres modifications remisées.
+    > À chaque fois que vous appelez `pop`, on dépile.
 
 
 -   Remiser les modifications et les créations: `git stash save -u`
@@ -167,17 +137,11 @@ La wildcard `*` peut être utilisé. `*.iml` désigne tous les fichiers qui fini
 
 ## Reset `git reset`
 
-<aside emoji="⚠️">
+> [!⚠️] Note  
+> `git revert` annule les changements en créant un nouveau commit.
 
-`git revert` annule les changements en créant un nouveau commit.
-
-</aside>
-
-<aside emoji="⚠️">
-
-`git reset`  annule les changements sans créer un nouveau commit. Il existe plusieurs niveaux de reset:
-
--   `--soft` : ne touche pas à l'index ni au répertoire de travail. Les fichiers en reset retournent juste de la liste des commités à celle à commiter.
--   `--mixed` : celui par défaut, mélange des deux précédents. Il laisse les fichiers du répertoire de travail, mais annule l'index.
--   `--hard` : efface l'index et le répertoire de travail. Cette option équivaut à un reset + clean.
-</aside>
+> [!⚠️]  
+> `git reset`  annule les changements sans créer un nouveau commit. Il existe plusieurs niveaux de reset:
+> -   `--soft` : ne touche pas à l'index ni au répertoire de travail. Les fichiers en reset retournent juste de la liste des commités à celle à commiter.
+> -   `--mixed` : celui par défaut, mélange des deux précédents. Il laisse les fichiers du répertoire de travail, mais annule l'index.
+> -   `--hard` : efface l'index et le répertoire de travail. Cette option équivaut à un reset + clean.

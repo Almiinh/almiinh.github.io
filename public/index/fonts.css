@@ -14,11 +14,6 @@
     font-family: "Playfair Display";
 }
 @font-face {
-    src: url("/fonts/Lora/Lora-VariableFont_wght.ttf") format("truetype"),
-        url("/fonts/Lora/Lora-Italic-VariableFont_wght.ttf") format("truetype");
-    font-family: "Lora";
-}
-@font-face {
     src: url("/fonts/Rubik/Rubik-VariableFont_wght.ttf") format("truetype"),
         url("/fonts/Rubik/Rubik-Italic-VariableFont_wght.ttf") format("truetype");
     font-family: "Rubik";

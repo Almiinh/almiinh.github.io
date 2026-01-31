@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
+import rehypeKatex from "rehype-katex";
 import remarkExtendedTable from "remark-extended-table";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
@@ -17,6 +18,7 @@ export default defineConfig({
     },
 
     markdown: {
+        rehypePlugins: [rehypeKatex],
         remarkPlugins: [remarkExtendedTable, remarkMath, remarkGfm, remarkCallout],
     },
 });

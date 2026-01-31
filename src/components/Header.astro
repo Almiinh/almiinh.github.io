@@ -6,8 +6,8 @@ import DarkModeSwitch from "./DarkModeSwitch.svelte";
     <a href="/"><h1>Minh-Hoang's portfolio</h1></a>
     <div class="links">
         <HeaderLink href="/">Projects</HeaderLink>
-        <HeaderLink href="/dash">Dashboard</HeaderLink>
-        <HeaderLink href="/blog">Blog</HeaderLink>
+        <HeaderLink href="/dash">Data Playground</HeaderLink>
+        <HeaderLink href="/blog">Blog Playground</HeaderLink>
     </div>
     <DarkModeSwitch class="DarkModeSwitch" client:load />
 </nav>
@@ -27,7 +27,6 @@ import DarkModeSwitch from "./DarkModeSwitch.svelte";
         flex-wrap: wrap-reverse;
         justify-content: space-between;
         align-items: center;
-        overflow-x: scroll;
         transition: all 0.3s ease-in-out;
     }
     nav a {

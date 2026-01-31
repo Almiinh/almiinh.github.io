@@ -16,13 +16,14 @@ const { Content } = await render(post);
 ---
 
 <script>
-    const callouts = document.querySelectorAll("aside[emoji]");
-
-    callouts.forEach((aside) => {
-        const emoji = aside.getAttribute("emoji");
-        const originalContent = aside.innerHTML;
-        aside.innerHTML = `<span class="callout icon">${emoji}</span>
-        <div class="callout content">${originalContent}</div>`;
+    const callouts = document.querySelectorAll("[data-callout]");
+    callouts.forEach((callout) => {
+        const emoji = callout.getAttribute("data-callout-type");
+        const title = callout.querySelector("[data-callout-title]");
+        if (emoji === title?.textContent?.trim()) {
+            // Remove title if it's the same as emoji
+            title.remove();
+        }
     });
 </script>
 

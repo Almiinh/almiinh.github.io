@@ -1,0 +1,30 @@
+---
+title: "Callouts Collection"
+description: "A quick overview of what callouts are available"
+pubDate: "31 Jan 2026"
+# heroImage: '../../assets/blog/logo_git.png'
+heroSize: small
+---
+
+
+{ ["📙","info", "todo", "abstract", "summary", "tldr", "tip", "hint", "important", "success", "check", "done",
+    "question", "help", "faq", "warning", "caution", "attention", "failure", "fail", "danger", "error", "missing", "bug",
+    "example", "quote", "cite"].map((type) => (
+        <>
+            <div data-callout="" data-callout-type={type}>
+                <div data-callout-title></div>
+                <div data-callout-body>
+                    <p>This is a {type} callout example. </p>
+                </div>
+            </div>
+            <div data-callout="" data-callout-type={type}>
+                <div data-callout-title>With custom title</div>
+                <div data-callout-body>
+                    <p>This is a {type} callout example. </p>
+                </div>
+            </div>
+        </>
+    ))
+}
+
+

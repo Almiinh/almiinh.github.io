@@ -1,0 +1,14 @@
+---
+// src/components/Callout.astro
+
+type Props = {
+  calloutType: string
+  isFoldable: boolean
+}
+const { calloutType, isFoldable } = Astro.props
+---
+
+<div class="">
+  <slot />
+</div>
+

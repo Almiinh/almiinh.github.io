@@ -1,0 +1,390 @@
+// Variables
+$spacing-6: 1.5rem;
+$spacing-5: 1.25rem;
+$spacing-4: 1rem;
+$spacing-2: 0.5rem;
+$spacing-1: 0.25rem;
+$size-6: 1.5rem;
+$size-5: 1.25rem;
+$radius: 0.5rem;
+$callout-types:
+    "info", "todo", "abstract", "summary", "tldr", "tip", "hint", "important", "success", "check", "done",
+    "question", "help", "faq", "warning", "caution", "attention", "failure", "fail", "missing", "bug",
+    "example", "quote", "cite", "danger", "error";
+
+// Icons (base64 SVG data)
+$icon-pencil: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTE3IDNhMi44NSAyLjgzIDAgMSAxIDQgNEw3LjUgMjAuNUwyIDIybDEuNS01LjVabS0yIDJsNCA0Ii8+PC9zdmc+");
+$icon-info: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzg4ODg4OCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEwIi8+PHBhdGggZD0iTTEyIDE2di00bTAtNGguMDEiLz48L2c+PC9zdmc+");
+$icon-check-big: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzg4ODg4OCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiPjxwYXRoIGQ9Ik0yMiAxMS4wOFYxMmExMCAxMCAwIDEgMS01LjkzLTkuMTQiLz48cGF0aCBkPSJtOSAxMWwzIDNMMjIgNCIvPjwvZz48L3N2Zz4=");
+$icon-clipboard: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiI+PHJlY3Qgd2lkdGg9IjgiIGhlaWdodD0iNCIgeD0iOCIgeT0iMiIgcng9IjEiIHJ5PSIxIi8+PHBhdGggZD0iTTE2IDRoMmEyIDIgMCAwIDEgMiAydjE0YTIgMiAwIDAgMS0yIDJINmEyIDIgMCAwIDEtMi0yVjZhMiAyIDAgMCAxIDItMmgybTQgN2g0bS00IDVoNG0tOC01aC4wMU04IDE2aC4wMSIvPjwvZz48L3N2Zz4=");
+$icon-flame: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTguNSAxNC41QTIuNSAyLjUgMCAwIDAgMTEgMTJjMC0xLjM4LS41LTItMS0zYy0xLjA3Mi0yLjE0My0uMjI0LTQuMDU0IDItNmMuNSAyLjUgMiA0LjkgNCA2LjVjMiAxLjYgMyAzLjUgMyA1LjVhNyA3IDAgMSAxLTE0IDBjMC0xLjE1My40MzMtMi4yOTQgMS0zYTIuNSAyLjUgMCAwIDAgMi41IDIuNSIvPjwvc3ZnPg==");
+$icon-check: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTIwIDZMOSAxN2wtNS01Ii8+PC9zdmc+");
+$icon-help: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNOS4wOSA5YTMgMyAwIDAgMSA1LjgzIDFjMCAyLTMgMy0zIDNtLjA4IDRoLjAxIi8+PC9nPjwvc3ZnPg==");
+$icon-alert: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0ibTIxLjczIDE4bC04LTE0YTIgMiAwIDAgMC0zLjQ4IDBsLTggMTRBMiAyIDAgMCAwIDQgMjFoMTZhMiAyIDAgMCAwIDEuNzMtM00xMiA5djRtMCA0aC4wMSIvPjwvc3ZnPg==");
+$icon-zap: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXphcCI+PHBhdGggZD0iTTQgMTRhMSAxIDAgMCAxLS43OC0xLjYzbDkuOS0xMC4yYS41LjUgMCAwIDEgLjg2LjQ2bC0xLjkyIDYuMDJBMSAxIDAgMCAwIDEzIDEwaDdhMSAxIDAgMCAxIC43OCAxLjYzbC05LjkgMTAuMmEuNS41IDAgMCAxLS44Ni0uNDZsMS45Mi02LjAyQTEgMSAwIDAgMCAxMSAxNHoiLz48L3N2Zz4=");
+$icon-bug: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0ibTggMmwxLjg4IDEuODhtNC4yNCAwTDE2IDJNOSA3LjEzdi0xYTMuMDAzIDMuMDAzIDAgMSAxIDYgMHYxIi8+PHBhdGggZD0iTTEyIDIwYy0zLjMgMC02LTIuNy02LTZ2LTNhNCA0IDAgMCAxIDQtNGg0YTQgNCAwIDAgMSA0IDR2M2MwIDMuMy0yLjcgNi02IDZtMCAwdi05Ii8+PHBhdGggZD0iTTYuNTMgOUM0LjYgOC44IDMgNy4xIDMgNW0zIDhIMm0xIDhjMC0yLjEgMS43LTMuOSAzLjgtNE0yMC45NyA1YzAgMi4xLTEuNiAzLjgtMy41IDRNMjIgMTNoLTRtLS44IDRjMi4xLjEgMy44IDEuOSAzLjggNCIvPjwvZz48L3N2Zz4=");
+$icon-list: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTggNmgxM004IDEyaDEzTTggMThoMTNNMyA2aC4wMU0zIDEyaC4wMU0zIDE4aC4wMSIvPjwvc3ZnPg==");
+$icon-quote: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTMgMjFjMyAwIDctMSA3LThWNWMwLTEuMjUtLjc1Ni0yLjAxNy0yLTJINGMtMS4yNSAwLTIgLjc1LTIgMS45NzJWMTFjMCAxLjI1Ljc1IDIgMiAyYzEgMCAxIDAgMSAxdjFjMCAxLTEgMi0yIDJzLTEgLjAwOC0xIDEuMDMxVjIwYzAgMSAwIDEgMSAxbTEyIDBjMyAwIDctMSA3LThWNWMwLTEuMjUtLjc1Ny0yLjAxNy0yLTJoLTRjLTEuMjUgMC0yIC43NS0yIDEuOTcyVjExYzAgMS4yNS43NSAyIDIgMmguNzVjMCAyLjI1LjI1IDQtMi43NSA0djNjMCAxIDAgMSAxIDEiLz48L3N2Zz4=");
+$chevron-right: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzg4ODg4OCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiIGQ9Im05IDE4bDYtNmwtNi02Ii8+PC9zdmc+");
+$chevron-down: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzg4ODg4OCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjIiIGQ9Im02IDlsNiA2bDYtNiIvPjwvc3ZnPg==");
+
+// Mixin for callout types
+@mixin callout-type($color-light, $color-dark, $bg-light, $bg-dark, $text-color, $icon, $label) {
+    border-color: $color-light;
+    background-color: $bg-light;
+
+    @media (prefers-color-scheme: dark) {
+        border-color: $color-dark;
+        background-color: $bg-dark;
+    }
+
+    > [data-callout-title] {
+        color: $text-color;
+
+        &:empty::after {
+            content: $label;
+        }
+    }
+
+    &::before {
+        mask-image: $icon;
+        background-color: $text-color;
+        content: "";
+    }
+}
+
+[data-callout] {
+    @each $type in $callout-types {
+        &[data-callout-type="#{$type}"] {
+            gap: $spacing-2;
+            margin: $spacing-6 0;
+            // border: 1px solid rgba(37, 99, 235, 0.2);
+            border-radius: $radius;
+            // background-color: rgba(96, 165, 250, 0.2);
+            padding: $spacing-4 $spacing-4 $spacing-5;
+
+            @media (prefers-color-scheme: dark) {
+                border-color: rgba(30, 64, 175, 0.2);
+                background-color: rgba(37, 99, 235, 0.1);
+            }
+
+            > [data-callout-title] {
+                display: flex;
+                align-items: flex-start;
+                gap: $spacing-2;
+                padding: 0;
+                // color: rgb(59, 130, 246);
+                font-weight: bold;
+
+                &:not(:only-child) {
+                    margin-bottom: $spacing-2;
+                }
+
+                &:empty::after {
+                    content: "Note";
+                }
+            }
+            &::before {
+                display: block;
+                // mask-image: $icon-pencil;
+                mask-size: cover;
+                mask-repeat: no-repeat;
+                margin-top: $spacing-1;
+                width: $size-5;
+                height: $size-5;
+                content: "";
+            }
+
+            > [data-callout-body] {
+                display: flex;
+                flex-direction: column;
+                gap: $spacing-2;
+
+                > * {
+                    margin: 0;
+                }
+            }
+
+            // Collapsible callouts
+            &[data-callout-type] {
+                details > summary[data-callout-title] {
+                    cursor: pointer;
+
+                    &::after {
+                        background: $chevron-right right no-repeat;
+                        background-size: $size-6;
+                        width: 100%;
+                        content: "";
+                    }
+
+                    &:not(:empty)::after {
+                        margin: auto auto auto;
+                        width: $size-6;
+                        height: $size-6;
+                    }
+                }
+
+                &[open] > summary[data-callout-title]::after {
+                    background-image: $chevron-down;
+                }
+            }
+        }
+    }
+}
+
+// Callout types
+[data-callout] {
+    &[data-callout-type="info"] {
+        @include callout-type(
+            rgba(37, 99, 235, 0.2),
+            rgba(30, 64, 175, 0.2),
+            rgba(96, 165, 250, 0.2),
+            rgba(37, 99, 235, 0.1),
+            rgb(59, 130, 246),
+            $icon-info,
+            "Info"
+        );
+    }
+
+    &[data-callout-type="todo"] {
+        @include callout-type(
+            rgba(37, 99, 235, 0.2),
+            rgba(30, 64, 175, 0.2),
+            rgba(96, 165, 250, 0.2),
+            rgba(37, 99, 235, 0.1),
+            rgb(59, 130, 246),
+            $icon-check-big,
+            "ToDo"
+        );
+    }
+
+    &[data-callout-type="abstract"],
+    &[data-callout-type="summary"],
+    &[data-callout-type="tldr"] {
+        @include callout-type(
+            rgba(8, 145, 178, 0.2),
+            rgba(21, 94, 117, 0.2),
+            rgba(34, 211, 238, 0.2),
+            rgba(8, 145, 178, 0.1),
+            rgb(6, 182, 212),
+            $icon-clipboard,
+            ""
+        );
+    }
+
+    &[data-callout-type="abstract"] > [data-callout-title]:empty::after {
+        content: "Abstract";
+    }
+    &[data-callout-type="summary"] > [data-callout-title]:empty::after {
+        content: "Summary";
+    }
+    &[data-callout-type="tldr"] > [data-callout-title]:empty::after {
+        content: "TL;DR";
+    }
+
+    &[data-callout-type="tip"],
+    &[data-callout-type="hint"],
+    &[data-callout-type="important"] {
+        @include callout-type(
+            rgba(8, 145, 178, 0.2),
+            rgba(21, 94, 117, 0.2),
+            rgba(34, 211, 238, 0.2),
+            rgba(8, 145, 178, 0.1),
+            rgb(6, 182, 212),
+            $icon-flame,
+            ""
+        );
+    }
+
+    &[data-callout-type="tip"] > [data-callout-title]:empty::after {
+        content: "Tip";
+    }
+    &[data-callout-type="hint"] > [data-callout-title]:empty::after {
+        content: "Hint";
+    }
+    &[data-callout-type="important"] > [data-callout-title]:empty::after {
+        content: "Important";
+    }
+
+    &[data-callout-type="success"],
+    &[data-callout-type="check"],
+    &[data-callout-type="done"] {
+        @include callout-type(
+            rgba(22, 163, 74, 0.2),
+            rgba(22, 101, 52, 0.2),
+            rgba(74, 222, 128, 0.2),
+            rgba(22, 163, 74, 0.1),
+            rgb(34, 197, 94),
+            $icon-check,
+            ""
+        );
+    }
+
+    &[data-callout-type="success"] > [data-callout-title]:empty::after {
+        content: "Success";
+    }
+    &[data-callout-type="check"] > [data-callout-title]:empty::after {
+        content: "Check";
+    }
+    &[data-callout-type="done"] > [data-callout-title]:empty::after {
+        content: "Done";
+    }
+
+    &[data-callout-type="question"],
+    &[data-callout-type="help"],
+    &[data-callout-type="faq"] {
+        @include callout-type(
+            rgba(234, 88, 12, 0.2),
+            rgba(124, 45, 18, 0.2),
+            rgba(251, 146, 60, 0.2),
+            rgba(234, 88, 12, 0.1),
+            rgb(249, 115, 22),
+            $icon-help,
+            ""
+        );
+    }
+
+    &[data-callout-type="question"] > [data-callout-title]:empty::after {
+        content: "Question";
+    }
+    &[data-callout-type="help"] > [data-callout-title]:empty::after {
+        content: "Help";
+    }
+    &[data-callout-type="faq"] > [data-callout-title]:empty::after {
+        content: "FAQ";
+    }
+
+    &[data-callout-type="warning"],
+    &[data-callout-type="caution"],
+    &[data-callout-type="attention"] {
+        @include callout-type(
+            rgba(234, 88, 12, 0.2),
+            rgba(124, 45, 18, 0.2),
+            rgba(251, 146, 60, 0.2),
+            rgba(234, 88, 12, 0.1),
+            rgb(249, 115, 22),
+            $icon-alert,
+            ""
+        );
+    }
+
+    &[data-callout-type="warning"] > [data-callout-title]:empty::after {
+        content: "Warning";
+    }
+    &[data-callout-type="caution"] > [data-callout-title]:empty::after {
+        content: "Caution";
+    }
+    &[data-callout-type="attention"] > [data-callout-title]:empty::after {
+        content: "Attention";
+    }
+
+    &[data-callout-type="failure"],
+    &[data-callout-type="fail"],
+    &[data-callout-type="missing"] {
+        @include callout-type(
+            rgba(220, 38, 38, 0.2),
+            rgba(127, 29, 29, 0.2),
+            rgba(248, 113, 113, 0.2),
+            rgba(220, 38, 38, 0.1),
+            rgb(239, 68, 68),
+            $icon-check,
+            ""
+        );
+    }
+
+    &[data-callout-type="failure"] > [data-callout-title]:empty::after {
+        content: "Failure";
+    }
+    &[data-callout-type="fail"] > [data-callout-title]:empty::after {
+        content: "Fail";
+    }
+    &[data-callout-type="missing"] > [data-callout-title]:empty::after {
+        content: "Missing";
+    }
+
+    &[data-callout-type="danger"],
+    &[data-callout-type="error"] {
+        @include callout-type(
+            rgba(220, 38, 38, 0.2),
+            rgba(127, 29, 29, 0.2),
+            rgba(248, 113, 113, 0.2),
+            rgba(220, 38, 38, 0.1),
+            rgb(239, 68, 68),
+            $icon-zap,
+            ""
+        );
+    }
+
+    &[data-callout-type="danger"] > [data-callout-title]:empty::after {
+        content: "Danger";
+    }
+    &[data-callout-type="error"] > [data-callout-title]:empty::after {
+        content: "Error";
+    }
+
+    &[data-callout-type="bug"] {
+        @include callout-type(
+            rgba(220, 38, 38, 0.2),
+            rgba(127, 29, 29, 0.2),
+            rgba(248, 113, 113, 0.2),
+            rgba(220, 38, 38, 0.1),
+            rgb(239, 68, 68),
+            $icon-bug,
+            "Bug"
+        );
+    }
+
+    &[data-callout-type="example"] {
+        @include callout-type(
+            rgba(147, 51, 234, 0.2),
+            rgba(88, 28, 135, 0.2),
+            rgba(192, 132, 252, 0.2),
+            rgba(147, 51, 234, 0.1),
+            rgb(168, 85, 247),
+            $icon-list,
+            "Example"
+        );
+    }
+
+    &[data-callout-type="quote"],
+    &[data-callout-type="cite"] {
+        @include callout-type(
+            rgba(82, 82, 91, 0.2),
+            rgba(39, 39, 42, 0.2),
+            rgba(161, 161, 170, 0.2),
+            rgba(82, 82, 91, 0.15),
+            rgb(113, 113, 122),
+            $icon-quote,
+            ""
+        );
+    }
+
+    &[data-callout-type="quote"] > [data-callout-title]:empty::after {
+        content: "Quote";
+    }
+    &[data-callout-type="cite"] > [data-callout-title]:empty::after {
+        content: "Cite";
+    }
+}
+
+// Collapsible details element
+details[data-callout] > summary[data-callout-title] {
+    cursor: pointer;
+
+    &::after {
+        background: $chevron-right right no-repeat;
+        background-size: $size-6;
+        width: 100%;
+        content: "";
+    }
+
+    &:not(:empty)::after {
+        margin: auto auto auto;
+        width: $size-6;
+        height: $size-6;
+    }
+}
+
+details[data-callout][open] > summary[data-callout-title]::after {
+    background-image: $chevron-down;
+}
