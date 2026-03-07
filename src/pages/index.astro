@@ -5,6 +5,7 @@ import ProjectCard from "$components/ProjectCard.astro";
 import Card from "$components/Card.astro";
 import Tags from "$components/Tags.astro";
 import References from "$components/References.astro";
+import "$styles/details.css";
 ---
 
 <Layout title="Minh-Hoang HUYNH">
@@ -56,25 +57,6 @@ import References from "$components/References.astro";
 </Layout>
 
 <style>
-    details[open] {
-        margin-bottom: 5rem;
-    }
-    summary {
-        transition: all 0.1s ease-in-out;
-        margin-bottom: 1rem;
-        padding: 0 0.5rem;
-    }
-    summary h2 {
-        display: inline;
-    }
-    summary::marker {
-        z-index: 999;
-        font-size: 1.8rem;
-    }
-    summary:hover {
-        cursor: pointer;
-        background-color: var(--color-bg-secondary);
-    }
     section#title {
         display: flex;
         gap: 1rem;

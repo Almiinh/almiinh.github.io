@@ -1,18 +1,18 @@
 ---
 title: "Git Cheatsheet"
 description: "A quick overview of Git"
-pubDate: "08 Nov 2025"
+pubDate: "2025-11-08"
 heroImage: '../../assets/blog/logo_git.png'
 heroSize: small
 ---
 
 # Introduction
 
-> **Git** est un **logiciel de gestion de versions** (**VCS** _version control system)_ qui permet de conserver un historique des modifications et des versions de tous leurs fichiers.
+> **Git** est un **logiciel de gestion de versions** (**VCS** *version control system*) qui permet de conserver un historique des modifications et des versions de tous leurs fichiers.
 
 
 > [!📙] This is a callout  
-> **Git** est utilisé en **lignes de commande** _(via un terminal de commande ou CLI: Command Line Interface)._ D’autres interfaces sont disponibles comme Git-gui, Visual Studio Code avec l’extension GitLens, GitKraken, intégré dans un IDE…
+> **Git** est utilisé en **lignes de commande** *(via un terminal de commande ou CLI: Command Line Interface).* D’autres interfaces sont disponibles comme Git-gui, Visual Studio Code avec l’extension GitLens, GitKraken, intégré dans un IDE…
 
 L’historique est conservé dans le dossier du projet (`.git/`) qui constitue alors un **dépôt Git.** Il est essentiel pour travailler en équipe ou collaborer à un projet open source. **Git** est décentralisé, chaque **dépôt** contient toutes les modifications depuis le début.
 
@@ -26,7 +26,7 @@ L’historique est conservé dans le dossier du projet (`.git/`) qui constitue a
   console.log("Markdown features including the code block are available");
   ```
 
-  You can use Markdown here including **bold** and _italic_ text, and [inline link](https://docusaurus.io)
+  You can use Markdown here including **bold** and *italic* text, and [inline link](https://docusaurus.io)
   <details>
     <summary>Nested toggle! Some surprise inside...</summary>
 
@@ -45,7 +45,7 @@ L’historique est conservé dans le dossier du projet (`.git/`) qui constitue a
 
 ## Gérer un dépôt local `git init / status / log`
 
-> [!Info]  
+> [!Info]-  
 > Un **dépôt local** est l’endroit où l’on stocke, sur sa machine, une copie d’un projet, ses différentes versions et l’historique des modifications.
 
 -   Créer un dépôt Git : `git init`
@@ -60,7 +60,7 @@ L’historique est conservé dans le dossier du projet (`.git/`) qui constitue a
 ## Gérer un dépôt distant `git remote / clone / push / pull`
 
 > [!📙]  
-> Un **dépôt distant** est une version dématérialisée du dépôt local, que ce soit sur Internet ou sur un réseau. Il permet de centraliser le travail des développeurs dans un projet collectif comme un _cloud_ cf. **les plateformes GitHub, GitLab…**
+> Un **dépôt distant** est une version dématérialisée du dépôt local, que ce soit sur Internet ou sur un réseau. Il permet de centraliser le travail des développeurs dans un projet collectif comme un *cloud* cf. **les plateformes GitHub, GitLab…**
 
 > [!💡] URL autorisés:  
 > - `ssh://[user@]host.xz[:port]/path/to/repo.git/`
