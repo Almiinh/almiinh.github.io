@@ -10,37 +10,80 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, description, pubDate, updatedDate, heroImage, heroSize } = Astro.props;
 ---
 
-<Layout title={title} largeScreenMargin="25vw">
-    <article class="blog">
-        <div class="title">
-            <div class="hero-image small">
-                {heroImage && heroSize === "small" && <Image src={heroImage} alt="" />}
+<Layout title={title} largeScreenMargin="5vw">
+    <div class="blog-container">
+        <div></div>
+        <article class="blog-content">
+            <div class="title">
+                <div class="hero-image small">
+                    {heroImage && heroSize === "small" && <Image src={heroImage} alt="" />}
+                </div>
+                <h1>{title}</h1>
+                <p>{description}</p>
+                <div class="date">
+                    <FormattedDate date={pubDate} />
+                    {
+                        updatedDate && (
+                            <div class="last-updated-on">
+                                Last updated on <FormattedDate date={updatedDate} />
+                            </div>
+                        )
+                    }
+                </div>
+                <hr />
             </div>
-            <h1>{title}</h1>
-            <p>{description}</p>
-            <div class="date">
-                <FormattedDate date={pubDate} />
-                {
-                    updatedDate && (
-                        <div class="last-updated-on">
-                            Last updated on <FormattedDate date={updatedDate} />
-                        </div>
-                    )
-                }
+            <div class="hero-image">
+                {heroImage && heroSize === "large" && <Image src={heroImage} alt="" />}
             </div>
-            <hr />
-        </div>
-        <div class="hero-image">
-            {heroImage && heroSize === "large" && <Image src={heroImage} alt="" />}
-        </div>
-        <slot />
-    </article>
+            <slot />
+        </article>
+        <aside class="outline-sidebar">
+            <nav class="outline">
+                <h3>On this page</h3>
+                <ul id="outline-list"></ul>
+            </nav>
+        </aside>
+    </div>
 </Layout>
 
-<style>
+<script>
+    // Extract headings from the article content
+    const article = document.querySelector('.blog-content');
+    const outlineList = document.getElementById('outline-list');
     
+    if (article && outlineList) {
+        const headings = article.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        
+        headings.forEach((heading, index) => {
+            // Generate ID if not present
+            if (!heading.id) {
+                heading.id = `heading-${index}`;
+            }
+            
+            // Create outline item
+            const level = parseInt(heading.tagName[1]);
+            const li = document.createElement('li');
+            li.className = `level-${level}`;
+            
+            const a = document.createElement('a');
+            a.href = `#${heading.id}`;
+            a.textContent = heading.textContent;
+            
+            li.appendChild(a);
+            outlineList.appendChild(li);
+        });
+    }
+</script>
+
+<style>
     main {
         margin: 0;
+        max-width: 100%;
+    }
+    .blog-container {
+        display: grid;
+        grid-template-columns: 9vw 1fr 19vw;
+        gap: 1vw;
         max-width: 100%;
     }
     .hero-image img {
@@ -75,5 +118,59 @@ const { title, description, pubDate, updatedDate, heroImage, heroSize } = Astro.
     }
     .last-updated-on {
         font-style: italic;
+    }
+    
+    /* Outline Sidebar Styles */
+    .outline-sidebar {
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+    }
+    .outline h3 {
+        margin: 0 0 1rem 0;
+        color: var(--color-text-secondary);
+        font-weight: 600;
+        font-size: 0.875rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+    .outline ul {
+        margin: 0;
+        padding: 0;
+        color: var(--color-text-secondary);
+        list-style: none;
+        text-decoration: none;
+
+        & a {
+            color: var(--color-text-secondary);
+        }
+    }
+    /* .outline li {
+        margin: 0.5rem 0;
+    }
+    .outline li.level-3 {
+        margin-left: 1rem;
+    }
+    .outline li.level-4 {
+        margin-left: 2rem;
+    } */
+    .outline ul a {
+        /* transition: color 0.2s; */
+        color: var(--color-text-secondary);
+        font-size: 0.875rem;
+        text-decoration: none;
+    }
+
+    /* .outline :is(a:hover, a:link, a:visited ) {
+        color: var(--color-text);
+    } */
+    
+    @media (max-width: 1024px) {
+        .blog-container {
+            grid-template-columns: 1fr;
+        }
+        .outline-sidebar {
+            position: static;
+        }
     }
 </style>

@@ -17,6 +17,7 @@
     "rehype-katex": "^7.0.1",
     "remark-extended-table": "^2.0.3",
     "remark-gfm": "^4.0.1",
-    "remark-math": "^6.0.0"
+    "remark-math": "^6.0.0",
+    "remark-obsidian": "^1.11.1"
   }
 }
