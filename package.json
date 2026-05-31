@@ -9,15 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/svelte": "^7.2.5",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/mdx": "6.0.1",
+    "@astrojs/svelte": "8.1.2",
     "@r4ai/remark-callout": "^0.6.2",
-    "astro": "5.17.1",
+    "astro": "6.4.2",
     "rehype-katex": "^7.0.1",
     "remark-extended-table": "^2.0.3",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
-    "remark-obsidian": "^1.11.1"
+    "remark-obsidian": "^1.12.1"
   }
 }

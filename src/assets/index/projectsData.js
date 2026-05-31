@@ -7,8 +7,6 @@ import previewCarRental from "$assets/index/preview-car-rental.png";
 import previewTheaterTracker from "$assets/index/preview-theater-tracker.png";
 import previewCloudComputing from "$assets/index/preview-cloud-computing.png";
 
-
-
 const tags = {
     dl: { name: "Deep Learning", color: "white", backgroundColor: "mediumslateblue" },
     java: { name: "Java", color: "white", backgroundColor: "#3c2c79" },
@@ -97,7 +95,7 @@ const mlProjects = [
         href: "https://github.com/Almiinh/ml-exercises/blob/main/dl/dl_ImageClassification.ipynb",
         tags: [tags.dl],
         title: "Image classifier w/ CNN: Cat and dogs",
-        image:  previewImageClassifier.src,
+        image: previewImageClassifier.src,
         desc: "A CNN model training to classify cat and dog images. Classification of their breeds w/ Tensorflow Keras",
     },
     {
@@ -227,6 +225,37 @@ const webProjects = [
     },
 ];
 
+const featuredProjects = [
+    {
+        href: "/web/project18-battleship/index.html",
+        image: "/web/project18-battleship/preview.png",
+        tags: [{ name: "TS, Game Logic, DOM Manipulation", color: "white", backgroundColor: "#3178c6" }],
+        title: "Battleship Game",
+        desc: "Play Battleship game against the computer",
+    },
+    {
+        href: "/web/project3-rock-paper-scissors/index.html",
+        tags: [{ ...tags.js, name: "JS Basics" }],
+        image: "/web/project3-rock-paper-scissors/preview.png",
+        title: "Rock Paper Scissors",
+        desc: "Play Rock Paper Scissors game against the computer",
+    },
+    {
+        href: "/web/project5-calculator/index.html",
+        image: "/web/project5-calculator/preview.png",
+        tags: [{ ...tags.js, name: "DOM Key Bindings Event" }],
+        title: "Calculator",
+        desc: "Use a functional calculator with keyboard support",
+    },
+    {
+        href: "/web/project9-tic-tac-toe/index.html",
+        image: "/web/project9-tic-tac-toe/preview.png",
+        tags: [{ ...tags.js, name: "JS Modules" }],
+        title: "Tic Tac Toe",
+        desc: "Play Tic Tac Toe game against another player",
+    },
+];
+
 const projects = [
     {
         heading: "CS Projects",
@@ -245,4 +274,4 @@ const projects = [
     },
 ];
 
-export { projects, tags };
+export { projects, tags, featuredProjects };

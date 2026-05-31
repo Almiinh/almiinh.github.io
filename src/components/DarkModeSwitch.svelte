@@ -1,6 +1,6 @@
 <script lang="ts">
     const { class: className } = $props();
-    let theme: string = $state("");
+    let theme = $state("");
 
     function switchDarkMode() {
         if (!("theme" in localStorage) || localStorage.theme === "") {

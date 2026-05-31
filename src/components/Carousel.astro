@@ -1,0 +1,219 @@
+---
+interface Props {
+    items: any[];
+    cardComponent?: any;
+    itemProp?: string;
+    autoSlide?: boolean;
+    autoSlideInterval?: number;
+    showIndicators?: boolean;
+}
+
+const {
+    items = [],
+    cardComponent: CardComponent,
+    itemProp = "item",
+    autoSlide = false,
+    autoSlideInterval = 5000,
+    showIndicators = true
+} = Astro.props;
+---
+
+<div class="carousel">
+    <div class="carousel-container">
+        <button class="carousel-button prev-button" aria-label="Previous slide" onclick="prevSlide()">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+        </button>
+
+        <div class="carousel-track">
+            <div class="carousel-slides">
+                {items.map((item, index) => {
+                    const props = { [itemProp]: item };
+                    return (
+                        <div class="carousel-slide" data-index={index}>
+                            {CardComponent ? <CardComponent {...props} /> : item}
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+
+        <button class="carousel-button next-button" aria-label="Next slide" onclick="nextSlide()">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+            </svg>
+        </button>
+    </div>
+
+    {showIndicators && (
+        <div class="carousel-indicators">
+            {items.map((_, index) => (
+                <button
+                    class="indicator-dot"
+                    data-index={index}
+                    aria-label={`Go to slide ${index + 1}`}
+                    aria-current={index === 0 ? "true" : "false"}
+                    onclick={`setCurrentIndex(${index})`}
+                />
+            ))}
+        </div>
+    )}
+</div>
+
+<script define:vars={{ autoSlide, autoSlideInterval, itemCount: items.length }}>
+    const carousel = document.querySelector('.carousel');
+    const indicatorDots = document.querySelectorAll('.indicator-dot');
+
+    let currentIndex = 0;
+    let autoSlideTimer = null;
+
+    window.setCurrentIndex = function(index) {
+        currentIndex = index % itemCount;
+        carousel.style.setProperty('--carousel-index', currentIndex);
+
+        // Update indicator dots
+        indicatorDots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === currentIndex);
+            dot.setAttribute('aria-current', idx === currentIndex ? 'true' : 'false');
+        });
+        
+        resetAutoSlide();
+    }
+
+    window.nextSlide = function() {
+        setCurrentIndex(currentIndex + 1);
+    }
+
+    window.prevSlide = function() {
+        setCurrentIndex(currentIndex - 1 + itemCount);
+    }
+
+    function startAutoSlide() {
+        if (autoSlide && itemCount > 1) {
+            autoSlideTimer = setInterval(nextSlide, autoSlideInterval);
+        }
+    }
+
+    function resetAutoSlide() {
+        if (autoSlideTimer) {
+            clearInterval(autoSlideTimer);
+            startAutoSlide();
+        }
+    }
+
+    function handleKeydown(e) {
+        if (e.key === 'ArrowLeft') {
+            window.prevSlide();
+        } else if (e.key === 'ArrowRight') {
+            window.nextSlide();
+        }
+    }
+
+    carousel.addEventListener('keydown', handleKeydown);
+
+    // Initialize
+    setCurrentIndex(0);
+    startAutoSlide();
+</script>
+
+<style>
+    .carousel {
+        width: 100%;
+        max-width: 100%;
+        --carousel-index: 0;
+        --slide-width: 60%;
+    }
+
+    .carousel-container {
+        display: flex;
+        position: relative;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .carousel-button {
+        display: flex;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        margin: 0.5rem;
+        border: 1px solid var(--color-shadow);
+        border-radius: 50%;
+        background-color: var(--color-bg);
+        padding: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: var(--color-text);
+
+        &:hover {
+            transform: scale(1.1);
+            background-color: var(--color-text);
+            color: var(--color-bg);
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+
+        svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+    }
+
+    .carousel-track {
+        flex: 1;
+        min-height: auto;
+        overflow: hidden;
+    }
+
+    .carousel-slides {
+        display: flex;
+        transform: translateX(calc(var(--carousel-index) * -60%));
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .carousel-slide {
+        display: flex;
+        flex: 0 0 60%;
+        align-items: stretch;
+        padding: 0 0.5rem;
+        min-width: 60%;
+    }
+
+    .carousel-slide :global(img) {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .carousel-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .indicator-dot {
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        border: 2px solid var(--color-text);
+        border-radius: 50%;
+        background-color: transparent;
+        padding: 0;
+        width: 0.75rem;
+        height: 0.75rem;
+
+        &:hover {
+            transform: scale(1.2);
+            background-color: var(--color-text);
+        }
+
+        &.active {
+            background-color: var(--color-text);
+        }
+    }
+</style>

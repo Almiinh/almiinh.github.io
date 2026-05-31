@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 import rehypeKatex from "rehype-katex";
@@ -19,7 +20,9 @@ export default defineConfig({
     },
 
     markdown: {
-        rehypePlugins: [rehypeKatex],
-        remarkPlugins: [remarkExtendedTable, remarkMath, remarkGfm, remarkCallout, remarkObsidian],
+        processor: unified({
+            rehypePlugins: [rehypeKatex],
+            remarkPlugins: [remarkExtendedTable, remarkMath, remarkGfm, remarkCallout, remarkObsidian],
+        }),
     },
 });

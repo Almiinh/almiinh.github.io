@@ -1,10 +1,11 @@
 ---
 import Layout from "$layouts/Layout.astro";
-import { projects } from "$assets/index/projectsData.js";
+import { projects, featuredProjects } from "$assets/index/projectsData.js";
 import ProjectCard from "$components/ProjectCard.astro";
 import Card from "$components/Card.astro";
 import Tags from "$components/Tags.astro";
 import References from "$components/References.astro";
+import Carousel from "$components/Carousel.astro";
 import "$styles/details.css";
 ---
 
@@ -31,11 +32,23 @@ import "$styles/details.css";
                 </li>
                 <Tags tags={[{ name: "Sept 2021 — Jan 2025" }]} />
                 <li>
-                    <br />CS Student <br />
+                    <br />CS & Engineering Student<br />
                     @ Mines Saint-Étienne, FR<br /><br />
+                </li>
+                <Tags tags={[{ name: "Sept 2019 — Jul 2021" }]} />
+                <li>
+                    <br />Student in Maths-Physics Preparatory Classes for French Grandes Écoles (MPSI-MP)<br
+                    />
+                    @ Lycée Pasteur, Neuilly-sur-Seine, FR<br /><br />
                 </li>
             </ul>
         </Card>
+    </section>
+    <section id="featured">
+        <summary>
+            <h2>Featured</h2>
+        </summary>
+        <Carousel items={featuredProjects} cardComponent={ProjectCard} itemProp="project" showIndicators={true} />
     </section>
     {
         projects.map(({ heading, id, projects }) => (
@@ -79,6 +92,7 @@ import "$styles/details.css";
         align-self: center;
         margin: 1rem;
         padding-left: 0;
+        font-size: smaller;
         list-style-type: none;
 
         li:last-child {
@@ -99,6 +113,9 @@ import "$styles/details.css";
             align-items: center;
             gap: 1rem;
         }
+    }
+    #featured {
+        margin-top: 2rem;
     }
     .links {
         column-gap: 1rem;
