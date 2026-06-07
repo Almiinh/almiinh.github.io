@@ -18,6 +18,7 @@ const references = [
     {
         href: "https://github.com/Almiinh",
         img: iconGithub.src,
+        imgDark: iconGithubWhite.src,
         alt: "Click to visit my GitHub profile",
     },
 ];
@@ -30,23 +31,25 @@ const { class: className = "" } = Astro.props;
         references.map((item) => (
             <a href={item.href} target="_blank" rel="noopener noreferrer" title={item.alt}>
                 {item.img && (
-                    <img
-                        src={item.img}
-                        alt={item.alt}
-                        height="28"
-                        width="28"
-                        decoding="async"
-                        loading="lazy"
-                    />
+                    <picture>
+                        <source media="(prefers-color-scheme: dark)" srcset={item.imgDark ?? item.img} />
+                        <source media="(prefers-color-scheme: light)" srcset={item.img} />
+                        <img
+                            src={item.img}
+                            alt={item.alt}
+                            height="28"
+                            width="28"
+                            decoding="async"
+                            loading="lazy"
+                        />
+                    </picture>
                 )}
             </a>
         ))
     }
 </div>
 
-<style
-    define:vars={{ iconGithub: `url("${iconGithub.src}")`, iconGithubWhite: `url("${iconGithubWhite.src}")` }}
->
+<style>
     div a {
         display: inline-block;
         margin: 0 0.3rem;
@@ -60,24 +63,6 @@ const { class: className = "" } = Astro.props;
             translate: 0 -2px;
             filter: contrast(100%);
             transition: all 0.2s;
-        }
-    }
-    @media (prefers-color-scheme: light) {
-        :root[style*="color-scheme: dark"].dark img[alt="GitHub" i] {
-            content: var(--iconGithubWhite);
-        }
-
-        img[alt="GitHub" i] {
-            content: var(--iconGithub);
-        }
-    }
-    @media (prefers-color-scheme: dark) {
-        img[alt="GitHub" i] {
-            content: var(--iconGithubWhite);
-        }
-
-        :root[style*="color-scheme: light"] img[alt="GitHub" i] {
-            content: var(--iconGithub);
         }
     }
 </style>

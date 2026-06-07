@@ -5,8 +5,8 @@ details:not([data-callout]) {
 
 details:not([data-callout])[open]::details-content {
     animation: details-show 150ms ease-in-out;
+    margin-left: 2rem;
     padding-top: 0.5rem;
-    padding-left: 1rem;
 }
 
 details:not([data-callout])::details-content {
@@ -40,8 +40,8 @@ details:not([data-callout]) summary {
 details:not([data-callout]) summary::before {
     transition: 0.3s;
     margin-right: 1rem;
-    border-left: 0.9rem solid;
-    border-inline: 0.5rem solid transparent;
+    border-left: 0.7rem solid;
+    border-inline: 0.4rem solid transparent;
     width: 0;
     height: 0;
     content: "";
@@ -56,4 +56,4 @@ details:not([data-callout]) summary::before:hover {
 
 details:not([data-callout])[open] > summary::before {
     transform: rotate(90deg);
-} 
+}

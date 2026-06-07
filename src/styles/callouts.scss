@@ -70,7 +70,6 @@ $chevron-down: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My
     }
     
     & > [data-callout-title] {
-        display: flex;
         grid-row: 1;
         align-items: flex-start;
         justify-self: flex-start;
@@ -202,7 +201,7 @@ details[data-callout][open] {
 }
 
 // Collapsible callout types
-details[data-callout] {
+[data-callout] {
     &[data-callout-type="info"] {
         @include callout-type(
             rgba(37, 99, 235, 0.2),

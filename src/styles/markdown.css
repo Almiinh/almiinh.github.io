@@ -6,6 +6,7 @@ th,
 td,
 tr {
     break-after: always;
+    margin: 1rem 0;
     border: 1px solid var(--color-text);
     border-collapse: collapse;
     padding: 0.5rem;
@@ -31,12 +32,17 @@ blockquote {
 }
 
 .blog {
-  margin: auto;
-  padding-top: 5vh;
+    margin: auto;
+    padding-top: 5vh;
 }
 @media (min-width: 600px) {
-  .blog {
-    max-width: max(100% - 2rem, 760px);
-  }
+    .blog {
+        max-width: max(100% - 2rem, 760px);
+    }
 }
-
+img {
+    margin: 1rem auto;
+    width: auto;
+    max-width: 75%;
+    height: auto;
+}
