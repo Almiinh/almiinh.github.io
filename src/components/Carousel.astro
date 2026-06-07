@@ -14,80 +14,83 @@ const {
     itemProp = "item",
     autoSlide = false,
     autoSlideInterval = 5000,
-    showIndicators = true
+    showIndicators = true,
 } = Astro.props;
 ---
 
 <div class="carousel">
-    <div class="carousel-container">
-        <button class="carousel-button prev-button" aria-label="Previous slide" onclick="prevSlide()">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-            </svg>
-        </button>
-
-        <div class="carousel-track">
-            <div class="carousel-slides">
-                {items.map((item, index) => {
+    <div class="carousel-track">
+        <div class="carousel-slides">
+            {
+                items.map((item, index) => {
                     const props = { [itemProp]: item };
                     return (
                         <div class="carousel-slide" data-index={index}>
                             {CardComponent ? <CardComponent {...props} /> : item}
                         </div>
                     );
-                })}
-            </div>
+                })
+            }
         </div>
+    </div>
+    <div class="carousel-controls">
+        <button class="carousel-button prev-button" aria-label="Previous slide" onclick="prevSlide()">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+            </svg>
+        </button>
+
+        {
+            showIndicators && (
+                <div class="carousel-indicators">
+                    {items.map((_, index) => (
+                        <button
+                            class="indicator-dot"
+                            data-index={index}
+                            aria-label={`Go to slide ${index + 1}`}
+                            aria-current={index === 0 ? "true" : "false"}
+                            onclick={`setCurrentIndex(${index})`}
+                        />
+                    ))}
+                </div>
+            )
+        }
 
         <button class="carousel-button next-button" aria-label="Next slide" onclick="nextSlide()">
             <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+                <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"></path>
             </svg>
         </button>
     </div>
-
-    {showIndicators && (
-        <div class="carousel-indicators">
-            {items.map((_, index) => (
-                <button
-                    class="indicator-dot"
-                    data-index={index}
-                    aria-label={`Go to slide ${index + 1}`}
-                    aria-current={index === 0 ? "true" : "false"}
-                    onclick={`setCurrentIndex(${index})`}
-                />
-            ))}
-        </div>
-    )}
 </div>
 
 <script define:vars={{ autoSlide, autoSlideInterval, itemCount: items.length }}>
-    const carousel = document.querySelector('.carousel');
-    const indicatorDots = document.querySelectorAll('.indicator-dot');
+    const carousel = document.querySelector(".carousel");
+    const indicatorDots = document.querySelectorAll(".indicator-dot");
 
     let currentIndex = 0;
     let autoSlideTimer = null;
 
-    window.setCurrentIndex = function(index) {
+    window.setCurrentIndex = function (index) {
         currentIndex = index % itemCount;
-        carousel.style.setProperty('--carousel-index', currentIndex);
+        carousel.style.setProperty("--carousel-index", currentIndex);
 
         // Update indicator dots
         indicatorDots.forEach((dot, idx) => {
-            dot.classList.toggle('active', idx === currentIndex);
-            dot.setAttribute('aria-current', idx === currentIndex ? 'true' : 'false');
+            dot.classList.toggle("active", idx === currentIndex);
+            dot.setAttribute("aria-current", idx === currentIndex ? "true" : "false");
         });
-        
+
         resetAutoSlide();
-    }
+    };
 
-    window.nextSlide = function() {
+    window.nextSlide = function () {
         setCurrentIndex(currentIndex + 1);
-    }
+    };
 
-    window.prevSlide = function() {
+    window.prevSlide = function () {
         setCurrentIndex(currentIndex - 1 + itemCount);
-    }
+    };
 
     function startAutoSlide() {
         if (autoSlide && itemCount > 1) {
@@ -103,14 +106,38 @@ const {
     }
 
     function handleKeydown(e) {
-        if (e.key === 'ArrowLeft') {
+        if (e.key === "ArrowLeft") {
             window.prevSlide();
-        } else if (e.key === 'ArrowRight') {
+        } else if (e.key === "ArrowRight") {
             window.nextSlide();
         }
     }
 
-    carousel.addEventListener('keydown', handleKeydown);
+    carousel.addEventListener("keydown", handleKeydown);
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const SWIPE_THRESHOLD = 50;
+
+    carousel.addEventListener(
+        "touchstart",
+        (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        },
+        { passive: true },
+    );
+
+    carousel.addEventListener(
+        "touchend",
+        (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const delta = touchStartX - touchEndX;
+            if (Math.abs(delta) > SWIPE_THRESHOLD) {
+                delta > 0 ? window.nextSlide() : window.prevSlide();
+            }
+        },
+        { passive: true },
+    );
 
     // Initialize
     setCurrentIndex(0);
@@ -122,98 +149,99 @@ const {
         width: 100%;
         max-width: 100%;
         --carousel-index: 0;
-        --slide-width: 60%;
-    }
+        --slide-width: 35%;
 
-    .carousel-container {
-        display: flex;
-        position: relative;
-        align-items: center;
-        gap: 1rem;
-    }
+        .carousel-track {
+            flex: 1;
+            min-height: auto;
+            overflow: hidden;
 
-    .carousel-button {
-        display: flex;
-        flex-shrink: 0;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.2s ease-in-out;
-        cursor: pointer;
-        margin: 0.5rem;
-        border: 1px solid var(--color-shadow);
-        border-radius: 50%;
-        background-color: var(--color-bg);
-        padding: 0;
-        width: 2.5rem;
-        height: 2.5rem;
-        color: var(--color-text);
+            .carousel-slides {
+                display: flex;
+                transform: translateX(calc(var(--carousel-index) * -1 * var(--slide-width)));
+                transition: transform 0.3s ease-in-out;
+            }
 
-        &:hover {
-            transform: scale(1.1);
-            background-color: var(--color-text);
-            color: var(--color-bg);
+            .carousel-slide {
+                display: flex;
+                flex: 0 0 var(--slide-width);
+                align-items: stretch;
+                padding: 0 0.5rem;
+            }
+
+            .carousel-slide :global(img) {
+                width: 100%;
+                height: auto;
+                max-height: 10rem;
+                object-fit: cover;
+            }
         }
 
-        &:active {
-            transform: scale(0.95);
-        }
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            .carousel-indicators {
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                /* remove the margin-top here since it's now inside the flex row */
+                margin-top: 0;
+            }
 
-        svg {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-    }
+            .carousel-button {
+                display: flex;
+                flex-shrink: 0;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+                margin: 0.5rem;
+                border: 1px solid var(--color-shadow);
+                border-radius: 50%;
+                background-color: var(--color-bg);
+                padding: 0;
+                width: 2.5rem;
+                height: 2.5rem;
+                color: var(--color-text);
 
-    .carousel-track {
-        flex: 1;
-        min-height: auto;
-        overflow: hidden;
-    }
+                &:hover {
+                    transform: scale(1.1);
+                    background-color: var(--color-text);
+                    color: var(--color-bg);
+                }
 
-    .carousel-slides {
-        display: flex;
-        transform: translateX(calc(var(--carousel-index) * -60%));
-        transition: transform 0.3s ease-in-out;
-    }
+                &:active {
+                    transform: scale(0.95);
+                }
 
-    .carousel-slide {
-        display: flex;
-        flex: 0 0 60%;
-        align-items: stretch;
-        padding: 0 0.5rem;
-        min-width: 60%;
-    }
+                svg {
+                    width: 1.25rem;
+                    height: 1.25rem;
+                }
+            }
 
-    .carousel-slide :global(img) {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
+            .indicator-dot {
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+                border: 2px solid var(--color-text);
+                border-radius: 50%;
+                background-color: transparent;
+                padding: 0;
+                width: 0.75rem;
+                height: 0.75rem;
 
-    .carousel-indicators {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 1.5rem;
-    }
+                &:hover {
+                    transform: scale(1.2);
+                    background-color: var(--color-text);
+                }
 
-    .indicator-dot {
-        transition: all 0.2s ease-in-out;
-        cursor: pointer;
-        border: 2px solid var(--color-text);
-        border-radius: 50%;
-        background-color: transparent;
-        padding: 0;
-        width: 0.75rem;
-        height: 0.75rem;
-
-        &:hover {
-            transform: scale(1.2);
-            background-color: var(--color-text);
-        }
-
-        &.active {
-            background-color: var(--color-text);
+                &.active {
+                    background-color: var(--color-text);
+                }
+            }
         }
     }
 </style>

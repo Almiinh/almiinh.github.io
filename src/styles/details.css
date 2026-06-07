@@ -57,14 +57,3 @@ details:not([data-callout]) summary::before:hover {
 details:not([data-callout])[open] > summary::before {
     transform: rotate(90deg);
 } 
-/* 
-details[open] {
-    margin: 0.5rem 0;
-}
-summary h2 {
-    display: inline;
-}
-
-    summary:hover::marker {
-        color: lightcoral;
-        } */

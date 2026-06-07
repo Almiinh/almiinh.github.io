@@ -3,11 +3,10 @@ import HeaderLink from "./HeaderLink.astro";
 import DarkModeSwitch from "./DarkModeSwitch.svelte";
 ---
 <nav>
-    <a href="/"><h1>Minh-Hoang's portfolio</h1></a>
     <div class="links">
         <HeaderLink href="/">Projects</HeaderLink>
-        <HeaderLink href="/dash">Data Playground</HeaderLink>
-        <HeaderLink href="/blog">Blog Playground</HeaderLink>
+        <HeaderLink href="/blog">Blog</HeaderLink>
+        <HeaderLink href="/dash">Experimental</HeaderLink>
     </div>
     <DarkModeSwitch class="DarkModeSwitch" client:load />
 </nav>

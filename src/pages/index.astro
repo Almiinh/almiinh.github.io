@@ -1,10 +1,12 @@
 ---
 import Layout from "$layouts/Layout.astro";
+import { Image } from "astro:assets";
+import moustillon from "$assets/index/moustillon-content.jpg";
 import { projects, featuredProjects } from "$assets/index/projectsData.js";
 import ProjectCard from "$components/ProjectCard.astro";
 import Card from "$components/Card.astro";
 import Tags from "$components/Tags.astro";
-import References from "$components/References.astro";
+import References from "$components/Layout/References.astro";
 import Carousel from "$components/Carousel.astro";
 import "$styles/details.css";
 ---
@@ -12,8 +14,11 @@ import "$styles/details.css";
 <Layout title="Minh-Hoang HUYNH">
     <section id="title">
         <Card class="me">
-            <h1>Minh-Hoang HUYNH</h1>
-            <References />
+            <img class="photo" src={moustillon.src} alt="Moustillon!" title="Moustillon!"/>
+            <div class="me-name">
+                <h1>Minh-Hoang HUYNH</h1>
+                <References />
+            </div>
         </Card>
         <Card>
             <ul>
@@ -48,12 +53,18 @@ import "$styles/details.css";
         <summary>
             <h2>Featured</h2>
         </summary>
-        <Carousel items={featuredProjects} cardComponent={ProjectCard} itemProp="project" showIndicators={true} />
+        <Carousel
+            items={featuredProjects}
+            cardComponent={ProjectCard}
+            itemProp="project"
+            autoSlide={true}
+            showIndicators={true}
+        />
     </section>
     {
         projects.map(({ heading, id, projects }) => (
             <section id={id}>
-                <details open>
+                <details>
                     <summary>
                         <h2>{heading}</h2>
                     </summary>
@@ -78,14 +89,37 @@ import "$styles/details.css";
         }
     }
     section#title .me {
-        padding: 4rem 1rem;
+        display: flex;
+        gap: 2rem;
+        padding: 1rem;
+        @media screen and (max-width: 700px) {
+            flex-direction: column;
+            gap: 0;
+        }
     }
     section#title .me h1 {
-        flex: auto;
-        font-size: 4rem;
+        font-size: 2.75rem;
         font-family: var(--font-title);
         @media screen and (max-width: 700px) {
+            margin: 0;
             font-size: 2.75rem;
+            text-align: center
+        }
+    }
+    section#title .photo {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        border-radius: 100%;
+        max-width: 10rem;
+        max-height: 10rem;
+    }
+    section#title .me-name {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        @media screen and (max-width: 700px) {
+            align-items: center;
         }
     }
     section#title ul {
@@ -137,4 +171,5 @@ import "$styles/details.css";
             column-count: 6;
         }
     }
+
 </style>

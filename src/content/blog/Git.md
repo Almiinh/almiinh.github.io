@@ -5,35 +5,13 @@ pubDate: "2025-11-08"
 heroImage: '../../assets/blog/logo_git.png'
 heroSize: small
 ---
-
-# Introduction
-
 > **Git** est un **logiciel de gestion de versions** (**VCS** *version control system*) qui permet de conserver un historique des modifications et des versions de tous leurs fichiers.
 
 
-> [!📙] This is a callout  
+> [!📙]- Interface de Git
 > **Git** est utilisé en **lignes de commande** *(via un terminal de commande ou CLI: Command Line Interface).* D’autres interfaces sont disponibles comme Git-gui, Visual Studio Code avec l’extension GitLens, GitKraken, intégré dans un IDE…
 
 L’historique est conservé dans le dossier du projet (`.git/`) qui constitue alors un **dépôt Git.** Il est essentiel pour travailler en équipe ou collaborer à un projet open source. **Git** est décentralisé, chaque **dépôt** contient toutes les modifications depuis le début.
-
-
-<details>
-  <summary>Toggle me!</summary>
-
-  This is the detailed content
-
-  ```js
-  console.log("Markdown features including the code block are available");
-  ```
-
-  You can use Markdown here including **bold** and *italic* text, and [inline link](https://docusaurus.io)
-  <details>
-    <summary>Nested toggle! Some surprise inside...</summary>
-
-    😲😲😲😲😲
-  </details>
-</details>
-
 
 [What is Git? Explained in 2 Minutes!](https://youtu.be/2ReR1YJrNOM?si=RhKYXfO7BEsIM-kA)
 

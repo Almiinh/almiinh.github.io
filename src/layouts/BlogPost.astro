@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import FormattedDate from "$components/FormattedDate.astro";
 import Layout from "$layouts/Layout.astro";
 import "$styles/markdown.css";
+import Outline from "$components/Blog/Outline.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -38,42 +39,12 @@ const { title, description, pubDate, updatedDate, heroImage, heroSize } = Astro.
             <slot />
         </article>
         <aside class="outline-sidebar">
-            <nav class="outline">
-                <h3>On this page</h3>
-                <ul id="outline-list"></ul>
-            </nav>
+            <Outline />
         </aside>
     </div>
 </Layout>
 
-<script>
-    // Extract headings from the article content
-    const article = document.querySelector('.blog-content');
-    const outlineList = document.getElementById('outline-list');
-    
-    if (article && outlineList) {
-        const headings = article.querySelectorAll('h1, h2, h3, h4, h5, h6');
-        
-        headings.forEach((heading, index) => {
-            // Generate ID if not present
-            if (!heading.id) {
-                heading.id = `heading-${index}`;
-            }
-            
-            // Create outline item
-            const level = parseInt(heading.tagName[1]);
-            const li = document.createElement('li');
-            li.className = `level-${level}`;
-            
-            const a = document.createElement('a');
-            a.href = `#${heading.id}`;
-            a.textContent = heading.textContent;
-            
-            li.appendChild(a);
-            outlineList.appendChild(li);
-        });
-    }
-</script>
+
 
 <style>
     main {
@@ -126,45 +97,6 @@ const { title, description, pubDate, updatedDate, heroImage, heroSize } = Astro.
         top: 2rem;
         height: fit-content;
     }
-    .outline h3 {
-        margin: 0 0 1rem 0;
-        color: var(--color-text-secondary);
-        font-weight: 600;
-        font-size: 0.875rem;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-    }
-    .outline ul {
-        margin: 0;
-        padding: 0;
-        color: var(--color-text-secondary);
-        list-style: none;
-        text-decoration: none;
-
-        & a {
-            color: var(--color-text-secondary);
-        }
-    }
-    /* .outline li {
-        margin: 0.5rem 0;
-    }
-    .outline li.level-3 {
-        margin-left: 1rem;
-    }
-    .outline li.level-4 {
-        margin-left: 2rem;
-    } */
-    .outline ul a {
-        /* transition: color 0.2s; */
-        color: var(--color-text-secondary);
-        font-size: 0.875rem;
-        text-decoration: none;
-    }
-
-    /* .outline :is(a:hover, a:link, a:visited ) {
-        color: var(--color-text);
-    } */
-    
     @media (max-width: 1024px) {
         .blog-container {
             grid-template-columns: 1fr;
