@@ -5,7 +5,7 @@ pubDate: "2025-11-08"
 heroGit/image: '../../assets/blog/logo_git.png'
 heroSize: small
 ---
-> [!📙] **Git** est un **logiciel de gestion de versions** (**VCS** *version control system)* qui permet de conserver un historique des versions de tous les fichiers.
+> [!📙] git est un **logiciel de gestion de versions** (**VCS** *version control system)* qui permet de conserver un historique des versions de tous les fichiers.
 
 
 > [!tip] References
@@ -22,68 +22,60 @@ heroSize: small
 
 <details><summary>
 
-**Interfaces de Git**
+#### Interfaces de Git
 </summary>
 
-**Git** est utilisé en **lignes de commande** *(via un terminal de commande ou CLI: Command Line Interface).* D’autres interfaces sont disponibles comme Git-gui, Visual Studio Code avec l’extension GitLens, GitKraken, intégré dans un IDE…
-</details>
-    
-<details>
-<summary>
+git est utilisé en **lignes de commande** *(via un terminal de commande ou CLI: Command Line Interface).* D’autres interfaces sont disponibles comme Git-gui, Visual Studio Code avec l’extension GitLens, GitKraken, intégré dans un IDE…
 
-**Qu’est-ce qu’un commit ?**
+</details><details><summary>
+
+#### Qu’est-ce qu’un commit ?
 </summary>
 
-A complete snapshot of the project files:
-
-1. A pointer to the snapshot
-2. Metadata: who, when, commit message
-3. A pointer to the parent commit
-
-![Git/image.png](Git/image.png)
+> A complete snapshot of the project files:
+> 
+> 1. A pointer to the snapshot
+> 2. Metadata: who, when, commit message
+> 3. A pointer to the parent commit
 
 The first commit has no parent
+![Git/image.png](Git/image.png)
+
 
 A commit with two parents makes branches
+![Git/image.png](Git/image%200.png)
 
 You can jump to any commit in history
 
 ![Git/image.png](Git/image%201.png)
-</details>    
-    
-<details>
-<summary>
 
-**Historique local `.git`:**
+</details><details><summary>
+
+#### Historique local `.git`:
 </summary>
 
 ![Git/image.png](Git/image%202.png)
 
 A family tree of snapshots: a Directed Acyclic Graph
 
-L’historique est conservé dans le dossier du projet (`.git/`) qui constitue alors un **dépôt Git.** **Git** est décentralisé, chaque **dépôt** contient toutes les modifications depuis le début.
+L’historique est conservé dans le dossier du projet (`.git/`) qui constitue alors un **dépôt Git.** git est décentralisé, chaque **dépôt** contient toutes les modifications depuis le début.
 
 Nearly Every Operation Is Local
 
 Git Generally Only Adds Data
-</details>    
-    
 
+</details><details><summary>
 
-<details><summary>
-
-**Git Has Integrity**
+#### Git Has Integrity
 </summary>
 
 Everything in Git is checksummed before it is stored and is then referred to by that checksum. 
 
 ![Git/image.png](Git/image%203.png)
-</details>    
-    
-<details>
-<summary>
 
-**The Three States**
+</details><details><summary>
+
+#### The Three States
 </summary>
 
 Git has three main states that your files can reside in: modified, staged, and committed:
@@ -96,7 +88,7 @@ Git has three main states that your files can reside in: modified, staged, and c
 <details>
 <summary>
 
-**Gérer un dépôt local `git init / status / log`**
+#### Gérer un dépôt local `git init / status / log`
 </summary>
 
 > [!📙] Un **dépôt local** est l’endroit où l’on stocke, sur sa machine, une copie d’un projet, ses différentes versions et l’historique des modifications.
@@ -126,7 +118,7 @@ Git has three main states that your files can reside in: modified, staged, and c
 <details>
 <summary>
 
-**Gérer un dépôt distant `git remote / clone / push / pull`**
+#### Gérer un dépôt distant `git remote / clone / push / pull`
 </summary>
 
 > [!📙] Un **dépôt distant** est une version dématérialisée du dépôt local, que ce soit sur Internet ou sur un réseau. Il permet de centraliser le travail des développeurs dans un projet collectif comme un *cloud* cf. **les plateformes GitHub, GitLab…**
@@ -152,7 +144,7 @@ Git has three main states that your files can reside in: modified, staged, and c
 
 <details><summary>
 
-**Gérer une branche `git branch`**
+#### Gérer une branche `git branch`
 </summary>
 
 > [!📙] La branche par défaut est `main` sur github (anciennement `master`). C’est configurable dans les `config`.
@@ -185,7 +177,7 @@ etc.
 <details>
 <summary>
 
-**Gérer une version `git commit`**
+#### Gérer une version `git commit`
 </summary>
 
 > [!💡] La wildcard `*` peut être utilisé. `*.iml` désigne tous les fichiers qui finissent en `.iml`
@@ -201,12 +193,10 @@ etc.
 git commit --amend --no-edit` |
 | Lister les versions | `git log commit` |
 | Revenir à une version | `git reset --hard 8_premiers_chiffres_de_l'id_de_la_version` |
-</details>
 
-<details>
-<summary>
+</details><details><summary>
 
-**Reset and move branch`git reset`**
+#### Reset and move branch`git reset`
 </summary>
 
 - Annuler les changements en créant un nouveau commit:
@@ -224,12 +214,10 @@ Plusieurs niveaux de reset:
 - `--mixed` : celui par défaut, mélange des deux précédents. Il laisse les fichiers du répertoire de travail, mais annule l'index.
 - `--hard` : efface l'index et le répertoire de travail. Cette option équivaut à un reset + clean.
 </details>
-</details>
 
-<details>
-<summary>
+</details><details><summary>
 
-**Enregistrer les modifications temporaires dans la remise `git stash`**
+#### Enregistrer les modifications temporaires dans la remise `git stash`
 </summary>
 
 - Remiser les modifications: `git stash`
@@ -243,7 +231,7 @@ Plusieurs niveaux de reset:
 <details>
 <summary>
 
-**Reprendre les modifications remisées**
+##### Reprendre les modifications remisées
 </summary>
 
 - Soit en sortant les fichiers du "stash" : `git stash pop`
@@ -261,7 +249,7 @@ Pour avoir le détail (afficher le diff) `git stash show -p`
 
 <details><summary>
 
-**Recombinaison `git rebase`**
+#### Recombinaison `git rebase`
 </summary>
 
 - Rebase une branche sur une autre `git rebase <brancheCible>`
@@ -275,7 +263,7 @@ Par exemple sur les trois derniers commits :
 </details>
 <details><summary>
 
-**Move HEAD `git checkout`**
+#### Move HEAD `git checkout`
 </summary>
 
 `git checkout` has two main modes:
@@ -286,7 +274,7 @@ Par exemple sur les trois derniers commits :
 <details>
 <summary>
 
-**Configuration `git config`**
+#### Configuration `git config`
 </summary>
 
 The configuration file can be stored in three different places. Each level overrides values in the previous level.
@@ -311,11 +299,10 @@ The configuration file can be stored in three different places. Each level overr
 | Set identity | `git config --global user.name "John Doe"`<br>`git config --global user.email johndoe@example.com` |
 | Set editor | `git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"`<br>`git config --global core.editor "code --wait"` |
 | Set default branch name | `git config --global init.defaultBranch main` |
-</details>
-<details>
-<summary>
 
-**Ignorer `.gitignore`**
+</details><details><summary>
+
+#### Ignorer `.gitignore`
 </summary>
 
 The rules for the patterns you can put in the .gitignore file are as follows:
@@ -325,46 +312,59 @@ The rules for the patterns you can put in the .gitignore file are as follows:
 - You can start patterns with a forward slash (/) to avoid recursivity.
 - You can end patterns with a forward slash (/) to specify a directory.
 - You can negate a pattern by starting it with an exclamation point (!).
-</details>
-<details><summary>
 
-**Submodule**
+</details><details><summary>
+
+#### Submodule
 </summary>
 
-- **Config**
+<details><summary>
+
+##### Config
+</summary>
+
+| Always show submodules in `git status` | `git config --global status.submoduleSummary true` |
+| --- | --- |
+| Always show sub-commits when `git diff` of submodules | `git config --global diff.submodule log` |
+| Fetch only init submodules | `git config --global fetch.recurseSubmodules on-demand` |
+
+</details><details><summary>
+
+##### Register/Deregister
+</summary>
     
+| Register a child repo as submodule (in`.gitmodules`) | `git submodule add <child-repo> <destination-subfolder>` |
+| --- | --- |
+| Add `.gitmodules` to `.git/config`  | `git submodule init` |
+| Deregister submodule and turn into classic repo | `git submodule deinit <plugin>` |
+| Delete sub repo | `git rm -rf <plugin>` |
+
+</details><details><summary>
+
+##### Clone
+</summary>
+        
+| Clone the submodule repository | `git submodule update` |
+| --- | --- |
+| Clone repo and all submodules | `git clone --recurse-submodules <url>` |
+
+</details><details><summary>
+
+##### Fetch and pull
+</summary>
+        
+| Fetch repo and submodules | `git fetch` |
+| --- | --- |
+| Pull main repo and all submodules | `git pull --recurse-submodules` |
+| Pull main repo and checkout to submodule frozen commits | `git pull`<br>OR<br>`git submodule update [--init --recursive]` |
+| Pull rebase for a specific submodule | `git submodule update --remote --rebase -- <plugin>` |
+
+</details><details><summary>
+
+##### Push
+</summary>
     
-    | Always show submodules in `git status` | `git config --global status.submoduleSummary true` |
-    | --- | --- |
-    | Always show sub-commits when `git diff` of submodules | `git config --global diff.submodule log` |
-    | Fetch only init submodules | `git config --global fetch.recurseSubmodules on-demand` |
-- **Register/Deregister**
-    
-    
-    | Register a child repo as submodule (in`.gitmodules`) | `git submodule add <child-repo> <destination-subfolder>` |
-    | --- | --- |
-    | Add `.gitmodules` to `.git/config`  | **`git** submodule init` |
-    | Deregister submodule and turn into classic repo | **`git** submodule deinit <plugin>` |
-    | Delete sub repo | **`git** rm -rf <plugin>` |
-    | Push repo and all submodules | **`git** push --recurse-submodules=on-demand` |
-- **Clone**
-    
-    
-    | Clone the submodule repository | **`git** submodule update` |
-    | --- | --- |
-    | Clone repo and submodules | `git clone --recurse-submodules <url>` |
-- **Fetch and pull**
-    
-    
-    | Fetch repo and submodules | `git fetch` |
-    | --- | --- |
-    | Pull main repo and submodules | **`git** pull --recurse-submodules` |
-    | Pull main repo and Update submodules to the commit specified in the main repository | **`git** pull` 
-    **`git** submodule update [--init --recursive]` |
-    | Pull rebase for a specific submodule | **`git** submodule update --remote --rebase -- <plugin>` |
-- **Push**
-    
-    
-    | **Push** | `git push --recurse-submodules=on-demand` |
-    | --- | --- |
+| **Push** | `git push --recurse-submodules=on-demand` |
+| --- | --- |
+</details>
 </details>

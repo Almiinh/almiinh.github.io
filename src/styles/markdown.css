@@ -25,7 +25,6 @@ pre {
 }
 
 blockquote {
-    display: flex;
     break-inside: avoid;
     border-left: 4px solid var(--color-shadow);
     padding: 0.25rem 1rem;

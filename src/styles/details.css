@@ -1,59 +1,64 @@
-details:not([data-callout]) {
-    animation: sweep 0.1s ease-in-out;
-    padding: 0.5rem 0;
-}
-
-details:not([data-callout])[open]::details-content {
-    animation: details-show 150ms ease-in-out;
-    margin-left: 2rem;
-    padding-top: 0.5rem;
-}
-
-details:not([data-callout])::details-content {
-    animation: details-hide 550ms ease-in-out;
-}
-
 @keyframes details-show {
-  from {
-    transform: var(--details-translate, translateY(-1rem));
-  }
+    from {
+        transform: var(--details-translate, translateY(-1rem));
+    }
 }
 
 @keyframes details-hide {
-  from {
-    transform: var(--details-translate, translateY(+1rem));
-  }
+    from {
+        transform: var(--details-translate, translateY(+1rem));
+    }
 }
 
-details:not([data-callout]) summary:hover {
-    cursor: pointer;
-    background-color: var(--color-bg-secondary);
-}
+details:not([data-callout]) {
+    animation: sweep 0.1s ease-in-out;
+    margin: 0.1rem 0;
 
-details:not([data-callout]) summary {
-    display: flex;
-    align-items: center;
-    transition: all 0.1s ease-in-out;
-    /* margin-bottom: 1rem;*/
-    padding: 0 0.5rem;
-}
-details:not([data-callout]) summary::before {
-    transition: 0.3s;
-    margin-right: 1rem;
-    border-left: 0.7rem solid;
-    border-inline: 0.4rem solid transparent;
-    width: 0;
-    height: 0;
-    content: "";
-    writing-mode: vertical-lr;
-}
+    &[open]::details-content {
+        animation: details-show 150ms ease-in-out;
+        margin-left: 2rem;
+        padding-top: 0.5rem;
+    }
+    &::details-content {
+        animation: details-hide 550ms ease-in-out;
+    }
+    
+    &[open] > summary::before {
+        transform: rotate(90deg);
+    }
+    & > summary {
+        display: flex;
+        align-items: center;
+        transition: all 0.1s ease-in-out;
+        /* margin-bottom: 1rem;*/
+        padding: 0.25rem 0.25rem;
 
-details:not([data-callout]) summary::before:hover {
-    cursor: pointer;
-    background-color: var(--color-bg);
+        &:hover {
+            cursor: pointer;
+            background-color: var(--color-bg-secondary);
+        }
 
-}
+        &::before {
+            transition: 0.3s;
+            margin-right: 1rem;
+            border-left: 0.7rem solid;
+            border-inline: 0.4rem solid transparent;
+            width: 0;
+            height: 0;
+            content: "";
+            writing-mode: vertical-lr;
+        }
+        
+        &::before:hover {
+            cursor: pointer;
+            background-color: var(--color-bg);
+        }
 
-details:not([data-callout])[open] > summary::before {
-    transform: rotate(90deg);
+        & > *:is(h1, h2, h3, h4, h5, h6) {
+            margin: 0;
+        }
+        & > h5, h6 {
+            font-size: medium;
+        }
+    }
 }

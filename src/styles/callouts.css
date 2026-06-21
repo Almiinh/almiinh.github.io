@@ -38,6 +38,7 @@
   grid-column: 2;
   flex-direction: column;
   gap: 0.5rem;
+  margin-left: 0.5rem;
 }
 [data-callout] > [data-callout-body] > * {
   margin: 0;
