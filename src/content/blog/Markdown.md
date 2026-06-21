@@ -22,12 +22,12 @@ heroSize: small
 | <sup>superscript</sup>                  | `^...^`                      | `<sup>`                                          |                                     |
 | <sub>subscript</sub>                    | `~...~`                      | `<sub>`                                          |                                     |
 | <span style="color: red">colored</span> |                              |                                                  | `\textcolor{red}{...} (xcolor pkg)` |
-| 😄                                      | `:joy:` (GFM)                |                                                  |                                     |
+| 😄                                     | `:joy:` (GFM)                |                                                  |                                     |
 
 
 ## Text content
 
-|                    | Obsidian Markdown                                                                                           | HTML tags                                                                      | LaTeX                                                                                                                                                                                   |
+|                    | Markdown                                                                                                    | HTML tags                                                                      | LaTeX                                                                                                                                                                                   |
 | ------------------ | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Headings           | `# Heading1`<br>`## Heading2`<br>`### Heading3`<br>`#### Heading4`<br>`##### Heading5`<br>`###### Heading6` | `<h1>...`<br>`<h2>...`<br>`<h3>...`<br>`<h4>...`<br>`<h5>...`<br>`<h6>...`<br> | `\part{part}`<br>`\chapter{chapter}`<br>`\section{section}`<br>`\subsection{subsection}`<br>`\subsubsection{subsubsection}`<br>`\paragraph{paragraph}`<br>`\subparagraph{subparagraph}` |
 | Line Feed          | `␣␣` or `\n`                                                                                                | `<br>`                                                                         | `\\` or `\newline`                                                                                                                                                                      |
@@ -37,33 +37,34 @@ heroSize: small
 | Task Lists         | `- [ ] text`<br>`- [x] text`                                                                                | `<input type="checkbox" checked /><label>...`                                  |                                                                                                                                                                                         |
 | Blockquote         | `> Blockquote`                                                                                              | `<blockquote><p>...`                                                           |                                                                                                                                                                                         |
 | Callouts           | `> [!info] title`<br>`> content`                                                                            |                                                                                |                                                                                                                                                                                         |
-| Fenced Code Blocks | `` ```lang ``<br>`` ~~~lang ``<br>`\t...`                                                                   | `<pre class="..."><code>...`                                                   | `\begin{minted}{python}`                                                                                                                                                                |
+| Fenced Code Blocks | `` ```lang ... ``` ``                                                                                       | `<pre class="..."><code>...`                                                   | `\begin{minted}{python}`                                                                                                                                                                | |                                                                                |                                                                                                                                                                                         
 | Equation Block     | `$$...$$`                                                                                                   | `<math>`                                                                       | `$$...$$`<br>`\[...\]`                                                                                                                                                                  |
 | Footnotes          | `[^1]`                                                                                                      |                                                                                |                                                                                                                                                                                         |
 
 ## Interactive elements
-|          | Obsidian Markdown | Alternative                            | HTML tags                        |
-| -------- | ----------------- | -------------------------------------- | -------------------------------- |
-| Disclose |                   | `:::summary`<br>`details`<br>`:::`<br> | `<details><summary>...`<br>`...` |
-| Popover  |                   |                                        | Popover API                      |
-| Forms    |                   |                                        | `<form>` Form API                |
+|          | Markdown | HTML tags                        |
+| -------- | -------- | -------------------------------- |
+| Disclose |          | `<details><summary>...`<br>`...` |
+| Popover  |          | Popover API                      |
+| Forms    |          | `<form>` Form API                |
+| Badge    |`![](https://img.shields.io/...)`| `<img src="https://img.shields.io" />`|
 
 ## Image and multimedia
-|         | Obsidian Markdown | HTML tags                            | LaTeX                   |
-| ------- | ----------------- | ------------------------------------ | ----------------------- |
-| Images  | `![alt](src)`     | `<img src="..." alt="..."/>`         | `\includegraphics{...}` |
-| Videos  | `![](src)`        | `<video><source src="..." />`        |                         |
-| Audio   |                   | `<audio controls src="..."></audio>` |                         |
-| Figures |                   | `<figure>{media}<figcaption>...`     |                         |
-| Files   | `![[file link]]`  | `<iframe>`                           |                         |
+|         | Markdown                                                              | HTML tags                            | LaTeX                   |
+| ------- | --------------------------------------------------------------------- | ------------------------------------ | ----------------------- |
+| Images  | `![alt](src)`                                                         | `<img src="..." alt="..."/>`         | `\includegraphics{...}` |
+| Videos  | `![](src)`                                                            | `<video><source src="..." />`        |                         |
+| Audio   |                                                                       | `<audio controls src="..."></audio>` |                         |
+| Figures |                                                                       | `<figure>{media}<figcaption>...`     |                         |
+| Files   | `![[file link]]` (Obsidian)<br>`::include{file=chapter1.md}` (GitLab) | `<iframe>`                           |                         |
 
 ## Simple Tables
-| Example                                                                                                                       | Obsidian Markdown                                              | HTML tags                                                     | LaTeX                                                                                  |
+| Example                                                                                                                       | Markdown                                                       | HTML tags                                                     | LaTeX                                                                                  |
 | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | <table><thead><tr><th>foo</th><th>bar</th></tr></thead><tbody><tr><td>baz</td><td align="right">bim</td></tr></tbody></table> | `\| foo \| bar \|`<br>`\| --- \| --: \|`<br>`\| baz \| bim \|` | `<table>`<br>  `<thead><tr><th>...`<br>  `<tbody><tr><td>...` | `\begin{tabular}{c r}`<br>`foo & bar \\`<br>`\hline`<br>`baz & bim`<br>`\end{tabular}` |
 
 ## Demarcating edits
-|                                | Obsidian Markdown                                                                                           | Alternative                            | HTML tags                                                                      |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------ |
-| <ins>Insertion</ins>           |                                                                                                             | `{++...++}`                            | `<ins>`                                                                        |
-| Deletion                       |                                                                                                             | `{--...--}`                            | `<del>`                                                                        |
+|                      | Markdown             | HTML tags |
+| -------------------- | -------------------- | --------- |
+| <ins>Insertion</ins> | `{++...++}` (GitLab) | `<ins>`   |
+| Deletion             | `{--...--}` (GitLab) | `<del>`   |
