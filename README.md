@@ -8,17 +8,18 @@ This is my portfolio website built with [Astro](https://astro.build)
 /
 ├── public/
 │   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+└── src/
+    ├── content/
+    │   └── blog/
+    │       └── {Articles}.md
+    │
+    ├── layouts/
+    │   └── Layout.astro
+    └── pages/
+        └── index.astro
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 

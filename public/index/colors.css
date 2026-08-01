@@ -1,6 +1,7 @@
 :root {
     color-scheme: light dark;
     --color-text: light-dark(#333, #f2f4f5);
+    --color-line: light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
     --color-text-secondary: light-dark(#666, #999);
     --color-bg: light-dark(white, #282c34);
     --color-bg-secondary: light-dark(#eee, #333943);

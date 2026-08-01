@@ -2,7 +2,7 @@
 title: "Git Cheatsheet"
 description: "A quick overview of Git"
 pubDate: "2025-11-08"
-heroGit/image: '../../assets/blog/logo_git.png'
+heroImage: '../../assets/blog/logo_git.png'
 heroSize: small
 ---
 > [!📙] git est un **logiciel de gestion de versions** (**VCS** *version control system)* qui permet de conserver un historique des versions de tous les fichiers.
@@ -25,7 +25,7 @@ heroSize: small
 #### Interfaces de Git
 </summary>
 
-git est utilisé en **lignes de commande** *(via un terminal de commande ou CLI: Command Line Interface).* D’autres interfaces sont disponibles comme Git-gui, Visual Studio Code avec l’extension GitLens, GitKraken, intégré dans un IDE…
+Git est utilisé en **lignes de commande** *(via un terminal de commande ou CLI: Command Line Interface).* D’autres interfaces sont disponibles comme Git-gui, Visual Studio Code avec l’extension GitLens, GitKraken, intégré dans un IDE…
 
 </details><details><summary>
 
@@ -122,12 +122,6 @@ Git has three main states that your files can reside in: modified, staged, and c
 </summary>
 
 > [!📙] Un **dépôt distant** est une version dématérialisée du dépôt local, que ce soit sur Internet ou sur un réseau. Il permet de centraliser le travail des développeurs dans un projet collectif comme un *cloud* cf. **les plateformes GitHub, GitLab…**
-
-> [!💡] URL autorisés:
-> `ssh://[user@]host.xz[:port]/path/to/repo.git/`
-> `git://host.xz[:port]/path/to/repo.git/`
-> `http[s]://host.xz[:port]/path/to/repo.git/`
-> `ftp[s]://host.xz[:port]/path/to/repo.git/`
 
 
 > [!📙] `git pull`  équivaut à `git fetch` puis `git merge`

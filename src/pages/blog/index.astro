@@ -17,7 +17,7 @@ const posts = (await getCollection("blog")).sort(
                 <li>
                     <Card href={`/blog/${post.id}/`}>
                         {post.data.heroImage && (
-                            <Image width={720} height={360} src={post.data.heroImage} alt="" />
+                            <Image src={post.data.heroImage} alt="" />
                         )}
                         <div class="info">
                             <h2 class="title">{post.data.title}</h2>
@@ -40,7 +40,7 @@ const posts = (await getCollection("blog")).sort(
         list-style-type: none;
     }
     ul li {
-        margin-top: 4rem;
+        margin-top: 2rem;
 
         & * {
             transition: 0.2s ease;
@@ -57,14 +57,14 @@ const posts = (await getCollection("blog")).sort(
         }
 
         img {
-            margin: 0.5rem 1rem 0.5rem 0;
+            margin: 0.5rem 1rem 0.5rem 0.5rem;
             border-radius: 12px;
             border-radius: 8px;
             width: auto;
-            max-width: 10rem;
+            max-width: 4rem;
             height: auto;
-            max-height: 6rem;
-            object-fit: cover;
+            max-height: 4rem;
+            object-fit: contain;
         }
     }
     .desc,
@@ -73,15 +73,16 @@ const posts = (await getCollection("blog")).sort(
     }
     .title {
         margin: 0;
-        font: bold 2rem var(--font-title);
+        font: bold 1.5rem var(--font-title);
     }
     .desc {
-        margin: 0.25em 0;
+        margin: 0;
         color: var(--color-text-secondary);
     }
     .date {
-        margin: 0;
+        margin: 0.5rem 0 0 0;
         color: rgb(var(--gray));
+        font-size: 0.8rem;
     }
     ul li a:hover h4,
     ul li a:hover .date {

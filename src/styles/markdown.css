@@ -7,9 +7,18 @@ td,
 tr {
     break-after: always;
     margin: 1rem 0;
-    border: 1px solid var(--color-text);
+    border: 1px solid var(--color-border);
     border-collapse: collapse;
     padding: 0.5rem;
+}
+td[colspan] {
+    text-align: center;
+}
+
+hr {
+    margin: 3rem 0;
+    background-color: var(--color-line);
+    height: 1px;
 }
 
 pre {
