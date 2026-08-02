@@ -14,26 +14,18 @@
         const article = document.querySelector(contentSelector);
         if (!article) return;
 
-        const selector = headingLevels.join(", ");
-        const headingElements = article.querySelectorAll(selector);
-        
-        // Transform and ensure IDs on the elements
-        const items = Array.from(headingElements).map((heading, index) => {
-            if (!heading.id) {
-                heading.id = heading.textContent
-                .trim()
-                .toLowerCase()
-                .replace(/[^\w\s-]/g, "")
-                .replace(/\s+/g, "-") ?? `heading-${index}`;
-            }
-            
+        const headingElements = article.querySelectorAll(headingLevels.join(", "));
+        const items = Array.from(headingElements).map((heading) => {            
             return {
                 id: heading.id,
                 text: heading.textContent ?? "",
                 level: parseInt(heading.tagName[1], 10),
             };
         });
-        console.log(items)
+        const minLevel = Math.min(...items.map(item => item.level));
+        items.forEach(item => {
+            item.level -= (minLevel - 1); // Normalize levels to start from 1
+        });
 
         headings = items;
 
@@ -71,12 +63,12 @@
                     {text}
                 </a>
             </li>
-        {/each}
+        {/each} 
     </ol>
 </nav>
 
 <style>
-    .toc {
+    nav.toc {
         --toc-accent: #4f46e5;
         --toc-text: #374151;
         --toc-muted: #9ca3af;

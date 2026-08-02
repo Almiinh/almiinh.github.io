@@ -19,8 +19,8 @@ const posts = (await getCollection("blog")).sort(
                         {post.data.heroImage && (
                             <Image src={post.data.heroImage} alt="" />
                         )}
-                        <div class="info">
-                            <h2 class="title">{post.data.title}</h2>
+                        <div class="info"> 
+                            <h3 class="title">{post.data.title}</h3>
                             <p class="desc">{post.data.description}</p>
                             <p class="date">
                                 <FormattedDate date={post.data.pubDate} />

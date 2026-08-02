@@ -8,13 +8,48 @@ import Outline from "$components/Blog/Outline.svelte";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage, heroSize } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, heroSize, foldHeadings } = Astro.props;
+const foldAll = foldHeadings ?? false;
 ---
 
-<Layout title={title} largeScreenMargin="5vw">
+<script>
+    document.querySelectorAll("[data-callout]").forEach((callout) => {
+        const emoji = callout.getAttribute("data-callout-type");
+        const title = callout.querySelector("[data-callout-title]");
+        if (emoji === title?.textContent?.trim()) title.remove();
+    });
+    Array.from(document.querySelectorAll(":is(h2, h3, h4, h5, h6):not(.toc-title)")).forEach((heading) => {
+        const level = parseInt(heading.tagName[1], 10);
+        const parent = heading.parentNode;
+        if (!parent) return;
+        const foldAll = document.querySelector("[data-fold-all]")?.getAttribute("data-fold-all") === "true";
+
+        const details = document.createElement("details");
+        details.open = !foldAll;
+        const summary = document.createElement("summary");
+
+        parent.insertBefore(details, heading);
+        details.appendChild(summary);
+        summary.appendChild(heading);
+
+        let next = details.nextSibling;
+        while (next) {
+            const isHeading = next instanceof Element && /^H[1-6]$/.test(next.tagName);
+            const nextLevel = isHeading ? parseInt((next as Element).tagName[1], 10) : Infinity;
+
+            if (isHeading && nextLevel <= level) break;
+
+            const toMove = next;
+            next = next.nextSibling;
+            details.appendChild(toMove);
+        }
+    });
+</script>
+
+<Layout title={title} largeScreenMargin="2.5vw">
     <div class="blog-container">
         <div></div>
-        <article class="blog-content">
+        <article class="blog-content" data-fold-all={foldAll}>
             <div class="title">
                 <div class="hero-image small">
                     {heroImage && heroSize === "small" && <Image src={heroImage} alt="" />}
@@ -39,12 +74,10 @@ const { title, description, pubDate, updatedDate, heroImage, heroSize } = Astro.
             <slot />
         </article>
         <aside class="outline-sidebar">
-            <Outline client:load/>
+            <Outline client:load />
         </aside>
     </div>
 </Layout>
-
-
 
 <style>
     main {
@@ -90,12 +123,12 @@ const { title, description, pubDate, updatedDate, heroImage, heroSize } = Astro.
     .last-updated-on {
         font-style: italic;
     }
-    
     /* Outline Sidebar Styles */
     .outline-sidebar {
         position: sticky;
-        top: 2rem;
+        top: 6rem;
         height: fit-content;
+        overflow: scroll;
     }
     @media (max-width: 1024px) {
         .blog-container {

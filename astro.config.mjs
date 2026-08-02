@@ -4,6 +4,7 @@ import { unified } from "@astrojs/markdown-remark";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 import rehypeKatex from "rehype-katex";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkExtendedTable from "remark-extended-table";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
@@ -21,8 +22,8 @@ export default defineConfig({
 
     markdown: {
         processor: unified({
-            rehypePlugins: [rehypeKatex],
-            remarkPlugins: [remarkExtendedTable, remarkMath, remarkGfm, remarkCallout, remarkObsidian],
+            rehypePlugins: [rehypeKatex, rehypeAutolinkHeadings],
+            remarkPlugins: [remarkMath, remarkGfm, remarkCallout, remarkObsidian],
         }),
     },
 });
