@@ -39,7 +39,7 @@ $chevron-down: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My
         background-color: $bg-dark;
     }
 
-    > [data-callout-title] {
+    > .callout-title {
         color: $text-color;
 
         &:empty::after {
@@ -63,39 +63,40 @@ $chevron-down: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My
     border: 1px solid var(--color-shadow);
     border-radius: 0.5rem;
     padding: $spacing-4 $spacing-4 $spacing-4;
+
     
-    &::before {
-        grid-row: 1 / span 2;
-        content: attr(data-callout-type);
-    }
-    
-    & > [data-callout-title] {
+    & > .callout-title {
         grid-row: 1;
         align-items: flex-start;
         justify-self: flex-start;
         gap: $spacing-2;
         cursor: pointer;
         margin-left: $spacing-2;
-    
+
+        &.callout-icon {
+            grid-row: 1 / span 2;
+            content: attr(data-callout-type);
+        }
+
         &::after {
             width: 100%;
             content: "";
         }
-    
+
         &:not(:empty)::after {
             margin: auto auto auto;
             width: $size-5;
             height: $size-5;
         }
     }
-    
+
     &::before,
-    & > [data-callout-title] {
+    & > .callout-title {
         padding: 0;
         font-weight: bold;
     }
-    
-    & > [data-callout-body] {
+
+    & > .callout-content {
         display: flex;
         grid-column: 2;
         flex-direction: column;
@@ -109,7 +110,7 @@ $chevron-down: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My
 }
 
 // Collapsible details element
-details[data-callout] > summary[data-callout-title]::after {
+details[data-callout] > summary.callout-title::after {
     mask-image: $chevron-right;
     mask-position: right center;
     mask-size: $size-5;
@@ -124,10 +125,10 @@ details[data-callout] > summary[data-callout-title]::after {
 
 details[data-callout][open] {
     gap: $spacing-2;
-    
-    & > summary[data-callout-title] {
+
+    & > summary.callout-title {
         margin-left: 0;
-        
+
         &::after {
             transform: rotate(90deg);
             transition: transform 0.2s ease;
@@ -135,305 +136,298 @@ details[data-callout][open] {
     }
 }
 
-
 // For all callout types
-[data-callout] {
-    @each $type in $callout-types {
-        &[data-callout-type="#{$type}"] {
-            // border: 1px solid rgba(37, 99, 235, 0.2);
-            border-radius: $radius;
-            // background-color: rgba(96, 165, 250, 0.2);
+@each $type in $callout-types {
+    [data-callout="#{$type}"] {
+        // border: 1px solid rgba(37, 99, 235, 0.2);
+        border-radius: $radius;
+        // background-color: rgba(96, 165, 250, 0.2);
 
-            @media (prefers-color-scheme: dark) {
-                border-color: rgba(30, 64, 175, 0.2);
-                background-color: rgba(37, 99, 235, 0.1);
+        @media (prefers-color-scheme: dark) {
+            border-color: rgba(30, 64, 175, 0.2);
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+
+        > summary.callout-title:empty::after {
+            content: "Note";
+        }
+        &::before {
+            display: block;
+            mask-image: $icon-pencil;
+            mask-size: cover;
+            mask-repeat: no-repeat;
+            margin-top: $spacing-01;
+            width: $size-5;
+            height: $size-5;
+            content: "";
+        }
+
+        > .callout-content {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing-2;
+
+            > * {
+                margin: 0;
             }
+        }
 
-            > summary[data-callout-title]:empty::after {
-                content: "Note";
-            }
-            &::before {
-                display: block;
-                mask-image: $icon-pencil;
-                mask-size: cover;
-                mask-repeat: no-repeat;
-                margin-top: $spacing-01;
-                width: $size-5;
-                height: $size-5;
-                content: "";
-            }
+        // Collapsible callouts
+        &[data-callout-type] {
+            details > summary.callout-title {
+                cursor: pointer;
+                margin-left: $spacing-2;
 
-            > [data-callout-body] {
-                display: flex;
-                flex-direction: column;
-                gap: $spacing-2;
+                &::after {
+                    width: 100%;
+                    content: "";
+                }
 
-                > * {
-                    margin: 0;
+                &:not(:empty)::after {
+                    margin: auto auto auto;
+                    width: $size-6;
+                    height: $size-6;
                 }
             }
 
-            // Collapsible callouts
-            &[data-callout-type] {
-                details > summary[data-callout-title] {
-                    cursor: pointer;
-                    margin-left: $spacing-2;
-
-                    &::after {
-                        width: 100%;
-                        content: "";
-                    }
-
-                    &:not(:empty)::after {
-                        margin: auto auto auto;
-                        width: $size-6;
-                        height: $size-6;
-                    }
-                }
-
-                &[open] > summary[data-callout-title]::after {
-                    transform: rotate(90deg);
-                    // filter: color($text-color);
-                    transition: transform 0.2s ease;
-                }
+            &[open] > summary.callout-title::after {
+                transform: rotate(90deg);
+                // filter: color($text-color);
+                transition: transform 0.2s ease;
             }
         }
     }
 }
 
 // Collapsible callout types
-[data-callout] {
-    &[data-callout-type="info"] {
-        @include callout-type(
-            rgba(37, 99, 235, 0.2),
-            rgba(30, 64, 175, 0.2),
-            rgba(96, 165, 250, 0.2),
-            rgba(37, 99, 235, 0.1),
-            rgb(59, 130, 246),
-            $icon-info,
-            "Info"
-        );
-    }
-
-    &[data-callout-type="todo"] {
-        @include callout-type(
-            rgba(37, 99, 235, 0.2),
-            rgba(30, 64, 175, 0.2),
-            rgba(96, 165, 250, 0.2),
-            rgba(37, 99, 235, 0.1),
-            rgb(59, 130, 246),
-            $icon-check-big,
-            "ToDo"
-        );
-    }
-
-    &[data-callout-type="abstract"],
-    &[data-callout-type="summary"],
-    &[data-callout-type="tldr"] {
-        @include callout-type(
-            rgba(8, 145, 178, 0.2),
-            rgba(21, 94, 117, 0.2),
-            rgba(34, 211, 238, 0.2),
-            rgba(8, 145, 178, 0.1),
-            rgb(6, 182, 212),
-            $icon-clipboard,
-            ""
-        );
-    }
-
-    &[data-callout-type="abstract"] > [data-callout-title]:empty::after {
-        content: "Abstract";
-    }
-    &[data-callout-type="summary"] > [data-callout-title]:empty::after {
-        content: "Summary";
-    }
-    &[data-callout-type="tldr"] > [data-callout-title]:empty::after {
-        content: "TL;DR";
-    }
-
-    &[data-callout-type="tip"],
-    &[data-callout-type="hint"],
-    &[data-callout-type="important"] {
-        @include callout-type(
-            rgba(8, 145, 178, 0.2),
-            rgba(21, 94, 117, 0.2),
-            rgba(34, 211, 238, 0.2),
-            rgba(8, 145, 178, 0.1),
-            rgb(6, 182, 212),
-            $icon-flame,
-            ""
-        );
-    }
-
-    &[data-callout-type="tip"] > [data-callout-title]:empty::after {
-        content: "Tip";
-    }
-    &[data-callout-type="hint"] > [data-callout-title]:empty::after {
-        content: "Hint";
-    }
-    &[data-callout-type="important"] > [data-callout-title]:empty::after {
-        content: "Important";
-    }
-
-    &[data-callout-type="success"],
-    &[data-callout-type="check"],
-    &[data-callout-type="done"] {
-        @include callout-type(
-            rgba(22, 163, 74, 0.2),
-            rgba(22, 101, 52, 0.2),
-            rgba(74, 222, 128, 0.2),
-            rgba(22, 163, 74, 0.1),
-            rgb(34, 197, 94),
-            $icon-check,
-            ""
-        );
-    }
-
-    &[data-callout-type="success"] > [data-callout-title]:empty::after {
-        content: "Success";
-    }
-    &[data-callout-type="check"] > [data-callout-title]:empty::after {
-        content: "Check";
-    }
-    &[data-callout-type="done"] > [data-callout-title]:empty::after {
-        content: "Done";
-    }
-
-    &[data-callout-type="question"],
-    &[data-callout-type="help"],
-    &[data-callout-type="faq"] {
-        @include callout-type(
-            rgba(234, 88, 12, 0.2),
-            rgba(124, 45, 18, 0.2),
-            rgba(251, 146, 60, 0.2),
-            rgba(234, 88, 12, 0.1),
-            rgb(249, 115, 22),
-            $icon-help,
-            ""
-        );
-    }
-
-    &[data-callout-type="question"] > [data-callout-title]:empty::after {
-        content: "Question";
-    }
-    &[data-callout-type="help"] > [data-callout-title]:empty::after {
-        content: "Help";
-    }
-    &[data-callout-type="faq"] > [data-callout-title]:empty::after {
-        content: "FAQ";
-    }
-
-    &[data-callout-type="warning"],
-    &[data-callout-type="caution"],
-    &[data-callout-type="attention"] {
-        @include callout-type(
-            rgba(234, 88, 12, 0.2),
-            rgba(124, 45, 18, 0.2),
-            rgba(251, 146, 60, 0.2),
-            rgba(234, 88, 12, 0.1),
-            rgb(249, 115, 22),
-            $icon-alert,
-            ""
-        );
-    }
-
-    &[data-callout-type="warning"] > [data-callout-title]:empty::after {
-        content: "Warning";
-    }
-    &[data-callout-type="caution"] > [data-callout-title]:empty::after {
-        content: "Caution";
-    }
-    &[data-callout-type="attention"] > [data-callout-title]:empty::after {
-        content: "Attention";
-    }
-
-    &[data-callout-type="failure"],
-    &[data-callout-type="fail"],
-    &[data-callout-type="missing"] {
-        @include callout-type(
-            rgba(220, 38, 38, 0.2),
-            rgba(127, 29, 29, 0.2),
-            rgba(248, 113, 113, 0.2),
-            rgba(220, 38, 38, 0.1),
-            rgb(239, 68, 68),
-            $icon-check,
-            ""
-        );
-    }
-
-    &[data-callout-type="failure"] > [data-callout-title]:empty::after {
-        content: "Failure";
-    }
-    &[data-callout-type="fail"] > [data-callout-title]:empty::after {
-        content: "Fail";
-    }
-    &[data-callout-type="missing"] > [data-callout-title]:empty::after {
-        content: "Missing";
-    }
-
-    &[data-callout-type="danger"],
-    &[data-callout-type="error"] {
-        @include callout-type(
-            rgba(220, 38, 38, 0.2),
-            rgba(127, 29, 29, 0.2),
-            rgba(248, 113, 113, 0.2),
-            rgba(220, 38, 38, 0.1),
-            rgb(239, 68, 68),
-            $icon-zap,
-            ""
-        );
-    }
-
-    &[data-callout-type="danger"] > [data-callout-title]:empty::after {
-        content: "Danger";
-    }
-    &[data-callout-type="error"] > [data-callout-title]:empty::after {
-        content: "Error";
-    }
-
-    &[data-callout-type="bug"] {
-        @include callout-type(
-            rgba(220, 38, 38, 0.2),
-            rgba(127, 29, 29, 0.2),
-            rgba(248, 113, 113, 0.2),
-            rgba(220, 38, 38, 0.1),
-            rgb(239, 68, 68),
-            $icon-bug,
-            "Bug"
-        );
-    }
-
-    &[data-callout-type="example"] {
-        @include callout-type(
-            rgba(147, 51, 234, 0.2),
-            rgba(88, 28, 135, 0.2),
-            rgba(192, 132, 252, 0.2),
-            rgba(147, 51, 234, 0.1),
-            rgb(168, 85, 247),
-            $icon-list,
-            "Example"
-        );
-    }
-
-    &[data-callout-type="quote"],
-    &[data-callout-type="cite"] {
-        @include callout-type(
-            rgba(82, 82, 91, 0.2),
-            rgba(39, 39, 42, 0.2),
-            rgba(161, 161, 170, 0.2),
-            rgba(82, 82, 91, 0.15),
-            rgb(113, 113, 122),
-            $icon-quote,
-            ""
-        );
-    }
-
-    &[data-callout-type="quote"] > [data-callout-title]:empty::after {
-        content: "Quote";
-    }
-    &[data-callout-type="cite"] > [data-callout-title]:empty::after {
-        content: "Cite";
-    }
+[data-callout="info"] {
+    @include callout-type(
+        rgba(37, 99, 235, 0.2),
+        rgba(30, 64, 175, 0.2),
+        rgba(96, 165, 250, 0.2),
+        rgba(37, 99, 235, 0.1),
+        rgb(59, 130, 246),
+        $icon-info,
+        "Info"
+    );
 }
 
+[data-callout="todo"] {
+    @include callout-type(
+        rgba(37, 99, 235, 0.2),
+        rgba(30, 64, 175, 0.2),
+        rgba(96, 165, 250, 0.2),
+        rgba(37, 99, 235, 0.1),
+        rgb(59, 130, 246),
+        $icon-check-big,
+        "ToDo"
+    );
+}
 
+[data-callout="abstract"],
+[data-callout="summary"],
+[data-callout="tldr"] {
+    @include callout-type(
+        rgba(8, 145, 178, 0.2),
+        rgba(21, 94, 117, 0.2),
+        rgba(34, 211, 238, 0.2),
+        rgba(8, 145, 178, 0.1),
+        rgb(6, 182, 212),
+        $icon-clipboard,
+        ""
+    );
+}
+
+[data-callout="abstract"] > .callout-title:empty::after {
+    content: "Abstract";
+}
+[data-callout="summary"] > .callout-title:empty::after {
+    content: "Summary";
+}
+[data-callout="tldr"] > .callout-title:empty::after {
+    content: "TL;DR";
+}
+
+[data-callout="tip"],
+[data-callout="hint"],
+[data-callout="important"] {
+    @include callout-type(
+        rgba(8, 145, 178, 0.2),
+        rgba(21, 94, 117, 0.2),
+        rgba(34, 211, 238, 0.2),
+        rgba(8, 145, 178, 0.1),
+        rgb(6, 182, 212),
+        $icon-flame,
+        ""
+    );
+}
+
+[data-callout="tip"] > .callout-title:empty::after {
+    content: "Tip";
+}
+[data-callout="hint"] > .callout-title:empty::after {
+    content: "Hint";
+}
+[data-callout="important"] > .callout-title:empty::after {
+    content: "Important";
+}
+
+[data-callout="success"],
+[data-callout="check"],
+[data-callout="done"] {
+    @include callout-type(
+        rgba(22, 163, 74, 0.2),
+        rgba(22, 101, 52, 0.2),
+        rgba(74, 222, 128, 0.2),
+        rgba(22, 163, 74, 0.1),
+        rgb(34, 197, 94),
+        $icon-check,
+        ""
+    );
+}
+
+[data-callout="success"] > .callout-title:empty::after {
+    content: "Success";
+}
+[data-callout="check"] > .callout-title:empty::after {
+    content: "Check";
+}
+[data-callout="done"] > .callout-title:empty::after {
+    content: "Done";
+}
+
+[data-callout="question"],
+[data-callout="help"],
+[data-callout="faq"] {
+    @include callout-type(
+        rgba(234, 88, 12, 0.2),
+        rgba(124, 45, 18, 0.2),
+        rgba(251, 146, 60, 0.2),
+        rgba(234, 88, 12, 0.1),
+        rgb(249, 115, 22),
+        $icon-help,
+        ""
+    );
+}
+
+[data-callout="question"] > .callout-title:empty::after {
+    content: "Question";
+}
+[data-callout="help"] > .callout-title:empty::after {
+    content: "Help";
+}
+[data-callout="faq"] > .callout-title:empty::after {
+    content: "FAQ";
+}
+
+[data-callout="warning"],
+[data-callout="caution"],
+[data-callout="attention"] {
+    @include callout-type(
+        rgba(234, 88, 12, 0.2),
+        rgba(124, 45, 18, 0.2),
+        rgba(251, 146, 60, 0.2),
+        rgba(234, 88, 12, 0.1),
+        rgb(249, 115, 22),
+        $icon-alert,
+        ""
+    );
+}
+
+[data-callout="warning"] > .callout-title:empty::after {
+    content: "Warning";
+}
+[data-callout="caution"] > .callout-title:empty::after {
+    content: "Caution";
+}
+[data-callout="attention"] > .callout-title:empty::after {
+    content: "Attention";
+}
+
+[data-callout="failure"],
+[data-callout="fail"],
+[data-callout="missing"] {
+    @include callout-type(
+        rgba(220, 38, 38, 0.2),
+        rgba(127, 29, 29, 0.2),
+        rgba(248, 113, 113, 0.2),
+        rgba(220, 38, 38, 0.1),
+        rgb(239, 68, 68),
+        $icon-check,
+        ""
+    );
+}
+
+[data-callout="failure"] > .callout-title:empty::after {
+    content: "Failure";
+}
+[data-callout="fail"] > .callout-title:empty::after {
+    content: "Fail";
+}
+[data-callout="missing"] > .callout-title:empty::after {
+    content: "Missing";
+}
+
+[data-callout="danger"],
+[data-callout="error"] {
+    @include callout-type(
+        rgba(220, 38, 38, 0.2),
+        rgba(127, 29, 29, 0.2),
+        rgba(248, 113, 113, 0.2),
+        rgba(220, 38, 38, 0.1),
+        rgb(239, 68, 68),
+        $icon-zap,
+        ""
+    );
+}
+
+[data-callout="danger"] > .callout-title:empty::after {
+    content: "Danger";
+}
+[data-callout="error"] > .callout-title:empty::after {
+    content: "Error";
+}
+
+[data-callout="bug"] {
+    @include callout-type(
+        rgba(220, 38, 38, 0.2),
+        rgba(127, 29, 29, 0.2),
+        rgba(248, 113, 113, 0.2),
+        rgba(220, 38, 38, 0.1),
+        rgb(239, 68, 68),
+        $icon-bug,
+        "Bug"
+    );
+}
+
+[data-callout="example"] {
+    @include callout-type(
+        rgba(147, 51, 234, 0.2),
+        rgba(88, 28, 135, 0.2),
+        rgba(192, 132, 252, 0.2),
+        rgba(147, 51, 234, 0.1),
+        rgb(168, 85, 247),
+        $icon-list,
+        "Example"
+    );
+}
+
+[data-callout="quote"],
+[data-callout="cite"] {
+    @include callout-type(
+        rgba(82, 82, 91, 0.2),
+        rgba(39, 39, 42, 0.2),
+        rgba(161, 161, 170, 0.2),
+        rgba(82, 82, 91, 0.15),
+        rgb(113, 113, 122),
+        $icon-quote,
+        ""
+    );
+}
+
+[data-callout="quote"] > .callout-title:empty::after {
+    content: "Quote";
+}
+[data-callout="cite"] > .callout-title:empty::after {
+    content: "Cite";
+}

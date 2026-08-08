@@ -5,11 +5,13 @@ import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 import rehypeKatex from "rehype-katex";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import remarkExtendedTable from "remark-extended-table";
+import { remarkExtendedTable, extendedTableHandlers } from "remark-extended-table";
+import remarkRehype from "remark-rehype";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
-import remarkCallout from "@r4ai/remark-callout";
-import remarkObsidian from "remark-obsidian";
+// import remarkCallout from "@r4ai/remark-callout";
+import rehypeCallouts from "rehype-callouts";
+// import remarkObsidian from "remark-obsidian";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,8 +24,13 @@ export default defineConfig({
 
     markdown: {
         processor: unified({
-            rehypePlugins: [rehypeKatex, rehypeAutolinkHeadings],
-            remarkPlugins: [remarkMath, remarkGfm, remarkCallout, remarkObsidian],
+            rehypePlugins: [rehypeKatex, rehypeAutolinkHeadings, rehypeCallouts],
+            remarkPlugins: [
+                remarkExtendedTable,
+                [remarkRehype, { handlers: extendedTableHandlers }],
+                remarkMath,
+                remarkGfm,
+            ],
         }),
     },
 });

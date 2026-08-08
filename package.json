@@ -15,11 +15,11 @@
     "@r4ai/remark-callout": "^0.6.2",
     "astro": "6.4.2",
     "rehype-autolink-headings": "^7.1.0",
+    "rehype-callouts": "^2.2.0",
     "rehype-katex": "^7.0.1",
     "remark-extended-table": "^2.0.3",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
-    "remark-obsidian": "^1.12.1",
-    "remark-rehype": "^11.1.2"
+    "remark-obsidian": "^1.12.1"
   }
 }

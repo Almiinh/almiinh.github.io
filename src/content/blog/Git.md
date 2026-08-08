@@ -6,10 +6,12 @@ heroImage: '../../assets/blog/logo_git.png'
 heroSize: small
 foldHeadings: true
 ---
-> [!📙] git est un **logiciel de gestion de versions** (**VCS** *version control system)* qui permet de conserver un historique des versions de tous les fichiers.
+> [!note] Qu'est-ce que Git ?
+> Git est un **logiciel de gestion de versions** (**VCS** *version control system)* qui permet de conserver un historique des versions de tous les fichiers.
 
 
-> [!tip] References  
+> [!tip] References
+>
 > [LearnThatStack -- Git Will Finally Make Sense After This](https://youtu.be/Ala6PHlYjmw)
 >
 > [Programming with Mosh -- What is Git? Explained in 2 Minutes!](https://youtu.be/2ReR1YJrNOM)
@@ -35,20 +37,20 @@ Git est utilisé en **lignes de commande** *(via un terminal de commande ou CLI:
 > 3. A pointer to the parent commit
 
 The first commit has no parent
-![Git/image.png](Git/image.png)
+![Git/image.png](/blog/Git/image.png)
 
 
 A commit with two parents makes branches
-![Git/image.png](Git/image%200.png)
+![parent](/blog/Git/parents.png)
 
 You can jump to any commit in history
 
-![Git/image.png](Git/image%201.png)
+![Git/image.png](/blog/Git/image%201.png)
 
 
 #### Historique local `.git`:
 
-![Git/image.png](Git/image%202.png)
+![Git/image.png](/blog/Git/image%202.png)
 
 A family tree of snapshots: a Directed Acyclic Graph
 
@@ -63,7 +65,7 @@ Git Generally Only Adds Data
 
 Everything in Git is checksummed before it is stored and is then referred to by that checksum. 
 
-![Git/image.png](Git/image%203.png)
+![Git/image.png](/blog/Git/image%203.png)
 
 
 #### The Three States
@@ -77,7 +79,8 @@ Git has three main states that your files can reside in: modified, staged, and c
 
 #### Gérer un dépôt local `git init / status / log`
 
-> [!📙] Un **dépôt local** est l’endroit où l’on stocke, sur sa machine, une copie d’un projet, ses différentes versions et l’historique des modifications.
+> [!note] 
+> Un **dépôt local** est l’endroit où l’on stocke, sur sa machine, une copie d’un projet, ses différentes versions et l’historique des modifications.
 
 - Créer un dépôt Git : `git init`
 - Voir l’état du dépôt : `git status`
@@ -105,10 +108,11 @@ Git has three main states that your files can reside in: modified, staged, and c
 
 #### Gérer un dépôt distant `git remote / clone / push / pull`
 
-> [!📙] Un **dépôt distant** est une version dématérialisée du dépôt local, que ce soit sur Internet ou sur un réseau. Il permet de centraliser le travail des développeurs dans un projet collectif comme un *cloud* cf. **les plateformes GitHub, GitLab…**
+> [!note] 
+> Un **dépôt distant** est une version dématérialisée du dépôt local, que ce soit sur Internet ou sur un réseau. Il permet de centraliser le travail des développeurs dans un projet collectif comme un *cloud* cf. **les plateformes GitHub, GitLab…**
 
 
-> [!📙] `git pull`  équivaut à `git fetch` puis `git merge`
+> [!tip] `git pull`  équivaut à `git fetch` puis `git merge`
 
 
 | Relier le dépôt local au dépôt distant | `git remote add <nomDépôt> <urlDépôt>` |
@@ -123,11 +127,12 @@ Git has three main states that your files can reside in: modified, staged, and c
 
 #### Gérer une branche `git branch`
 
-> [!📙] La branche par défaut est `main` sur github (anciennement `master`). C’est configurable dans les `config`.
+> [!note] 
+> La branche par défaut est `main` sur github (anciennement `master`). C’est configurable dans les `config`.
 
 Un pointeur sur un commit
 
-![Git/image.png](Git/image%204.png)
+![Git/image.png](/blog/Git/image%204.png)
     
 Autres pointeurs sur commit
     
@@ -152,7 +157,8 @@ etc.
 
 #### Gérer une version `git commit`
 
-> [!💡] La wildcard `*` peut être utilisé. `*.iml` désigne tous les fichiers qui finissent en `.iml`
+> [!tip] 
+> La wildcard `*` peut être utilisé. `*.iml` désigne tous les fichiers qui finissent en `.iml`
 > Voir le globbish
 
 
@@ -190,7 +196,8 @@ Plusieurs niveaux de reset:
 - Lister les modifications: `git stash --list`
 - Cumuler les modifications `git stash` encore
     
-> [!📙] À chaque fois que vous appelez `git stash`, les modifications sont mises de côté dans une pile, au dessus des autres modifications remisées. 
+> [!note] 
+> À chaque fois que vous appelez `git stash`, les modifications sont mises de côté dans une pile, au dessus des autres modifications remisées. 
 > À chaque fois que vous appelez `pop`, on dépile.
     
 - Remiser les modifications et les créations: `git stash save -u`
