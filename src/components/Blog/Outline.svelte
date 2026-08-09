@@ -18,7 +18,7 @@
         const items = Array.from(headingElements).map((heading) => {            
             return {
                 id: heading.id,
-                text: heading.textContent ?? "",
+                text: heading.innerHTML ?? "",
                 level: parseInt(heading.tagName[1], 10),
             };
         });
@@ -60,7 +60,7 @@
         {#each headings as { id, text, level }}
             <li class="toc-item" style="--depth: {level - 1}">
                 <a href="#{id}" class="toc-link" class:toc-link--active={activeId === id}>
-                    {text}
+                    {@html text}
                 </a>
             </li>
         {/each} 
@@ -86,6 +86,10 @@
         font-size: 0.75rem;
         letter-spacing: 0.05em;
         text-transform: uppercase;
+    }
+
+    code {
+        color: var(--color-text);
     }
 
     .toc-list {

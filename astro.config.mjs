@@ -9,9 +9,7 @@ import { remarkExtendedTable, extendedTableHandlers } from "remark-extended-tabl
 import remarkRehype from "remark-rehype";
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
-// import remarkCallout from "@r4ai/remark-callout";
 import rehypeCallouts from "rehype-callouts";
-// import remarkObsidian from "remark-obsidian";
 
 // https://astro.build/config
 export default defineConfig({

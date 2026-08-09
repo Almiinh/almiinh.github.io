@@ -166,9 +166,7 @@ etc.
 | --- | --- |
 | Enregistrer une version | `git commit -m "message"` |
 | Changer le message | `git commit --amend -m "Votre nouveau message de commit"`  |
-| Ajouter un fichier manquant dans un commit | `git add <fichierManquant>;` `git commit --amend
-
-git commit --amend --no-edit` |
+| Ajouter un fichier manquant dans un commit | `git add <fichierManquant>;`<br>`git commit --amend --no-edit` |
 | Lister les versions | `git log commit` |
 | Revenir à une version | `git reset --hard 8_premiers_chiffres_de_l'id_de_la_version` |
 
