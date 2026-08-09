@@ -87,68 +87,69 @@ import "$styles/details.css";
         @media screen and (max-width: 700px) {
             flex-direction: column;
         }
-    }
-    section#title .me {
-        display: flex;
-        gap: 2rem;
-        padding: 1rem;
-        @media screen and (max-width: 700px) {
-            flex-direction: column;
-            gap: 0;
-        }
-    }
-    section#title .me h1 {
-        font-size: 2.75rem;
-        font-family: var(--font-title);
-        @media screen and (max-width: 700px) {
-            margin: 0;
-            font-size: 2.75rem;
-            text-align: center
-        }
-    }
-    section#title .photo {
-        display: flex;
-        flex-direction: column;
-        align-self: center;
-        border-radius: 100%;
-        max-width: 10rem;
-        max-height: 10rem;
-    }
-    section#title .me-name {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        @media screen and (max-width: 700px) {
-            align-items: center;
-        }
-    }
-    section#title ul {
-        align-self: center;
-        margin: 1rem;
-        padding-left: 0;
-        font-size: smaller;
-        list-style-type: none;
-
-        li:last-child {
-            border-left-style: dashed;
-        }
-    }
-    section#title ul li {
-        top: 0.2rem;
-        margin: 0 0 0 1rem;
-        border-left: 1px solid rgba(255, 127, 80, 0.5);
-
-        padding-left: 0.5rem;
-        font-style: italic;
-        font-size: smaller;
-
-        @media screen (min-width: 800px) {
+        
+        .me {
             display: flex;
-            align-items: center;
-            gap: 1rem;
+            gap: 2rem;
+            padding: 1rem;
+            @media screen and (max-width: 700px) {
+                flex-direction: column;
+                gap: 0;
+            }
+            h1 {
+                font-size: 2.75rem;
+                font-family: var(--font-title);
+                @media screen and (max-width: 700px) {
+                    margin: 0;
+                    font-size: 2.75rem;
+                    text-align: center
+                }
+            }
+        }
+        .photo {
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            border-radius: 100%;
+            max-width: 10rem;
+            max-height: 10rem;
+        }
+        .me-name {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            @media screen and (max-width: 700px) {
+                align-items: center;
+            }
+        }
+        ul {
+            align-self: center;
+            margin: 1rem;
+            padding-left: 0;
+            font-size: smaller;
+            list-style-type: none;
+    
+            li:last-child {
+                border-left-style: dashed;
+            }
+            li {
+                top: 0.2rem;
+                margin: 0 0 0 1rem;
+                border-left: 1px solid rgba(255, 127, 80, 0.5);
+        
+                padding-left: 0.5rem;
+                font-style: italic;
+                font-size: smaller;
+        
+                @media screen (min-width: 800px) {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                }
+            }
         }
     }
-    #featured {
+    section#featured {
         margin-top: 2rem;
     }
     .links {

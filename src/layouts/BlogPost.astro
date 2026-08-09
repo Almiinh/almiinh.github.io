@@ -31,6 +31,9 @@ const foldAll = foldHeadings ?? false;
 
             const details = document.createElement("details");
             details.open = !foldAll;
+            if (window.matchMedia("(max-width: 800px)").matches) {
+                details.open = false;
+            }
             const summary = document.createElement("summary");
 
             parent.insertBefore(details, heading);
@@ -91,6 +94,7 @@ const foldAll = foldHeadings ?? false;
     main {
         margin: 0;
         max-width: 100%;
+        
     }
     .blog-container {
         display: grid;
@@ -98,38 +102,40 @@ const foldAll = foldHeadings ?? false;
         gap: 1vw;
         max-width: 100%;
     }
-    .hero-image img {
-        display: block;
-        margin: 0 auto;
-        box-shadow: var(--box-shadow);
-        border-radius: 12px;
-        height: auto;
-    }
-    .hero-image.small img {
-        margin: 0.5rem 1rem 0.5rem 0;
-        border-radius: 12px;
-        border-radius: 8px;
-        width: auto;
-        max-width: 10rem;
-        height: auto;
-        max-height: 6rem;
-        object-fit: cover;
+    .hero-image {
+        img {
+            display: block;
+            margin: 0 auto;
+            box-shadow: var(--box-shadow);
+            border-radius: 12px;
+            height: auto;
+        }
+        &.small img {
+            margin: 0.5rem 1rem 0.5rem 0;
+            border-radius: 12px;
+            border-radius: 8px;
+            width: auto;
+            max-width: 10rem;
+            height: auto;
+            max-height: 6rem;
+            object-fit: cover;
+        }
     }
     .title {
         margin-bottom: 1em;
-    }
-    .title h1 {
-        font: bold var(--size-title) var(--font-title);
-    }
-    .title p {
-        color: var(--color-text-secondary);
-    }
-    .date {
-        margin-bottom: 0.5em;
-        color: rgb(var(--gray));
-    }
-    .last-updated-on {
-        font-style: italic;
+        h1 {
+            font: bold min(var(--size-title), 2.5rem) var(--font-title);
+        }
+        p {
+            color: var(--color-text-secondary);
+        }
+        .date {
+            margin-bottom: 0.5em;
+            color: rgb(var(--gray));
+        }
+        .last-updated-on {
+            font-style: italic;
+        }
     }
     /* Outline Sidebar Styles */
     .outline-sidebar {
@@ -139,6 +145,10 @@ const foldAll = foldHeadings ?? false;
         overflow: scroll;
     }
     @media (max-width: 1024px) {
+        *:is(td, th, tr, table) {
+            font-size: smaller;
+            word-break: break-word;
+        }
         .blog-container {
             grid-template-columns: 1fr;
         }

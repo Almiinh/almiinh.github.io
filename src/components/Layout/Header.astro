@@ -21,7 +21,7 @@ import DarkModeSwitch from "./DarkModeSwitch.svelte";
         padding: 0 max(36px, 15vw);
         z-index: 999;
         box-shadow: 0px 1px var(--color-shadow);
-        background: var(--color-bg-gradient);
+        background: var(--color-pastel-header);
         display: flex;
         flex-wrap: wrap-reverse;
         justify-content: space-between;
@@ -68,7 +68,7 @@ import DarkModeSwitch from "./DarkModeSwitch.svelte";
             flex-wrap: nowrap;
             padding: 0 1rem;
         }
-        nav h1 {
+        nav :is(h1, h2, h3, h4, h5, h6) {
             display: none;
         }
     }

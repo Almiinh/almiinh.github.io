@@ -7,7 +7,7 @@ import iconLinkedIn from "$assets/index/LINKEDIN.svg";
 import iconGithub from "$assets/index/GITHUB.svg";
 import iconGithubWhite from "$assets/index/GITHUB.white.svg";
 
-const { title, largeScreenMargin = "15vw", smallScreenMargin = "5vw" } = Astro.props;
+const { title, class: className, largeScreenMargin = "15vw", smallScreenMargin = "5vw" } = Astro.props;
 
 ---
 
@@ -27,7 +27,7 @@ const { title, largeScreenMargin = "15vw", smallScreenMargin = "5vw" } = Astro.p
     </head>
     <body>
         <Header />
-        <main>
+        <main class={className}>
             <slot />
         </main>
         <Footer />
@@ -40,17 +40,16 @@ const { title, largeScreenMargin = "15vw", smallScreenMargin = "5vw" } = Astro.p
         flex-direction: column;
         justify-content: space-between;
         margin: 0;
-        width: 100%;
+        width: fit-content;
         height: 100%;
         min-height: 100vh;
     }
     main {
         margin: 5vh max(var(--largeScreenMargin), 36px);
-    }
-    @media screen and (max-width: 800px) {
-        main {
+        width: fit-content;
+        /* @media screen and (max-width: 800px) {
             margin: 5vh max(var(--smallScreenMargin), 36px);
-        }
+        } */
     }
     :global(*:is(h1, h2, h3, h4, h5, h6)) {
         font-family: var(--font-heading);
