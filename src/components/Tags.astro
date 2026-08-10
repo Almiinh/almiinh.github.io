@@ -15,7 +15,7 @@ interface Tag {
 <div class="tags">
     {
         tags.map((tag) => (
-            <span class="tag" style={{ backgroundColor: tag.backgroundColor, color: tag.color }}>
+            <span class="tag" style={`--tag-bg: ${tag.backgroundColor ?? "rgba(255, 127, 80, 0.5)"};`}>
                 {tag.name}
             </span>
         ))
@@ -30,12 +30,15 @@ interface Tag {
         gap: 0.2rem;
         width: fit-content;
     }
+
     .tag {
+        --tag-bg-solid: color-mix(in srgb, var(--tag-bg, rgba(255, 127, 80, 0.5)) 100%, white 0%);
         border-radius: 10px;
-        background-color: rgba(255, 127, 80, 0.5);
+        background-color: var(--tag-bg);
         padding: 0 0.4rem;
         min-width: 2rem;
         height: fit-content;
+        color: contrast-color(color-mix(in srgb, var(--tag-bg, rgba(255, 127, 80, 0.5)) 100%, black 50%));
         font-size: 0.7rem;
         text-align: center;
         text-wrap: nowrap;

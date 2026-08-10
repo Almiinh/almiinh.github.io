@@ -16,52 +16,53 @@ import DarkModeSwitch from "./DarkModeSwitch.svelte";
         text-wrap: nowrap;
     }
     nav {
+        display: flex;
         position: sticky;
         top: 0;
-        padding: 0 max(36px, 15vw);
-        z-index: 999;
-        box-shadow: 0px 1px var(--color-shadow);
-        background: var(--color-pastel-header);
-        display: flex;
         flex-wrap: wrap-reverse;
         justify-content: space-between;
         align-items: center;
+        z-index: 999;
         transition: all 0.3s ease-in-out;
-    }
-    nav a {
-        grid-column: 2;
-        margin: 0;
-        color: var(--color-text);
-        text-decoration: none;
-
-        h1 {
-            margin: 0.5rem 0;
-            font-family: var(--font-title);
-        }
-
-        &:hover {
-            translate: 0 -2px;
-            filter: var(--filter-hover)
-            border-bottom-color: var(--color-text-secondary);
+        box-shadow: 0px 1px var(--color-shadow);
+        background: var(--color-pastel-header);
+        padding: 0 max(36px, 15vw);
+        a {
+            grid-column: 2;
+            margin: 0;
+            color: var(--color-text);
+            text-decoration: none;
+    
+            h1 {
+                margin: 0.5rem 0;
+                font-family: var(--font-title);
+            }
+    
+            &:hover {
+                translate: 0 -2px;
+                filter: var(--filter-hover)
+                border-bottom-color: contrast-color(var(--color-pastel-header));
+            }
         }
     }
     .links {
         display: flex;
         justify-content: end;
         align-items: center;
-        font-family: var(--font-heading);
         gap: 1em;
-    }
-    .links a {
-        border-bottom: 5px solid transparent;
-        padding: 1.1em 0.5em;
-    }
-    .links a.active {
-        border-bottom-color: var(--color-text);
-    }
-    .links a:hover {
-        border-bottom-color: var(--color-text-secondary);
-        color: var(--color-text-secondary);
+        font-family: var(--font-heading);
+        
+        a {
+            border-bottom: 5px solid transparent;
+            padding: 1.1em 0.5em;
+        }
+        a.active {
+            border-bottom-color: var(--color-text);
+        }
+        a:hover {
+            border-bottom-color: contrast-color(var(--color-pastel-header));
+            color: contrast-color(var(--color-pastel-header));
+        }
     }
     @media (max-width: 600px) {
         nav {
