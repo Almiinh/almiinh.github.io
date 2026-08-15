@@ -7,7 +7,12 @@ import previewCarRental from "$assets/index/preview-car-rental.png";
 import previewTheaterTracker from "$assets/index/preview-theater-tracker.png";
 import previewCloudComputing from "$assets/index/preview-cloud-computing.png";
 
-const tags = {
+export interface Tag {
+    name: string;
+    backgroundColor: string;
+}
+
+const tags: Record<string, Tag> = {
     dl: { name: "Deep Learning", backgroundColor: "mediumslateblue" },
     java: { name: "Java", backgroundColor: "#3c2c79" },
     html: { name: "HTML", backgroundColor: "#ff4e1d" },
@@ -29,7 +34,15 @@ const tags = {
     dsa: { name: "DSA", backgroundColor: "#ffd983" },
 };
 
-const csProjects = [
+export interface Project {
+    href: string,
+    tags: Tag[],
+    image?: string,
+    title: string,
+    desc?: string
+}
+
+const csProjects: Project[] = [
     {
         href: "https://github.com/Almiinh/cloud-computing/",
         tags: [tags.cloud, tags.java],
@@ -90,7 +103,7 @@ const csProjects = [
     },
 ];
 
-const mlProjects = [
+const mlProjects: Project[] = [
     {
         href: "https://github.com/Almiinh/ml-exercises/blob/main/dl/dl_ImageClassification.ipynb",
         tags: [tags.dl],
@@ -125,7 +138,7 @@ const mlProjects = [
     },
 ];
 
-const webProjects = [
+const webProjects: Project[] = [
     {
         href: "/web/project1-odin-recipes/index.html",
         tags: [{ ...tags.html, name: "HTML Basics" }],
@@ -225,7 +238,7 @@ const webProjects = [
     },
 ];
 
-const featuredProjects = [
+const featuredProjects: Project[] = [
     {
         href: "/web/project18-battleship/index.html",
         image: "/web/project18-battleship/preview.png",
@@ -274,4 +287,4 @@ const projects = [
     },
 ];
 
-export { projects, tags, featuredProjects };
+export { projects, tags, featuredProjects};

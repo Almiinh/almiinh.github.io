@@ -1,0 +1,43 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Card from "./Card.astro";
+import FormattedDate from "../FormattedDate.astro";
+import { Image } from "astro:assets";
+
+type Props = {
+    post: CollectionEntry<"blog">;
+};
+
+const { post } = Astro.props;
+---
+
+<Card href={`/blog/${post.id}/`}>
+    {post.data.heroImage && <Image src={post.data.heroImage} alt="" />}
+    <div class="info">
+        <h3 class="title">{post.data.title}</h3>
+        <p class="desc">{post.data.description}</p>
+        <p class="date">
+            <FormattedDate date={post.data.pubDate} />
+        </p>
+    </div>
+</Card>
+
+<style>
+    .desc,
+    .date {
+        text-decoration: none;
+    }
+    .title {
+        margin: 0;
+        font: bold 1.5rem var(--font-title);
+    }
+    .desc {
+        margin: 0;
+        color: var(--color-text-secondary);
+    }
+    .date {
+        margin: 0.5rem 0 0 0;
+        color: rgb(var(--gray));
+        font-size: 0.8rem;
+    }
+</style>

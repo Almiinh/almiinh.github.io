@@ -1,6 +1,6 @@
 ---
-import Header from "$components/Layout/Header.astro";
-import Footer from "$components/Layout/Footer.astro";
+import Header from "$layouts/components/Header.astro";
+import Footer from "$layouts/components/Footer.astro";
 
 import iconCV from "$assets/index/CV128.red.png";
 import iconLinkedIn from "$assets/index/LINKEDIN.svg";
@@ -40,7 +40,9 @@ const { title, class: className, largeScreenMargin = "15vw", smallScreenMargin =
         flex-direction: column;
         justify-content: space-between;
         margin: 0;
-        width: fit-content;
+        @media (pointer: coarse) {
+            width: fit-content;
+        }
         height: 100%;
         min-height: 100vh;
     }
