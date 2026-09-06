@@ -13,14 +13,18 @@ import "$styles/details.css";
 
 <Layout title="Minh-Hoang HUYNH">
     <section id="title">
-        <Card class="me">
+        <div class="me">
             <img class="photo" src={moustillon.src} alt="Moustillon!" title="Moustillon!"/>
             <div class="me-name">
-                <h1>Minh-Hoang HUYNH</h1>
+                <hgroup>
+                    <h1>Minh-Hoang HUYNH</h1>
+                    <p>V&V Engineer @ Alstom, Saint-Ouen, FR</p>
+                </hgroup>
+
                 <References />
             </div>
-        </Card>
-        <Card>
+        </div>
+        <!-- <Card>
             <ul>
                 <Tags tags={[{ name: "Jul 2025 — Currently" }]} />
                 <li>
@@ -47,7 +51,7 @@ import "$styles/details.css";
                     @ Lycée Pasteur, Neuilly-sur-Seine, FR<br /><br />
                 </li>
             </ul>
-        </Card>
+        </Card> -->
     </section>
     <section id="featured">
         <summary>
@@ -92,6 +96,8 @@ import "$styles/details.css";
             display: flex;
             gap: 2rem;
             padding: 1rem;
+            width: 100%;
+
             @media screen and (max-width: 700px) {
                 flex-direction: column;
                 gap: 0;
@@ -99,11 +105,18 @@ import "$styles/details.css";
             h1 {
                 font-size: 2.75rem;
                 font-family: var(--font-title);
+                margin: 0;
+                padding: 0;
                 @media screen and (max-width: 700px) {
-                    margin: 0;
                     font-size: 2.75rem;
                     text-align: center
                 }
+            }
+
+            p {
+                margin-bottom: 0.5rem;
+                font-size: small;
+                font-style: italic;
             }
         }
         .photo {
@@ -111,8 +124,8 @@ import "$styles/details.css";
             flex-direction: column;
             align-self: center;
             border-radius: 100%;
-            max-width: 10rem;
-            max-height: 10rem;
+            max-width: 7rem;
+            max-height: 7rem;
         }
         .me-name {
             display: flex;

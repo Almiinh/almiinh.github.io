@@ -5,29 +5,56 @@
         contentSelector = ".blog-content",
         headingLevels = ["h2", "h3", "h4", "h5", "h6"],
         title = "On this page",
-    } = $props(); // Using Svelte 5 runes syntax
+    } = $props();
 
-    let headings = $state([]);
+    let headingTree = $state([]);
     let activeId = $state("");
+
+    function buildTree(items) {
+        const root = [];
+        const stack = []; // stack of node refs, parallel to their level
+
+        for (const item of items) {
+            const node = { ...item, children: [] };
+
+            // Pop back to the nearest ancestor (strictly shallower level)
+            while (stack.length && stack[stack.length - 1].level >= node.level) {
+                stack.pop();
+            }
+
+            if (stack.length === 0) {
+                root.push(node);
+            } else {
+                stack[stack.length - 1].children.push(node);
+            }
+
+            stack.push(node);
+        }
+
+        return root;
+    }
 
     onMount(() => {
         const article = document.querySelector(contentSelector);
         if (!article) return;
 
         const headingElements = article.querySelectorAll(headingLevels.join(", "));
-        const items = Array.from(headingElements).map((heading) => {            
+        const items = Array.from(headingElements).map((heading) => {
             return {
                 id: heading.id,
                 text: heading.innerHTML ?? "",
                 level: parseInt(heading.tagName[1], 10),
             };
         });
-        const minLevel = Math.min(...items.map(item => item.level));
-        items.forEach(item => {
-            item.level -= (minLevel - 1); // Normalize levels to start from 1
+
+        if (items.length === 0) return;
+
+        const minLevel = Math.min(...items.map((item) => item.level));
+        items.forEach((item) => {
+            item.level -= minLevel - 1; // Normalize levels to start from 1
         });
 
-        headings = items;
+        headingTree = buildTree(items);
 
         // // 3. Highlight active heading on scroll
         // const observer = new IntersectionObserver(
@@ -52,19 +79,36 @@
     });
 </script>
 
+{#snippet tocLink(node)}
+    <a href="#{node.id}" class="toc-link" class:toc-link--active={activeId === node.id}>
+        {@html node.text}
+    </a>    
+{/snippet}
+
+{#snippet tocNodes(nodes)}
+    <ol class="toc-list" role="list">
+        {#each nodes as node (node.id)}
+            <li class="toc-item">
+                {#if node.children.length > 0}
+                    <details class="toc-details" open>
+                        <summary class="toc-summary">
+                            {@render tocLink(node)}
+                        </summary>
+                        {@render tocNodes(node.children)}
+                    </details>
+                {:else}
+                    {@render tocLink(node)}
+                {/if}
+            </li>
+        {/each}
+    </ol>
+{/snippet}
+
 <nav class="toc" aria-label="Table of contents">
     {#if title}
         <h3 class="toc-title">{title}</h3>
     {/if}
-    <ol class="toc-list" role="list">
-        {#each headings as { id, text, level }}
-            <li class="toc-item" style="--depth: {level - 1}">
-                <a href="#{id}" class="toc-link" class:toc-link--active={activeId === id}>
-                    {@html text}
-                </a>
-            </li>
-        {/each} 
-    </ol>
+    {@render tocNodes(headingTree)}
 </nav>
 
 <style>
@@ -73,10 +117,30 @@
         --toc-text: #374151;
         --toc-muted: #9ca3af;
         --toc-border: #e5e7eb;
-        --toc-indent: 1rem;
+        --toc-indent: 0rem;
+        position: sticky;
+        top: 1rem;
         border-radius: 0.5rem;
-        padding: 1rem;
+        /* padding: 1rem; */
         font-size: 0.875rem;
+        max-height: calc(80vh - 2rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: var(--toc-muted) transparent;
+    }
+
+    nav.toc::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    nav.toc::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    nav.toc::-webkit-scrollbar-thumb {
+        background-color: var(--toc-muted);
+        border-radius: 999px;
     }
 
     .toc-title {
@@ -86,10 +150,11 @@
         font-size: 0.75rem;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-    }
-
-    code {
-        color: var(--color-text);
+        position: sticky;
+        top: 0;
+        background: inherit;
+        padding-top: 0.1rem;
+        padding-bottom: 0.1rem;
     }
 
     .toc-list {
@@ -101,8 +166,25 @@
         list-style: none;
     }
 
+    .toc-list .toc-list {
+        padding-left: var(--toc-indent);
+        margin-top: 0.25rem;
+    }
+
     .toc-item {
-        padding-left: calc(var(--depth, 0) * var(--toc-indent));
+        display: flex;
+        flex-direction: column;
+    }
+
+    .toc-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .toc-details > summary {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
     }
 
     .toc-link {
@@ -116,6 +198,7 @@
         color: var(--toc-muted);
         line-height: 1.4;
         text-decoration: none;
+        flex: 1;
     }
 
     .toc-link:hover {

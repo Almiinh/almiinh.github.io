@@ -1,5 +1,5 @@
 @import "details.css";
-@import "https://cdn.jsdelivr.net/npm/rehype-callouts/dist/themes/docusaurus/index.css";
+@import 'rehype-callouts/theme/github';
 
 table,
 th,
