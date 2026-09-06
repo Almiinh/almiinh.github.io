@@ -1,40 +1,15 @@
-@keyframes details-show {
-    from {
-        transform: var(--details-translate, translateY(-1rem));
-    }
-}
-
-@keyframes details-hide {
-    from {
-        transform: var(--details-translate, translateY(+1rem));
-    }
-}
-
 details:not([data-callout]) {
-    animation: sweep 0.1s ease-in-out;
+    interpolate-size: allow-keywords; /* lets height animate to/from `auto` */
     margin: 0.1rem 0;
 
-    &[open]::details-content {
-        animation: details-show 150ms ease-in-out;
-        margin-left: 2rem;
-        padding-top: 0.5rem;
-    }
-    &::details-content {
-        animation: details-hide 550ms ease-in-out;
-    }
-    
-    &[open] > summary::before {
-        transform: rotate(90deg);
-    }
     & > summary {
         display: flex;
         align-items: center;
-        transition: all 0.1s ease-in-out;
-        /* margin-bottom: 1rem;*/
+        transition: all 0.1s ease-in-out-in-out;
         padding: 0.25rem 0.25rem;
+        cursor: pointer;
 
         &:hover {
-            cursor: pointer;
             background-color: var(--color-bg-secondary);
         }
 
@@ -48,17 +23,56 @@ details:not([data-callout]) {
             content: "";
             writing-mode: vertical-lr;
         }
-        
-        &::before:hover {
-            cursor: pointer;
-            background-color: var(--color-bg);
-        }
 
         & > *:is(h1, h2, h3, h4, h5, h6) {
             margin: 0;
         }
-        & > h5, h6 {
+        & > h5, & > h6 {
             font-size: medium;
+        }
+    }
+
+    &[open] > summary::before {
+        transform: rotate(90deg);
+    }
+
+    /* --- collapsed state --- */
+    &::details-content {
+        content-visibility: hidden;
+        opacity: 0;
+        height: 0;
+        overflow: clip;
+        margin-left: 0;
+        padding-top: 0;
+        transform: var(--details-translate, translateY(-0.5rem));
+        transition:
+            content-visibility 0.25s allow-discrete,
+            opacity 0.25s ease-in-out,
+            height 0.25s ease-in-out,
+            transform 0.25s ease-in-out,
+            /* margin-left 0.25s ease-in-out, */
+            padding-top 0.25s ease-in-out;
+    }
+
+    /* --- open state --- */
+    &[open]::details-content {
+        content-visibility: visible;
+        opacity: 1;
+        height: auto;
+        transform: translateY(0);
+        margin-left: 2rem;
+        padding-top: 0.5rem;
+    }
+
+    /* --- tells the browser what "before open" looks like, so the FIRST
+         frame of opening (and the transition target for closing) is defined --- */
+    @starting-style {
+        &[open]::details-content {
+            opacity: 0;
+            height: 0;
+            transform: var(--details-translate, translateY(-0.5rem));
+            margin-left: 0;
+            padding-top: 0;
         }
     }
 }

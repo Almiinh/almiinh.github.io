@@ -6,8 +6,8 @@ heroImage: '../../assets/blog/logo_git.png'
 heroSize: small
 foldHeadings: true
 ---
-> [!note] Qu'est-ce que Git ?
-> Git est un **logiciel de gestion de versions** (**VCS** *version control system)* qui permet de conserver un historique des versions de tous les fichiers.
+> [!note] What is Git?
+> Git is a **version control system** (**VCS**) that tracks changes and preserves the version history of all files in a project.
 
 
 > [!tip] References
@@ -23,16 +23,16 @@ foldHeadings: true
 > [cbeams -- How to Write a Git Commit Message](https://cbea.ms/git-commit/)
 
 
-#### Interfaces de Git
+#### Git Interfaces
 
-Git est utilisé en **lignes de commande** *(via un terminal de commande ou CLI: Command Line Interface).* D’autres interfaces sont disponibles comme Git-gui, Visual Studio Code avec l’extension GitLens, GitKraken, intégré dans un IDE…
+Git is primarily used via the **command line** *(Command Line Interface or CLI)*. Other interfaces are available, such as Git-gui, Visual Studio Code with the GitLens extension, GitKraken, built-in IDE tools, etc.
 
 
-#### Qu’est-ce qu’un commit ?
+#### What is a commit?
 
 > [!note] A **commit** is a complete snapshot of the project files
 > 1. A pointer to the snapshot files
-> 2. Metadata: id, who, when, commit message
+> 2. Metadata: id, author, date, commit message
 > 3. A pointer to the parent commit
 
 The first commit has no parent
@@ -46,201 +46,197 @@ You can jump to any commit in history
 
 ![Move HEAD](/blog/git/head.png)
 
-Les commits ont des checksums SHA, qui servent d'id.
+Commits have SHA checksums that serve as unique IDs.
 ![Commit + Metadata + Parent = Hash](/blog/git/hash.png)
 
 
-#### Historique local `.git`
+#### Local History `.git`
 
 ![DAG](/blog/git/dag_graph.png)
 
-A family tree of snapshots: a Directed Acyclic Graph
-L’historique est conservé dans le dossier du projet (`.git/`) qui constitue alors un **dépôt Git.** git est décentralisé, chaque **dépôt** contient toutes les modifications depuis le début.
+A family tree of snapshots: a Directed Acyclic Graph.
+The history is saved in the project's folder (`.git/`), which forms the **Git repository.** Git is decentralized: every **repository** contains full history from the beginning.
 Nearly Every Operation Is Local
 Git Generally Only Adds Data
 
-#### Gérer un dépôt local `git init / status / log / diff`
+#### Handle a Local Repository `git init / status / log / diff`
+> [!note] 
+> A **local repository** is where project files, versions, and full modification history are stored on your machine.
+
+| Create a Git repository                            | `git init`                                                                                                 |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Check repository status                            | `git status`                                                                                               |
+| Check repository status (short format)             | `git status (--short\|-s)`                                                                                 |
+| View commit history                                | `git log [options]`<br>  `--color`<br>  `--graph`<br>  `--oneline`<br> `-1` : show only the latest commit  |
+| View file changes                                  | `git diff`<br>    `--staged`/`—-cached`                                                                    |
+| View commit summaries for current directory        | `git log <directory>`                                                                                      |
+
+#### Handle the Staging Area `git add / restore / mv / rm`
+
+> [!tip] Globbing / Wildcard `*`
+> Wildcards like `*` can be used. `*.iml` matches all files ending with `.iml` (see file selection with globbing patterns).
+
+> [!note] Staging Area / Index
+> To save a version of files, you first add them to the staging area. Once staged, you can permanently record them with `git commit`.
+
+| Working with the Staging Area               | Commands                                |
+| ------------------------------------------- | --------------------------------------- |
+| Stage files                                 | `git add <file1> <file2> …`             |
+| Untrack files from Git                      | `git rm --cached`                       |
+| Move or rename files                        | `git mv`                                |
+| Restore files to a previous version         | `git restore <files>`                   |
+| Restore files at merge state                | `git restore --merge`                   |
+| Unstage files                               | `git restore --staged <files>`          |
+| Restore files using specific branch version | `git restore (--ours\|--theirs) <file>` |
+
+#### Handle Versions `git commit / reset`
+
+| Working with Versions                        | Commands                                                   |
+| -------------------------------------------- | ---------------------------------------------------------- |
+| Commit changes                               | `git commit`                                               |
+| Commit changes with a message                | `git commit -m "<message>"`                                |
+| Amend commit message                         | `git commit --amend -m "Your new commit message"`          |
+| Add a forgotten file to the last commit      | `git add <missingFile>;`<br>`git commit --amend --no-edit` |
+| List commits                                 | `git log`                                                  |
+| Hard reset to commit (discards file changes) | `git reset --hard <commit_id>`                             |
+| Mixed reset (keeps file changes unstaged)    | `git reset --mixed <commit_id>`                            |
+| Soft reset (keeps file changes staged)       | `git reset --soft <commit_id>`                             |
+| Revert a commit by creating a new commit     | `git revert`                                               |
+
+#### Handle a Remote Repository `git remote / clone / push / pull`
 
 > [!note] 
-> Un **dépôt local** est l’endroit où l’on stocke, sur sa machine, une copie d’un projet, ses différentes versions et l’historique des modifications.
+> A **remote repository** is a hosted version of the local repository, located on the internet or a local network. It centralizes team collaboration on platforms like GitHub or GitLab.
 
-| Créer un dépôt Git                                  | `git init`                                                                                                 |
-| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Voir l’état du dépôt                                | `git status`                                                                                               |
-| Voir l'état du dépôt (court)                        | `git status (--short\|-s)`                                                                                 |
-| Voir l'historique des versions                      | `git log [options]`<br>  `--color`<br>  `--graph`<br>  `--oneline`<br> `-1` :  seulement le dernier commit |
-| Voir les modifications                              | `git diff`<br>    `--staged`/`—-cached`                                                                    |
-| Afficher les résumés des commits du dossier courant | `git log <dossier>`                                                                                        |
+| Link local repository to a remote repository                                            | `git remote add <repoName> <repoUrl>`       |
+| --------------------------------------------------------------------------------------- | ------------------------------------------- |
+| Upload commits to remote repository                                                     | `git push <repoName> [branch]`              |
+| Clone a repository for the first time                                                   | `git clone <repoUrl>`                       |
+| Clone a specific branch of a remote repo                                                | `git clone --branch <branchName> <repoUrl>` |
+| Download without updating working tree                                                  | `git fetch`                                 |
+| Update local repository with remote changes (equivalent to `git fetch` and `git merge`) | `git pull <repoName> [branch]`              |
 
-#### Gérer l'index `git add / restore / mv / rm`
-
-> [!tip] Globbish, Wildcard `*`
-> La wildcard `*` peut être utilisé. `*.iml` désigne tous les fichiers qui finissent en `.iml` (cf. sélectionner des fichiers avec le globbish)
-
-> [!note] Staging area / Index
-> Pour enregistrer une version de nos fichiers, on les sélectionne d'abord en les indexant. Une fois un fichier indexé (staged), on peut les sauvegarder avec `git commit`
-
-| Travailler avec l'index                      | Cmds                            |
-| -------------------------------------------- | ------------------------------- |
-| Indexer des fichiers                         | `git add <file1> <file2> …`     |
-| Supprimer de l'index                         | `git rm --cached`               |
-| Déplacer des fichiers                        | `git mv`                        |
-| Restaurer un fichier à la version antérieure | `git restore <file>`            |
-| Déselectionner des fichiers                  | `git restore --staged`          |
-| Restaurer                                    | `git restore --merge`           |
-| Restaurer                                    | `git restore --ours/--theirs .` |
-
-#### Gérer une version `git commit / reset`
-
-| Travailler avec les versions                      | Cmds                                                           |
-| ------------------------------------------------- | -------------------------------------------------------------- |
-| Enregistrer une version                           | `git commit`                                                   |
-| Enregistrer une version avec un message           | `git commit -m "<message>"`                                    |
-| Modifier le message                               | `git commit --amend -m "Votre nouveau message de commit"`      |
-| Ajouter un fichier manquant dans un commit        | `git add <fichierManquant>;`<br>`git commit --amend --no-edit` |
-| Lister les commit                                 | `git log`                                                      |
-| Reset total au commit voulu (fichiers écrasés)    | `git reset --hard <commit_id>`                                 |
-| Reset le commit et l'index (fichiers inchangés)   | `git reset --mixed <commit_id>`                                |
-| Reset le commit <br>(index et fichiers inchangés) | `git reset --soft <commit_id>`                                 |
-| Annuler un commit en créant un nouveau commit     | `git revert`                                                   |
-
-#### Gérer un dépôt distant `git remote / clone / push / pull`
+#### Handle Branches `git branch / switch`
 
 > [!note] 
-> Un **dépôt distant** est une version dématérialisée du dépôt local, que ce soit sur Internet ou sur un réseau. Il permet de centraliser le travail des développeurs dans un projet collectif comme un *cloud* cf. **les plateformes GitHub, GitLab…**
+> The default branch name on GitHub is `main` (formerly `master`). This can be changed in your Git `config`.
 
-> [!tip] `git pull`  équivaut à `git fetch` puis `git merge`
-
-| Relier le dépôt local au dépôt distant       | `git remote add <nomDépôt> <urlDépôt>` |
-| -------------------------------------------- | -------------------------------------- |
-| Téléverser des commits vers le dépôt distant | `git push <nomDépôt> [branch]`         |
-| Télécharger pour la 1ère fois un dépôt       | `git clone <urlDépôt>`                 |
-| Télécharger une branche d’un dépôt distant:  | `git clone -b <branchname> <urlDépôt>` |
-| Télécharger le dépôt sans mettre à jour      | `git fetch`                            |
-| Mettre à jour un dépôt local                 | `git pull <nomDépôt> [branch]`         |
-
-#### Gérer une branche `git branch / switch`
-
-> [!note] 
-> La branche par défaut est `main` sur github (anciennement `master`). C’est configurable dans les `config`.
-
-Un pointeur sur un commit
+A branch is simply a pointer to a commit.
 ![branch](/blog/git/branch.png)
     
-Autres pointeurs sur commit
-	`HEAD`  pointe le commit actuel,
-	`HEAD^`  désigne le dernier commit
-	`HEAD~2` désigne l’avant dernier commit
-	`HEAD~3` la troisième,
-	etc.
+> [!tip] Other Commit Pointers
+> `HEAD` points to the current commit,
+> `HEAD^` refers to the parent commit,
+> `HEAD~2` refers to two commits back,
+> `HEAD~3` refers to three commits back,
+> etc.
 
-| Lister les branches                                | `git branch [--list]`                                 |
-| -------------------------------------------------- | ----------------------------------------------------- |
-| Créer une branche                                  | `git branch <branch>`                                 |
-| Renommer la branche                                | `git branch -m <ancienNom> <nouveauNom>  [ou --move]` |
-| Supprimer une branche vide                         | `git branch -d <branch> [-d ou --delete]`             |
-| Supprimer une branche et son contenu               | `git branch -D <branch> [-D ou --delete --force]`     |
-| Basculer de branche (supprime le code non commité) | `git switch <branch>`                                 |
-| Basculer de branche (autostash)                    | `git switch --merge <branch>`                         |
-| Fusionner des branches (une fois checkout)         | `git merge <targetBranch>`                            |
+| List branches                                 | `git branch [--list]`                                  |
+| --------------------------------------------- | ------------------------------------------------------ |
+| Create a branch                               | `git branch <branch>`                                  |
+| Rename a branch                               | `git branch --move <oldName> <newName>`                |
+| Delete a merged branch                        | `git branch --delete <branch>`                         |
+| Force delete an unmerged branch               | `git branch -D <branch>`<br>`[-D := --delete --force]` |
+| Switch branches (overwrites uncommitted code) | `git switch <branch>`                                  |
+| Switch branches with auto-stash               | `git switch --merge <branch>`                          |
+| Merge branches (once checked out)             | `git merge <targetBranch>`                             |
 
-#### Enregistrer les modifications temporaires dans la remise `git stash`
+#### Stash Temporary Changes `git stash`
 
 > [!note] 
-> À chaque fois que vous appelez `git stash`, les modifications sont mises de côté dans une pile, au dessus des autres modifications remisées. 
-> À chaque fois que vous appelez `pop`, on dépile.
+> Every time you run `git stash`, your uncommitted modifications are pushed onto a stack. Running `pop` removes and applies the top item from the stack.
     
-- Remiser les modifications: `git stash`
-- Lister les modifications: `git stash --list`
-- Cumuler les modifications: `git stash` encore
-- Remiser les modifications et les untracked: `git stash save -u`
-##### Reprendre les modifications remisées
-- Soit en sortant les fichiers du "stash" : `git stash pop`
-- Soit en récupérant et laissant les fichiers dans le "stash" : `git stash apply` (nécessite un `git stash drop` pour nettoyer le stash ensuite)    
-- Afficher le contenu de la remise : `git stash show`    
-- Pour avoir le détail (afficher le diff) `git stash show -p`
-- Supprimer les remises : `git stash clear`*
+- Stash changes: `git stash`
+- List stashed changes: `git stash --list`
+- Stack new changes: `git stash`
+- Stash changes including untracked files: `git stash save -u`
+##### Restoring Stashed Changes
+- Apply and remove from stash: `git stash pop`
+- Apply changes and keep in stash: `git stash apply` (requires `git stash drop` to clean up afterwards)
+- Show stash contents summary: `git stash show`
+- Show detailed stash diff: `git stash show -p`
+- Clear all stashed entries: `git stash clear`
 
-#### Recombinaison `git rebase`
+#### Rebasing `git rebase`
 
-| Rebase une branche sur une autre                                                                          | `git rebase <brancheCible>`                                            |
-| --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| Changer les messages des commit, leur ordre ou leur nombre, <br>on peut utiliser le mode interactif (-i). | Par exemple sur les trois derniers commits :<br>`git rebase -i HEAD~3` |
+| Rebase a branch onto another branch                                                               | `git rebase <targetBranch>`                                             |
+| ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Edit, reorder, or combine commits interactively                                                   | Example for the last 3 commits:<br>`git rebase -i HEAD~3`               |
 
 #### Move HEAD `git checkout`
 
 `git checkout` has two main modes:
-- Switch branches, with `git checkout <branch>` 
-- Restore a different version of a file, for example with `git checkout <commit> <filename>` or `git checkout <filename>` 
+- Switch branches: `git checkout <branch>` 
+- Restore a specific version of a file: `git checkout <commit> <filename>` or `git checkout <filename>` 
 
 #### Configuration `git config`
 
-The configuration file can be stored in three different places. Each level overrides values in the previous level.
+The configuration file can be stored in three different locations. Each level overrides values in the previous level:
 
-- System configuration file at `[path]/etc/gitconfig` with  `--system` option:
-    
-    Apply to all user on the system and all their repositories. Needs administrative or superuser privilege to make changes.
-    
-    `C:\ProgramData\Git\config` on Windows. This config file can only be changed by `git config -f <file>` as an admin.
-    
-- User configuration file at `~/.gitconfig` or `~/.config/git/config` with `--global` option:
-    
-    This affects all of the repositories you work with on your system.
-    
-- (Default) Repository configuration file at `.git/config` with `--local` option :
-    
-    Unsurprisingly, you need to be located somewhere in a Git repository for this option to work properly.
-    
+- `--system` option: **System** configuration file at `/etc/gitconfig` or `C:\ProgramData\Git\config` on Windows:
 
-| Show all settings on all level | `git config --list --show-origin`                                                                                                                                           |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Set identity                   | `git config --global user.name "John Doe"`<br>`git config --global user.email johndoe@example.com`                                                                          |
-| Set editor                     | `git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"`<br>`git config --global core.editor "code --wait"` |
-| Set default branch name        | `git config --global init.defaultBranch main`                                                                                                                               |
+    Applies to all users on the system and all their repositories. Requires administrative or superuser privileges.
+    
+    This config file can only be modified with `git config -f <file>` as admin.
+    
+- `--global` option: **User** configuration file at `~/.gitconfig` or `~/.config/git/config`:
+
+    Affects all repositories for the current user.
+    
+- `--local` option (Default): **Repository** configuration file at `.git/config`:
+
+    Applies only to the specific repository.
 
 
-#### Ignorer `.gitignore`
-
-The rules for the patterns you can put in the .gitignore file are as follows:
-- Blank lines or lines starting with # are ignored.
-- Standard glob patterns work, and will be applied recursively throughout the entire working tree.
-- You can start patterns with a forward slash (/) to avoid recursivity.
-- You can end patterns with a forward slash (/) to specify a directory.
-- You can negate a pattern by starting it with an exclamation point (!).
+| Show all settings across all levels | `git config --list --show-origin`                                                                                                                                           |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Set user identity                  | `git config --global user.name "John Doe"`<br>`git config --global user.email johndoe@example.com`                                                                          |
+| Set default editor                 | `git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"`<br>`git config --global core.editor "code --wait"` |
+| Set default branch name            | `git config --global init.defaultBranch main`                                                                                                                               |
 
 
-#### Submodule
+#### Ignoring Files `.gitignore`
+
+The rules for `.gitignore` patterns are:
+- Blank lines or lines starting with `#` are ignored.
+- Standard glob patterns apply recursively throughout the entire working tree.
+- Start patterns with a forward slash (`/`) to avoid recursive matching.
+- End patterns with a forward slash (`/`) to specify a directory.
+- Negate a pattern by starting it with an exclamation point (`!`).
+
+
+#### Submodules
 
 ##### Config
 
 | Always show submodules in `git status` | `git config --global status.submoduleSummary true` |
 | --- | --- |
-| Always show sub-commits when `git diff` of submodules | `git config --global diff.submodule log` |
-| Fetch only init submodules | `git config --global fetch.recurseSubmodules on-demand` |
+| Always show sub-commits in `git diff` of submodules | `git config --global diff.submodule log` |
+| Fetch only initialized submodules | `git config --global fetch.recurseSubmodules on-demand` |
 
 ##### Register/Deregister
     
-| Register a child repo as submodule (in`.gitmodules`) | `git submodule add <child-repo> <destination-subfolder>` |
+| Register a sub-repository as a submodule (in `.gitmodules`) | `git submodule add <child-repo> <destination-subfolder>` |
 | --- | --- |
-| Add `.gitmodules` to `.git/config`  | `git submodule init` |
-| Deregister submodule and turn into classic repo | `git submodule deinit <plugin>` |
-| Delete sub repo | `git rm -rf <plugin>` |
+| Copy `.gitmodules` entries to `.git/config` | `git submodule init` |
+| Deregister a submodule and convert to standard repository | `git submodule deinit <plugin>` |
+| Delete a sub-repository | `git rm -rf <plugin>` |
 
 ##### Clone
         
-| Clone the submodule repository | `git submodule update` |
+| Clone/initialize configured submodule repository | `git submodule update` |
 | --- | --- |
-| Clone repo and all submodules | `git clone --recurse-submodules <url>` |
+| Clone parent repository and all submodules | `git clone --recurse-submodules <url>` |
 
-##### Fetch and pull
+##### Fetch and Pull
 
-| Fetch repo and submodules                               | `git fetch`                                                     |
+| Fetch main repo and submodules                          | `git fetch`                                                     |
 | ------------------------------------------------------- | --------------------------------------------------------------- |
 | Pull main repo and all submodules                       | `git pull --recurse-submodules`                                 |
-| Pull main repo and checkout to submodule frozen commits | `git pull`<br>OR<br>`git submodule update [--init --recursive]` |
-| Pull rebase for a specific submodule                    | `git submodule update --remote --rebase -- <plugin>`            |
+| Pull main repo and checkout pinned submodule commits    | `git pull`<br>OR<br>`git submodule update [--init --recursive]` |
+| Pull and rebase a specific submodule                    | `git submodule update --remote --rebase -- <plugin>`            |
 
 ##### Push
 
-| **Push** | `git push --recurse-submodules=on-demand` |
-| --- | --- |
+| Push main repository and submodules | `git push --recurse-submodules=on-demand` |
+| ----------------------------------- | ----------------------------------------- |

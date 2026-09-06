@@ -4,15 +4,11 @@ import type { CollectionEntry } from "astro:content";
 import FormattedDate from "$components/FormattedDate.astro";
 import Layout from "$layouts/Layout.astro";
 import "$styles/markdown.css";
-// import 'rehype-callouts/theme/obsidian'
-// import 'rehype-callouts/theme/vitepress'
-// import 'rehype-callouts/theme/docusaurus'
 import Outline from "$components/Blog/Outline.svelte";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage, heroSize, foldHeadings } = Astro.props;
-const foldAll = foldHeadings ?? false;
+const { title, description, pubDate, updatedDate, heroImage, heroSize, foldHeadings = false } = Astro.props;
 ---
 
 <script>
@@ -30,10 +26,7 @@ const foldAll = foldHeadings ?? false;
                 document.querySelector("[data-fold-all]")?.getAttribute("data-fold-all") === "true";
 
             const details = document.createElement("details");
-            details.open = !foldAll;
-            if (window.matchMedia("(max-width: 800px)").matches) {
-                details.open = false;
-            }
+            details.open = !foldAll && window.matchMedia("(max-width: 800px)").matches;
             const summary = document.createElement("summary");
 
             parent.insertBefore(details, heading);
@@ -58,7 +51,7 @@ const foldAll = foldHeadings ?? false;
 <Layout title={title} largeScreenMargin="2.5vw">
     <div class="blog-container">
         <div></div>
-        <article class="blog-content" data-fold-all={foldAll}>
+        <article class="blog-content" data-fold-all={foldHeadings}>
             <div class="title">
                 <div class="hero-image small">
                     {heroImage && heroSize === "small" && <Image src={heroImage} alt="" />}
