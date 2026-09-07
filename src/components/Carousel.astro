@@ -26,7 +26,11 @@ const {
                     const props = { [itemProp]: item };
                     return (
                         <div class="carousel-slide" data-index={index}>
-                            {CardComponent ? <CardComponent {...props} /> : item}
+                            {CardComponent ? (
+                                <CardComponent {...props} />
+                            ) : (
+                                item
+                            )}
                         </div>
                     );
                 })
@@ -34,7 +38,11 @@ const {
         </div>
     </div>
     <div class="carousel-controls">
-        <button class="carousel-button prev-button" aria-label="Previous slide" onclick="prevSlide()">
+        <button
+            class="carousel-button prev-button"
+            aria-label="Previous slide"
+            onclick="prevSlide()"
+        >
             <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
             </svg>
@@ -56,7 +64,11 @@ const {
             )
         }
 
-        <button class="carousel-button next-button" aria-label="Next slide" onclick="nextSlide()">
+        <button
+            class="carousel-button next-button"
+            aria-label="Next slide"
+            onclick="nextSlide()"
+        >
             <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"></path>
             </svg>
@@ -78,7 +90,10 @@ const {
         // Update indicator dots
         indicatorDots.forEach((dot, idx) => {
             dot.classList.toggle("active", idx === currentIndex);
-            dot.setAttribute("aria-current", idx === currentIndex ? "true" : "false");
+            dot.setAttribute(
+                "aria-current",
+                idx === currentIndex ? "true" : "false",
+            );
         });
 
         resetAutoSlide();
@@ -158,8 +173,15 @@ const {
 
             .carousel-slides {
                 display: flex;
-                transform: translateX(calc(var(--carousel-index) * -1 * var(--slide-width)));
-                transition: transform 0.3s ease-in-out;
+                @media (width >= 1100px) {
+                    transform: translateX(
+                        calc(var(--carousel-index) * -1 * var(--slide-width))
+                    );
+                    transition: transform 0.3s ease-in-out;
+                }
+                @media (width <= 1100px) {
+                    flex-direction: column;
+                }
             }
 
             .carousel-slide {
@@ -178,68 +200,76 @@ const {
         }
 
         .carousel-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-            .carousel-indicators {
-                display: flex;
-                justify-content: center;
-                gap: 0.5rem;
-                /* remove the margin-top here since it's now inside the flex row */
-                margin-top: 0;
+            @media (max-width: 1100px) {
+                * {
+                    opacity: 0;
+                    visibility: hidden;
+                }
             }
-
-            .carousel-button {
+            @media (min-width: 1100px) {
                 display: flex;
-                flex-shrink: 0;
                 justify-content: center;
                 align-items: center;
-                transition: all 0.2s ease-in-out;
-                cursor: pointer;
-                margin: 0.5rem;
-                border: 1px solid var(--color-shadow);
-                border-radius: 50%;
-                background-color: var(--color-bg);
-                padding: 0;
-                width: 2.5rem;
-                height: 2.5rem;
-                color: var(--color-text);
-
-                &:hover {
-                    transform: scale(1.1);
-                    background-color: var(--color-text);
-                    color: var(--color-bg);
+                gap: 1rem;
+                margin-top: 1rem;
+                .carousel-indicators {
+                    display: flex;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    /* remove the margin-top here since it's now inside the flex row */
+                    margin-top: 0;
                 }
 
-                &:active {
-                    transform: scale(0.95);
+                .carousel-button {
+                    display: flex;
+                    flex-shrink: 0;
+                    justify-content: center;
+                    align-items: center;
+                    transition: all 0.2s ease-in-out;
+                    cursor: pointer;
+                    margin: 0.5rem;
+                    border: 1px solid var(--color-shadow);
+                    border-radius: 50%;
+                    background-color: var(--color-bg);
+                    padding: 0;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    color: var(--color-text);
+
+                    &:hover {
+                        transform: scale(1.1);
+                        background-color: var(--color-text);
+                        color: var(--color-bg);
+                    }
+
+                    &:active {
+                        transform: scale(0.95);
+                    }
+
+                    svg {
+                        width: 1.25rem;
+                        height: 1.25rem;
+                    }
                 }
 
-                svg {
-                    width: 1.25rem;
-                    height: 1.25rem;
-                }
-            }
+                .indicator-dot {
+                    transition: all 0.2s ease-in-out;
+                    cursor: pointer;
+                    border: 2px solid var(--color-text);
+                    border-radius: 50%;
+                    background-color: transparent;
+                    padding: 0;
+                    width: 0.75rem;
+                    height: 0.75rem;
 
-            .indicator-dot {
-                transition: all 0.2s ease-in-out;
-                cursor: pointer;
-                border: 2px solid var(--color-text);
-                border-radius: 50%;
-                background-color: transparent;
-                padding: 0;
-                width: 0.75rem;
-                height: 0.75rem;
+                    &:hover {
+                        transform: scale(1.2);
+                        background-color: var(--color-text);
+                    }
 
-                &:hover {
-                    transform: scale(1.2);
-                    background-color: var(--color-text);
-                }
-
-                &.active {
-                    background-color: var(--color-text);
+                    &.active {
+                        background-color: var(--color-text);
+                    }
                 }
             }
         }

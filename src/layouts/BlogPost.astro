@@ -8,7 +8,16 @@ import Outline from "$components/Blog/Outline.svelte";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage, heroSize, foldHeadings = false } = Astro.props;
+const {
+    title,
+    description,
+    pubDate,
+    updatedDate,
+    heroImage,
+    heroSize,
+    foldHeadings = false,
+    noTableHead = false,
+} = Astro.props;
 ---
 
 <script>
@@ -17,44 +26,60 @@ const { title, description, pubDate, updatedDate, heroImage, heroSize, foldHeadi
         const title = callout.querySelector("[data-callout-title]");
         if (emoji === title?.textContent?.trim()) title.remove();
     });
-    Array.from(document.querySelectorAll(".blog-body :is(h2, h3, h4, h5, h6):not(.toc-title)")).forEach(
-        (heading) => {
-            const level = parseInt(heading.tagName[1], 10);
-            const parent = heading.parentNode;
-            if (!parent) return;
-            const foldAll =
-                document.querySelector("[data-fold-all]")?.getAttribute("data-fold-all") === "true";
+    Array.from(
+        document.querySelectorAll(
+            ".blog-body :is(h2, h3, h4, h5, h6):not(.toc-title)",
+        ),
+    ).forEach((heading) => {
+        const level = parseInt(heading.tagName[1], 10);
+        const parent = heading.parentNode;
+        if (!parent) return;
+        const foldAll =
+            document
+                .querySelector("[data-fold-all]")
+                ?.getAttribute("data-fold-all") === "true";
 
-            const details = document.createElement("details");
-            details.open = !foldAll && window.matchMedia("(max-width: 800px)").matches;
-            const summary = document.createElement("summary");
+        const details = document.createElement("details");
+        details.open =
+            !foldAll && window.matchMedia("(max-width: 800px)").matches;
+        const summary = document.createElement("summary");
 
-            parent.insertBefore(details, heading);
-            details.appendChild(summary);
-            summary.appendChild(heading);
+        parent.insertBefore(details, heading);
+        details.appendChild(summary);
+        summary.appendChild(heading);
 
-            let next = details.nextSibling;
-            while (next) {
-                const isHeading = next instanceof Element && /^H[1-6]$/.test(next.tagName);
-                const nextLevel = isHeading ? parseInt((next as Element).tagName[1], 10) : Infinity;
+        let next = details.nextSibling;
+        while (next) {
+            const isHeading =
+                next instanceof Element && /^H[1-6]$/.test(next.tagName);
+            const nextLevel = isHeading
+                ? parseInt((next as Element).tagName[1], 10)
+                : Infinity;
 
-                if (isHeading && nextLevel <= level) break;
+            if (isHeading && nextLevel <= level) break;
 
-                const toMove = next;
-                next = next.nextSibling;
-                details.appendChild(toMove);
-            }
-        },
-    );
+            const toMove = next;
+            next = next.nextSibling;
+            details.appendChild(toMove);
+        }
+    });
 </script>
 
 <Layout title={title} largeScreenMargin="2.5vw">
     <div class="blog-container">
         <div></div>
-        <article class="blog-content" data-fold-all={foldHeadings}>
+        <article
+            class="blog-content"
+            data-fold-all={foldHeadings}
+            data-no-table-head={noTableHead}
+        >
             <div class="title">
                 <div class="hero-image small">
-                    {heroImage && heroSize === "small" && <Image src={heroImage} alt="" />}
+                    {
+                        heroImage && heroSize === "small" && (
+                            <Image src={heroImage} alt="" />
+                        )
+                    }
                 </div>
                 <h1>{title}</h1>
                 <p>{description}</p>
@@ -63,7 +88,8 @@ const { title, description, pubDate, updatedDate, heroImage, heroSize, foldHeadi
                     {
                         updatedDate && (
                             <div class="last-updated-on">
-                                Last updated on <FormattedDate date={updatedDate} />
+                                Last updated on{" "}
+                                <FormattedDate date={updatedDate} />
                             </div>
                         )
                     }
@@ -71,7 +97,11 @@ const { title, description, pubDate, updatedDate, heroImage, heroSize, foldHeadi
                 <hr />
             </div>
             <div class="hero-image">
-                {heroImage && heroSize === "large" && <Image src={heroImage} alt="" />}
+                {
+                    heroImage && heroSize === "large" && (
+                        <Image src={heroImage} alt="" />
+                    )
+                }
             </div>
             <div class="blog-body">
                 <slot />
@@ -87,7 +117,6 @@ const { title, description, pubDate, updatedDate, heroImage, heroSize, foldHeadi
     main {
         margin: 0;
         max-width: 100%;
-        
     }
     .blog-container {
         display: grid;
@@ -137,6 +166,13 @@ const { title, description, pubDate, updatedDate, heroImage, heroSize, foldHeadi
         height: fit-content;
         overflow: scroll;
     }
+    article[data-no-table-head="true"] {
+        thead th {
+            text-align: left;
+            font-style: normal;
+            font-weight: 400;
+        }
+    }
     @media (max-width: 1024px) {
         *:is(td, th, tr, table) {
             font-size: smaller;
@@ -146,7 +182,8 @@ const { title, description, pubDate, updatedDate, heroImage, heroSize, foldHeadi
             grid-template-columns: 1fr;
         }
         .outline-sidebar {
-            position: static;
+            opacity: 0;
+            visibility: hidden;
         }
     }
 </style>

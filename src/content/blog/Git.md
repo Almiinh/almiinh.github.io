@@ -5,6 +5,7 @@ pubDate: "2025-11-08"
 heroImage: '../../assets/blog/logo_git.png'
 heroSize: small
 foldHeadings: true
+noTableHead: true
 ---
 > [!note] What is Git?
 > Git is a **version control system** (**VCS**) that tracks changes and preserves the version history of all files in a project.
@@ -79,9 +80,8 @@ Git Generally Only Adds Data
 > [!note] Staging Area / Index
 > To save a version of files, you first add them to the staging area. Once staged, you can permanently record them with `git commit`.
 
-| Working with the Staging Area               | Commands                                |
-| ------------------------------------------- | --------------------------------------- |
 | Stage files                                 | `git add <file1> <file2> …`             |
+| ------------------------------------------- | --------------------------------------- |
 | Untrack files from Git                      | `git rm --cached`                       |
 | Move or rename files                        | `git mv`                                |
 | Restore files to a previous version         | `git restore <files>`                   |
@@ -91,9 +91,8 @@ Git Generally Only Adds Data
 
 #### Handle Versions `git commit / reset`
 
-| Working with Versions                        | Commands                                                   |
-| -------------------------------------------- | ---------------------------------------------------------- |
 | Commit changes                               | `git commit`                                               |
+| -------------------------------------------- | ---------------------------------------------------------- |
 | Commit changes with a message                | `git commit -m "<message>"`                                |
 | Amend commit message                         | `git commit --amend -m "Your new commit message"`          |
 | Add a forgotten file to the last commit      | `git add <missingFile>;`<br>`git commit --amend --no-edit` |

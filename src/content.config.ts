@@ -15,6 +15,7 @@ const blog = defineCollection({
             heroImage: image().optional(),
             heroSize: z.enum(["small", "large"]).default("large"),
             foldHeadings: z.boolean().optional(),
+            noTableHead: z.boolean().optional(),
         }),
 });
 

@@ -54,16 +54,18 @@ import "$styles/details.css";
         </Card> -->
     </section>
     <section id="featured">
-        <summary>
-            <h2>Featured</h2>
-        </summary>
-        <Carousel
-            items={featuredProjects}
-            cardComponent={ProjectCard}
-            itemProp="project"
-            autoSlide={true}
-            showIndicators={true}
-        />
+        <details open>
+            <summary>
+                <h2>Featured</h2>
+            </summary>
+            <Carousel
+                items={featuredProjects}
+                cardComponent={ProjectCard}
+                itemProp="project"
+                autoSlide={true}
+                showIndicators={true}
+            />
+        </details>
     </section>
     {
         projects.map(({ heading, id, projects }) => (

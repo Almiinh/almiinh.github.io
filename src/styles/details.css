@@ -62,6 +62,10 @@ details:not([data-callout]) {
         transform: translateY(0);
         margin-left: 2rem;
         padding-top: 0.5rem;
+
+        @media (max-width: 1100px) {
+            margin-left: 0.5rem;
+        }
     }
 
     /* --- tells the browser what "before open" looks like, so the FIRST
