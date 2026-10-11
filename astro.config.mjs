@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import { unified } from "@astrojs/markdown-remark";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
+import icon from "astro-icon";
 import rehypeKatex from "rehype-katex";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { remarkExtendedTable, extendedTableHandlers } from "remark-extended-table";
@@ -14,7 +15,7 @@ import rehypeCallouts from "rehype-callouts";
 // https://astro.build/config
 export default defineConfig({
     site: "https://almiinh.github.io",
-    integrations: [svelte(), mdx()],
+    integrations: [svelte(), mdx(), icon()],
 
     redirects: {
         "/web": "/#web-projects",

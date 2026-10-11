@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
     items: any[];
     cardComponent?: any;
@@ -26,11 +28,7 @@ const {
                     const props = { [itemProp]: item };
                     return (
                         <div class="carousel-slide" data-index={index}>
-                            {CardComponent ? (
-                                <CardComponent {...props} />
-                            ) : (
-                                item
-                            )}
+                            {CardComponent ? <CardComponent {...props} /> : item}
                         </div>
                     );
                 })
@@ -38,14 +36,8 @@ const {
         </div>
     </div>
     <div class="carousel-controls">
-        <button
-            class="carousel-button prev-button"
-            aria-label="Previous slide"
-            onclick="prevSlide()"
-        >
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
-            </svg>
+        <button class="carousel-button prev-button" aria-label="Previous slide" onclick="prevSlide()">
+            <Icon name="lucide:chevron-left" class="icon" />
         </button>
 
         {
@@ -64,14 +56,8 @@ const {
             )
         }
 
-        <button
-            class="carousel-button next-button"
-            aria-label="Next slide"
-            onclick="nextSlide()"
-        >
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"></path>
-            </svg>
+        <button class="carousel-button next-button" aria-label="Next slide" onclick="nextSlide()">
+            <Icon name="lucide:chevron-right" class="icon" />
         </button>
     </div>
 </div>
@@ -90,10 +76,7 @@ const {
         // Update indicator dots
         indicatorDots.forEach((dot, idx) => {
             dot.classList.toggle("active", idx === currentIndex);
-            dot.setAttribute(
-                "aria-current",
-                idx === currentIndex ? "true" : "false",
-            );
+            dot.setAttribute("aria-current", idx === currentIndex ? "true" : "false");
         });
 
         resetAutoSlide();
@@ -174,9 +157,7 @@ const {
             .carousel-slides {
                 display: flex;
                 @media (width >= 1100px) {
-                    transform: translateX(
-                        calc(var(--carousel-index) * -1 * var(--slide-width))
-                    );
+                    transform: translateX(calc(var(--carousel-index) * -1 * var(--slide-width)));
                     transition: transform 0.3s ease-in-out;
                 }
                 @media (width <= 1100px) {
@@ -202,8 +183,8 @@ const {
         .carousel-controls {
             @media (max-width: 1100px) {
                 * {
-                    opacity: 0;
                     visibility: hidden;
+                    opacity: 0;
                 }
             }
             @media (min-width: 1100px) {
@@ -246,7 +227,7 @@ const {
                         transform: scale(0.95);
                     }
 
-                    svg {
+                    .icon {
                         width: 1.25rem;
                         height: 1.25rem;
                     }

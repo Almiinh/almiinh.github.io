@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import FormattedDate from "$components/FormattedDate.astro";
-import Layout from "$layouts/Layout.astro";
-import "$styles/markdown.css";
-import Outline from "$components/Blog/Outline.svelte";
+import FormattedDate from "$/components/FormattedDate.astro";
+import Layout from "$/layouts/Layout.astro";
+import "$/styles/markdown.css";
+import Outline from "$/components/Blog/Outline.svelte";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -168,9 +168,9 @@ const {
     }
     article[data-no-table-head="true"] {
         thead th {
-            text-align: left;
             font-style: normal;
             font-weight: 400;
+            text-align: left;
         }
     }
     @media (max-width: 1024px) {
@@ -182,8 +182,8 @@ const {
             grid-template-columns: 1fr;
         }
         .outline-sidebar {
-            opacity: 0;
             visibility: hidden;
+            opacity: 0;
         }
     }
 </style>

@@ -2,7 +2,7 @@
 import HeaderLink from "./HeaderLink.astro";
 import DarkModeSwitch from "./DarkModeSwitch.svelte";
 ---
-<nav>
+<nav id="site-header">
     <div class="links">
         <HeaderLink href="/">Projects</HeaderLink>
         <HeaderLink href="/blog">Blog</HeaderLink>
@@ -16,17 +16,36 @@ import DarkModeSwitch from "./DarkModeSwitch.svelte";
         text-wrap: nowrap;
     }
     nav {
-        display: flex;
         position: sticky;
         top: 0;
+        z-index: 999;
+        display: flex;
+        flex-shrink: 0;
         flex-wrap: wrap-reverse;
         justify-content: space-between;
         align-items: center;
-        z-index: 999;
         transition: all 0.3s ease-in-out;
         box-shadow: 0px 1px var(--color-shadow);
         background: var(--color-pastel-header);
         padding: 0 max(36px, 15vw);
+/* 
+
+        .site-header {
+            transition:
+                background-color 0.25s ease,
+                border-color 0.25s ease,
+                backdrop-filter 0.25s ease;
+            border-bottom: 1px solid transparent;
+        }
+        .site-header.scrolled {
+            backdrop-filter: blur(12px);
+            background-color: color-mix(in srgb, hsl(var(--paper) / 1) 82%, transparent);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom-color: hsl(var(--line) / 1);
+        }
+        :global(.dark) .site-header.scrolled {
+            background-color: color-mix(in srgb, hsl(var(--paper) / 1) 72%, transparent);
+        } */
         a {
             grid-column: 2;
             margin: 0;

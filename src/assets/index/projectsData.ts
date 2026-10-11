@@ -1,11 +1,11 @@
-import previewRedDetection from "$assets/index/preview-red-detection.png";
-import previewImageClassifier from "$assets/index/preview-image-classifier.png";
-import previewRag from "$assets/index/preview-rag.png";
-import previewMorphomath from "$assets/index/preview-morphomath.png";
-import previewConway from "$assets/index/preview-conway.webp";
-import previewCarRental from "$assets/index/preview-car-rental.png";
-import previewTheaterTracker from "$assets/index/preview-theater-tracker.png";
-import previewCloudComputing from "$assets/index/preview-cloud-computing.png";
+import previewRedDetection from "$/assets/index/preview-red-detection.png";
+import previewImageClassifier from "$/assets/index/preview-image-classifier.png";
+import previewRag from "$/assets/index/preview-rag.png";
+import previewMorphomath from "$/assets/index/preview-morphomath.png";
+import previewConway from "$/assets/index/preview-conway.webp";
+import previewCarRental from "$/assets/index/preview-car-rental.png";
+import previewTheaterTracker from "$/assets/index/preview-theater-tracker.png";
+import previewCloudComputing from "$/assets/index/preview-cloud-computing.png";
 
 export interface Tag {
     name: string;
