@@ -5,7 +5,7 @@ import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 import icon from "astro-icon";
 import rehypeKatex from "rehype-katex";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
+// import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { remarkExtendedTable, extendedTableHandlers } from "remark-extended-table";
 import remarkRehype from "remark-rehype";
 import remarkMath from "remark-math";
@@ -23,7 +23,11 @@ export default defineConfig({
 
     markdown: {
         processor: unified({
-            rehypePlugins: [rehypeKatex, rehypeAutolinkHeadings, rehypeCallouts],
+            rehypePlugins: [
+                rehypeKatex,
+                // rehypeAutolinkHeadings,
+                rehypeCallouts,
+            ],
             remarkPlugins: [
                 remarkExtendedTable,
                 [remarkRehype, { handlers: extendedTableHandlers }],

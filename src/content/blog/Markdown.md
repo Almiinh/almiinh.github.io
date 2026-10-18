@@ -11,7 +11,7 @@ heroSize: small
 |                                         | Markdown                     | HTML tags                                        | LaTeX                               |
 | --------------------------------------- | ---------------------------- | ------------------------------------------------ | ----------------------------------- |
 | Links<br>                               | `[text](url)`                | `<a href="...">...</a>`                          | `\href{...url}{...text}`            |
-| Paragraphs                              | `...␣␣\n...`<br>`...\n\n...` | `<p>...`<br>`<p>...`                             | `...\\...`<br>`...\newline...`      |
+| Paragraphs                              | `...␣␣\n...`<br>`...\n\n...` | `<p>...`<br>`<p>...`                              | `...\\...`<br>`...\newline...`      |
 | *italic*                                | `*...*`                      | `<em>...`<br>`<i>...`                            | `\textit{...}`<br>`\emph{...}`      |
 | **bold**                                | `**...**`                    | `<strong>...`<br>`<b>...`                        | `\textbf{...}`                      |
 | ***bold & italic***                     | `***...***`                  | `<strong><em>...`                                | `\textbf{\textit{...}}`             |
@@ -38,17 +38,17 @@ heroSize: small
 | Task Lists         | `- [ ] text`<br>`- [x] text`                                                                                | `<input type="checkbox" checked /><label>...`                                  |                                                                                                                                                                                         |
 | Blockquote         | `> Blockquote`                                                                                              | `<blockquote><p>...`                                                           |                                                                                                                                                                                         |
 | Callouts           | `> [!info] title`<br>`> content`                                                                            |                                                                                |                                                                                                                                                                                         |
-| Fenced Code Blocks | `` ```lang ... ``` ``                                                                                       | `<pre class="..."><code>...`                                                   | `\begin{minted}{python}`                                                                                                                                                                | |                                                                                |                                                                                                                                                                                         
+| Fenced Code Blocks | `` ```lang ... ``` ``                                                                                       | `<pre class="..."><code>...`                                                   | `\begin{minted}{python}`                                                                                                                                                                |
 | Equation Block     | `$$...$$`                                                                                                   | `<math>`                                                                       | `$$...$$`<br>`\[...\]`                                                                                                                                                                  |
 | Footnotes          | `[^1]`                                                                                                      |                                                                                |                                                                                                                                                                                         |
 
 ## Interactive elements
-|          | Markdown | HTML tags                        |
-| -------- | -------- | -------------------------------- |
-| Disclose |          | `<details><summary>...`<br>`...` |
-| Popover  |          | Popover API                      |
-| Forms    |          | `<form>` Form API                |
-| Badge    |`![](https://img.shields.io/...)`| `<img src="https://img.shields.io" />`|
+|          | Markdown                          | HTML tags                              |
+| -------- | --------------------------------- | -------------------------------------- |
+| Disclose |                                   | `<details><summary>...`<br>`...`       |
+| Popover  |                                   | Popover API                            |
+| Forms    |                                   | `<form>` Form API                      |
+| Badge    | `![](https://img.shields.io/...)` | `<img src="https://img.shields.io" />` |
 
 ## Image and multimedia
 |         | Markdown                                                              | HTML tags                            | LaTeX                   |

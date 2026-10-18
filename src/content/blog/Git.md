@@ -157,7 +157,7 @@ A branch is simply a pointer to a commit.
 - Clear all stashed entries: `git stash clear`
 
 #### Rebasing `git rebase`
-
+aaaaaa
 | Rebase a branch onto another branch                                                               | `git rebase <targetBranch>`                                             |
 | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | Edit, reorder, or combine commits interactively                                                   | Example for the last 3 commits:<br>`git rebase -i HEAD~3`               |
@@ -239,3 +239,20 @@ The rules for `.gitignore` patterns are:
 
 | Push main repository and submodules | `git push --recurse-submodules=on-demand` |
 | ----------------------------------- | ----------------------------------------- |
+
+
+```js
+// Shiki code-block pipeline (ported from astro-theme-pure)
+import {
+    addCollapse,
+    addCopyButton,
+    addLanguage,
+    addTitle,
+    updateStyle,
+} from "./src/plugins/shiki-custom-transformers.ts";
+import {
+    transformerNotationDiff,
+    transformerNotationHighlight,
+    transformerRemoveNotationEscape,
+} from "./src/plugins/shiki-official/transformers.ts";
+```

@@ -6,8 +6,11 @@ import Layout from "$/layouts/Layout.astro";
 import "$/styles/markdown.css";
 import Outline from "$/components/Blog/Outline.svelte";
 
-type Props = CollectionEntry<"blog">["data"];
+interface Props {
+  post: CollectionEntry<'blog'>
+}
 
+const { post } = Astro.props;
 const {
     title,
     description,
@@ -17,7 +20,9 @@ const {
     heroSize,
     foldHeadings = false,
     noTableHead = false,
-} = Astro.props;
+} = post.data;
+const headings = post.rendered?.metadata?.headings ?? [];
+
 ---
 
 <script>

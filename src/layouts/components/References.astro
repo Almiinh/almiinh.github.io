@@ -1,25 +1,21 @@
 ---
-import iconCV from "$/assets/index/CV.svg";
-import iconLinkedIn from "$/assets/index/LINKEDIN.svg";
-import iconGithub from "$/assets/index/GITHUB.svg";
-import iconGithubWhite from "$/assets/index/GITHUB.white.svg";
+import { Icon } from "astro-icon/components";
 
 const references = [
     {
         href: "/index/CV FR.pdf",
-        img: iconCV.src,
         alt: "Click to download my CV",
+        name: "hugeicons:file-user",
     },
     {
         href: "https://www.linkedin.com/in/minh-hoang-alexis-huynh-621b52222/",
-        img: iconLinkedIn.src,
         alt: "Click to visit my LinkedIn profile",
+        name: "hugeicons:linkedin-01",
     },
     {
         href: "https://github.com/Almiinh",
-        img: iconGithub.src,
-        // imgDark: iconGithubWhite.src,
         alt: "Click to visit my GitHub profile",
+        name: "hugeicons:github-01",
     },
 ];
 
@@ -30,18 +26,7 @@ const { class: className = "" } = Astro.props;
     {
         references.map((item) => (
             <a href={item.href} target="_blank" rel="noopener noreferrer" title={item.alt}>
-                {item.img && (
-                    <picture>
-                        <source media="(prefers-color-scheme: dark)" srcset={item.imgDark ?? item.img} />
-                        <source media="(prefers-color-scheme: light)" srcset={item.img} />
-                        <img
-                            src={item.img}
-                            alt={item.alt}
-                            decoding="async"
-                            loading="lazy"
-                        />
-                    </picture>
-                )}
+                <Icon name={item.name} class="icon" />
             </a>
         ))
     }
@@ -53,11 +38,12 @@ const { class: className = "" } = Astro.props;
         align-items: center;
         gap: 1rem;
     }
-    img {
+    a, .icon {
         filter: var(--filter-hover);
         width: auto;
         height: 24px;
-
+        color: var(--color-text);
+    
         &:hover {
             translate: 0 -2px;
             filter: contrast(100%);

@@ -6,8 +6,8 @@ details:not([data-callout]) {
         display: flex;
         align-items: center;
         transition: all 0.1s ease-in-out-in-out;
-        padding: 0.25rem 0.25rem;
         cursor: pointer;
+        padding: 0.25rem 0.25rem;
 
         &:hover {
             background-color: var(--color-bg-secondary);
@@ -27,7 +27,8 @@ details:not([data-callout]) {
         & > *:is(h1, h2, h3, h4, h5, h6) {
             margin: 0;
         }
-        & > h5, & > h6 {
+        & > h5,
+        & > h6 {
             font-size: medium;
         }
     }
@@ -38,30 +39,27 @@ details:not([data-callout]) {
 
     /* --- collapsed state --- */
     &::details-content {
+        transform: translateY(-0.5rem);
         content-visibility: hidden;
         opacity: 0;
+        transition:
+            /* content-visibility 0.05s allow-discrete, */
+            opacity 0.05s ease-in-out,
+            height 0.05s ease-in-out,
+            transform 0.05s ease-in-out;
+        margin-left: 0;
         height: 0;
         overflow: clip;
-        margin-left: 0;
-        padding-top: 0;
-        transform: var(--details-translate, translateY(-0.5rem));
-        transition:
-            content-visibility 0.25s allow-discrete,
-            opacity 0.25s ease-in-out,
-            height 0.25s ease-in-out,
-            transform 0.25s ease-in-out,
-            /* margin-left 0.25s ease-in-out, */
-            padding-top 0.25s ease-in-out;
     }
 
     /* --- open state --- */
     &[open]::details-content {
+        transform: translateY(0.5rem);
         content-visibility: visible;
         opacity: 1;
+        margin-left: 2rem;  
+        padding-bottom: 0.5rem;
         height: auto;
-        transform: translateY(0);
-        margin-left: 2rem;
-        padding-top: 0.5rem;
 
         @media (max-width: 1100px) {
             margin-left: 0.5rem;
@@ -72,11 +70,11 @@ details:not([data-callout]) {
          frame of opening (and the transition target for closing) is defined --- */
     @starting-style {
         &[open]::details-content {
-            opacity: 0;
-            height: 0;
             transform: var(--details-translate, translateY(-0.5rem));
+            opacity: 0;
             margin-left: 0;
             padding-top: 0;
+            height: 0;
         }
     }
 }

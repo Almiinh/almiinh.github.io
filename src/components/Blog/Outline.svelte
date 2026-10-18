@@ -12,22 +12,18 @@
 
     function buildTree(items) {
         const root = [];
-        const stack = []; // stack of node refs, parallel to their level
+        const stack = [];
 
         for (const item of items) {
-            const node = { ...item, children: [] };
+            const node = { ...item };
 
             // Pop back to the nearest ancestor (strictly shallower level)
             while (stack.length && stack[stack.length - 1].level >= node.level) {
                 stack.pop();
             }
 
-            if (stack.length === 0) {
-                root.push(node);
-            } else {
-                stack[stack.length - 1].children.push(node);
-            }
-
+            const parent = stack.length === 0 ? root : stack[stack.length - 1].children;
+            parent.push(node);
             stack.push(node);
         }
 
@@ -44,6 +40,7 @@
                 id: heading.id,
                 text: heading.innerHTML ?? "",
                 level: parseInt(heading.tagName[1], 10),
+                children: [],
             };
         });
 
@@ -82,7 +79,7 @@
 {#snippet tocLink(node)}
     <a href="#{node.id}" class="toc-link" class:toc-link--active={activeId === node.id}>
         {@html node.text}
-    </a>    
+    </a>
 {/snippet}
 
 {#snippet tocNodes(nodes)}
@@ -121,13 +118,13 @@
         position: sticky;
         top: 1rem;
         border-radius: 0.5rem;
-        /* padding: 1rem; */
-        font-size: 0.875rem;
         max-height: calc(80vh - 2rem);
         overflow-y: auto;
         overscroll-behavior: contain;
-        scrollbar-width: thin;
         scrollbar-color: var(--toc-muted) transparent;
+        scrollbar-width: thin;
+        /* padding: 1rem; */
+        font-size: 0.875rem;
     }
 
     nav.toc::-webkit-scrollbar {
@@ -139,22 +136,22 @@
     }
 
     nav.toc::-webkit-scrollbar-thumb {
-        background-color: var(--toc-muted);
         border-radius: 999px;
+        background-color: var(--toc-muted);
     }
 
     .toc-title {
+        position: sticky;
+        top: 0;
         margin: 0 0 0.75rem;
+        background: inherit;
+        padding-top: 0.1rem;
+        padding-bottom: 0.1rem;
         color: var(--color-text);
         font-weight: 600;
         font-size: 0.75rem;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        position: sticky;
-        top: 0;
-        background: inherit;
-        padding-top: 0.1rem;
-        padding-bottom: 0.1rem;
     }
 
     .toc-list {
@@ -167,8 +164,8 @@
     }
 
     .toc-list .toc-list {
-        padding-left: var(--toc-indent);
         margin-top: 0.25rem;
+        padding-left: var(--toc-indent);
     }
 
     .toc-item {
@@ -182,13 +179,14 @@
     }
 
     .toc-details > summary {
-        cursor: pointer;
         display: flex;
         align-items: center;
+        cursor: pointer;
     }
 
     .toc-link {
         display: block;
+        flex: 1;
         transition:
             color 0.15s ease,
             border-color 0.15s ease;
@@ -198,7 +196,6 @@
         color: var(--toc-muted);
         line-height: 1.4;
         text-decoration: none;
-        flex: 1;
     }
 
     .toc-link:hover {
