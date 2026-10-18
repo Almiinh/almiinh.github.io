@@ -6,7 +6,7 @@ import { projects, featuredProjects } from "$/assets/index/projectsData.js";
 import ProjectCard from "$/components/Cards/ProjectCard.astro";
 import Card from "$/components/Cards/Card.astro";
 import Tags from "$/components/Tags.astro";
-import References from "$/layouts/components/References.astro";
+import References from "$/components/Layout/References.astro";
 import Carousel from "$/components/Carousel.astro";
 import "$/styles/details.css";
 ---
@@ -24,34 +24,6 @@ import "$/styles/details.css";
                 <References />
             </div>
         </div>
-        <!-- <Card>
-            <ul>
-                <Tags tags={[{ name: "Jul 2025 — Currently" }]} />
-                <li>
-                    <br />
-                    System V&V Engineer<br />
-                    @ Alstom, Saint-Ouen, FR<br /><br />
-                </li>
-                <Tags tags={[{ name: "Aug 2024 — Jan 2025" }]} />
-                <li>
-                    <br />
-                    LLM Agent Developer Intern <br />
-                    @ Thales Research & Technologies, Palaiseau, FR
-                    <br /><br />
-                </li>
-                <Tags tags={[{ name: "Sept 2021 — Jan 2025" }]} />
-                <li>
-                    <br />CS & Engineering Student<br />
-                    @ Mines Saint-Étienne, FR<br /><br />
-                </li>
-                <Tags tags={[{ name: "Sept 2019 — Jul 2021" }]} />
-                <li>
-                    <br />Student in Maths-Physics Preparatory Classes for French Grandes Écoles (MPSI-MP)<br
-                    />
-                    @ Lycée Pasteur, Neuilly-sur-Seine, FR<br /><br />
-                </li>
-            </ul>
-        </Card> -->
     </section>
     <section id="featured">
         <details open>

@@ -1,6 +1,6 @@
 ---
-import Header from "$/layouts/components/Header.astro";
-import Footer from "$/layouts/components/Footer.astro";
+import Header from "$/components/Layout/Header.astro";
+import Footer from "$/components/Layout/Footer.astro";
 
 const { title, class: className, largeScreenMargin = "15vw", smallScreenMargin = "5vw" } = Astro.props;
 
@@ -43,9 +43,6 @@ const { title, class: className, largeScreenMargin = "15vw", smallScreenMargin =
             margin: 5vh max(var(--smallScreenMargin), 36px);
             width: fit-content;
         }
-        /* @media screen and (max-width: 800px) {
-            margin: 5vh max(var(--smallScreenMargin), 36px);
-        } */
     }
     :global(*:is(h1, h2, h3, h4, h5, h6)) {
         font-family: var(--font-heading);
