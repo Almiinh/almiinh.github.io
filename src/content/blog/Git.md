@@ -43,7 +43,11 @@ The first commit has no parent
 A commit with two parents makes branches
 ![Branches](/blog/git/two_parents.png)
 
-You can jump to any commit in history
+You are located at the HEAD pointer, which points to a branch
+
+![HEAD pointer](/blog/git/head_pointer.png)
+
+You can jump to any commit in history, HEAD will point at the commit in detached mode.
 
 ![Move HEAD](/blog/git/head.png)
 
