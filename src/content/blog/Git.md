@@ -1,14 +1,31 @@
 ---
-title: "Git Cheatsheet"
-description: "A quick overview of Git"
-pubDate: "2025-11-08"
-heroImage: '../../assets/blog/logo_git.png'
+title: Git Cheatsheet
+description: A quick overview of Git
+pubDate: 2025-11-08
+heroImage: ../../assets/blog/logo_git.png
 heroSize: small
 foldHeadings: true
 noTableHead: true
 ---
 > [!note] What is Git?
 > Git is a **version control system** (**VCS**) that tracks changes and preserves the version history of all files in a project.
+
+
+```js
+// Shiki code-block pipeline (ported from astro-theme-pure)
+import {
+    addCollapse,
+    addCopyButton,
+    addLanguage,
+    addTitle,
+    updateStyle,
+} from "./src/plugins/shiki-custom-transformers.ts";
+import {
+    transformerNotationDiff,
+    transformerNotationHighlight,
+    transformerRemoveNotationEscape,
+} from "./src/plugins/shiki-official/transformers.ts";
+```
 
 
 > [!tip] References
@@ -68,13 +85,13 @@ Git Generally Only Adds Data
 > [!note] 
 > A **local repository** is where project files, versions, and full modification history are stored on your machine.
 
-| Create a Git repository                            | `git init`                                                                                                 |
-| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Check repository status                            | `git status`                                                                                               |
-| Check repository status (short format)             | `git status (--short\|-s)`                                                                                 |
-| View commit history                                | `git log [options]`<br>  `--color`<br>  `--graph`<br>  `--oneline`<br> `-1` : show only the latest commit  |
-| View file changes                                  | `git diff`<br>    `--staged`/`—-cached`                                                                    |
-| View commit summaries for current directory        | `git log <directory>`                                                                                      |
+| Create a Git repository                     | `git init`                                                                                                |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Check repository status                     | `git status`                                                                                              |
+| Check repository status (short format)      | `git status (--short\|-s)`                                                                                |
+| View commit history                         | `git log [options]`<br>  `--color`<br>  `--graph`<br>  `--oneline`<br> `-1` : show only the latest commit |
+| View file changes                           | `git diff`<br>    `--staged`/`—-cached`                                                                   |
+| View commit summaries for current directory | `git log <directory>`                                                                                     |
 
 #### Handle the Staging Area `git add / restore / mv / rm`
 
@@ -134,15 +151,16 @@ A branch is simply a pointer to a commit.
 > `HEAD~3` refers to three commits back,
 > etc.
 
-| List branches                                 | `git branch [--list]`                                  |
-| --------------------------------------------- | ------------------------------------------------------ |
-| Create a branch                               | `git branch <branch>`                                  |
-| Rename a branch                               | `git branch --move <oldName> <newName>`                |
-| Delete a merged branch                        | `git branch --delete <branch>`                         |
-| Force delete an unmerged branch               | `git branch -D <branch>`<br>`[-D := --delete --force]` |
-| Switch branches (overwrites uncommitted code) | `git switch <branch>`                                  |
-| Switch branches with auto-stash               | `git switch --merge <branch>`                          |
-| Merge branches (once checked out)             | `git merge <targetBranch>`                             |
+| List branches                                 | `git branch [--list]`                                   |
+| --------------------------------------------- | ------------------------------------------------------- |
+| Create a branch                               | `git branch <branch>`                                   |
+| Switch to and create a branch                 | `git switch --create <newBranch>`<br>`[-c := --create]` |
+| Rename a branch                               | `git branch --move <oldName> <newName>`                 |
+| Delete a merged branch                        | `git branch --delete <branch>`<br>`[-d := --delete]`    |
+| Force delete an unmerged branch               | `git branch -D <branch>`<br>`[-D := --delete --force]`  |
+| Switch branches (overwrites uncommitted code) | `git switch <branch>`                                   |
+| Switch branches and migrate changes           | `git switch --merge <branch>`                           |
+| Merge branches (once checked out)             | `git merge <targetBranch>`                              |
 
 #### Stash Temporary Changes `git stash`
 
@@ -161,7 +179,7 @@ A branch is simply a pointer to a commit.
 - Clear all stashed entries: `git stash clear`
 
 #### Rebasing `git rebase`
-aaaaaa
+
 | Rebase a branch onto another branch                                                               | `git rebase <targetBranch>`                                             |
 | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | Edit, reorder, or combine commits interactively                                                   | Example for the last 3 commits:<br>`git rebase -i HEAD~3`               |
@@ -226,10 +244,10 @@ The rules for `.gitignore` patterns are:
 | Delete a sub-repository | `git rm -rf <plugin>` |
 
 ##### Clone
-        
-| Clone/initialize configured submodule repository | `git submodule update` |
-| --- | --- |
-| Clone parent repository and all submodules | `git clone --recurse-submodules <url>` |
+    
+| Clone/initialize configured submodule repository | `git submodule update`                 |
+| ------------------------------------------------ | -------------------------------------- |
+| Clone parent repository and all submodules       | `git clone --recurse-submodules <url>` |
 
 ##### Fetch and Pull
 
@@ -243,20 +261,3 @@ The rules for `.gitignore` patterns are:
 
 | Push main repository and submodules | `git push --recurse-submodules=on-demand` |
 | ----------------------------------- | ----------------------------------------- |
-
-
-```js
-// Shiki code-block pipeline (ported from astro-theme-pure)
-import {
-    addCollapse,
-    addCopyButton,
-    addLanguage,
-    addTitle,
-    updateStyle,
-} from "./src/plugins/shiki-custom-transformers.ts";
-import {
-    transformerNotationDiff,
-    transformerNotationHighlight,
-    transformerRemoveNotationEscape,
-} from "./src/plugins/shiki-official/transformers.ts";
-```

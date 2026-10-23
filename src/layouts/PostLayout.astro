@@ -22,8 +22,7 @@ const {
     foldHeadings = false,
     noTableHead = false,
 } = post.data;
-const headings: MarkdownHeading[] = post.rendered?.metadata?.headings as MarkdownHeading[] ?? [];
-console.log("headings", headings);
+const headings: MarkdownHeading[] = (post.rendered?.metadata?.headings as MarkdownHeading[]) ?? [];
 ---
 
 <script>

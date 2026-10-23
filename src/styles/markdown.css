@@ -1,5 +1,5 @@
 @import "details.css";
-@import 'rehype-callouts/theme/github';
+@import "rehype-callouts/theme/github";
 
 table,
 th,
@@ -24,6 +24,272 @@ hr {
 pre {
     margin: 0.25rem 0;
     padding: 0.75rem 0.8rem 0.25rem 0.8rem;
+}
+
+:root {
+    color-scheme: light dark;
+
+    --card: light-dark(hsl(45 40% 99%), hsl(32 14% 11%));
+    --ink-soft: light-dark(hsl(32 9% 36%), hsl(38 10% 66%));
+    --wash: light-dark(hsl(40 22% 92%), hsl(32 12% 14%));
+    --line: light-dark(hsl(38 20% 86%), hsl(32 10% 20%));
+}
+
+.shiki span {
+    color: var(--shiki-light);
+}
+
+:root {
+    @media (prefers-color-scheme: dark) {
+        &:not([style*="color-scheme: light"]) {
+            .astro-code pre span {
+                color: var(--shiki-dark) !important;
+            }
+        }
+    }
+}
+
+.astro-code {
+    display: flex;
+    flex-direction: column;
+    margin-block: 1.25rem;
+    border-radius: 0.5rem;
+    background-color: var(--wash) !important;
+
+    /* Code container */
+    & pre {
+        margin: 0;
+        background: none;
+        padding-top: 0.85rem;
+        padding-bottom: 0.85rem;
+        padding-inline: 0;
+        overflow-x: auto;
+        & code {
+            display: block;
+            counter-increment: step 0;
+            counter-reset: step;
+            width: fit-content;
+            min-width: 100%;
+            min-height: 1.5rem;
+            /* Number gutter strip */
+            &::before {
+                display: block;
+                position: absolute;
+                top: 0.8571429em;
+                bottom: 0;
+                z-index: 1;
+                inset-inline-start: 0;
+                background-color: var(--wash);
+                width: 2.75rem;
+                content: "";
+            }
+            & .line {
+                padding-inline-end: 3rem;
+                &::before {
+                    display: inline-flex;
+                    position: sticky;
+                    justify-content: end;
+                    z-index: 2;
+                    counter-increment: step;
+                    box-sizing: content-box;
+                    inset-inline-start: 0;
+                    background-color: var(--wash);
+                    padding-inline-end: 0.75rem;
+                    width: 2rem;
+                    content: counter(step);
+                    color: hsl(from var(--ink-soft) h s l / 0.6);
+                }
+                &:last-child:empty,
+                &:last-child:has(> span:empty:only-child) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+html.dark .astro-code pre span {
+    color: var(--shiki-dark) !important;
+}
+
+/* Title (from ```lang title="..." ) */
+.astro-code {
+    &:has(code) {
+        position: relative;
+    }
+    &:has(div.title) {
+        padding-top: 2rem;
+        & code::before {
+            top: calc(2rem + 0.8571429em);
+        }
+    }
+    & .title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        margin: 0.5rem;
+        border: 1px solid var(--line);
+        border-radius: 0.5rem;
+        background-color: var(--card);
+        padding: 0.25rem 0.75rem;
+        color: var(--ink-soft);
+        font-size: 0.875rem;
+    }
+
+    /* Language */
+    & .language {
+        position: absolute;
+        top: 0.75rem;
+        right: 0;
+        transition: opacity 0.3s;
+        background-color: var(--wash);
+        padding-right: 0.75rem; /* pe-3 */
+        padding-left: 0.25rem; /* ps-1 */
+        padding-inline: 0.25rem 0.75rem;
+        color: var(--ink-soft);
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+
+    /* Copy */
+    & button.copy {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+        cursor: pointer;
+        box-sizing: content-box;
+        border: 1px solid var(--line);
+        border-radius: 0.5rem;
+        background-color: var(--card);
+        padding: 0.25rem;
+        color: var(--ink-soft);
+        user-select: none;
+        & svg {
+            display: block;
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        & .hidden {
+            display: none;
+        }
+        & .success::before {
+            display: flex;
+            position: absolute;
+            top: 0;
+            right: 100%;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            margin-right: 0.5rem;
+            border: 1px solid var(--line);
+            border-radius: 0.25rem;
+            background-color: var(--card);
+            padding: 0.5rem;
+            content: "Copied!";
+            color: var(--ink-soft);
+            font-size: 0.75rem;
+        }
+        &.copied {
+            & .success {
+                display: block;
+            }
+            & .ready {
+                display: none;
+            }
+        }
+    }
+    &:hover,
+    &:focus-within {
+        & button.copy {
+            opacity: 1;
+        }
+        & .language {
+            opacity: 0;
+        }
+    }
+
+    /* Highlighted & diffs */
+    & .highlighted,
+    & .diff {
+        display: inline-block;
+        min-width: 100%;
+    }
+    & .highlighted,
+    & .highlighted::before {
+        background-color: rgba(149, 166, 183, 0.32) !important;
+    }
+    & .diff {
+        &.remove {
+            background-color: rgba(244, 63, 94, 0.16);
+            &::before {
+                background-color: rgba(244, 63, 94, 0.16);
+                content: "-";
+            }
+        }
+        &.add {
+            background-color: rgba(16, 185, 129, 0.16);
+            &::before {
+                background-color: rgba(16, 185, 129, 0.16);
+                content: "+";
+            }
+        }
+    }
+
+    /* Collapse */
+    & .collapse-toggle {
+        display: flex;
+        column-gap: 0.3rem;
+        justify-content: center;
+        align-items: center;
+        z-index: 3;
+        cursor: pointer;
+        box-sizing: border-box;
+        margin: 0;
+        border-top: 1px solid var(--line);
+        background-color: var(--card);
+        padding: 0.25rem;
+        color: var(--ink-soft);
+        user-select: none;
+        & svg {
+            transform: rotate(180deg);
+            transition: transform 0.2s ease;
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        & .desc::before {
+            content: "Collapse";
+        }
+    }
+    &.collapsed {
+        & pre {
+            max-height: 15rem;
+            overflow: hidden;
+        }
+        & .collapse-toggle {
+            margin: 0.5rem;
+            border: 1px solid var(--line);
+            border-radius: 0.5rem;
+            & .desc::before {
+                content: "Show all";
+            }
+            & svg {
+                transform: rotate(0deg);
+            }
+        }
+        & .collapse-fade {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            background: linear-gradient(to bottom, transparent 0%, var(--wash) 60%);
+            height: 8rem;
+            pointer-events: none;
+            user-select: none;
+        }
+    }
 }
 
 :not(pre) > code {
