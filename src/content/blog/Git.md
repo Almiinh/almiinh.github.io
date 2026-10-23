@@ -4,7 +4,6 @@ description: A quick overview of Git
 pubDate: 2025-11-08
 heroImage: ../../assets/blog/logo_git.png
 heroSize: small
-foldHeadings: true
 noTableHead: true
 ---
 > [!note] What is Git?

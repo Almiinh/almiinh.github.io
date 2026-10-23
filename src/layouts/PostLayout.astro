@@ -34,17 +34,16 @@ const headings: MarkdownHeading[] = (post.rendered?.metadata?.headings as Markdo
     });
 
     // Fold headings into details/summary elements
+    const foldAll = document.querySelector("[data-fold-all]")?.getAttribute("data-fold-all") === "true";
     Array.from(document.querySelectorAll(".blog-body :is(h2, h3, h4, h5, h6):not(.toc-title)")).forEach(
         (heading) => {
             const level = parseInt(heading.tagName[1], 10);
             const parent = heading.parentNode;
             if (!parent) return;
-            const foldAll =
-                document.querySelector("[data-fold-all]")?.getAttribute("data-fold-all") === "true";
 
             // Create a details element
             const details = document.createElement("details");
-            details.open = !foldAll && window.matchMedia("(max-width: 800px)").matches;
+            details.open = !(foldAll || window.matchMedia("(pointer: coarse)").matches);
             const summary = document.createElement("summary");
 
             // Move the heading into the summary element
@@ -56,7 +55,7 @@ const headings: MarkdownHeading[] = (post.rendered?.metadata?.headings as Markdo
             let next = details.nextSibling;
             while (next) {
                 const isHeading = next instanceof Element && /^H[1-6]$/.test(next.tagName);
-                const nextLevel = isHeading ? parseInt((next as Element).tagName[1], 10) : Infinity;
+                const nextLevel = isHeading ? parseInt(next.tagName[1], 10) : Infinity;
 
                 if (isHeading && nextLevel <= level) break;
 
@@ -66,6 +65,12 @@ const headings: MarkdownHeading[] = (post.rendered?.metadata?.headings as Markdo
             }
         },
     );
+    const mediaQuery = window.matchMedia("(pointer: coarse)");
+    mediaQuery.addEventListener("change", (e) => {
+        document.querySelectorAll(".blog-body details").forEach((details) => {
+            details.open = !e.matches;
+        });
+    });
 </script>
 
 <Layout title={title} largeScreenMargin="2.5vw">
