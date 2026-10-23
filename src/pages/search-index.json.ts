@@ -1,8 +1,8 @@
 import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
 
-import { stripMarkdown } from '@/utils'
-import { getPostRawMarkdown } from '@/utils/server'
+import { stripMarkdown } from '$/utils'
+import { getPostRawMarkdown } from '$/utils/server'
 
 /**
  * Prerendered JSON index used by the client-side search page.
@@ -15,8 +15,7 @@ export const GET: APIRoute = async () => {
     slug: post.id.replace(/\/index$/, ''),
     title: post.data.title,
     description: post.data.description,
-    tags: post.data.tags,
-    date: post.data.publishDate.toISOString(),
+    date: post.data.pubDate.toISOString(),
     content: stripMarkdown(getPostRawMarkdown(post.id))
   }))
 
