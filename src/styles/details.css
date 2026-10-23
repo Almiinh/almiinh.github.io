@@ -10,6 +10,9 @@ details:not([data-callout]) {
         padding: 0.25rem 0.25rem;
 
         &:hover {
+            transform: scale(1.01);
+            transition: all 0.1s ease-in-out;
+            box-shadow: 2px 2px 1px var(--color-shadow);
             background-color: var(--color-bg-secondary);
         }
 
@@ -57,7 +60,7 @@ details:not([data-callout]) {
         transform: translateY(0.5rem);
         content-visibility: visible;
         opacity: 1;
-        margin-left: 2rem;  
+        margin-left: 2rem;
         padding-bottom: 0.5rem;
         height: auto;
 

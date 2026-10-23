@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import { unified } from "@astrojs/markdown-remark";
 import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import rehypeKatex from "rehype-katex";
 // import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -21,12 +22,12 @@ import {
 } from "./src/plugins/shiki-custom-transformers.ts";
 // Sub-path base, used when deployed under a project Pages URL
 // (e.g. /astro-theme-ink/). Empty locally & for user/project root deploys.
-const base = process.env.BASE_PATH || ''
+const base = process.env.BASE_PATH || "";
 
 // https://astro.build/config
 export default defineConfig({
     site: "https://almiinh.github.io",
-    integrations: [svelte(), mdx(), icon()],
+    integrations: [svelte(), mdx(), icon(), sitemap()],
 
     redirects: {
         "/web": "/#web-projects",
