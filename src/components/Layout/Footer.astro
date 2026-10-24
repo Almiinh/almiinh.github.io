@@ -1,11 +1,12 @@
 ---
-const today = new Date();
 import References from "./References.astro";
+import { config } from "src/site-config";
+const copyright = config.footer.copyright
 ---
 
 <footer>
     <span>
-        &copy; {today.getFullYear()} Minh-Hoang HUYNH. All rights reserved.
+        {copyright}
     </span>
     <References class:list={"ref"} />
 </footer>

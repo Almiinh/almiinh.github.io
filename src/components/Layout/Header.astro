@@ -1,12 +1,14 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import DarkModeSwitch from "./DarkModeSwitch.svelte";
+import { config } from "src/site-config";
+const menu = config.header.menu
 ---
 <nav id="site-header">
     <div class="links">
-        <HeaderLink href="/">Projects</HeaderLink>
-        <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="/dash">Experimental</HeaderLink>
+        { menu.map(({title, link}) => (
+            <HeaderLink href={link}>{title}</HeaderLink>
+        ))}
     </div>
     <DarkModeSwitch class="DarkModeSwitch" client:load />
 </nav>

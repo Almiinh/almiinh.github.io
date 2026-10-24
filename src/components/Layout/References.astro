@@ -1,23 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
+import { config } from "src/site-config";
 
-const references = [
-    {
-        href: "/index/CV FR.pdf",
-        alt: "Click to download my CV",
-        name: "hugeicons:file-user",
-    },
-    {
-        href: "https://www.linkedin.com/in/minh-hoang-alexis-huynh-621b52222/",
-        alt: "Click to visit my LinkedIn profile",
-        name: "hugeicons:linkedin-01",
-    },
-    {
-        href: "https://github.com/Almiinh",
-        alt: "Click to visit my GitHub profile",
-        name: "hugeicons:github-01",
-    },
-];
+const references = config.footer.social ?? []
 
 const { class: className = "" } = Astro.props;
 ---
@@ -25,8 +10,8 @@ const { class: className = "" } = Astro.props;
 <div class:list={className}>
     {
         references.map((item) => (
-            <a href={item.href} target="_blank" rel="noopener noreferrer" title={item.alt}>
-                <Icon name={item.name} class="icon" />
+            <a href={item.url} target="_blank" rel="noopener noreferrer" title={item.alt}>
+                <Icon name={item.icon} class="icon" />
             </a>
         ))
     }

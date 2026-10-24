@@ -39,7 +39,7 @@ export async function getBlogCollection(): Promise<Post[]> {
 
 /** Newest first. */
 export function sortMDByDate(posts: Post[]): Post[] {
-  return [...posts].sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  return [...posts].sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 }
 
 /** `[tag, count]` pairs, most-used first. */

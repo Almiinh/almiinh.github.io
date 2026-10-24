@@ -26,15 +26,6 @@ pre {
     padding: 0.75rem 0.8rem 0.25rem 0.8rem;
 }
 
-:root {
-    color-scheme: light dark;
-
-    --card: light-dark(hsl(45 40% 99%), hsl(32 14% 11%));
-    --ink-soft: light-dark(hsl(32 9% 36%), hsl(38 10% 66%));
-    --wash: light-dark(hsl(40 22% 92%), hsl(32 12% 14%));
-    --line: light-dark(hsl(38 20% 86%), hsl(32 10% 20%));
-}
-
 .shiki span {
     color: var(--shiki-light);
 }
@@ -317,10 +308,8 @@ blockquote {
 }
 
 img {
-    margin: 1rem auto;
-    width: auto;
-    max-width: 75%;
-    height: auto;
+    margin: 1rem;
+    max-width: 50%;
 }
 
 ul {

@@ -3,13 +3,12 @@
     --color-text: light-dark(#333, #f2f4f5);
     --color-line: light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
     --color-text-secondary: light-dark(#666, #999);
-    --color-text-ternary: light-dark()
-    --color-bg: light-dark(white, #282c34);
+    --color-text-ternary: light-dark() --color-bg: light-dark(white, #282c34);
     --color-bg-secondary: light-dark(#eee, #333943);
     --color-bg-ternary: light-dark(#ddd, #3c4048);
     --color-border: light-dark(rgba(0, 0, 0, 0.5), #f2f4f5);
     --color-shadow: light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
-    --color-pastel-header: light-dark(linen, rosybrown );
+    --color-pastel-header: light-dark(linen, rosybrown);
     --color-accent: var(--color-pastel-header);
     --color-bg-gradient: var(--color-bg)
         linear-gradient(
@@ -19,8 +18,19 @@
             rgba(252, 176, 69, 0.4) 100%
         );
     --filter-hover: brightness(90%);
+
     background-color: var(--color-bg);
     color: var(--color-text);
+
+    /* astro-theme-ink */
+    --paper: light-dark(hsl(42 35% 97%), hsl(32 18% 8%));
+    --card: light-dark(hsl(45 40% 99%), hsl(32 14% 11%));
+    --ink: light-dark(hsl(30 14% 13%), hsl(42 32% 92%));
+    --ink-soft: light-dark(hsl(32 9% 36%), hsl(38 10% 66%));
+    --wash: light-dark(hsl(40 22% 92%), hsl(32 12% 14%));
+    --accent: light-dark(hsl(22 46% 44%), hsl(28 72% 68%));
+    --ring: light-dark(hsl(22 46% 44%), hsl(28 72% 68%));
+    --line: light-dark(hsl(38 20% 86%), hsl(32 10% 20%));
 
     &:not([style*="color-scheme"]) {
         .auto-mode-icon {
