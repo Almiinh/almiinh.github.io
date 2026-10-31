@@ -2,7 +2,7 @@ export const config: Config = {
     site: {
         title: "",
         author: "Minh-Hoang HUYNH",
-        description: "Hansen's ink — 记录技术、生活与思考。",
+        description: "Portfolio de Minh-Hoang HUYNH",
         lang: "en",
         favicon: "/favicon/favicon.ico",
         avatar: "/avatar.webp",
@@ -29,10 +29,9 @@ export const config: Config = {
 
     footer: {
         showQuote: true,
-        copyright: `© 2023 - ${new Date().getFullYear()} Minh-Hoang HUYNH. All rights reserved.`,
+        copyright: `© 2023 - ${new Date().getFullYear()}&nbsp;&nbsp;&nbsp;&nbsp;Minh-Hoang HUYNH. All rights reserved.`,
         links: [
             { title: "RSS", url: "/rss.xml" },
-            { title: "鲁ICP备2022004230号-1", url: "https://beian.miit.gov.cn/" },
         ],
         social: [
             {
@@ -62,15 +61,15 @@ export const config: Config = {
         hero: {
             tagline: "V&V Engineer @ Alstom, Saint-Ouen, FR",
             location: "Paris, France",
-            about: "你好，我是 Hansen，业余时间喜欢折腾各种技术和工具，追求高效和极简的生活方式。\n\n目前就职于一家芯片设计公司，主要从事嵌入式 IDE 的开发和负责系统、工具的维护工作。\n\n平时喜欢玩游戏、听音乐、看电影、拍照。",
+            about: "",
             buttons: [{ title: "More about me", link: "/about" }],
         },
         recentPosts: 5,
         education: [],
         skills: [
-            { title: "Programming", items: ["Python", "Rust", "Java", "C", "SQL", "Shell"] },
-            { title: "Web", items: ["TypeScript", "Svelte", "Node.js", "JavaScript", "HTML", "CSS"] },
-            { title: "Tools", items: ["VS Code", "Vim", "Git", "Docker", "Linux"] },
+            { title: "Programming", items: ["Python", "Rust", "Java", "C", "SQL", "Bash", "Windows Batch/Cmd Prompt"] },
+            { title: "Web", items: ["TypeScript", "Astro", "Svelte", "Node.js", "JavaScript", "HTML", "CSS"] },
+            { title: "Tools", items: ["VS Code", "Git", "Docker", "Linux"] },
             { title: "Text", items: ["Markdown", "LaTeX"] },
         ],
         showTags: false,

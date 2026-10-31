@@ -1,29 +1,99 @@
 ---
 import References from "./References.astro";
+import SitePageview from "./SitePageview.astro";
 import { config } from "src/site-config";
-const copyright = config.footer.copyright
+const copyright = config.footer.copyright;
+const footerLinks = config.footer.links ?? [];
 ---
 
 <footer>
-    <span>
-        {copyright}
-    </span>
-    <References class:list={"ref"} />
+    <div class="mention">
+        <p class="copyright" set:html={copyright} />
+        <References class:list={"ref"} />
+    </div>
+    <div class="footer-links">
+        {
+            footerLinks.length > 0 && (
+                <nav aria-label="Footer links" class="">
+                    {footerLinks.map((link) => (
+                        <a href={link.url}>{link.title}</a>
+                    ))}
+                </nav>
+            )
+        }
+        <div class="powered-by">
+            <span>
+                Powered by{" "}
+                <a href="https://astro.build" target="_blank" rel="noreferrer"> Astro </a>
+            </span>
+            <SitePageview />
+        </div>
+    </div>
 </footer>
 <style>
     footer {
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        margin-top: auto;
-        padding: 2em 1em;
+        margin-top: 3rem;
         color: rgb(var(--gray));
+        font-size: small;
         text-align: center;
     }
+    .mention {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        gap: 2rem;
+        margin-top: auto;
+        color: rgb(var(--gray));
+        text-align: center;
+        @media (width >= 40rem) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+    .footer-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .footer-links nav {
+        display: flex;
+        column-gap: 4px;
+        row-gap: 1px;
+        flex-wrap: wrap;
+        justify-content: center;
+        @media (width >= 40rem) {
+            justify-content: start;
+        }
+    }
+    .powered-by {
+        display: flex;
+        column-gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    footer a {
+        display: inline-flex;
+        align-items: center;
+        transition-duration: 0s;
+        transition-property:
+            color, background-color, border-color, outline-color, text-decoration-color, fill, stroke,
+            --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+        transition-timing-function: ease;
+        min-height: calc(6 / 12 * 100%);
+        text-underline-offset: 4px;
 
-    :global(.ref) {
-        justify-self: center;
-        margin: 0 auto;
-        padding: 1em 0;
+        &:hover,
+        &:focus-visible {
+            color: var(--color-text-secondary);
+            @media (hover: hover) {
+                text-decoration-line: underline;
+            }
+        }
     }
 </style>

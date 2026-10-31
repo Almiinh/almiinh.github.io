@@ -17,7 +17,7 @@ export async function GET(context: APIContext) {
       pubDate: post.data.pubDate,
       link: postUrl(post.id),
       // categories: post.data.tags,
-      content: post.body // full post (markdown) so subscribers get the whole article
+      // content: post.body // full post (markdown) so subscribers get the whole article
     })),
     customData: `<language>${config.site.lang}</language>`
   })
