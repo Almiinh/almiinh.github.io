@@ -4,18 +4,21 @@
 @import "banner.css";
 
 :root {
-    --font-monospace: "Roboto Mono", Consolas, "Courier New", Courier, monospace;
-    --font-title: "Space Grotesk", "Times New Roman", Times, serif;
-    --font-serif: "Playfair Display", Times, -apple-system, serif;
-    --font-sans-serif: Rubik,  Arial, -apple-system, sans-serif;
-    --font-heading: "Space Grotesk", Rubik, Arial, -apple-system, sans-serif;
+    --font-monospace: "Space Mono", Consolas, "Courier New", Courier, monospace;
+    --font-serif: "EB Garamond", Times, -apple-system, serif;
+    --font-sans-serif: "Rubik",  Arial, -apple-system, sans-serif;
+    --font-body-content: var(--font-sans-serif);
+    --font-tag: var(--font-heading);
+    --font-heading: "Space Grotesk", Arial, -apple-system, sans-serif;
+    --font-title: var(--font-heading);
     --size-title: 3rem;
 }
 
 /* Global Font */
-body {
-    font-family: var(--font-sans-serif);
-}
 body *:is(h1, h2, h3, h4, h5, h6) {
     margin: 1rem 0;
+    font-family: var(--font-tag);
+}
+main {
+    font-family: var(--font-body-content);
 }

@@ -24,15 +24,16 @@ const { class: className = "", height } = Astro.props;
         gap: 1rem;
     }
     a, .icon {
-        filter: var(--filter-hover);
         width: auto;
         height: var(--height, 24px);
         color: var(--color-text);
-    
+        
         &:hover {
-            translate: 0 -2px;
+            scale: 1.1;
+            filter: var(--filter-hover);
             filter: contrast(100%);
             transition: all 0.2s;
+            color: var(--color-text-secondary);
         }
     }
 </style>

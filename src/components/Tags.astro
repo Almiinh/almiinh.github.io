@@ -29,18 +29,25 @@ interface Tag {
         align-items: center;
         gap: 0.2rem;
         width: fit-content;
+        font-family: var(--font-tag);
     }
 
     .tag {
         --tag-bg-solid: color-mix(in srgb, var(--tag-bg, rgba(255, 127, 80, 0.5)) 100%, white 0%);
-        border-radius: 10px;
+        /* border-radius: 10px; */
+        /* background-color: var(--color-text); */
+        /* background-color: color-mix(in oklch, var(--tag-bg) 30%, white); */
         background-color: var(--tag-bg);
         padding: 0 0.4rem;
         min-width: 2rem;
         height: fit-content;
-        color: contrast-color(color-mix(in srgb, var(--tag-bg, rgba(255, 127, 80, 0.5)) 100%, black 50%));
+        /* color: contrast-color(color-mix(in srgb, color-mix(in oklch, var(--tag-bg) 30%, white) 100%, black 50%)); */
+        color: contrast-color(color-mix(in srgb, var(--tag-bg) 100%, black 50%));
         font-size: 0.7rem;
         text-align: center;
         text-wrap: nowrap;
+    }
+    .tag::before {
+        content: "#";
     }
 </style>

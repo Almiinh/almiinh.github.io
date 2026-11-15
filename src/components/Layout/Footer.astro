@@ -4,9 +4,11 @@ import SitePageview from "./SitePageview.astro";
 import { config } from "src/site-config";
 const copyright = config.footer.copyright;
 const footerLinks = config.footer.links ?? [];
+
+const { class: className } = Astro.props;
 ---
 
-<footer>
+<footer class={className}>
     <div class="mention">
         <p class="copyright" set:html={copyright} />
         <References class:list={"ref"} />
@@ -30,14 +32,16 @@ const footerLinks = config.footer.links ?? [];
         </div>
     </div>
 </footer>
+
 <style>
     footer {
         display: flex;
         flex-direction: column;
         gap: 2rem;
         margin-top: 3rem;
-        color: var(--color-text-secondary);
+        color: var(--color-text-ternary);
         font-size: small;
+        font-family: var(--font-tag);
         text-align: center;
     }
     .mention {
@@ -86,12 +90,13 @@ const footerLinks = config.footer.links ?? [];
             --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
         transition-timing-function: ease;
         min-height: calc(6 / 12 * 100%);
+        color: initial;
         text-underline-offset: 4px;
 
         &:hover,
         &:focus-visible {
-            color: var(--color-text-secondary);
             @media (hover: hover) {
+                color: inherit;
                 text-decoration-line: underline;
             }
         }
